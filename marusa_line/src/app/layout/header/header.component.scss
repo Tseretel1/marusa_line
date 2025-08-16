@@ -2,20 +2,23 @@
 .component{
     height: 100px;
     color: white;
+    position: fixed;
+    z-index: 2;
+    width: 100%;
     .header{
         width: 100%;
         display: flex;
         justify-content: center;
-        padding: 10px 0px;
-        background-color: rgba(0, 0, 0, 0.233);
+        padding: 20px 0px;
+        background-color: rgba(7, 3, 32, 0.644);
+        backdrop-filter: blur(10px);
         .header-align{
             width: 90%;
             display: flex;
             position: relative;
-            .fload-logo{
+            .float-logo{
                 position: absolute;
                 display: flex;
-                align-items: center;
                 gap: 15px;
                 .logo-container{
                     overflow: hidden;
@@ -34,10 +37,13 @@
                         scale: 1.1;
                     }
                 }
-                .heaer-title{
+                .header-title{
+                    color: white;
                     letter-spacing: 2px;
                     font-size: 22px;
                     font-weight: bold;
+                    text-decoration: none;
+                    text-shadow: 0px 0px 2px black;
                 }
             }
             .navigation-align{
@@ -53,3 +59,20 @@
         }
     }
 }
+
+
+@media screen and (max-width: 900px){
+    
+.component{
+    .header{
+        .header-align{
+            padding: 10px 0px;
+            .navigation-align{
+                display: none;
+            }
+        }
+    }
+}
+}
+
+
