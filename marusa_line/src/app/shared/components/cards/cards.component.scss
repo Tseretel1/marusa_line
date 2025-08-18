@@ -1,63 +1,61 @@
-.card{
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.089);
+  backdrop-filter: blur(10px);
+  gap: 15px;
+  font-family: sans-serif;
+  transition: 0.3s;
+  .img-container {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
     overflow: hidden;
-    background-color: rgba(255, 255, 255, 0.089);
-    backdrop-filter: blur(10px);
-    gap: 15px;
-    font-family: sans-serif;
-    transition: 0.3s;
-    .img-container{
-        width: 100%;
-        height: 350px;
-        object-fit: cover;
-        overflow: hidden;
-        .img{
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.3s;
-        }
+    .img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.3s;
     }
-    .title-price{
-        .title{
-            font-weight: bold;
-            font-size: 18px;
-            color: white;
-            transition: 0.3s;
-            text-shadow: 0px 0px 3px black;
-        }
+  }
+  .title-price {
+    .title {
+      font-weight: bold;
+      font-size: 18px;
+      color: white;
+      transition: 0.3s;
+      text-shadow: 0px 0px 3px black;
     }
-    .description{
-        .price-align{
-            display: flex;
-            justify-content: flex-end;
-            color: white;
-            .price{
-               padding: 0px 3px;
-               font-weight: bold;
-               font-size: 20px;
-            }
-        }
-        .description-text{
-            height:100px;
-            overflow-y: scroll;
-            color:white;
-            text-shadow: 0px 0px 3px black;
-            transition: 0.3s;
-        }
-        .description-text::-webkit-scrollbar{
-            display: none;
-        }
+  }
+  .description {
+    .price-align {
+      display: flex;
+      justify-content: flex-end;
+      color: white;
+      .price {
+        padding: 0px 3px;
+        font-weight: bold;
+        font-size: 20px;
+      }
     }
+    .description-text {
+      height: 100px;
+      overflow-y: scroll;
+      color: white;
+      text-shadow: 0px 0px 3px black;
+      transition: 0.3s;
+    }
+    .description-text::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }
-.card:hover{
-    cursor: pointer;
-    scale: 1.02;
+.card:hover {
+  cursor: pointer;
+  scale: 1.02;
 }
-.card:hover .img-container .img{
-    scale: 1.1;
+.card:hover .img-container .img {
+  scale: 1.1;
 }
-
-
