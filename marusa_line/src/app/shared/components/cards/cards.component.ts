@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import AOS from 'aos';
+import { Post } from '../../../Repositories/post.service';
 
 @Component({
   selector: 'app-cards',
@@ -11,13 +12,5 @@ export class CardsComponent implements OnInit{
   ngOnInit(): void {
 
   }
-  @Input() cards!:Cards;
-}
-
-export interface Cards{
-  name:string;
-  price:number;
-  description:string;
-  viewCount:number;
-  photoUrl:string;
+  @Input() posts!:Post;
 }
