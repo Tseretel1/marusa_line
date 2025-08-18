@@ -1,43 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { Cards, CardsComponent } from '../../shared/components/cards/cards.component';
-import { CommonModule } from '@angular/common';
+import { NgForOf } from '@angular/common';
+import { Component, OnInit, } from '@angular/core';
 import AOS from 'aos';
-import { GalleryPhotos } from '../gallery/gallery.component';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [CardsComponent, CommonModule],
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-gallery',
+  imports: [NgForOf],
+  templateUrl: './gallery.component.html',
+  styleUrl: './gallery.component.scss'
 })
-export class HomeComponent implements OnInit {
-
-  cards: Cards[] = [];
+export class GalleryComponent implements OnInit {
   gallery: GalleryPhotos[] = [];
-  
+
   ngOnInit(): void {
-    window.scrollTo({
-     top: 0,
-     behavior: 'smooth' 
-   });
-    this.cards = this.generateCards(25);
+    this.generateGallery();
     AOS.init({
-      easing: 'ease-in-out',
-      once: false, 
+          easing: 'ease-in-out',
+          once: false, 
     });
   }
 
-  private generateCards(count: number): Cards[] {
-    const randomCards: Cards[] = [];
-
-    const epoxyProducts = [
-      'დომინო',
-    ];
-
-    const sampleDescriptions = [
-      'დომინო ახალ ფერებში🤍💙 მზადდება სასურველ ფერში✨ შესაკვეთად მომწერე💌 #დომინო #Domino #BoardGames #TableGames #თამაშები #სათამაშოები #GameNight #თამაშისდღეა🚀'
-    ];
+  generateGallery() {
+    this.gallery = [];
     this.gallery=[
       {photo :"https://scontent.ftbs5-3.fna.fbcdn.net/v/t39.30808-6/516546333_122106372320929005_1161079155029642186_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_ohc=AX_F8FX1QWgQ7kNvwFm4FMJ&_nc_oc=AdnYTJNTFLSU8cOFxoE3mAb5NgmWlb8ne9Ob4ePUACmZOht_qeUJytnMN1L3euWVOnI&_nc_zt=23&_nc_ht=scontent.ftbs5-3.fna&_nc_gid=2H8IA9HhXyVcGo6qpszjjA&oh=00_AfV48eAKhiJvFQ9Q6UZZUMQB8MKccaAOcJ2eIlSkxt8HOg&oe=68A8C8BC"},
       {photo :"https://scontent.ftbs5-3.fna.fbcdn.net/v/t39.30808-6/514266778_122106372326929005_3134060519176099028_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_ohc=NXn0KiUYVHAQ7kNvwEph6Fm&_nc_oc=AdkJ7SbFxOgIvvDejGu2HuPMzBn524uVHTUBcpAJrWHpiysvP9kiw14rX4OlHs2E2dQ&_nc_zt=23&_nc_ht=scontent.ftbs5-3.fna&_nc_gid=msSHW9ZLqin10NFwgN8svg&oh=00_AfUgsndvJ-8YJBX-m7-HWCw6LWorTZUoqORijma5ctNFWQ&oe=68A8BA6F"},
@@ -73,21 +56,9 @@ export class HomeComponent implements OnInit {
       {photo :"https://scontent.ftbs5-4.fna.fbcdn.net/v/t51.82787-15/523756939_17851591875507299_7738301129925346664_n.jpg?stp=dst-jpegr_tt6&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=BZrXt03oC18Q7kNvwFs79Df&_nc_oc=AdnxJEeg27Qv-dVn-Xs1d36Ho0yTwib3QZfURA12K8LnoSzsOkr6ldT66A69gbBA0dc&_nc_zt=23&se=-1&_nc_ht=scontent.ftbs5-4.fna&_nc_gid=yau0r4QgU4mZOpSpHhVUKA&oh=00_AfVPcc4hTviwJlar-rtzoEDXqqAZ4YXD_diQMByXzK4x-w&oe=68A8BE08"},
       {photo :"https://scontent.ftbs5-3.fna.fbcdn.net/v/t51.82787-15/523114123_17851590372507299_4360363543717187364_n.jpg?stp=dst-jpegr_tt6&_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=YSBiwUtCs08Q7kNvwGfCvXi&_nc_oc=AdkbDXIlFJ82-382pHSHaH67hCUhxrknxBlxkqUj2cJK4WRKv3FsEVkJK-r60NFC2Vc&_nc_zt=23&se=-1&_nc_ht=scontent.ftbs5-3.fna&_nc_gid=boxa8NEa1soIe3P65nQLoA&oh=00_AfWBa_B8sTuNJDYnSultNRY8GG-dcjdBa5JmHGEoInMXVA&oe=68A8C443"},
     ]
-    for (let i = 0; i < count; i++) {
-    const product = epoxyProducts[Math.floor(Math.random() * epoxyProducts.length)];
-    const description = sampleDescriptions[Math.floor(Math.random() * sampleDescriptions.length)];
-    const photoUrl = this.gallery[Math.floor(Math.random() * this.gallery.length)].photo;
-    
-    randomCards.push({
-      name: `${product}`,
-      price: Math.floor(Math.random() * 300) + 20, 
-      description,
-      viewCount: Math.floor(Math.random() * 1000),
-      photoUrl,
-    });
   }
+}
 
-
-    return randomCards;
-  }
+export interface GalleryPhotos {
+  photo: string;
 }

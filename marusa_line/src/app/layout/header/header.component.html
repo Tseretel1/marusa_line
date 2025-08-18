@@ -7,10 +7,11 @@
             </a>
             <p class="header-title">marusa_line</p>
         </div> 
-        <ul class="navigation-align">
-            <li class="nav-link"><b>პროდუქტები</b> </li>
-            <li class="nav-link" ><b (click)="scrollToBottom()"> კონტაქტი</b> </li>
-        </ul>
+        <div class="navigation-align">
+            <span class="nav-link" routerLinkActive="active-link" [routerLink]="AppRoutes.home"><i class="fas fa-shopping-cart"></i><b>პროდუქტები</b> </span>
+            <span class="nav-link"  routerLinkActive="active-link" [routerLink]="AppRoutes.gallery"><i class="fas fa-images"></i><b>გალერია</b> </span>
+            <span class="nav-link" routerLinkActive="active-link" ><b (click)="scrollToBottom()"><i class="fas fa-address-book"></i> კონტაქტი</b> </span>
+        </div>
     </div>
 </div>
 </div>
