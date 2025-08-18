@@ -12,6 +12,23 @@
             <span class="nav-link"  routerLinkActive="active-link" [routerLink]="AppRoutes.gallery"><i class="fas fa-images"></i><b>გალერია</b> </span>
             <span class="nav-link" routerLinkActive="active-link" ><b (click)="scrollToBottom()"><i class="fas fa-address-book"></i> კონტაქტი</b> </span>
         </div>
+        <div class="burger-icon-align" >
+            <span class="nav-link" routerLinkActive="active-link" (click)="openSidenav()"><i class="fas fa-bars"></i></span>
+        </div>
     </div>
 </div>
+</div>
+
+<div class="sidenav-align"*ngIf="sidenavVisible">
+    <div class="background-exit" [ngClass]="{'background-close':leftToright}" (click)="hideSidenav()"></div>
+    <div class="mobile-navigation-align" [ngClass]="{'left-toright':leftToright}">
+        <div class="cancel-icon-align">
+            <i class="fas fa-times" (click)="hideSidenav()"></i>
+        </div>
+        <div class="nav-center">
+            <span class="nav-link" routerLinkActive="active-link" [routerLink]="AppRoutes.home" (click)="hideSidenav()"><i class="fas fa-shopping-cart"></i><b>პროდუქტები</b> </span>
+            <span class="nav-link"  routerLinkActive="active-link" [routerLink]="AppRoutes.gallery" (click)="hideSidenav()"><i class="fas fa-images"></i><b>გალერია</b> </span>
+            <span class="nav-link" routerLinkActive="active-link" ><b (click)="scrollToBottom()"><i class="fas fa-address-book"></i> კონტაქტი</b> </span>
+        </div>
+    </div>
 </div>

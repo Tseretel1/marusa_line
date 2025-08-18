@@ -8,14 +8,14 @@
         width: 90%;
         grid-template-columns: repeat(4,1fr);
         place-items:center;
-        gap: 20px;
+        gap: 10px;
         .epoxy-card{
             width: 100%;
         }
     }
 }
 
-@media screen and (max-width:1100px){
+@media screen and (max-width:1200px){
     .component-align{
         .epoxy-align{
             grid-template-columns: repeat(3,1fr);
