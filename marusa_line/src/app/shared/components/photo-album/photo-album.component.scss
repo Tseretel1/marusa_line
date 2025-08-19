@@ -59,7 +59,6 @@
                         text-wrap: nowrap;
                         filter: drop-shadow(0px 0px 10px white);
                     }
-
                     button::before {
                         content: "";
                         position: absolute;
@@ -73,12 +72,10 @@
                         border-radius: 5px;
                         scale: 1.2;
                     }
-                    
                     button:hover {
                         color: #e8e8e8;
                         filter: drop-shadow(0px 0px 10px black);
                     }
-                    
                     button:hover::before {
                         filter: drop-shadow(0px 0px 20px black);
                         width: 100%;
@@ -89,11 +86,15 @@
                 display: flex;
                 width: 100%;
                 justify-content: space-between;
+                font-size: 18px;
+                .discounted-price{
+                    color: rgb(255, 70, 70);
+                    text-decoration: line-through;
+                }
             }
             .learn-more-align{
                 display: flex;
                 justify-content: center;
-                
             }
         }
     }

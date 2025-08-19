@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import AOS from 'aos';
-
+import { AppRoutes } from './AppRoutes/AppRoutes';
 @Component({
   selector: 'app-cards',
   imports: [],
@@ -9,15 +9,15 @@ import AOS from 'aos';
 })
 export class CardsComponent implements OnInit{
   ngOnInit(): void {
-
   }
   @Input() cards!:Cards;
 }
 
 export interface Cards{
+  id:number
   name:string;
   price:number;
-  Discountprice:number;
+  discountprice:number;
   description:string;
   viewCount:number;
   photoUrl:string;

@@ -81,9 +81,10 @@ export class HomeComponent implements OnInit {
     const photoUrl = this.gallery[Math.floor(Math.random() * this.gallery.length)].photo;
     
     randomCards.push({
+      id:1,
       name: `${product}`,
       price: Math.floor(Math.random() * 300) + 20, 
-      Discountprice: 29,
+      discountprice: 29,
       description,
       viewCount: Math.floor(Math.random() * 1000),
       photoUrl,
