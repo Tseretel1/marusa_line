@@ -17,6 +17,7 @@ export class CardsComponent implements OnInit{
 export interface Cards{
   name:string;
   price:number;
+  Discountprice:number;
   description:string;
   viewCount:number;
   photoUrl:string;

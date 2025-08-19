@@ -1,5 +1,33 @@
-<div class="component-align">
+
+
+<div class="discount-cards-align">
+    <div class="divide-cards">
+        <div class="discount-card">
+            <app-discount-mark class="discount-mark" [discount]="cards[0]"></app-discount-mark>
+            <app-photo-album [photos]="cards[0]" class="full-photo"></app-photo-album>
+        </div>
+        <div class="discount-card card2">
+            <div class="inner-discount">
+                <div class="discount-row">
+                    <app-discount-mark class="discount-mark" [discount]="cards[6]"></app-discount-mark>
+                    <app-photo-album [photos]="cards[6]" ></app-photo-album>
+                </div>
+                <div class="discount-row">
+                    <app-discount-mark class="discount-mark" [discount]="cards[2]"></app-discount-mark>
+                    <app-photo-album [photos]="cards[2]" ></app-photo-album>
+                </div>
+            </div>
+            <div class="inner-discount">
+                <app-discount-mark class="discount-mark" [discount]="cards[8]"></app-discount-mark>
+                <app-photo-album [photos]="cards[8]" class="full-photo"></app-photo-album>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="component-align">
     <div class="epoxy-align">
         <app-cards data-aos="fade-up"  class="epoxy-card"  *ngFor="let c of cards" [cards]="c"></app-cards>
     </div>
-</div>
+</div> -->
+<app-gallery></app-gallery>

@@ -1,0 +1,19 @@
+<div class="photo-container" >
+    <div class="information-align">
+        <div class="text-align">
+            <b class="name-price">{{photos.name}} <p>{{photos.price}}₾</p></b>
+            <div class="learn-more-align">
+            </div>
+            <div class="description-price">
+                <p class="description">
+                    {{photos.description}}
+                </p>
+                <div class="like-learn-more">
+                    <h3 class="likes">{{photos.viewCount}} <i class="fas fa-heart"></i></h3>
+                    <button>გაიგე მეტი</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img [src]="photos.photoUrl" alt="" class="photo">
+</div>

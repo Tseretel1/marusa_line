@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Cards, CardsComponent } from '../../shared/components/cards/cards.component';
 import { CommonModule } from '@angular/common';
 import AOS from 'aos';
-import { GalleryPhotos } from '../gallery/gallery.component';
+import { GalleryPhotos, GalleryComponent } from '../gallery/gallery.component';
+import { PhotoAlbumComponent } from '../../shared/components/photo-album/photo-album.component';
+import { Discount, DiscountMarkComponent } from "../../shared/components/discount-mark/discount-mark.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CardsComponent, CommonModule],
+  imports: [CardsComponent, CommonModule, PhotoAlbumComponent, DiscountMarkComponent, GalleryComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
@@ -81,6 +83,7 @@ export class HomeComponent implements OnInit {
     randomCards.push({
       name: `${product}`,
       price: Math.floor(Math.random() * 300) + 20, 
+      Discountprice: 29,
       description,
       viewCount: Math.floor(Math.random() * 1000),
       photoUrl,
