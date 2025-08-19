@@ -56,7 +56,6 @@
                         align-items: center;
                         font-weight: bolder;
                         justify-content: center;
-                        border-radius: 5px;
                         text-wrap: nowrap;
                         filter: drop-shadow(0px 0px 10px white);
                     }
@@ -69,14 +68,15 @@
                         height: 100%;
                         width: 0;
                         z-index: -1;
-                        background-color: green;
+                        background-color: rgb(43, 40, 40);
                         transition: all 250ms;
                         border-radius: 5px;
+                        scale: 1.2;
                     }
                     
                     button:hover {
                         color: #e8e8e8;
-                        filter: drop-shadow(0px 0px 10px green);
+                        filter: drop-shadow(0px 0px 10px black);
                     }
                     
                     button:hover::before {

@@ -33,7 +33,7 @@
   width: 145%;
   padding: 10px;
   backdrop-filter: blur(10px);
-  background-color: #066e068f;
+  background-color: #0000008f;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,4 +44,11 @@
   box-shadow: 0 5px 10px rgba(0,0,0,0.23);
   top: 0px;
   border-radius: 10px;
+}
+
+@media screen and (max-width:800px){
+    .span{
+        width: 50px;
+        font-size: 13px;
+    }
 }
