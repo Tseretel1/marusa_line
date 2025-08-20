@@ -1,7 +1,6 @@
 
 .discount-cards-align{
     width: 100%;
-    padding: 100px 0px 0px 0px;
     display: flex;
     justify-content: center;
     .divide-cards{
@@ -15,8 +14,11 @@
             width: 100%;
             height: 100%;
             display: flex;
+            position: relative;
             .discount-mark{
                 position: absolute;
+                top: -20px;
+                left: -20px;
                 z-index: 2;
             }
         }
@@ -45,9 +47,9 @@
             }
                 .discount-mark{
                     position: absolute;
+                    top: -20px;
+                    left: -20px;
                     z-index: 2;
-                    left: 0;
-                    top: 0;
                 }
                  .discount-card{
                     width: 100%;
@@ -60,10 +62,11 @@
                     position: relative;
                     .discount-mark{
                         position: absolute;
+                        top: -20px;
+                        left: -20px;
                         z-index: 2;
-                        left: 0;
-                        top: 0;
                         transition: 0.3s;
+                          position: absolute;
                     }
                 }
             }
@@ -126,7 +129,6 @@
         }
     }
     .discount-cards-align{
-        padding: 100px 0px 20px 0px;
         .divide-cards{
             gap: 5px;
             height: 250px;

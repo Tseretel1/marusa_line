@@ -1,11 +1,8 @@
 
 .span {
-  position: absolute;
-  overflow: hidden;
   width: 90px;
-  top: -20px;
   padding: 10px;
-  left: -20px;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,7 +27,7 @@
 .span::before {
   content: '.';
   position: absolute;
-  width: 145%;
+  width: 50px;
   padding: 10px;
   backdrop-filter: blur(10px);
   background-color: #0000008f;

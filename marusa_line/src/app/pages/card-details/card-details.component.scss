@@ -1,0 +1,186 @@
+.center-component{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .component{
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .header-grid{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 20px;
+           .photo-align{
+                display: grid;
+                grid-template-columns: repeat(3,1fr);
+                width: 100%;  justify-items: center; 
+                gap: 2px;
+                .photo-container{
+                    width: 100%;
+                    height: 300px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+                    cursor: pointer;
+                    .photo{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        transition: 0.3s all ease-in-out;
+                    }
+                }
+                .photo-container:hover .photo{
+                    scale: 1.1;
+                }
+            }
+            .photo-align-one{
+                display: grid;
+                grid-template-columns: repeat(1,1fr);
+                width: 100%;
+                gap: 2px;
+                .photo-container{
+                    width: 100%;
+                    height: 350px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+                    .photo{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        transition: 0.3s all ease-in-out;
+                        cursor: pointer;
+                    }
+                }
+                 .photo-container:hover .photo{
+                    scale: 1.1;
+                }
+            }
+
+            .card-information{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+                height: 100%;
+                backdrop-filter: blur(20px);
+                position: relative;
+                justify-content: space-between;
+                padding: 20px;
+                background: linear-gradient(transparent, rgba(0, 0, 0, 0.14));
+                .header-title{
+                    color: white;
+                    display: flex;
+                    justify-content: center;
+                    .discount-mark{
+                        position: absolute;
+                        top: -20px;
+                        left: -20px;
+                    }
+                    .title{
+                        font-size: 25px;
+                    }
+                }
+                .description-align{
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    .description{
+                        color: white;
+                        text-align: center;
+                        font-size: 20px;
+                    }
+                }
+                .price-tag-align{
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 15px;
+                    .bold-price{
+                        color: white;
+                        font-size: 40px;
+                    }
+                    .red-price{
+                        color: red;  
+                        text-decoration: line-through; 
+                        font-size: 30px; 
+                    }
+                }
+            }
+        }
+        .order-align{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 50px 0px;
+            .order {
+                padding: 10px 40px;
+                font-size: 20px;
+                font-family: inherit;
+                border: none;
+                position: relative;
+                overflow: hidden;
+                z-index: 1;
+                cursor: pointer;
+                transition: 0.3s all ease-in-out;
+            }
+
+            .order::before {
+                content: '';
+                width: 0%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-image: linear-gradient(to right, #0fd850 0%, #f9f047 100%);
+                transition: .3s ease;
+                display: block;
+                z-index: -1;
+                transition: 0.3s all ease-in-out;
+                height: 50px;
+            }
+            .order:hover::before {
+                width: 100%;
+            }
+            .order:hover {
+                letter-spacing: 2px;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width:1000px) {
+    .center-component{
+        .component{
+            .header-grid{
+                grid-template-columns: repeat(1,1fr);
+                .card-information{
+                    gap: 30px;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:700px) {
+    .center-component{
+        .component{
+            .header-grid{
+                gap: 50px;
+                .photo-align{
+                    grid-template-columns: repeat(2,1fr);
+                }
+                .card-information{
+                    .header-title{
+                        .discount-mark{
+                            left: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

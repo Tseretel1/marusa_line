@@ -2,7 +2,6 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 100px 0px 0px 0px;
     .photo-align{
         width: 90%;
         display: grid;
@@ -24,6 +23,7 @@
 }
 @media screen and (max-width:850px){
     .gallery-align{
+        padding: 50px 0px;
        .photo-align{
             grid-template-columns: repeat(2,1fr);
             .photo-container{

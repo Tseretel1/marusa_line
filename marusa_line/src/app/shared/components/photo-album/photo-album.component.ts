@@ -1,9 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { GalleryPhotos } from '../../../pages/gallery/gallery.component';
-import { Cards } from '../cards/cards.component';
 import { CommonModule } from '@angular/common';
 import { AppRoutes } from '../cards/AppRoutes/AppRoutes';
 import { RouterLink } from '@angular/router';
+import { Post } from '../../../Repositories/post.service';
 @Component({
   selector: 'app-photo-album',
   imports: [CommonModule, RouterLink],
@@ -12,5 +11,5 @@ import { RouterLink } from '@angular/router';
 })
 export class PhotoAlbumComponent {
   AppRoutes= AppRoutes;
-  @Input() photos!:Cards;
+  @Input() photos!:Post;
 }

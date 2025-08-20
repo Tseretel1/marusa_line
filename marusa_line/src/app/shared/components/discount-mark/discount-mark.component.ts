@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Cards } from '../cards/cards.component';
+import { Post } from '../../../Repositories/post.service';
 
 @Component({
   selector: 'app-discount-mark',
@@ -11,11 +11,11 @@ export class DiscountMarkComponent implements OnInit{
   
   discountedPercentage:number = 0
   ngOnInit(): void {
-    this.discountedPercentage = ((this.discount.price - this.discount.discountprice) / this.discount.price) * 100;
+    this.discountedPercentage = ((this.discount.price - this.discount.discountedPrice) / this.discount.price) * 100;
     this.discountedPercentage = Math.round(this.discountedPercentage);
     console.log(this.discount)
   }
-  @Input() discount!:Cards;
+  @Input() discount!:Post;
 }
 export interface Discount{
   price:number;

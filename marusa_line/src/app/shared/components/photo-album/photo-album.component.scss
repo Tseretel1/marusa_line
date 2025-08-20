@@ -81,11 +81,12 @@
                     }
                 }
             }
-            .title-price{
-                display: flex;
+           
+            .discount-price{
                 width: 100%;
-                justify-content: space-between;
-                font-size: 18px;
+                display: flex;
+                justify-content: flex-end;
+                gap: 10px;
                 .discounted-price{
                     color: rgb(255, 70, 70);
                     text-decoration: line-through;
@@ -93,10 +94,7 @@
                 .title{
                     font-size: 22px;
                 }
-            }
-            .learn-more-align{
-                display: flex;
-                justify-content: center;
+            
             }
         }
     }

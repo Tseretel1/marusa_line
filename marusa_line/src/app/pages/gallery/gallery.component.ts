@@ -1,7 +1,8 @@
 import { NgForOf, PathLocationStrategy } from '@angular/common';
 import { Component, OnInit, } from '@angular/core';
 import AOS from 'aos';
-import { Photo, PostService } from '../../Repositories/post.service';
+import { Photo, Post, PostService } from '../../Repositories/post.service';
+import { PhotoAlbumComponent } from '../../shared/components/photo-album/photo-album.component';
 
 @Component({
   selector: 'app-gallery',
@@ -10,7 +11,7 @@ import { Photo, PostService } from '../../Repositories/post.service';
   styleUrl: './gallery.component.scss'
 })
 export class GalleryComponent implements OnInit {
-  gallery: Photo[] = [];
+  Cards: Post[] = [];
 
   constructor(private postService:PostService){
 
@@ -23,9 +24,9 @@ export class GalleryComponent implements OnInit {
     this.getAllPhotos();
   }
   getAllPhotos(){
-    this.postService.getAllPhotos().subscribe(
+    this.postService.getPosts().subscribe(
       (resp)=>{
-        this.gallery = resp;
+        this.Cards = resp;
       }
     )
   }
