@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
     )
   }
   posts: Post[] = [];
-  
   ngOnInit(): void {
     window.scrollTo({
      top: 0,

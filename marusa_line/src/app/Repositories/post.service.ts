@@ -16,11 +16,11 @@ export class PostService {
   getPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(this.apiUrl+'post/get-posts');
   }
-  getDiscountedPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.apiUrl+'post/get-most-discounted-posts');
-  }
   getPostWithId(id:number): Observable<any> {
     return this.http.get<any>(this.apiUrl+`post/get-post-with-id?id=${id}`);
+  }
+  getDiscountedPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(this.apiUrl+'post/get-most-discounted-posts');
   }
   getAllPhotos(): Observable<Photo[]> {
     return this.http.get<Photo[]>(this.apiUrl+'post/get-all-photos');
