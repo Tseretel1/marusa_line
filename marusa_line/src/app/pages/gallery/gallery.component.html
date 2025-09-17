@@ -1,5 +1,9 @@
 
 <div class="gallery-align">
+    <div class="filters-align">
+        <button class="filter-button" [ngClass]="{'active-filter': activeFilterNum == 0}"(click)="getPostByFilter(0)">ყველა</button>
+        <button class="filter-button" *ngFor="let product of productTypesList" [ngClass]="{'active-filter': activeFilterNum == product.id}" (click)="getPostByFilter(product.id)">{{product.productType}}</button>
+    </div>
     <div class="photo-align">
         <ng-container *ngFor="let p of Cards; let index = index;">
             <app-photo-album [photos]="p" class="album" data-aos="fade-up"></app-photo-album>

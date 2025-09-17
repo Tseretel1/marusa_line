@@ -13,7 +13,6 @@ export class DiscountMarkComponent implements OnInit{
   ngOnInit(): void {
     this.discountedPercentage = ((this.discount.price - this.discount.discountedPrice) / this.discount.price) * 100;
     this.discountedPercentage = Math.round(this.discountedPercentage);
-    console.log(this.discount)
   }
   @Input() discount!:Post;
 }

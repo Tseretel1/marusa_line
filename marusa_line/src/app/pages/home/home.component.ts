@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CardsComponent } from '../../shared/components/cards/cards.component';
 import { CommonModule } from '@angular/common';
 import AOS from 'aos';
-import { Post, PostService } from '../../Repositories/post.service';
+import { Post, PostService, ProductTypes } from '../../Repositories/post.service';
 import { PhotoAlbumComponent } from '../../shared/components/photo-album/photo-album.component';
 import { DiscountMarkComponent } from '../../shared/components/discount-mark/discount-mark.component';
 import { GalleryComponent } from '../gallery/gallery.component';
@@ -33,4 +33,5 @@ export class HomeComponent implements OnInit {
       once: false, 
     });
   }
+
 }
