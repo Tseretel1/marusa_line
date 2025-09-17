@@ -17,6 +17,10 @@ export class HeaderComponent {
     });
     this.hideSidenav();
   }
+  scrollTotop(){
+     window.scrollTo({ top: 0, behavior: 'smooth' });
+     this.hideSidenav();
+  }
 
 
   sidenavVisible:boolean = false;

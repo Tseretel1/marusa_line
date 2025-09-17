@@ -1,166 +1,64 @@
-
-.discount-cards-align{
+.gallery-align{
     width: 100%;
     display: flex;
     justify-content: center;
-    .divide-cards{
-        width: 90%;
+    justify-content: center;
+    .photo-align{
+        width: 80%;
         display: flex;
-        align-items: center;
-        height: 500px;
-        justify-content: center;
-        gap: 5px;
-        .discount-card{
-            width: 100%;
-            height: 100%;
-            display: flex;
-            position: relative;
-            .discount-mark{
-                position: absolute;
-                top: -20px;
-                left: -20px;
-                z-index: 2;
-            }
-        }
-        .full-photo{
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .card2{
-            flex-direction: column;
-            justify-content: center;
-            gap: 5px;
-            .inner-discount{
-                width: 100%;
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 250px;
-                position: relative;
-                gap: 5px;
-                 .inner-discount:hover .discount-mark{
-                display: none;
-            }
-                .discount-mark{
-                    position: absolute;
-                    top: -20px;
-                    left: -20px;
-                    z-index: 2;
-                }
-                 .discount-card{
-                    width: 100%;
-                    height: 100%;
-                    display: flex;
-                }
-                .discount-row{
-                    width: 50%;
-                    height: 100%;
-                    position: relative;
-                    .discount-mark{
-                        position: absolute;
-                        top: -20px;
-                        left: -20px;
-                        z-index: 2;
-                        transition: 0.3s;
-                          position: absolute;
-                    }
-                }
-            }
-        }
-    }
-   
-}
-
-
-.component-align{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    .epoxy-align{
-        display: grid;
-        width: 90%;
-        grid-template-columns: repeat(4,1fr);
-        place-items:center;
+        flex-wrap: wrap;
         gap: 10px;
-        .epoxy-card{
-            width: 100%;
-            height: 550px;
+        .container{
+           flex: auto;
+           height: 400px;
+           position: relative;
+           .discount-mark{
+               position: absolute;
+               top: -20px;
+               left: -20px;
+               z-index: 3;
+           }
         }
     }
 }
-
-@media screen and (max-width:1200px){
-    .component-align{
-        .epoxy-align{
-            grid-template-columns: repeat(3,1fr);
+@media screen and (max-width:1500px){
+    .gallery-align{
+       .photo-align{
+         .container{
+           height: 300px;
         }
     }
+  }
+}
+@media screen and (max-width:1200px){
+    .gallery-align{
+       .photo-align{
+         .container{
+           height: 200px;
+        }
+    }
+  }
 }
 @media screen and (max-width:800px){
-    .component-align{
-        .epoxy-align{
-            grid-template-columns: repeat(2,1fr);
+    .gallery-align{
+       .photo-align{
+         .container{
+           height: 100px;
+            .discount-mark{
+               top: -10px;
+               left: -10px;
+           }
         }
     }
-    .discount-cards-align{
-        .divide-cards{
-            height: 300px;
-                .card2{
-                .inner-discount{
-                    height: 150px;
-                }
-            }
-        }
-   }
+  }
 }
 @media screen and (max-width:600px){
-    .component-align{
-        .epoxy-align{
-            grid-template-columns: repeat(2,1fr);
-            .epoxy-card{
-                width: 100%;
-                max-width: 530px;
-                height: 450px;
-            }
+    .gallery-align{
+       .photo-align{
+            width: 90%;
+         .container{
+           height: 100px;
         }
     }
-    .discount-cards-align{
-        .divide-cards{
-            gap: 5px;
-            height: 250px;
-                .card2{
-                .inner-discount{
-                    height: 125px;
-                }
-            }
-        }
-   }
-}
-@media screen and (max-width:400px){
-    .component-align{
-        .epoxy-align{
-            grid-template-columns: repeat(2,1fr);
-            .epoxy-card{
-                width: 100%;
-                max-width: 530px;
-                height: 350px;
-            }
-        }
-    }
-    .discount-cards-align{
-        padding: 100px 0px 20px 0px;
-        .divide-cards{
-            gap: 5px;
-            height: 250px;
-                .card2{
-                .inner-discount{
-                    height: 125px;
-                }
-            }
-        }
-   }
+  }
 }

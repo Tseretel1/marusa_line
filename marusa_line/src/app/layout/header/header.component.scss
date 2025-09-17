@@ -10,11 +10,11 @@
         display: flex;
         justify-content: center;
         padding: 10px 0px;
-        background-color: rgba(7, 3, 32, 0.644);
-        backdrop-filter: blur(10px);
+        background-color: rgba(0, 0, 0, 0.418);
+        backdrop-filter: blur(5px);
         .header-align{
             position: relative;
-            width: 90%;
+            width: 80%;
             display: flex;
             .float-logo{
                 position: absolute;
@@ -121,7 +121,7 @@
         position: fixed;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.388);
+        background-color: rgba(0, 0, 0, 0);
         animation: OpacityIn 0.5s;
     }
     .background-close{
@@ -130,7 +130,7 @@
     .mobile-navigation-align{
         width: 50%;
         background-color: rgba(0, 0, 0, 0.308);
-        backdrop-filter: blur(20px);
+        backdrop-filter: blur(10px);
         color: white;
         display: flex;
         flex-direction: column;
@@ -234,3 +234,14 @@
 }
 
 
+
+@media screen and (max-width: 600px){
+    .component{
+        .header{
+            .header-align{
+                padding: 15px 0px;
+                width: 90%;
+            }
+        }
+    }
+}

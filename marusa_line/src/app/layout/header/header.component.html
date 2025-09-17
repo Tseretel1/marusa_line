@@ -2,13 +2,13 @@
     <div class="header">
     <div class="header-align">
         <div class="float-logo">
-            <a class="logo-container" href="https://www.instagram.com/marusa__line/" target="_blank">
+            <span class="logo-container" [routerLink]="AppRoutes.home"(click)="scrollTotop()" target="_blank">
                 <img class="logo" src="assets/img/marusa_line.jpg" alt="">
-            </a>
+            </span>
             <p class="header-title">marusa_line</p>
         </div> 
         <div class="navigation-align">
-            <span class="nav-link" routerLinkActive="active-link" [routerLink]="AppRoutes.home"><i class="fas fa-shopping-cart"></i><b>პროდუქტები</b> </span>
+            <span class="nav-link" routerLinkActive="active-link" [routerLink]="AppRoutes.home"(click)="scrollTotop()"><i class="fas fa-shopping-cart" ></i><b>პროდუქტები</b> </span>
             <!-- <span class="nav-link"  routerLinkActive="active-link" [routerLink]="AppRoutes.gallery"><i class="fas fa-images"></i><b>გალერია</b> </span> -->
             <span class="nav-link" routerLinkActive="active-link" ><b (click)="scrollToBottom()"><i class="fas fa-address-book"></i> კონტაქტი</b> </span>
         </div>
@@ -26,7 +26,7 @@
             <i class="fas fa-times" (click)="hideSidenav()"></i>
         </div>
         <div class="nav-center">
-            <span class="nav-link" routerLinkActive="active-link" [routerLink]="AppRoutes.home" (click)="hideSidenav()"><i class="fas fa-shopping-cart"></i><b>პროდუქტები</b> </span>
+            <span class="nav-link" routerLinkActive="active-link" [routerLink]="AppRoutes.home" (click)="scrollTotop()"><i class="fas fa-shopping-cart"></i><b>პროდუქტები</b> </span>
             <span class="nav-link" routerLinkActive="active-link" ><b (click)="scrollToBottom()"><i class="fas fa-address-book"></i> კონტაქტი</b> </span>
         </div>
     </div>

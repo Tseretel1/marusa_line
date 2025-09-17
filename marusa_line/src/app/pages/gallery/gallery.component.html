@@ -1,7 +1,7 @@
 
 <div class="gallery-align">
     <div class="photo-align">
-        <ng-container *ngFor="let p of Cards">
+        <ng-container *ngFor="let p of Cards; let index = index;">
             <app-photo-album [photos]="p" class="album" data-aos="fade-up"></app-photo-album>
         </ng-container>
     </div>

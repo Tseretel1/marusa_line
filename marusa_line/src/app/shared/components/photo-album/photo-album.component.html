@@ -6,17 +6,16 @@
                 <b  [ngClass]="{'discounted-price': photos.discountedPrice>0}">{{photos.price}}₾</b>
                 <b *ngIf="photos.discountedPrice>0">{{photos.discountedPrice}}₾</b>
             </div>
-            <b class="title">
-                {{photos.title}}
-            </b>
-            </div>
+        </div>
+        <b class="title">
+            {{photos.title}}
+        </b>
             <div class="learn-more-align">
             </div>
             <div class="description-price">
                 <p class="description">
                 </p>
-                <div class="like-learn-more">
-                    <p class="likes">{{photos.id}} <i class="fas fa-heart"></i></p>
+                <div class="learn-more">
                     <button [routerLink]="AppRoutes.card_details+photos.id">გაიგე მეტი</button>
                 </div>
             </div>
