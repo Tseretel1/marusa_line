@@ -30,19 +30,14 @@ export class GalleryComponent implements OnInit {
       }
     )
   }
-  
-  
-
   productTypesList :ProductTypes[]= [];
   getProductTypes(){
     this.postService.getProductTypes().subscribe(
       (resp)=>{
         this.productTypesList = resp;
-        console.log(this.productTypesList)
       }
     )
   }
-  
   activeFilterNum:number = 0;
   getPostByFilter(num:number){
     this.activeFilterNum = num;

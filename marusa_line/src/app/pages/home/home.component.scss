@@ -4,22 +4,23 @@
     flex-direction: column;
     align-items: center;
     .photo-align{
-        padding: 30px 0px;
-        width: 80%;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        .container{
-           flex: auto;
-           height: 400px;
-           position: relative;
-           .discount-mark{
-               position: absolute;
-               top: -20px;
-               left: -20px;
-               z-index: 3;
-           }
-        }
+      padding: 30px 0px;
+      width: 80%;
+      display: grid;
+      grid-template-columns: 65% 35%;
+      grid-template-rows: auto auto; 
+      gap: 10px;
+      .container{
+          flex: auto;
+          height: 400px;
+          position: relative;
+          .discount-mark{
+              position: absolute;
+              top: -20px;
+              left: -20px;
+              z-index: 3;
+          }
+      }
     }
     .section-title-align{
         display: flex;
@@ -50,7 +51,7 @@
     .gallery-align{
        .photo-align{
          .container{
-           height: 300px;
+           height: 280px;
         }
     }
   }
@@ -59,7 +60,16 @@
     .gallery-align{
        .photo-align{
          .container{
-           height: 200px;
+           height: 250px;
+        }
+    }
+  }
+}
+@media screen and (max-width:1000px){
+    .gallery-align{
+       .photo-align{
+         .container{
+           height: 180px;
         }
     }
   }

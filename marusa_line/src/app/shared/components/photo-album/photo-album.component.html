@@ -1,5 +1,5 @@
 <div class="photo-container" >
-    <div class="information-align">
+    <div class="information-align" [routerLink]="AppRoutes.card_details+photos.id">
         <div class="text-align">
             <div >
                 <div class="discount-price" >
@@ -15,9 +15,6 @@
             <div class="description-price">
                 <p class="description">
                 </p>
-                <div class="learn-more">
-                    <button [routerLink]="AppRoutes.card_details+photos.id">გაიგე მეტი</button>
-                </div>
             </div>
         </div>
     </div>

@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
     this.postService.getDiscountedPosts().subscribe(
       (resp)=>{
         this.posts = resp;
+        console.log(resp);
       }
     )
   }

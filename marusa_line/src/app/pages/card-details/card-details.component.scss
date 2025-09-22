@@ -12,27 +12,85 @@
             grid-template-columns: repeat(2,1fr);
             gap: 20px;
            .photo-align{
-                display: grid;
-                grid-template-columns: repeat(3,1fr);
-                width: 100%;  justify-items: center; 
-                gap: 2px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 5px;
+                justify-content: flex-start;
+                width: 100%;
                 .photo-container{
                     width: 100%;
-                    height: 300px;
+                    height: 400px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     overflow: hidden;
-                    cursor: pointer;
+                    position: relative;
                     .photo{
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
-                        transition: 0.3s all ease-in-out;
                     }
-                }
-                .photo-container:hover .photo{
-                    scale: 1.1;
+                    .pop-up{
+                        animation: 0.3s animPopUp;
+                    }
+                    @keyframes animPopUp {
+                        0%{
+                            scale: 0.8;
+                        }
+                        100%{
+                            scale: 1;
+                        }
+                    }
+                    .next-photo-align{
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        .next-photo{
+                            height: 100%;
+                            padding: 10px 20px;
+                            background-color: rgba(0, 0, 0, 0.055);
+                            border: none;
+                            color: white;
+                            cursor: pointer;
+                            transition: 0.3s all ease-in-out;
+                        }
+                        .next-photo:hover{
+                            background-color: rgba(0, 0, 0, 0.411);
+                        }
+                    }
+                    .unordered-list{
+                        display: flex;
+                        width: 100%;
+                        justify-content: center;
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        padding: 10px 0px;
+                        gap: 10px;
+                        align-items: center;
+                        span{
+                            cursor: pointer;
+                            color: white;
+                            .far{
+                                width: 15px;
+                                height: 15px;
+                                border-radius: 50%;
+                                border: 2px solid white;
+                            }
+                            .fas{
+                                width: 13px;
+                                height: 13px;
+                                border-radius: 50%;
+                                border: 2px solid white;
+                                background-color: white;
+                            }
+                        }
+                    }
                 }
             }
             .photo-align-one{
@@ -112,43 +170,6 @@
                 }
             }
         }
-        .order-align{
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            padding: 50px 0px;
-            .order {
-                padding: 10px 40px;
-                font-size: 20px;
-                font-family: inherit;
-                border: none;
-                position: relative;
-                overflow: hidden;
-                z-index: 1;
-                cursor: pointer;
-                transition: 0.3s all ease-in-out;
-            }
-
-            .order::before {
-                content: '';
-                width: 0%;
-                position: absolute;
-                top: 0;
-                left: 0;
-                background-image: linear-gradient(to right, #0fd850 0%, #f9f047 100%);
-                transition: .3s ease;
-                display: block;
-                z-index: -1;
-                transition: 0.3s all ease-in-out;
-                height: 50px;
-            }
-            .order:hover::before {
-                width: 100%;
-            }
-            .order:hover {
-                letter-spacing: 2px;
-            }
-        }
     }
 }
 
@@ -171,7 +192,30 @@
             .header-grid{
                 gap: 50px;
                 .photo-align{
-                    grid-template-columns: repeat(2,1fr);
+                    .photo-container{
+                        height: 300px;
+                    }
+                }
+                .card-information{
+                    .header-title{
+                        .discount-mark{
+                            left: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:400px) {
+    .center-component{
+        .component{
+            .header-grid{
+                gap: 50px;
+                .photo-align{
+                    .photo-container{
+                        height: 200px;
+                    }
                 }
                 .card-information{
                     .header-title{

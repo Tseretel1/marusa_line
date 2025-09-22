@@ -43,46 +43,6 @@
                 display: flex;
                 flex-direction: column;
                 gap: 10px;
-                .learn-more{
-                    display: flex;
-                    justify-content: flex-end;
-                    button {
-                        cursor: pointer;
-                        padding: 5px 15px;
-                        border: unset;
-                        z-index: 1;
-                        position: relative;
-                        transition: all 250ms;
-                        overflow: hidden;
-                        display: flex;
-                        align-items: center;
-                        font-weight: bolder;
-                        justify-content: center;
-                        text-wrap: nowrap;
-                        filter: drop-shadow(0px 0px 10px white);
-                    }
-                    button::before {
-                        content: "";
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        height: 100%;
-                        width: 0;
-                        z-index: -1;
-                        background-color: rgb(43, 40, 40);
-                        transition: all 250ms;
-                        border-radius: 5px;
-                        scale: 1.2;
-                    }
-                    button:hover {
-                        color: #e8e8e8;
-                        filter: drop-shadow(0px 0px 10px black);
-                    }
-                    button:hover::before {
-                        filter: drop-shadow(0px 0px 20px black);
-                        width: 100%;
-                    }
-                }
             }
            
             .discount-price{
@@ -123,17 +83,27 @@
         .text-align{
             padding: 0;
             .description-price{
-                .learn-more{
-                    margin: 0;
-                    button {
-                    }
-                    button::before {
-                    }
-                    button:hover {
-                    }
-                    button:hover::before {
-                    }
+            }
+            .title-price{
+                .discounted-price{
                 }
+            }  
+            .title{
+                font-size: 15px;
+            }
+        }
+    }
+}
+}
+@media screen and (max-width:600px){
+   .photo-container{
+    .information-align{
+        padding: 10px;
+        .likes{
+        }
+        .text-align{
+            padding: 0;
+            .description-price{
             }
             .title-price{
                 .discounted-price{

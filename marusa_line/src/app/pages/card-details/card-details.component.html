@@ -1,23 +1,23 @@
 <div class="center-component">
     <div class="component">
         <div class="header-grid">
-            <div class="photo-align" *ngIf="photosArray.length>=2">
-            <ng-container *ngFor="let p of photosArray; let i = index">
-                <div class="photo-container"
-                    [attr.data-aos]="i % 2 === 0 ? 'fade-down' : 'fade-up'">
-                    <img [src]="p.photoUrl" alt="" class="photo">
-                </div>
-            </ng-container>
-
-            </div>
-            <div class="photo-align-one" *ngIf="photosArray.length<2">
-            <ng-container *ngFor="let p of photosArray;let i = index">
-                    <div class="photo-container" data-aos="fade-up">
-                        <img [src]="p.photoUrl" alt="" class="photo">
+            <div class="photo-align" >
+                <div class="photo-container"  data-aos="fade-in">
+                    <div *ngFor="let p of photosArray; let i = index" >
+                        <img [src]="p.photoUrl" alt="" class="photo" *ngIf="i==photoVisibleNum" [ngClass]="{'pop-up':i==photoVisibleNum}">
+                        <div class="next-photo-align">
+                            <button class="next-photo" (click)="previousPhoto()"><i class="fas fa-chevron-left"></i></button>
+                            <button  class="next-photo" (click)="nextPhoto()"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="unordered-list" >
+                            <span *ngFor="let p of photosArray;let photoNum = index">
+                                <i class="far" *ngIf="photoNum != photoVisibleNum" (click)="getOnTheClickedPhoto(photoNum)"></i>
+                                <i class="fas" *ngIf="photoNum == photoVisibleNum"(click)="getOnTheClickedPhoto(photoNum)"></i>
+                            </span>
+                        </div>
                     </div>
-            </ng-container>
+                </div>
             </div>
-
             <div class="card-information">
                 <div class="header-title" >
                  <app-discount-mark *ngIf="postsLoaded" [discount]="posts"class="discount-mark"></app-discount-mark>
@@ -31,10 +31,6 @@
                     <p class="description">{{posts.description}}</p>
                 </div>
             </div>
-        </div>
-
-        <div class="order-align">
-            <button class="order">შეკვეთის გაფორმება</button>
         </div>
     </div>
 </div>

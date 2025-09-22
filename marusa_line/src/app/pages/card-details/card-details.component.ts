@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Post, PostService } from '../../Repositories/post.service';
 import { ActivatedRoute } from '@angular/router';
 import { elementAt } from 'rxjs';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 import { DiscountMarkComponent } from "../../shared/components/discount-mark/discount-mark.component";
 import * as  AOS from 'aos';
+import { Conditional } from '@angular/compiler';
 @Component({
   selector: 'app-card-details',
   imports: [CommonModule, DiscountMarkComponent],
@@ -37,6 +38,32 @@ export class CardDetailsComponent implements OnInit{
       easing: 'ease-in-out',
       once: false, 
     });
+    // const loop = () => {
+    //   this.nextPhoto();
+    //   setTimeout(loop, 5000); 
+    // };
+    // loop(); 
+  }
+  photoVisibleNum:number = 0;
+  nextPhoto(){
+      if(this.photosArray.length==this.photoVisibleNum+1){
+        this.photoVisibleNum = 0;
+        return;
+      }
+      this.photoVisibleNum ++;
+      return;
+  }
+  previousPhoto(){
+    if(this.photoVisibleNum ==0){
+      this.photoVisibleNum = this.photosArray.length-1;
+      return;
+    }
+    this.photoVisibleNum --;
+    return;
+  }
+
+  getOnTheClickedPhoto(num:number){
+    this.photoVisibleNum = num;
   }
 }
  interface Photo {
