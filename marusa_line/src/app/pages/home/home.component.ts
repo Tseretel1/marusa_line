@@ -14,16 +14,17 @@ import { GalleryComponent } from '../gallery/gallery.component';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
+  
+  postsFirst: Post[] = [];
+  postsSecond: Post[] = [];
   constructor(private postService:PostService){
     this.postService.getDiscountedPosts().subscribe(
       (resp)=>{
-        this.posts = resp;
-        console.log(resp);
+        this.postsFirst = resp.slice(0, 2); 
+        this.postsSecond = resp.slice(2);
       }
     )
   }
-  posts: Post[] = [];
   ngOnInit(): void {
     window.scrollTo({
      top: 0,

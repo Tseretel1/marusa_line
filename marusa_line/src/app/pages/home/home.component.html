@@ -6,10 +6,18 @@
         </b>
     </div>
 
-    <div class="photo-align">
-        <div *ngFor="let p of posts; let index = index;" class="container">
-            <app-discount-mark class="discount-mark" [discount]="p" data-aos="fade-down"></app-discount-mark>
-            <app-photo-album [photos]="p" class="album" data-aos="fade-up"></app-photo-album>
+    <div class="header-container">
+        <div class="photo-align">
+            <div *ngFor="let p of postsFirst; let index = index;" class="container">
+                <app-discount-mark class="discount-mark" [discount]="p" data-aos="fade-down"></app-discount-mark>
+                <app-photo-album [photos]="p" class="album" data-aos="fade-up"></app-photo-album>
+            </div>
+        </div>
+        <div class="photo-align align-2">
+            <div *ngFor="let p of postsSecond; let index = index;" class="container">
+                <app-discount-mark class="discount-mark" [discount]="p" data-aos="fade-down"></app-discount-mark>
+                <app-photo-album [photos]="p" class="album" data-aos="fade-up"></app-photo-album>
+            </div>
         </div>
     </div>
     <div class="gallery">
