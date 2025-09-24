@@ -13,8 +13,8 @@
     .photo-align{
       width: 80%;
       display: grid;
-      grid-template-columns: 55% 45%;
-      grid-template-rows: auto auto; 
+      grid-template-columns: 40% 25% 35%;
+      grid-template-rows: auto auto auto; 
       gap: 10px;
       .container{
           flex: auto;
@@ -29,7 +29,8 @@
       }
     }
     .align-2{
-      grid-template-columns: 45% 55%;
+      grid-template-columns: 30% 35% 35%;
+      grid-template-rows: auto auto auto; 
     }
     .section-title-align{
         display: flex;

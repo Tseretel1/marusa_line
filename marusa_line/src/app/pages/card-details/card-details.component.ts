@@ -65,6 +65,14 @@ export class CardDetailsComponent implements OnInit{
   getOnTheClickedPhoto(num:number){
     this.photoVisibleNum = num;
   }
+
+  bigPhotoVisible = false;
+  showBigPhoto(){
+    this.bigPhotoVisible = true;
+  }
+  hideBigPhoto(){
+    this.bigPhotoVisible = false;
+  }
 }
  interface Photo {
   Id?: number;

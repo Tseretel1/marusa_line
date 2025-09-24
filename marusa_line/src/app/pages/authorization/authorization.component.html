@@ -1,0 +1,64 @@
+<div class="modal-align"> 
+    <div class="modal-background" (click)="closeModal()">
+    </div>
+    <div class="modal">
+        <div class="modal-header" >
+            <i class="fas fa-arrow-left" *ngIf="stageNumber == 1" (click)="openStage(0)"></i>
+            <i></i>
+            <i class="fas fa-times" (click)="closeModal()"></i>
+        </div>
+        <div class="modal-body">
+            <div class="header"> 
+                <p>{{modalName}}</p>
+            </div>
+            <div class="stage-oAuth" *ngIf="stageNumber==0">
+                <div class="link-button google" data-aos="fade-down" >
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="assets/icons/google.svg" alt="" width="30px">
+                        Google -ით ავტორიზაცია
+                   </div>
+                </div>
+               <div class="link-button facebook" data-aos="fade-up" *ngIf="stageNumber==0">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                          <img src="assets/icons/facebook.svg" alt="" width="35px">
+                          Facebook -ით ავტორიზაცია
+                  </div>
+                </div>
+                <div class="link-button registration" data-aos="fade-up" *ngIf="stageNumber==0" (click)="openStage(1)" >
+                  <div>
+                          რეგისტრაცია
+                  </div>
+                </div>
+            </div>
+
+
+            <div class="stage-registration" *ngIf="stageNumber == 1">
+                <form action="" [formGroup]="loginForm" class="form">
+                    <div class="input-group">
+                        <input required="" type="text" name="text" autocomplete="off" class="input" formControlName="name">
+                        <label class="user-label">სახელი</label>
+                    </div>
+                    <div class="input-group">
+                        <input required="" type="text" name="text" autocomplete="off" class="input"formControlName="lastname">
+                        <label class="user-label">გვარი</label>
+                    </div>
+                    <div class="input-group">
+                        <input required="" type="text" name="text" autocomplete="off" class="input"formControlName="phoneNumber">
+                        <label class="user-label">ტელეფონის ნომერი</label>
+                    </div>
+                    <div class="input-group">
+                        <input required="" type="text" name="text" autocomplete="off" class="input"formControlName="email">
+                        <label class="user-label">იმეილი</label>
+                    </div>
+                    <div class="input-group">
+                        <input required="" type="text" name="text" autocomplete="off" class="input"formControlName="address">
+                        <label class="user-label">მისამართი</label>
+                    </div>
+                    <div class="send-application-align">
+                        <button class="send-application">გაგზავნა</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

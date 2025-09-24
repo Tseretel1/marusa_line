@@ -1,0 +1,200 @@
+.modal-align{
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .modal-background{
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.288);
+    }
+    .modal{
+        width: 90%;
+        max-width: 500px;
+        height: 500px;
+        border-radius: 10px;
+        backdrop-filter: blur(20px);
+        z-index: 2;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.247);
+        animation: modalPopup 0.5s;
+        justify-content: center;
+        align-items: center;
+        .modal-header{
+            position: absolute;
+            top: 0px;
+            padding: 20px;
+            right: 0px;
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            .fa-times{
+                color: white;
+                scale: 1.5;
+            }
+            .fa-arrow-left{
+                color: white;
+                scale: 1.5;
+            }
+        }
+        .modal-body{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 20px;
+            height: 100%;
+            padding-top: 15px;
+            align-items: center;
+            .header{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                color: white;
+            }
+            .stage-oAuth{
+                height: 100%;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+                .link-button {
+                    padding: 10px 20px;
+                    text-transform: uppercase;
+                    border-radius: 8px;
+                    color: white;
+                    text-shadow: none;
+                    background: transparent;
+                    cursor: pointer;
+                    box-shadow: transparent;
+                    border: 1px solid #ffffff80;
+                    transition: 0.3s ease;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                }
+                .google{
+                    background: white;
+                    color: black;
+                }
+                .facebook{
+                    background: #1456ab ;
+                    border: 1px solid transparent;
+                }
+                .registration{
+                    background-color: transparent;
+                    border: 1px solid white;
+                    display: flex;
+                    justify-content: center;
+                }
+                .registration:hover{
+                    background: white;
+                    border: 1px solid #ffffff80;
+                    box-shadow: 0 0 5px #ffffff80, 0 0 20px #ffffff80, 0 0 50px #ffffff80,
+                    0 0 100px #ffffff80;
+                    color: black;
+                }
+                .facebook:hover  {
+                    color: #ffffff;
+                    background: #1456ab ;
+                    border: 1px solid #1877F2 ;
+                    box-shadow: 0 0 5px #1877F2 , 0 0 20px #1877F2 , 0 0 50px #1877F2 ,
+                    0 0 100px #1877F2 ;
+                }
+                .google:hover {
+                    background: white;
+                    border: 1px solid #ffffff80;
+                    box-shadow: 0 0 5px #ffffff80, 0 0 20px #ffffff80, 0 0 50px #ffffff80,
+                    0 0 100px #ffffff80;
+                }
+
+            }
+            .stage-registration{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                gap: 20px;
+                align-items: center;
+                justify-content: center;
+                .form{
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    gap: 20px; 
+                   .input-group {
+                        position: relative;
+                        width: 100%;
+                        .input {
+                            border: solid 1.5px white;
+                            border-radius: 1rem;
+                            background: none;
+                            padding: 1rem;
+                            font-size: 1rem;
+                            width: 100%;
+                            color: white;
+                            transition: border 150ms cubic-bezier(0.4,0,0.2,1);
+                        }
+                    .user-label {
+                        position: absolute;
+                        left: 15px;
+                        color: white;
+                        pointer-events: none;
+                        transform: translateY(1rem);
+                        transition: 150ms cubic-bezier(0.4,0,0.2,1);
+                    }
+                    
+                    .input:focus, input:valid {
+                        outline: none;
+                    }
+                    
+                    .input:focus ~ label, input:valid ~ label {
+                        transform: translateY(-50%) scale(0.8);
+                        padding: 0 .2em;
+                    }
+                }
+                .send-application-align{
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
+                    .send-application{
+                        padding: 10px 20px;
+                        width: 100%;
+                        border-radius: 10px;
+                        border: none;
+                        cursor: pointer;
+                    }
+                }
+              }
+            }
+        }
+    }
+    @keyframes modalPopup {
+        0%{
+            scale: 0.7;
+            box-shadow:  0px 0px 10px rgba(0, 0, 0, 0);
+        }
+        60%{
+            scale: 1.1;
+        }
+        100%{
+            box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.247);
+            scale: 1;
+        }
+    }
+}

@@ -50,6 +50,19 @@
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
+                        .camera-button{
+                            scale: 2;
+                            background-color: rgba(0, 0, 0, 0.055);
+                            color: rgba(255, 255, 255, 0.048);
+                            border: none;
+                            cursor: pointer;
+                            padding: 10px;
+                            border-radius: 5px;
+                            transition: 0.2s all ease-in-out;
+                        }               
+                        .camera-button:hover{
+                            color: white;
+                        }
                         .next-photo{
                             height: 100%;
                             padding: 10px 20px;
@@ -172,7 +185,72 @@
         }
     }
 }
-
+.whole-screen-img{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 90;
+    .photo{
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
+    .next-photo-align{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .next-photo{
+            height: 100%;
+            padding: 10px 50px;
+            background-color: rgba(0, 0, 0, 0.055);
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s all ease-in-out;
+        }
+        .next-photo:hover{
+            background-color: rgba(0, 0, 0, 0.411);
+        }
+    }
+    .unordered-list{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        padding: 10px 0px;
+        gap: 10px;
+        align-items: center;
+        span{
+            cursor: pointer;
+            color: white;
+            .far{
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                border: 2px solid white;
+            }
+            .fas{
+                width: 13px;
+                height: 13px;
+                border-radius: 50%;
+                border: 2px solid white;
+                background-color: white;
+            }
+        }
+    }
+}
 
 @media screen and (max-width:1000px) {
     .center-component{

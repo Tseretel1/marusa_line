@@ -20,8 +20,8 @@ export class HomeComponent implements OnInit {
   constructor(private postService:PostService){
     this.postService.getDiscountedPosts().subscribe(
       (resp)=>{
-        this.postsFirst = resp.slice(0, 2); 
-        this.postsSecond = resp.slice(2);
+        this.postsFirst = resp.slice(0, 3); 
+        this.postsSecond = resp.slice(3);
       }
     )
   }

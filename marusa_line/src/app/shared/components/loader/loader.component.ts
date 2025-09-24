@@ -10,7 +10,7 @@ import { LoaderService } from './loader.service';
   styleUrl: './loader.component.scss'
 })
 export class LoaderComponent {
- loading$!: Observable<boolean>;
+  loading$!: Observable<boolean>;
   constructor(private loaderService: LoaderService) {}
   ngOnInit(): void {
     console.log('fvef')
