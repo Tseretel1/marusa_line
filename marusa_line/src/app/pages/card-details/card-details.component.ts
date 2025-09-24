@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Post, PostService } from '../../Repositories/post.service';
 import { ActivatedRoute } from '@angular/router';
 import { elementAt } from 'rxjs';
@@ -38,6 +38,10 @@ export class CardDetailsComponent implements OnInit{
       easing: 'ease-in-out',
       once: false, 
     });
+    window.scrollTo({
+     top: 0,
+     behavior: 'smooth' 
+   });
     // const loop = () => {
     //   this.nextPhoto();
     //   setTimeout(loop, 5000); 
@@ -62,6 +66,8 @@ export class CardDetailsComponent implements OnInit{
     return;
   }
 
+
+
   getOnTheClickedPhoto(num:number){
     this.photoVisibleNum = num;
   }
@@ -73,6 +79,20 @@ export class CardDetailsComponent implements OnInit{
   hideBigPhoto(){
     this.bigPhotoVisible = false;
   }
+
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === 'ArrowLeft') {
+      this.previousPhoto();
+    } else if (event.key === 'ArrowRight') {
+      this.nextPhoto();
+    }
+    else if (event.key === 'Escape') {
+      this.hideBigPhoto();
+    }
+  }
+
 }
  interface Photo {
   Id?: number;

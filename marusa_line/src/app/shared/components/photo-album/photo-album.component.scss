@@ -1,118 +1,111 @@
- .photo-container{
+.photo-container {
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  .photo {
     width: 100%;
-    overflow: hidden;
     height: 100%;
-    border-radius: 5px;
-    cursor: pointer;
-       .photo{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: 0.3s;
+    object-fit: cover;
+    transition: 0.3s;
+  }
+  .information-align {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    transition: 0.3s all ease-in-out;
+    align-items: center;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.582);
+    padding: 20px;
+    .likes {
+      color: white;
+      display: flex;
+      gap: 5px;
+      font-weight: bold;
+      .far {
+        color: white;
+      }
     }
-    .information-align{
-        position: absolute;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        justify-content: center;
-        transition: 0.3s all ease-in-out;
-        align-items: center;
-        opacity: 0;
-        background-color: rgba(0, 0, 0, 0.582);
-        padding: 25px;
-        .likes{
-            color: white;
-            display: flex;
-            gap: 5px;
-            font-weight: bold;
-            .far{
-                color: white;
-            }
-        }
-        .text-align{
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            color: white;
-            padding-bottom: 10px;
-            .description-price{
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            }
-           
-            .discount-price{
-                width: 100%;
-                display: flex;
-                justify-content: flex-end;
-                gap: 10px;
-                .discounted-price{
-                    color: rgb(255, 70, 70);
-                    text-decoration: line-through;
-                }
-                
-            }
-            .title{
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translateX(-50%) translateY(-50%);
-            }
-        }
-    }
+    .text-align {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      padding-bottom: 10px;
+      .description-price {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
 
+      .discount-price {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        .discounted-price {
+          color: rgb(255, 70, 70);
+          text-decoration: line-through;
+        }
+      }
+    }
+    .title {
+      color: white;
+    }
+  }
 }
-.photo-container:hover .photo{
-    scale: 1.1;
+.photo-container:hover .photo {
+  scale: 1.1;
 }
-.photo-container:hover .information-align{
-    opacity: 1;
+.photo-container:hover .information-align {
+  opacity: 1;
 }
 
-@media screen and (max-width:1000px){
-   .photo-container{
-    .information-align{
-        padding: 10px;
-        .likes{
+@media screen and (max-width: 1000px) {
+  .photo-container {
+    .information-align {
+      padding: 10px;
+      .likes {
+      }
+      .text-align {
+        padding: 0;
+        .description-price {
         }
-        .text-align{
-            padding: 0;
-            .description-price{
-            }
-            .title-price{
-                .discounted-price{
-                }
-            }  
-            .title{
-                font-size: 15px;
-            }
+        .title-price {
+          .discounted-price {
+          }
         }
+      }
+      .title {
+        font-size: 15px;
+      }
     }
+  }
 }
-}
-@media screen and (max-width:600px){
-   .photo-container{
-    .information-align{
-        padding: 10px;
-        .likes{
+@media screen and (max-width: 600px) {
+  .photo-container {
+    .information-align {
+      padding: 10px;
+      .likes {
+      }
+      .text-align {
+        padding: 0;
+        .description-price {
         }
-        .text-align{
-            padding: 0;
-            .description-price{
-            }
-            .title-price{
-                .discounted-price{
-                }
-            }  
-            .title{
-                font-size: 15px;
-            }
+        .title-price {
+          .discounted-price {
+          }
         }
+      }
     }
-}
+  }
 }

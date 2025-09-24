@@ -6,9 +6,9 @@
                     <div *ngFor="let p of photosArray; let i = index" >
                         <img [src]="p.photoUrl" alt="" class="photo" *ngIf="i==photoVisibleNum" [ngClass]="{'pop-up':i==photoVisibleNum}">
                         <div class="next-photo-align">
-                            <button class="next-photo" (click)="previousPhoto()"><i class="fas fa-chevron-left"></i></button>
-                            <button class="camera-button" (click)="showBigPhoto()"><i class="fas fa-camera"></i></button>
-                            <button  class="next-photo" (click)="nextPhoto()"><i class="fas fa-chevron-right"></i></button>
+                            <div class="next-photo" (click)="previousPhoto()"><i class="fas fa-chevron-left"></i></div>
+                            <div class="camera-button" (click)="showBigPhoto()"><i class="fas fa-camera"></i></div>
+                            <div  class="next-photo" (click)="nextPhoto()"><i class="fas fa-chevron-right"></i></div>
                         </div>
                         <div class="unordered-list" >
                             <span *ngFor="let p of photosArray;let photoNum = index">
@@ -45,8 +45,8 @@
             
             <img [src]="p.photoUrl" alt="" class="photo" *ngIf="i==photoVisibleNum" [ngClass]="{'pop-up':i==photoVisibleNum}">
             <div class="next-photo-align">
-                <button class="next-photo" (click)="previousPhoto()"><i class="fas fa-chevron-left"></i></button>
-                <button  class="next-photo" (click)="nextPhoto()"><i class="fas fa-chevron-right"></i></button>
+                <div class="next-photo previous-photo" (click)="previousPhoto()"><i class="fas fa-chevron-left"></i></div>
+                <div  class="next-photo" (click)="nextPhoto()"><i class="fas fa-chevron-right"></i></div>
             </div>
             <div class="unordered-list" >
                 <span *ngFor="let p of photosArray;let photoNum = index">

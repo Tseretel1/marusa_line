@@ -34,23 +34,23 @@
 
             <div class="stage-registration" *ngIf="stageNumber == 1">
                 <form action="" [formGroup]="loginForm" class="form">
-                    <div class="input-group">
+                    <div class="input-group" data-aos="fade-up">
                         <input required="" type="text" name="text" autocomplete="off" class="input" formControlName="name">
                         <label class="user-label">სახელი</label>
                     </div>
-                    <div class="input-group">
+                    <div class="input-group" data-aos="fade-up">
                         <input required="" type="text" name="text" autocomplete="off" class="input"formControlName="lastname">
                         <label class="user-label">გვარი</label>
                     </div>
-                    <div class="input-group">
+                    <div class="input-group" data-aos="fade-in">
                         <input required="" type="text" name="text" autocomplete="off" class="input"formControlName="phoneNumber">
                         <label class="user-label">ტელეფონის ნომერი</label>
                     </div>
-                    <div class="input-group">
+                    <div class="input-group" data-aos="fade-down">
                         <input required="" type="text" name="text" autocomplete="off" class="input"formControlName="email">
                         <label class="user-label">იმეილი</label>
                     </div>
-                    <div class="input-group">
+                    <div class="input-group" data-aos="fade-down">
                         <input required="" type="text" name="text" autocomplete="off" class="input"formControlName="address">
                         <label class="user-label">მისამართი</label>
                     </div>

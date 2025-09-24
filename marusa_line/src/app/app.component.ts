@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from "./layout/footer/footer.component";
@@ -34,4 +34,15 @@ export class AppComponent implements OnInit{
   ngOnDestroy(): void {
     this.AuthSub.unsubscribe();
   }
+
+  private lastTouchEnd = 0;
+
+  // @HostListener('document:touchend', ['$event'])
+  // onTouchEnd(event: TouchEvent) {
+  //   const now = new Date().getTime();
+  //   if (now - this.lastTouchEnd <= 300) {
+  //     event.preventDefault(); 
+  //   }
+  //   this.lastTouchEnd = now;
+  // }
 }

@@ -1,5 +1,8 @@
-<div class="photo-container" >
-    <div class="information-align" [routerLink]="AppRoutes.card_details+photos.id">
+<div class="photo-container" [routerLink]="AppRoutes.card_details+photos.id">
+    <div class="information-align" >
+        <b class="title">
+            {{photos.title}}
+        </b>
         <div class="text-align">
             <div >
                 <div class="discount-price" >
@@ -7,9 +10,6 @@
                 <b *ngIf="photos.discountedPrice>0">{{photos.discountedPrice}}₾</b>
             </div>
         </div>
-        <b class="title">
-            {{photos.title}}
-        </b>
             <div class="learn-more-align">
             </div>
             <div class="description-price">
