@@ -5,6 +5,26 @@
   border-radius: 5px;
   position: relative;
   cursor: pointer;
+    .discount-price-mobile {
+        display: none;
+        gap: 6px;
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        background-color: rgba(0, 0, 0, 0.719);
+        color: white;
+        padding: 1px 3px;
+        border-radius: 2px;
+        font-size: 13px;
+        z-index: 2;
+        align-items: center;
+        .discounted-price {
+            font-size: 10px;
+            color: rgb(255, 70, 70);
+            text-decoration:line-through;
+            font-style:italic;
+        }
+   }
   .photo {
     width: 100%;
     height: 100%;
@@ -53,9 +73,13 @@
         display: flex;
         justify-content: flex-end;
         gap: 10px;
+        font-size: 18px;
+        align-items: center;
         .discounted-price {
-          color: rgb(255, 70, 70);
-          text-decoration: line-through;
+           color: rgb(255, 70, 70);
+            text-decoration:line-through;
+            font-style:italic;
+            font-size: 14px;
         }
       }
     }
@@ -83,24 +107,11 @@
 }
 @media screen and (max-width: 600px) {
   .photo-container {
-    .information-align {
-        .title{
-            font-size: 10px;
-            display: none;
-        }
-        .discount-price {
-        width: 100%;
+    .discount-price-mobile{
         display: flex;
-        justify-content: flex-end;
-        gap: 10px;
-        font-size: 12px;
-        flex-direction: column;
-        .discounted-price {
-          color: rgb(255, 70, 70);
-          text-decoration: line-through;
-          font-size: 15px;
-        }
-      }
+    }
+    .information-align {
+        display: none;
     }
   }
 }

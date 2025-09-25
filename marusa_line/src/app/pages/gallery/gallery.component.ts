@@ -2,7 +2,7 @@ import { CommonModule, NgForOf, PathLocationStrategy } from '@angular/common';
 import { Component, OnInit, } from '@angular/core';
 import AOS from 'aos';
 import { Photo, Post, PostService, ProductTypes } from '../../Repositories/post.service';
-import { PhotoAlbumComponent } from '../../shared/components/photo-album/photo-album.component';
+import { PhotoAlbumComponent, PhotoConfig } from '../../shared/components/photo-album/photo-album.component';
 
 @Component({
   selector: 'app-gallery',
@@ -12,6 +12,9 @@ import { PhotoAlbumComponent } from '../../shared/components/photo-album/photo-a
 })
 export class GalleryComponent implements OnInit {
   Cards: Post[] = [];
+  PhotoConfig:PhotoConfig={
+    priceVisible :true,
+  }
 
   constructor(private postService:PostService){
     this.getProductTypes();
@@ -55,7 +58,6 @@ export class GalleryComponent implements OnInit {
     this.hideModalExecute= true;
     setTimeout(() => {
       this.filterModalVisible = false;
-      this.sortNum= 0;
       this.hideModalExecute = false;
     }, 500);
   }
@@ -71,6 +73,4 @@ export class GalleryComponent implements OnInit {
     this.sortNum = 2;
     this.hideFilterModal();
   }
-
-
 }

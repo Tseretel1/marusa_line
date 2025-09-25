@@ -1,11 +1,15 @@
 <div class="photo-container" [routerLink]="AppRoutes.card_details+photos.id">
-    <div class="information-align" >
+    <div class="discount-price-mobile" *ngIf="PhotoCongif.priceVisible">
+          <b [ngClass]="{'discounted-price': photos.discountedPrice>0}">{{photos.price}}₾</b>
+          <b *ngIf="photos.discountedPrice>0">{{photos.discountedPrice}}₾</b>
+    </div>
+    <div class="information-align">
         <b class="title">
             {{photos.title}}
         </b>
         <div class="text-align">
             <div >
-                <div class="discount-price" >
+            <div class="discount-price" >
                 <b  [ngClass]="{'discounted-price': photos.discountedPrice>0}">{{photos.price}}₾</b>
                 <b *ngIf="photos.discountedPrice>0">{{photos.discountedPrice}}₾</b>
             </div>

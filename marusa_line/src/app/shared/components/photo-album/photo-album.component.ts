@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppRoutes } from '../cards/AppRoutes/AppRoutes';
 import { RouterLink } from '@angular/router';
@@ -12,4 +12,9 @@ import { Post } from '../../../Repositories/post.service';
 export class PhotoAlbumComponent {
   AppRoutes= AppRoutes;
   @Input() photos!:Post;
+  @Input() PhotoCongif!:PhotoConfig;
+}
+
+export interface PhotoConfig{
+  priceVisible:boolean;
 }

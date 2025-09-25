@@ -19,7 +19,6 @@
         width: 100%;
         justify-content: center;
         color: white;
-        text-shadow: 0px 0px 1px greenyellow;
     }
   }
 }
@@ -29,8 +28,7 @@
     position: absolute;
     width: 50px;
     padding: 10px;
-    backdrop-filter: blur(10px);
-    background-color: #0000007a;
+    background-color: rgba(0, 0, 0, 0.708);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,7 +38,6 @@
     text-transform: uppercase;
     top: 0px;
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.356);
 }
 
 @media screen and (max-width:800px){
@@ -58,13 +55,13 @@
 
 @media screen and (max-width:600px){
     .span{
-        width: 20px;
+        width: 30px;
         font-size: 10px;
         padding: 5px;
       }
       .span::before{
       border-radius: 5px;
-      width: 20px;
+      width: 30px;
       padding: 5px;
       font-size: 10px
     }
