@@ -42,5 +42,35 @@ export class GalleryComponent implements OnInit {
   getPostByFilter(num:number){
     this.activeFilterNum = num;
     this.getAllPosts(num);
+    this.hideFilterModal()
   }
+
+  filterModalVisible:boolean = false;
+  showFilterModal(){
+    this.filterModalVisible = true;
+  }
+
+  hideModalExecute:boolean = false;
+  hideFilterModal(){
+    this.hideModalExecute= true;
+    setTimeout(() => {
+      this.filterModalVisible = false;
+      this.sortNum= 0;
+      this.hideModalExecute = false;
+    }, 500);
+  }
+
+  sortNum:number = 0;
+  sortByPriceHighToLow(): void {
+    this.Cards = [...this.Cards].sort((a, b) => b.price - a.price);
+    this.sortNum = 1;
+    this.hideFilterModal();
+  }
+  sortByPriceLowToHigh(): void {
+    this.Cards = [...this.Cards].sort((a, b) => a.price - b.price);
+    this.sortNum = 2;
+    this.hideFilterModal();
+  }
+
+
 }

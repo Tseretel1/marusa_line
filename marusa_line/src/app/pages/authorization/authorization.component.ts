@@ -23,8 +23,13 @@ export class AuthorizationComponent implements OnInit{
   ngOnInit(): void {
 
   }
+  hideModalExecute:boolean = false;
   closeModal(){
-    this.authService.hide();
+    this.hideModalExecute = true; 
+    setTimeout(() => {
+      this.authService.hide();
+      this.hideModalExecute = false;
+    }, 500);
   }
 
   stageNumber:number = 0;
@@ -38,4 +43,18 @@ export class AuthorizationComponent implements OnInit{
       this.modalName = 'რეგისტრაცია'
     }
   }
+  loginWithGoogle() {
+  const popup = window.open(
+    'https://localhost:7173/User/google',  
+    'googleLogin',
+  );
+
+  window.addEventListener('message', (event) => {
+    if (event.origin !== 'https://api.yourapp.com') return; 
+    const { token, user } = event.data;
+    console.log('Got user:', user);
+    console.log('Got JWT:', token);
+  });
+}
+
 }

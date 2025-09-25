@@ -45,12 +45,6 @@
 
 @media screen and (max-width:800px){
     .span{
-        width: 50px;
-        font-size: 13px;
-    }
-}
-@media screen and (max-width:600px){
-    .span{
         width: 30px;
         font-size: 13px;
         padding: 6px;
@@ -58,6 +52,20 @@
     .span::before{
       width: 30px;
       padding: 8px;
+      font-size: 10px
+    }
+}
+
+@media screen and (max-width:600px){
+    .span{
+        width: 20px;
+        font-size: 10px;
+        padding: 5px;
+      }
+      .span::before{
+      border-radius: 5px;
+      width: 20px;
+      padding: 5px;
       font-size: 10px
     }
 }

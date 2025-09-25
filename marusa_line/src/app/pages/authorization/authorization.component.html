@@ -1,7 +1,7 @@
 <div class="modal-align"> 
-    <div class="modal-background" (click)="closeModal()">
+    <div class="modal-background" [ngClass]="{'remove-modal-back':hideModalExecute}" (click)="closeModal()">
     </div>
-    <div class="modal">
+    <div class="modal" [ngClass]="{'hide-modal':hideModalExecute}">
         <div class="modal-header" >
             <i class="fas fa-arrow-left" *ngIf="stageNumber == 1" (click)="openStage(0)"></i>
             <i></i>
@@ -12,7 +12,7 @@
                 <p>{{modalName}}</p>
             </div>
             <div class="stage-oAuth" *ngIf="stageNumber==0">
-                <div class="link-button google" data-aos="fade-down" >
+                <div class="link-button google" data-aos="fade-down" (click)="loginWithGoogle()">
                     <div style="display: flex; align-items: center; gap: 10px;">
                         <img src="assets/icons/google.svg" alt="" width="30px">
                         Google -ით ავტორიზაცია

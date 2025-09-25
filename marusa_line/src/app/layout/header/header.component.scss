@@ -21,6 +21,7 @@
                 display: flex;
                 align-items: center;
                 gap: 15px;
+                cursor: pointer;
                 .logo-container{
                     overflow: hidden;
                     width: 60px;
@@ -31,7 +32,6 @@
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
-                        cursor: pointer;
                         transition: 0.3s all ease-in-out;
                     }
                     .logo:hover{
@@ -213,7 +213,7 @@
 .component{
     .header{
         .header-align{
-            padding: 15px 0px;
+            align-items: center;
             .float-logo{
                 top: 0px;
                  .logo-container{
@@ -239,8 +239,31 @@
     .component{
         .header{
             .header-align{
-                padding: 15px 0px;
                 width: 90%;
+            }
+        }
+    }
+}
+@media screen and (max-width: 380px){
+    .sidenav-align{
+        .mobile-navigation-align{
+            .nav-center{
+                .nav-link{
+                    font-size: 16px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 300px){
+    .sidenav-align{
+        .mobile-navigation-align{
+            .nav-center{
+                .nav-link{
+                    font-size: 14px;
+                    cursor: pointer;
+                }
             }
         }
     }

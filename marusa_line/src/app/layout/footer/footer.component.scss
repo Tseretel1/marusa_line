@@ -125,23 +125,20 @@ a{
     background: #ffffff80;
     color: black;
   }
-  .facebook:hover,
-  :focus {
+  .facebook:hover {
     color: #ffffff;
     background: #1456ab ;
     border: 1px solid #1877F2 ;
     box-shadow: 0 0 5px #1877F2 , 0 0 20px #1877F2 , 0 0 50px #1877F2 ,
       0 0 100px #1877F2 ;
   }
-  .instagram:hover,
-  :focus {
+  .instagram:hover{
     color: #ffffff;
     border: 1px solid #ff3766d3 ;
     box-shadow: 0 0 5px #ff3766d3, 0 0 20px #ff3766d3, 0 0 50px #ff3766d3,
       0 0 100px #ff3766d3;
   } 
-  .tiktok:hover,
-  :focus {
+  .tiktok:hover {
     background: #ffffffc2;
     border: 1px solid #ffffff80;
     box-shadow: 0 0 5px #ffffff80, 0 0 20px #ffffff80, 0 0 50px #ffffff80,

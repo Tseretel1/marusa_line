@@ -13,15 +13,13 @@
     .photo-align{
       width: 80%;
       display: grid;
-      grid-template-columns: 40% 30% 30%;
+      grid-template-columns: 40% 25% 35%;
       grid-template-rows: auto auto auto; 
-      gap: 10px;
-      row-gap: 5px;
       .container{
           flex: auto;
           height: 300px;
           position: relative;
-          border-radius: 5px;
+          margin: 5px;
           .discount-mark{
               position: absolute;
               top: -20px;
@@ -54,11 +52,7 @@
     gap: 20px;
     align-items: center;    
 }
-.fa-circle{
-    color: rgba(0, 0, 0, 0.521);
-    border: 2px solid white;
-    border-radius: 50%;
-}
+
 @media screen and (max-width:1500px){
     .gallery-align{
        .photo-align{
@@ -113,6 +107,11 @@
         width: 90%;
          .container{
            height: 120px;
+           margin: 2px;
+             .discount-mark{
+               top: -5px;
+               left: 0px;
+           }
         }
      }
   }

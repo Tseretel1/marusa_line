@@ -16,6 +16,10 @@
         width: 100%;
         height: 100%;
         background-color: rgba(0, 0, 0, 0.288);
+        animation: showModalBack 0.5s;
+    }
+    .remove-modal-back{
+        animation: removeModalBack 0.5s;
     }
     .modal{
         width: 90%;
@@ -184,6 +188,22 @@
             }
         }
     }
+    .hide-modal{
+      animation: hideModal 0.55s;
+    }
+      @keyframes hideModal {
+        0%{
+          scale: 1;
+          box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.247);
+        }
+        30%{
+          scale:1.1
+        }
+        100%{
+          box-shadow:  0px 0px 10px rgba(0, 0, 0, 0);
+          scale: 0;
+        }
+    }
     @keyframes modalPopup {
         0%{
             scale: 0.7;
@@ -196,5 +216,21 @@
             box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.247);
             scale: 1;
         }
+    }
+}
+@keyframes removeModalBack {
+    0%{
+        background-color: rgba(0, 0, 0, 0.288);
+    }
+    100%{
+        background-color: transparent;
+    }
+}
+@keyframes showModalBack {
+    0%{
+        background-color: rgba(0, 0, 0, 0);
+    }
+    100%{
+        background-color: rgba(0, 0, 0, 0.288);
     }
 }

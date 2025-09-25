@@ -3,6 +3,7 @@
   overflow: hidden;
   height: 100%;
   border-radius: 5px;
+  position: relative;
   cursor: pointer;
   .photo {
     width: 100%;
@@ -40,7 +41,7 @@
       justify-content: center;
       align-items: center;
       color: white;
-      padding-bottom: 10px;
+      position: relative;
       .description-price {
         display: flex;
         flex-direction: column;
@@ -74,17 +75,6 @@
   .photo-container {
     .information-align {
       padding: 10px;
-      .likes {
-      }
-      .text-align {
-        padding: 0;
-        .description-price {
-        }
-        .title-price {
-          .discounted-price {
-          }
-        }
-      }
       .title {
         font-size: 15px;
       }
@@ -94,16 +84,21 @@
 @media screen and (max-width: 600px) {
   .photo-container {
     .information-align {
-      padding: 10px;
-      .likes {
-      }
-      .text-align {
-        padding: 0;
-        .description-price {
+        .title{
+            font-size: 10px;
+            display: none;
         }
-        .title-price {
-          .discounted-price {
-          }
+        .discount-price {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        font-size: 12px;
+        flex-direction: column;
+        .discounted-price {
+          color: rgb(255, 70, 70);
+          text-decoration: line-through;
+          font-size: 15px;
         }
       }
     }

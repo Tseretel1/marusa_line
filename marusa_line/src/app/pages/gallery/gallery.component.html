@@ -1,12 +1,43 @@
 
 <div class="gallery-align">
     <div class="filters-align">
-        <button class="filter-button" [ngClass]="{'active-filter': activeFilterNum == 0}"(click)="getPostByFilter(0)">ყველა</button>
-        <button class="filter-button" *ngFor="let product of productTypesList" [ngClass]="{'active-filter': activeFilterNum == product.id}" (click)="getPostByFilter(product.id)">{{product.productType}}</button>
+         <div class="section-title-align">
+            <b class="section-title">
+                <i class="fas fa-circle"></i> 
+                მოძებნე ფილტრით
+                <button class="open-filter" [ngClass]="{'active-filter': activeFilterNum == 0}" (click)="showFilterModal()"><i class="fas fa-sliders-h"></i> </button>
+            </b>
+        </div>
+        <div class="modal-align" *ngIf="filterModalVisible"> 
+            <div class="modal-background" (click)="hideFilterModal()">
+            </div>
+            <div class="modal" [ngClass]="{'hide-modal':hideModalExecute}">
+                <div class="modal-header" >
+                    <i></i>
+                    <i class="fas fa-times" (click)="hideFilterModal()"></i>
+                </div>
+                <div class="modal-body">
+                    <div class="header"> 
+                        <p>გაფილტრე პროდუქტის ტიპის მიხედვით</p>
+                    </div>
+                    <div class="stage-oAuth" >
+                        <button class="filter-button" [ngClass]="{'active-filter': activeFilterNum == 0}"(click)="getPostByFilter(0)">ყველა</button>
+                        <button class="filter-button" *ngFor="let product of productTypesList" [ngClass]="{'active-filter': activeFilterNum == product.id}" (click)="getPostByFilter(product.id)">{{product.productType}}</button>
+                    </div>
+                    <div class="header"> 
+                        <p>გაფილტრე ფასის მიხედვით</p>
+                    </div>
+                    <div class="stage-oAuth" >
+                        <button class="filter-button" [ngClass]="{'active-filter': sortNum == 1}"(click)="sortByPriceHighToLow()">ზრდადობით</button>
+                        <button class="filter-button" [ngClass]="{'active-filter': sortNum == 2}"(click)="sortByPriceLowToHigh()">კლებადობით</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="photo-align">
         <ng-container *ngFor="let p of Cards; let index = index;">
-            <app-photo-album [photos]="p" class="album" data-aos="fade-up"></app-photo-album>
+            <app-photo-album [photos]="p" class="album" data-aos="fade-in" [ngClass]="{'sort-cards':sortNum == 1 || sortNum == 2}"></app-photo-album>
         </ng-container>
     </div>
 </div>
