@@ -5,6 +5,7 @@ import { CardDetailsComponent } from './pages/card-details/card-details.componen
 
 export const routes: Routes = [
     { path:'home', component: HomeComponent},
+    { path:'home/', component: HomeComponent},
     { path:'card-details/:id', component: CardDetailsComponent},
     { path:'', component: HomeComponent},
     { path: '', component: HomeComponent }, 

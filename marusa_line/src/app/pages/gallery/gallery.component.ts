@@ -42,6 +42,9 @@ export class GalleryComponent implements OnInit {
 
   scrollToStartMethod() {
     this.scrollToStart.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => {
+    window.scrollBy({ top: -100, behavior: 'smooth' }); 
+  }, 500);
   }
   activeFilterNum: number = 0;
 

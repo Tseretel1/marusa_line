@@ -53,7 +53,7 @@
                         align-items: center;
                         .camera-button{
                             scale: 2;
-                            background-color: rgba(0, 0, 0, 0.055);
+                            background-color: rgba(0, 0, 0, 0.027);
                             color: rgba(255, 255, 255, 0.048);
                             border: none;
                             cursor: pointer;
@@ -63,11 +63,12 @@
                         }               
                         .camera-button:hover{
                             color: white;
+                            background-color: rgba(0, 0, 0, 0.274);
                         }
                         .next-photo{
                             height: 100%;
                             padding: 10px 20px;
-                            background-color: rgba(0, 0, 0, 0.055);
+                            background-color: rgba(0, 0, 0, 0.027);
                             border: none;
                             color: white;
                             cursor: pointer;

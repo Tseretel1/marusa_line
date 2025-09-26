@@ -13,7 +13,6 @@ export class LoaderComponent {
   loading$!: Observable<boolean>;
   constructor(private loaderService: LoaderService) {}
   ngOnInit(): void {
-    console.log('fvef')
     this.loading$ = this.loaderService.loading$;
   }
 }

@@ -1,3 +1,81 @@
+@font-face {
+    font-family: 'helv';
+    src: url('/assets//fonts/HelveticaNeueLTGEO-45Light.eot');
+    src: url('/assets/fonts/HelveticaNeueLTGEO-45Light.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/HelveticaNeueLTGEO-45Light.woff2') format('woff2'),
+    url('/assets/fonts/HelveticaNeueLTGEO-45Light.woff') format('woff'),
+    url('/assets/fonts/HelveticaNeueLTGEO-45Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'helv';
+    src: url('/assets/fonts/HelveticaNeueLTGEO-75Bold.eot');
+    src: url('/assets/fonts/HelveticaNeueLTGEO-75Bold.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/HelveticaNeueLTGEO-75Bold.woff2') format('woff2'),
+    url('/assets/fonts/HelveticaNeueLTGEO-75Bold.woff') format('woff'),
+    url('/assets/fonts/HelveticaNeueLTGEO-75Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'helv';
+    src: url('/assets/fonts/HelveticaNeueLTGEO-55Roman.eot');
+    src: url('/assets/fonts/HelveticaNeueLTGEO-55Roman.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/HelveticaNeueLTGEO-55Roman.woff2') format('woff2'),
+    url('/assets/fonts/HelveticaNeueLTGEO-55Roman.woff') format('woff'),
+    url('/assets/fonts/HelveticaNeueLTGEO-55Roman.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+.light-font {
+    font-family: 'helv'; font-weight: 300; font-style: normal;
+}
+
+.normal-font {
+    font-family: 'helv'; font-weight: normal; font-style: normal;
+}
+
+.bold-font {
+    font-family: 'helv'; font-weight: bold; font-style: normal;
+}
+
+.light-font-upper {
+    font-family: 'helv'; font-weight: 300; font-style: normal;
+    font-feature-settings: 'case' on;
+}
+
+.normal-font-upper {
+    font-family: 'helv'; font-weight: normal; font-style: normal;
+    font-feature-settings: 'case' on;
+}
+
+.bold-font-upper {
+    font-family: 'helv'; font-weight: bold; font-style: normal;
+    font-feature-settings: 'case' on;
+}
+
+a, span, div, body, tr, td {
+  font-family: 'helv';
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
+
+
+
+
+
 html,body{
     width: 100%;
     padding: 0;
@@ -18,7 +96,6 @@ button{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
   }
   .background{
     background: linear-gradient(to bottom, #470461, #344b64 , #140f41);

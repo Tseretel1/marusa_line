@@ -1,6 +1,5 @@
-
+<div  #scrollToStart></div>
 <div class="gallery-align">
-    <div  #scrollToStart class="scroll-div"></div>
     <div class="filters-align">
          <div class="section-title-align">
             <b class="section-title">
@@ -36,7 +35,7 @@
             </div>
         </div>
     </div>
-    <div class="photo-align"  >
+    <div class="photo-align">
         <ng-container *ngFor="let p of Cards; let index = index;">
             <app-photo-album [photos]="p"[PhotoCongif]="PhotoConfig" class="album"  data-aos="fade-up" [ngClass]="{'sort-cards':sortNum == 1 || sortNum == 2}"></app-photo-album>
         </ng-container>

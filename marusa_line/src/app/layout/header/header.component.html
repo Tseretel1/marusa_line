@@ -11,7 +11,14 @@
             <span class="nav-link" routerLinkActive="active-link" [routerLink]="AppRoutes.home"(click)="scrollTotop()"><i class="fas fa-shopping-cart" ></i><b>პროდუქტები</b> </span>
             <!-- <span class="nav-link"  routerLinkActive="active-link" [routerLink]="AppRoutes.gallery"><i class="fas fa-images"></i><b>გალერია</b> </span> -->
             <span class="nav-link" routerLinkActive="active-link" (click)="scrollToBottom()"><b ><i class="fas fa-address-book"></i> კონტაქტი</b> </span>
-            <span class="nav-link" routerLinkActive="active-link" (click)="openAuthorization()"><b ><i class="fas fa-user-shield"></i> ავტორიზაცია</b> </span>
+            <span *ngIf="!Authorised" class="nav-link" routerLinkActive="active-link" (click)="openAuthorization()"><b ><i class="fas fa-user-shield"></i> ავტორიზაცია</b> </span>
+            <div *ngIf="Authorised" class="nav-link profile-link" routerLinkActive="active-link"><img src="" alt="">
+                <div class="img-container"*ngIf="user.Picture">
+                    <img [src]="user?.Picture" class="user-image">
+                </div>
+                <!-- <p class="username">{{user.Name}}</p> -->
+            </div>
+            <button (click)="logout()">   გამოსვლა </button>
         </div>
         <div class="burger-icon-align" >
             <span class="nav-link" routerLinkActive="active-link" (click)="openSidenav()"><i class="fas fa-bars"></i></span>

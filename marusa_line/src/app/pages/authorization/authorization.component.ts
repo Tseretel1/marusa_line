@@ -10,6 +10,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './authorization.component.scss'
 })
 export class AuthorizationComponent implements OnInit{
+
+
   loginForm!:FormGroup
   constructor(private authService:AuthorizationService,private fb: FormBuilder){
     this.loginForm = this.fb.group({
@@ -23,6 +25,8 @@ export class AuthorizationComponent implements OnInit{
   ngOnInit(): void {
 
   }
+
+  
   hideModalExecute:boolean = false;
   closeModal(){
     this.hideModalExecute = true; 
@@ -44,17 +48,19 @@ export class AuthorizationComponent implements OnInit{
     }
   }
   loginWithGoogle() {
-  const popup = window.open(
-    'https://localhost:7173/User/google',  
-    'googleLogin',
-  );
-
-  window.addEventListener('message', (event) => {
-    if (event.origin !== 'https://api.yourapp.com') return; 
+    window.open(
+      'https://localhost:7173/User/google',
+      'googleLogin',
+      'width=500,height=600'
+    );
+    window.addEventListener('message', this.handleGoogleMessage.bind(this));
+  }
+  handleGoogleMessage(event: MessageEvent) {
+    if (event.origin !== 'https://localhost:7173') return;
     const { token, user } = event.data;
-    console.log('Got user:', user);
-    console.log('Got JWT:', token);
-  });
-}
-
+    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('token', token);
+    this.authService.userAuthorized();
+    this.closeModal();
+  }
 }

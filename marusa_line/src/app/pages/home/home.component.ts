@@ -6,6 +6,11 @@ import { Post, PostService, ProductTypes } from '../../Repositories/post.service
 import { PhotoAlbumComponent, PhotoConfig } from '../../shared/components/photo-album/photo-album.component';
 import { DiscountMarkComponent } from '../../shared/components/discount-mark/discount-mark.component';
 import { GalleryComponent } from '../gallery/gallery.component';
+import { ActivatedRoute } from '@angular/router';
+
+
+
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -17,7 +22,7 @@ export class HomeComponent implements OnInit {
   
   postsFirst: Post[] = [];
   postsSecond: Post[] = [];
-  constructor(private postService:PostService){
+  constructor(private postService:PostService,private route: ActivatedRoute){
     this.postService.getDiscountedPosts().subscribe(
       (resp)=>{
         this.postsFirst = resp.slice(0, 3); 
@@ -25,6 +30,8 @@ export class HomeComponent implements OnInit {
       }
     )
   }
+
+  user: any = null;
   ngOnInit(): void {
     window.scrollTo({
      top: 0,
