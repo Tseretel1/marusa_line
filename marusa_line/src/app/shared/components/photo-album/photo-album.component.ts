@@ -1,6 +1,6 @@
 import { Component, input, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppRoutes } from '../cards/AppRoutes/AppRoutes';
+import { AppRoutes } from '../../AppRoutes/AppRoutes';
 import { RouterLink } from '@angular/router';
 import { Post } from '../../../Repositories/post.service';
 @Component({

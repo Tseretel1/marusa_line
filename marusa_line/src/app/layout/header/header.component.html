@@ -8,17 +8,16 @@
             <p class="header-title">marusa_line</p>
         </div> 
         <div class="navigation-align">
-            <span class="nav-link" routerLinkActive="active-link" [routerLink]="AppRoutes.home"(click)="scrollTotop()"><i class="fas fa-shopping-cart" ></i><b>პროდუქტები</b> </span>
+            <span [ngClass]="{'login-popup': Authorised}" class="nav-link" routerLinkActive="active-link" [routerLink]="AppRoutes.home"(click)="scrollTotop()"><i class="fas fa-shopping-cart" ></i><b>პროდუქტები</b> </span>
             <!-- <span class="nav-link"  routerLinkActive="active-link" [routerLink]="AppRoutes.gallery"><i class="fas fa-images"></i><b>გალერია</b> </span> -->
-            <span class="nav-link" routerLinkActive="active-link" (click)="scrollToBottom()"><b ><i class="fas fa-address-book"></i> კონტაქტი</b> </span>
-            <span *ngIf="!Authorised" class="nav-link" routerLinkActive="active-link" (click)="openAuthorization()"><b ><i class="fas fa-user-shield"></i> ავტორიზაცია</b> </span>
-            <div *ngIf="Authorised" class="nav-link profile-link" routerLinkActive="active-link"><img src="" alt="">
+            <span [ngClass]="{'login-popup': Authorised}" class="nav-link" routerLinkActive="active-link" (click)="scrollToBottom()"><b ><i class="fas fa-address-book"></i> კონტაქტი</b> </span>
+            <span [ngClass]="{'login-popup': Authorised}" *ngIf="!Authorised" class="nav-link" routerLinkActive="active-link" (click)="openAuthorization()"><b ><i class="fas fa-user-shield"></i> ავტორიზაცია</b> </span>
+            <div *ngIf="Authorised" class="nav-link profile-link" [routerLink]="AppRoutes.profile" [ngClass]="{'login-popup': Authorised}" ><img src="" alt="">
                 <div class="img-container"*ngIf="user.Picture">
                     <img [src]="user?.Picture" class="user-image">
                 </div>
                 <!-- <p class="username">{{user.Name}}</p> -->
             </div>
-            <button (click)="logout()">   გამოსვლა </button>
         </div>
         <div class="burger-icon-align" >
             <span class="nav-link" routerLinkActive="active-link" (click)="openSidenav()"><i class="fas fa-bars"></i></span>
@@ -34,9 +33,15 @@
             <i class="fas fa-times" (click)="hideSidenav()"></i>
         </div>
         <div class="nav-center">
+            <div *ngIf="Authorised" class="nav-link profile-link" [routerLink]="AppRoutes.profile" routerLinkActive="active-link"><img src="" alt="">
+                <div class="img-container"*ngIf="user.Picture">
+                    <img [src]="user.Picture" class="user-image">
+                </div>
+                <p class="username">{{user.Name}}</p>
+            </div>
             <span class="nav-link" routerLinkActive="active-link" [routerLink]="AppRoutes.home" (click)="scrollTotop()"><i class="fas fa-shopping-cart"></i><b>პროდუქტები</b> </span>
             <span class="nav-link" routerLinkActive="active-link" (click)="scrollToBottom()"><b ><i class="fas fa-address-book"></i> კონტაქტი</b> </span>
-            <span class="nav-link" routerLinkActive="active-link" (click)="openAuthorization()"><b ><i class="fas fa-user-shield"></i> ავტორიზაცია</b> </span>
+            <span *ngIf="!Authorised" class="nav-link" routerLinkActive="active-link" (click)="openAuthorization()"><b ><i class="fas fa-user-shield"></i> ავტორიზაცია</b> </span>
         </div>
     </div>
 </div>

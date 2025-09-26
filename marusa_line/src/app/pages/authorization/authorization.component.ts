@@ -25,8 +25,6 @@ export class AuthorizationComponent implements OnInit{
   ngOnInit(): void {
 
   }
-
-  
   hideModalExecute:boolean = false;
   closeModal(){
     this.hideModalExecute = true; 

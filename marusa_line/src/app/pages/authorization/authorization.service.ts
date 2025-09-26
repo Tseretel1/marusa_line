@@ -23,4 +23,14 @@ export class AuthorizationService {
     userNotAuthorized(): void {
       this.authorized.next(false);
     }
+
+
+    isUserAuthorised():boolean{
+      const token = localStorage.getItem('token');
+      if(token!=null){
+        this.userAuthorized();
+        return true;
+      }
+      return false;
+    }
 }

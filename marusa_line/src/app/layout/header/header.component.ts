@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AppRoutes } from '../../shared/components/cards/AppRoutes/AppRoutes';
+import { AppRoutes } from '../../shared/AppRoutes/AppRoutes';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthorizationService } from '../../pages/authorization/authorization.service';
 import { Subscription } from 'rxjs';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 @Component({
   selector: 'app-header',
   imports: [RouterLink, RouterLinkActive, CommonModule],
@@ -19,25 +18,27 @@ export class HeaderComponent implements OnInit{
   AuthSub!:Subscription;
   Authorised:boolean = false;
   ngOnInit(): void {
+    this.authService.isUserAuthorised();
     this.AuthSub = this.authService.authorized$.subscribe(
       (isVisible) => {
-        this.Authorised = isVisible;
-        this.getUser();
+        if(isVisible){
+          this.Authorised = isVisible;
+          this.getUser();
+        }
+        else{
+          this.Authorised = isVisible;
+          this.user = null;
+        }
+
       }
     );
-    const user = localStorage.getItem('user');
-    if(user){
-      this.Authorised = true;
-      this.getUser();
-    }
   }
 
   user:any=null;
   getUser(){
     const user = localStorage.getItem('user');
     if(user){
-      this.user= JSON.parse(user);
-      console.log(this.user);
+      this.user = JSON.parse(user);
     }
   }
   openAuthorization(){
@@ -69,14 +70,5 @@ export class HeaderComponent implements OnInit{
     setTimeout(() => {
       this.sidenavVisible =  false;
     }, 500);
-  }
-
-
-
-  logout(){
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
-    this.authService.userNotAuthorized();
-    this.user = null;
   }
 }
