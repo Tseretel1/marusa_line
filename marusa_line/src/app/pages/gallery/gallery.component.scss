@@ -33,11 +33,15 @@
           }
         }
     }
+    .scroll-div{
+      height: 80px;
+    }
     .filters-align{
         display: flex;
         gap: 10px;
         overflow-x: scroll;
         width: 80%;
+
         .section-title-align{
             display: flex;
             width: 80%;

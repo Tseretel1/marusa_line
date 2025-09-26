@@ -1,5 +1,5 @@
 import { CommonModule, NgForOf, PathLocationStrategy } from '@angular/common';
-import { Component, OnInit, } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, } from '@angular/core';
 import AOS from 'aos';
 import { Photo, Post, PostService, ProductTypes } from '../../Repositories/post.service';
 import { PhotoAlbumComponent, PhotoConfig } from '../../shared/components/photo-album/photo-album.component';
@@ -24,15 +24,12 @@ export class GalleryComponent implements OnInit {
           easing: 'ease-in-out',
           once: false, 
     });
-    this.getAllPosts(0);
-  }
-  getAllPosts(productId:number){
-    this.postService.getPosts(productId).subscribe(
-      (resp)=>{
+      this.getAllPosts(0).subscribe((resp) => {
         this.Cards = resp;
-      }
-    )
+        this.hideFilterModal();
+      });
   }
+ 
   productTypesList :ProductTypes[]= [];
   getProductTypes(){
     this.postService.getProductTypes().subscribe(
@@ -41,12 +38,26 @@ export class GalleryComponent implements OnInit {
       }
     )
   }
-  activeFilterNum:number = 0;
-  getPostByFilter(num:number){
-    this.activeFilterNum = num;
-    this.getAllPosts(num);
-    this.hideFilterModal()
+  @ViewChild('scrollToStart') scrollToStart!: ElementRef;
+
+  scrollToStartMethod() {
+    this.scrollToStart.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
+  activeFilterNum: number = 0;
+
+  getAllPosts(productId: number) {
+    return this.postService.getPosts(productId);
+  }
+
+  getPostByFilter(num: number) {
+    this.activeFilterNum = num;
+    this.getAllPosts(num).subscribe((resp) => {
+      this.Cards = resp;
+      this.hideFilterModal();
+      this.scrollToStartMethod();
+    });
+  }
+
 
   filterModalVisible:boolean = false;
   showFilterModal(){
