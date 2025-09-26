@@ -51,7 +51,6 @@ export class AuthorizationComponent implements OnInit{
     window.open(
       'https://localhost:7173/User/google',
       'googleLogin',
-      'width=500,height=600'
     );
     window.addEventListener('message', this.handleGoogleMessage.bind(this));
   }
