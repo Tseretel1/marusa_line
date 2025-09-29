@@ -49,6 +49,6 @@ export class HomeComponent implements OnInit {
   }
 
   PhotoConfig:PhotoConfig={
-    priceVisible :false,
+    priceVisible :true,
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from '../authorization/authorization.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AppRoutes } from '../../shared/AppRoutes/AppRoutes';
 import { Post, PostService } from '../../Repositories/post.service';
 import { PhotoAlbumComponent, PhotoConfig } from '../../shared/components/photo-album/photo-album.component';
@@ -16,7 +16,7 @@ import { transition } from '@angular/animations';
 })
 export class ProfileComponent implements OnInit{
   AppRoutes=AppRoutes;
-  constructor(private authService:AuthorizationService,private postService:PostService){
+  constructor(private authService:AuthorizationService,private postService:PostService,private router:Router){
     
   }
   PhotoConfig:PhotoConfig={
@@ -42,7 +42,6 @@ export class ProfileComponent implements OnInit{
       this.user =JSON.parse(user);
       this.userId = this.user.Id
     }
-    console.log(this.user)
     return this.postService.getUserLikedPosts(this.userId);
   }
   
@@ -67,10 +66,10 @@ export class ProfileComponent implements OnInit{
     }
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log('Proceeded!');
         localStorage.removeItem('user');
         localStorage.removeItem('token');
         this.authService.userNotAuthorized();
+        this.router.navigate([AppRoutes.home])
       }
     });
   }

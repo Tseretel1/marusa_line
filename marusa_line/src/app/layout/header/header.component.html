@@ -9,14 +9,13 @@
         </div> 
         <div class="navigation-align">
             <span [ngClass]="{'login-popup': Authorised}" class="nav-link" routerLinkActive="active-link" [routerLink]="AppRoutes.home"(click)="scrollTotop()"><i class="fas fa-shopping-cart" ></i><b>პროდუქტები</b> </span>
-            <!-- <span class="nav-link"  routerLinkActive="active-link" [routerLink]="AppRoutes.gallery"><i class="fas fa-images"></i><b>გალერია</b> </span> -->
             <span [ngClass]="{'login-popup': Authorised}" class="nav-link" routerLinkActive="active-link" (click)="scrollToBottom()"><b ><i class="fas fa-address-book"></i> კონტაქტი</b> </span>
             <span [ngClass]="{'login-popup': Authorised}" *ngIf="!Authorised" class="nav-link" routerLinkActive="active-link" (click)="openAuthorization()"><b ><i class="fas fa-user-shield"></i> ავტორიზაცია</b> </span>
-            <div *ngIf="Authorised" class="nav-link profile-link" [routerLink]="AppRoutes.profile" [ngClass]="{'login-popup': Authorised}" ><img src="" alt="">
+            <div *ngIf="Authorised" class="nav-link profile-link" [routerLink]="AppRoutes.profile" [ngClass]="{'login-popup': Authorised}" >
                 <div class="img-container" *ngIf="userPhoto">
                     <img [src]="userPhoto" class="user-image">
                 </div>
-                <!-- <p class="username">{{user.Name}}</p> -->
+                <p class="username">{{user.Name}}</p>
             </div>
         </div>
         <div class="burger-icon-align" >

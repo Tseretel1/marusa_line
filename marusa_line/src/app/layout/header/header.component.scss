@@ -86,8 +86,9 @@
                 }
                 .profile-link{
                     display: flex;
-                    flex-direction: column;
                     justify-content: center;
+                    animation: profilePopup 0.5s;
+                    border: none;
                     .img-container{
                         width: 40px;
                         height: 40px;
@@ -103,11 +104,22 @@
                             object-fit: cover;
                         }
                     }
-                    animation: profilePopup 0.5s;
+                    .username{
+                        font-size: 14px;
+                        text-wrap: nowrap;
+                        max-width: 140px;
+                        overflow: hidden;
+                    }
                 }
                 .profile-link:hover{
                     filter: drop-shadow(0px 0px 0px whitesmoke);
                     box-shadow: 0px 0px 0px transparent;
+                    border: none;
+                }
+                .profile-link:focus{
+                    border: none;
+                }
+                .profile-link:active{
                     border: none;
                 }
                 .login-popup{
@@ -116,10 +128,8 @@
                 @keyframes profilePopup {
                     0%{
                         opacity: 0;
-                        letter-spacing: 1px;
                     }
                     50%{
-                        letter-spacing: 2px;
                         opacity: 1;
                     }
                     100%{

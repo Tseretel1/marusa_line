@@ -191,7 +191,9 @@
         display: none;
     }
 }
-
+.scrollto{
+  padding: 50px 0px;
+}
 @media screen and (max-width:1200px){
     .gallery-align{
        .photo-align{
@@ -211,6 +213,9 @@
         }
     }
   }
+  .scrollto{
+    padding: 40px 0px;      
+  }
 }
 @media screen and (max-width:600px){
     .gallery-align{
@@ -223,6 +228,7 @@
       .filters-align{
         width: 90%;
       }
+      
   }
 }
 

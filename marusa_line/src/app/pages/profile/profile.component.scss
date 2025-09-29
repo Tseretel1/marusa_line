@@ -12,6 +12,15 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    .no-posts-todisplay{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        height: 200px;
+        align-items: center;
+        color: white;
+        gap: 10px;
+    }
     .profile-align{
         width: 80%;
         padding: 10px 0px;
@@ -45,6 +54,9 @@
                 }
             }
             .username{
+                text-wrap: nowrap;
+                max-width: 250px;
+                overflow: hidden;    
                 color: white;
             }
         }
@@ -171,25 +183,23 @@
           padding: 0;
           .profile-container-align
           {
-                .profile-container{
-                    width: 100px;
-                    height: 100px;
-                    border-radius: 50%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    overflow: hidden;
-                    .profile{
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                    }
-                }
-                .username{
-                    color: white;
-                }
+            .profile-container{
+                width: 100px;
+                height: 100px;
             }
-    }
+            .username{
+             text-wrap: nowrap;
+            max-width: 140px;
+            overflow: hidden;    
+            color: white;
+            }
+        }
+      }
+      .profile-header{
+        p{
+            font-size: 16px;
+        }
+      }
     }
     
 }
@@ -206,4 +216,13 @@
   }
 }
 
+@media screen and (max-width:400px){
+    .gallery-align{
+      .profile-header{
+        p{
+            font-size: 14px;
+        }
+      }
+  }
+}
    

@@ -60,6 +60,7 @@
                             padding: 10px;
                             border-radius: 5px;
                             transition: 0.2s all ease-in-out;
+                            z-index: 5;
                         }               
                         .camera-button:hover{
                             color: white;
@@ -67,18 +68,28 @@
                         }
                         .next-photo{
                             height: 100%;
-                            padding: 10px 20px;
-                            background-color: rgba(0, 0, 0, 0.027);
+                            width: 100%;
                             border: none;
                             color: white;
                             cursor: pointer;
                             transition: 0.3s all ease-in-out;
                             display: flex;
                             align-items: center;
-                            justify-content: center;
+                            padding: 0px 20px;
+                            justify-content: flex-end;
+                            .chevron{
+                                padding: 20px;
+                                display: flex;
+                                background-color: rgba(0, 0, 0, 0.027);
+                                align-items: center;
+                                justify-content: center;
+                                border-radius: 10px;
+                            }
                         }
                         .next-photo:hover{
-                            background-color: rgba(0, 0, 0, 0.411);
+                        }
+                        .previous{
+                            justify-content: flex-start;
                         }
                     }
                     .unordered-list{
