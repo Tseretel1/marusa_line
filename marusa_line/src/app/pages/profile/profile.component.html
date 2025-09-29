@@ -1,3 +1,25 @@
-<div class="center-logout">
-    <div (click)="logout()" class="log-out" [routerLink]="AppRoutes.home"><p>გამოსვლა</p> </div>
+<div class="gallery-align">
+
+    <div class="profile-align">
+        <div class="profile-container-align">
+            <div class="profile-container">
+                <img [src]="user.Picture" class="profile" alt="">
+            </div>
+            <p class="username">{{user.Name}}</p>
+        </div>
+       <div (click)="logout()" class="log-out">
+          <i class="fas fa-sign-out-alt"></i>
+          <p> გასვლა</p> 
+       </div>
+
+    </div>
+    <div class="profile-header">
+        <p (click)="changeProductSource(1)" [ngClass]="{'active':likesOrOrders ==1}">მოწონებული</p>
+        <p (click)="changeProductSource(2)" [ngClass]="{'active':likesOrOrders ==2}">ჩემი შეკვეთები</p>
+    </div>
+    <div class="photo-align">
+        <ng-container *ngFor="let p of Cards; let index = index;">
+            <app-photo-album [products]="p"[PhotoCongif]="PhotoConfig" class="album"  data-aos="fade-up"></app-photo-album>
+        </ng-container>
+    </div>
 </div>

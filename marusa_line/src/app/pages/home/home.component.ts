@@ -22,16 +22,21 @@ export class HomeComponent implements OnInit {
   
   postsFirst: Post[] = [];
   postsSecond: Post[] = [];
+  user:any = null;
+  userId:number = 0;
   constructor(private postService:PostService,private route: ActivatedRoute){
-    this.postService.getDiscountedPosts().subscribe(
+    const user = localStorage.getItem('user');
+    if(user){
+      this.user =JSON.parse(user);
+      this.userId = this.user.Id
+    }
+    this.postService.getDiscountedPosts(this.userId).subscribe(
       (resp)=>{
         this.postsFirst = resp.slice(0, 3); 
         this.postsSecond = resp.slice(3);
       }
     )
   }
-
-  user: any = null;
   ngOnInit(): void {
     window.scrollTo({
      top: 0,

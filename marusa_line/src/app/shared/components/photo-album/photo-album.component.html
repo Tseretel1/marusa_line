@@ -1,17 +1,14 @@
-<div class="photo-container" [routerLink]="AppRoutes.card_details+photos.id">
-    <div class="discount-price-mobile" *ngIf="PhotoCongif.priceVisible">
-          <b [ngClass]="{'discounted-price': photos.discountedPrice>0}">{{photos.price}}₾</b>
-          <b *ngIf="photos.discountedPrice>0">{{photos.discountedPrice}}₾</b>
-    </div>
+<div class="photo-container desktop">
     <div class="information-align">
-        <b class="title">
-            {{photos.title}}
+        <div class="navigate"  (click)="NavigateToDetails()"></div>
+        <b class="title" >
+            {{products.title}}
         </b>
         <div class="text-align">
             <div >
             <div class="discount-price" >
-                <b  [ngClass]="{'discounted-price': photos.discountedPrice>0}">{{photos.price}}₾</b>
-                <b *ngIf="photos.discountedPrice>0">{{photos.discountedPrice}}₾</b>
+                <b  [ngClass]="{'discounted-price': products.discountedPrice>0}">{{products.price}}₾</b>
+                <b *ngIf="products.discountedPrice>0">{{products.discountedPrice}}₾</b>
             </div>
         </div>
             <div class="learn-more-align">
@@ -22,5 +19,23 @@
             </div>
         </div>
     </div>
-    <img [src]="photos.photos[0].photoUrl" alt="" class="photo">
+       <div class="heart-align" (click)="likePost()">
+            <i class="fas fa-heart heart" [ngClass]="{'liked-post':postLiked}"></i>
+            {{LikeCount}}
+        </div>
+    <img [src]="products.photos[0].photoUrl" alt="" class="photo">
 </div>
+
+<div class="photo-container mobile">
+    <div class="heart-align" (click)="likePost()">
+        <i class="fas fa-heart heart" [ngClass]="{'liked-post':postLiked}"></i>
+        {{LikeCount}}
+    </div>
+    <div class="routerlink" (click)="NavigateToDetails()"></div>
+    <div class="discount-price-mobile" *ngIf="PhotoCongif.priceVisible">
+        <b [ngClass]="{'discounted-price': products.discountedPrice>0}">{{products.price}}₾</b>
+        <b *ngIf="products.discountedPrice>0">{{products.discountedPrice}}₾</b>
+    </div>
+    <img [src]="products.photos[0].photoUrl" alt="" class="photo">
+</div>
+

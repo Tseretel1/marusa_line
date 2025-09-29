@@ -5,7 +5,12 @@ import { finalize } from 'rxjs';
 
 export const loaderInterceptor: HttpInterceptorFn = (req, next) => {
   const loader = inject(LoaderService);
-  loader.show(); 
+
+  if (req.url.includes('Product/like-post')) {
+    return next(req);
+  }
+
+  loader.show();
   return next(req).pipe(
     finalize(() => loader.hide())
   );

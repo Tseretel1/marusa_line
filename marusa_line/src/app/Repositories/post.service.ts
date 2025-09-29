@@ -13,20 +13,26 @@ export class PostService {
     
   }
 
-  getPosts(productId:number): Observable<Post[]> {
-    return this.http.get<Post[]>(this.apiUrl+`post/get-posts?productId=${productId}`);
+  getPosts(productId:number, userId?:number): Observable<Post[]> {
+    return this.http.get<Post[]>(this.apiUrl+`Product/get-posts?productId=${productId}&userid=${userId}`);
   }
-  getPostWithId(id:number): Observable<any> {
-    return this.http.get<any>(this.apiUrl+`post/get-post-with-id?id=${id}`);
+  getUserLikedPosts(userId?:number): Observable<Post[]> {
+    return this.http.get<Post[]>(this.apiUrl+`Product/get-user-liked-posts?userid=${userId}`);
   }
-  getDiscountedPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.apiUrl+'post/get-most-discounted-posts');
+  getPostWithId(id:number,userid?:number): Observable<any> {
+    return this.http.get<any>(this.apiUrl+`Product/get-post-with-id?id=${id}&userid=${userid}`);
+  }
+  getDiscountedPosts(userId?:number): Observable<Post[]> {
+    return this.http.get<Post[]>(this.apiUrl+`Product/get-most-discounted-posts?userid=${userId}`);
   }
   getAllPhotos(): Observable<Photo[]> {
-    return this.http.get<Photo[]>(this.apiUrl+'post/get-all-photos');
+    return this.http.get<Photo[]>(this.apiUrl+'Product/get-all-photos');
   }
   getProductTypes(): Observable<ProductTypes[]> {
-    return this.http.get<ProductTypes[]>(this.apiUrl+'post/get-product-types');
+    return this.http.get<ProductTypes[]>(this.apiUrl+'Product/get-product-types');
+  }
+  likeProduct(userid:number,productId:number): Observable<any> {
+    return this.http.get<any>(this.apiUrl+`Product/like-post?userid=${userid}&productid=${productId}`);
   }
 }
 export interface Photo {
@@ -45,7 +51,8 @@ export interface Post {
   photoUrl?: string | null; 
   photoId?: number | null;  
   postId?: number;        
-  likeCount: number;        
+  likeCount: number;  
+  isLiked:boolean;      
   photos: Photo[];
 }
 export interface ProductTypes{

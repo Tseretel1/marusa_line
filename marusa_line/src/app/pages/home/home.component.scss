@@ -22,9 +22,9 @@
           margin: 5px;
           .discount-mark{
               position: absolute;
-              top: -20px;
+              top: -10px;
               left: -20px;
-              z-index: 3;
+              z-index: 10;
           }
       }
     }
@@ -45,7 +45,6 @@
     }
 }
 .gallery{
-    padding: 50px 0px;
     display: flex;
     flex-direction: column;
     width: 100%;

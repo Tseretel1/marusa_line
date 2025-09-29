@@ -35,10 +35,12 @@ export class HeaderComponent implements OnInit{
   }
 
   user:any=null;
+  userPhoto:string ='';
   getUser(){
     const user = localStorage.getItem('user');
     if(user){
       this.user = JSON.parse(user);
+      this.userPhoto = this.user.Picture;
     }
   }
   openAuthorization(){

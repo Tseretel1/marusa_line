@@ -18,10 +18,18 @@ export class CardDetailsComponent implements OnInit{
   posts:Post = {} as Post;
   photosArray:Photo[]= [];
   postsLoaded:boolean = false;
+
+  user:any = null;
+  userId:number = 0;
   constructor(private postService:PostService, private route :ActivatedRoute){
     const id = this.route.snapshot.paramMap.get('id');
     this.id = Number(id);
-    this.postService.getPostWithId(this.id).subscribe(
+    const user = localStorage.getItem('user');
+    if(user){
+      this.user =JSON.parse(user);
+      this.userId = this.user.Id
+    }
+    this.postService.getPostWithId(this.id,this.userId).subscribe(
       (resp)=>{
         this.posts = resp[0];
         this.posts.photos.forEach(item => {

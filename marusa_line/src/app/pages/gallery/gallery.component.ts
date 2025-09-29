@@ -43,18 +43,23 @@ export class GalleryComponent implements OnInit {
   scrollToStartMethod() {
     this.scrollToStart.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
     setTimeout(() => {
-    window.scrollBy({ top: -100, behavior: 'smooth' }); 
   }, 500);
   }
   activeFilterNum: number = 0;
 
   getAllPosts(productId: number) {
-    return this.postService.getPosts(productId);
+    const user = localStorage.getItem('user');
+    if(user){
+      this.user =JSON.parse(user);
+      this.userId = this.user.Id
+    }
+    return this.postService.getPosts(productId,this.userId);
   }
-
+  user:any = null;
+  userId:number = 0;
   getPostByFilter(num: number) {
     this.activeFilterNum = num;
-    this.getAllPosts(num).subscribe((resp) => {
+    this.getAllPosts(num,).subscribe((resp) => {
       this.Cards = resp;
       this.hideFilterModal();
       this.scrollToStartMethod();

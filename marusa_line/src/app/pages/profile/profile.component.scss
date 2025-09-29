@@ -1,11 +1,209 @@
-.center-logout{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .log-out{
-        color: white;
-        cursor: pointer;
-    }
+
+:host{
+  width: 100%;
 }
+.custom-swal-popup {
+  background: rgba(0, 0, 0, 0.459);  
+}
+
+.gallery-align{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    .profile-align{
+        width: 80%;
+        padding: 10px 0px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: space-between;
+        .log-out{
+           color: white;
+           display: flex;
+           gap: 5px;
+           cursor: pointer;
+           align-items: center;
+        }
+        .profile-container-align{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .profile-container{
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                .profile{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+            .username{
+                color: white;
+            }
+        }
+    }
+    .profile-header{
+        width: 80%;
+        display: flex;
+        padding: 10px 0px;
+        gap: 30px;
+        p{
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+            padding: 5px 0px;
+            border-bottom:2px solid transparent;
+        }
+        .active{
+            border-bottom:2px solid white;
+            animation: active 0.5s;
+        }
+        @keyframes active {
+            0%{
+               border-bottom:2px solid transparent;
+            }
+            100%{
+               border-bottom:2px solid white;
+            }
+        }
+    }
+    .photo-align{
+        width: 80%;
+        display: flex;
+        gap: 5px;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        .album{
+           height: 350px;
+           max-width: 600px;
+        }
+        .sort-cards{
+          animation: openSortCards 0.5s;
+        }
+        @keyframes openSortCards {
+          0%{
+            opacity: 0.5;
+            scale: 0.9;
+          }
+          50%{
+            opacity: 1;
+          }
+          100%{
+            scale: 1;
+          }
+        }
+    }
+    .filters-align{
+        display: flex;
+        gap: 10px;
+        overflow-x: scroll;
+        width: 80%;
+
+        .section-title-align{
+            display: flex;
+            width: 80%;
+            .section-title{
+                color: white;
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                text-wrap: nowrap;
+            }
+         }
+        .open-filter{
+          padding: 10px 20px;
+          border-radius: 5px;
+          border: none;
+          cursor: pointer;
+          color: white;
+          background-color: rgba(0, 0, 0, 0.541);
+        }
+}
+
+    }
+    .filters-align::-webkit-scrollbar{
+        display: none;
+    }
+
+@media screen and (max-width:1200px){
+    .gallery-align{
+       .photo-align{
+        grid-template-columns: repeat(3,1fr);
+         .album{
+           height: 250px;
+        }
+    }
+  }
+}
+@media screen and (max-width:800px){
+    .gallery-align{
+       .photo-align{
+        grid-template-columns: repeat(2,1fr);
+         .album{
+           height: 200px;
+        }
+    }
+  }
+}
+@media screen and (max-width:600px){
+    .gallery-align{
+       .photo-align{
+        width: 90%;
+         .album{
+           height: 200px;
+        }
+      }
+      .filters-align{
+        width: 90%;
+      }
+      .profile-header{
+        width: 90%;
+      }
+      .profile-align{
+          width: 90%;
+          padding: 0;
+          .profile-container-align
+          {
+                .profile-container{
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    overflow: hidden;
+                    .profile{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                .username{
+                    color: white;
+                }
+            }
+    }
+    }
+    
+}
+
+@media screen and (max-width:350px){
+    .gallery-align{
+      .photo-align{
+        grid-template-columns: repeat(1,1fr);
+        width: 90%;
+         .album{
+           height: 200px;
+        }
+      }
+  }
+}
+
+   
