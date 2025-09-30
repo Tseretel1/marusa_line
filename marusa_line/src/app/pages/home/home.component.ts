@@ -49,6 +49,8 @@ export class HomeComponent implements OnInit {
   }
 
   PhotoConfig:PhotoConfig={
+    likeVisible : true,
     priceVisible :true,
+    navigationAvailable : true,
   }
 }

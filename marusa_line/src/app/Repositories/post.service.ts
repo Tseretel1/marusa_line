@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
+import { OrderProduct } from '../pages/profile/profile.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,8 +16,11 @@ export class PostService {
   getPosts(productId:number, userId?:number): Observable<Post[]> {
     return this.http.get<Post[]>(this.apiUrl+`Product/get-posts?productId=${productId}&userid=${userId}`);
   }
-  getUserLikedPosts(userId?:number): Observable<Post[]> {
+  getUserLikedPosts(userId:number): Observable<Post[]> {
     return this.http.get<Post[]>(this.apiUrl+`Product/get-user-liked-posts?userid=${userId}`);
+  }
+  getUserOrders(userId:number): Observable<OrderProduct[]> {
+    return this.http.get<OrderProduct[]>(this.apiUrl+`Product/get-user-orders?userid=${userId}`);
   }
   getPostWithId(id:number,userid?:number): Observable<any> {
     return this.http.get<any>(this.apiUrl+`Product/get-post-with-id?id=${id}&userid=${userid}`);
@@ -31,8 +34,14 @@ export class PostService {
   getProductTypes(): Observable<ProductTypes[]> {
     return this.http.get<ProductTypes[]>(this.apiUrl+'Product/get-product-types');
   }
+  getOrderStatuses(): Observable<orderStatuses[]> {
+    return this.http.get<orderStatuses[]>(this.apiUrl+'Product/get-order-statuses');
+  }
   likeProduct(userid:number,productId:number): Observable<any> {
     return this.http.get<any>(this.apiUrl+`Product/like-post?userid=${userid}&productid=${productId}`);
+  }
+  insertOrder(userid:number,productId:number): Observable<any> {
+    return this.http.post<any>(this.apiUrl+`Product/insert-order?userId=${userid}&productId=${productId}`,{});
   }
 }
 export interface Photo {
@@ -58,4 +67,8 @@ export interface Post {
 export interface ProductTypes{
  id:number;
  productType:string;
+}
+export interface orderStatuses{
+ id:number;
+ statusName:string;
 }

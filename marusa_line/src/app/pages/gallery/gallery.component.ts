@@ -14,6 +14,8 @@ export class GalleryComponent implements OnInit {
   Cards: Post[] = [];
   PhotoConfig:PhotoConfig={
     priceVisible :true,
+    likeVisible : true,
+    navigationAvailable:true,
   }
 
   constructor(private postService:PostService){

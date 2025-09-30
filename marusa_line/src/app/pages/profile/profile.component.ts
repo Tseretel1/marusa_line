@@ -2,15 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from '../authorization/authorization.service';
 import { Router, RouterLink } from '@angular/router';
 import { AppRoutes } from '../../shared/AppRoutes/AppRoutes';
-import { Post, PostService } from '../../Repositories/post.service';
+import { orderStatuses, PostService } from '../../Repositories/post.service';
 import { PhotoAlbumComponent, PhotoConfig } from '../../shared/components/photo-album/photo-album.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import Swal from 'sweetalert2';
-import { transition } from '@angular/animations';
 
 @Component({
   selector: 'app-profile',
-  imports: [RouterLink,PhotoAlbumComponent,CommonModule],
+  imports: [RouterLink, PhotoAlbumComponent, CommonModule,DatePipe],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })
@@ -20,23 +19,26 @@ export class ProfileComponent implements OnInit{
     
   }
   PhotoConfig:PhotoConfig={
-  priceVisible :true,
+    likeVisible : true,
+    priceVisible :true,
+    navigationAvailable:true,
   }
-  Cards: Post[] = [];
+  LikedProducts: Post[] = [];
+  MyOrders: OrderProduct[] = [];
+
   ngOnInit(): void {
   window.scrollTo({
      top: 0,
      behavior: 'smooth' 
    });
-    this.getAllPosts().subscribe((resp) => {
-      this.Cards = resp;
-    });
+   this.changeProductSource(1);
+   this.getOrderStatuses();
   }
   
   user:any = null;
   userId:number = 0;
 
-  getAllPosts() {
+  getMyLikedPosts() {
     const user = localStorage.getItem('user');
     if(user){
       this.user =JSON.parse(user);
@@ -44,11 +46,49 @@ export class ProfileComponent implements OnInit{
     }
     return this.postService.getUserLikedPosts(this.userId);
   }
+  getMyOrderdProducts(){
+    const user = localStorage.getItem('user');
+    if(user){
+      this.user =JSON.parse(user);
+      this.userId = this.user.Id
+    }
+    return this.postService.getUserOrders(this.userId);
+  }
+  
+  orderStatuses:orderStatuses[]= [];
+  getOrderStatuses(){
+    this.postService.getOrderStatuses().subscribe(
+      (resp)=>{
+        this.orderStatuses = resp;
+        console.log(resp)
+      }
+    )
+  }
+
+  getStatusName(statusid:number){
+    const name  = this.orderStatuses.find((x)=> x.id == statusid);
+    return name?.statusName;
+  }
   
   likesOrOrders:number = 1;
-  
   changeProductSource(num:number){
     this.likesOrOrders = num;
+    if(num==1){
+      this.getMyOrderdProducts().subscribe((resp) => {
+        this.PhotoConfig.priceVisible= false;
+        this.PhotoConfig.likeVisible= false;
+        this.PhotoConfig.navigationAvailable= false;
+        this.MyOrders = resp;
+      });
+    }
+    else if(num==2){
+      this.getMyLikedPosts().subscribe((resp) => {
+        this.PhotoConfig.likeVisible= true;
+        this.PhotoConfig.priceVisible= true;
+        this.PhotoConfig.navigationAvailable= true;
+        this.LikedProducts = resp;
+      });
+    }
   }
   logout(){
     Swal.fire({
@@ -73,4 +113,47 @@ export class ProfileComponent implements OnInit{
       }
     });
   }
+}
+
+
+
+ interface Photo {
+  id?: number;  
+  photoId?: number;  
+  photoUrl?: string;
+  postId?: number;
+}
+
+ interface Post {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  discountedPrice: number;
+  photoUrl?: string | null; 
+  photoId?: number | null;  
+  postId?: number;        
+  likeCount: number;  
+  isLiked:boolean;      
+  photos: Photo[];
+}
+
+export interface OrderProduct {
+  orderId: number;       
+  createDate: string;     
+  statusId: number;
+  isPaid: boolean;
+
+  id: number;
+  productId: number;
+  title: string;
+  description: string;
+  price: number;
+  discountedPrice: number;
+  productTypeId: number;
+
+  likeCount: number;
+  isLiked: boolean;
+
+  photos: Photo[];
 }

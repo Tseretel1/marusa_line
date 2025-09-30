@@ -20,17 +20,22 @@
                 </div>
             </div>
             <div class="card-information">
+            
                 <div class="header-title" >
-                 <b class="title">{{posts.title}}</b>     
+                    <p class="title backdrop-card">{{posts.title}}</p>     
+                    <div class="price-tag-align" >
+                        <p class="discount-procent" *ngIf="this.posts.discountedPrice!=null&& this.posts.discountedPrice>0">-{{discountedPercentage}}%</p>
+                        <div class="price-align">
+                            <b class="bold-price" [ngClass]="{'red-price':posts.discountedPrice>0}" >{{posts.price}}₾</b>
+                            <b class="bold-price" *ngIf="posts.discountedPrice>0">{{posts.discountedPrice}}₾</b>
+                        </div>
+                    </div>
                 </div>
-                <div class="price-tag-align" >
-                    <b class="bold-price" [ngClass]="{'red-price':posts.discountedPrice>0}" >{{posts.price}}₾</b>
-                    <b class="bold-price" *ngIf="posts.discountedPrice>0">{{posts.discountedPrice}}₾</b>
+                <div class="desc-align">
+                    <p class="desc-title">აღწერა</p>
+                    <p class="desc">{{posts.description}}</p>
+                    <button class="order-button" (click)="insertOrder()">შეკვეთა</button>
                 </div>
-                <div class="description-align">
-                    <p class="description">{{posts.description}}</p>
-                </div>
-                <button class="order-button">შეკვეთა</button>
             </div>
         </div>
     </div>

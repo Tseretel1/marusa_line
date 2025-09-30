@@ -86,8 +86,6 @@
                                 border-radius: 10px;
                             }
                         }
-                        .next-photo:hover{
-                        }
                         .previous{
                             justify-content: flex-start;
                         }
@@ -151,50 +149,83 @@
                 display: flex;
                 flex-direction: column;
                 width: 100%;
-                align-items: center;
                 height: 100%;
                 backdrop-filter: blur(20px);
+                background: linear-gradient( rgba(0, 0, 0, 0.199),);
+                border-radius: 5px;
                 position: relative;
                 justify-content: space-between;
                 padding: 20px;
-                background: linear-gradient(transparent, rgba(0, 0, 0, 0.14));
                 .header-title{
                     color: white;
+                    justify-content: space-between;
                     display: flex;
-                    justify-content: center;
                     .discount-mark{
                         position: absolute;
                         top: -20px;
                         left: -20px;
                     }
                     .title{
-                        font-size: 25px;
+                        display: flex;
+                        align-items: center;
                     }
                 }
-                .description-align{
+                .backdrop-card{
+                    background-color: rgba(0, 0, 0, 0.342);
+                    padding: 5px 10px;
+                    border-radius: 10px;
+                }
+                .desc-align{
                     width: 100%;
                     display: flex;
                     justify-content: center;
-                    .description{
+                    flex-direction: column;
+                    .desc{
                         color: white;
+                        background-color: rgba(0, 0, 0, 0.342);
+                        padding: 10px;
+                        border-radius: 10px;
+                    }
+                    .desc-title{
+                        color: white;
+                        background-color: rgba(0, 0, 0, 0.342);
+                        width: 100px;
                         text-align: center;
-                        font-size: 20px;
+                        padding: 5px 0px 10px 0px;
+                        margin-left: 30px;
+                        border-radius: 5px 5px 0px 0px;
                     }
                 }
                 .price-tag-align{
-                    width: 100%;
                     display: flex;
                     justify-content: center;
-                    align-items: center;
-                    gap: 15px;
-                    .bold-price{
-                        color: white;
-                        font-size: 40px;
+                    flex-direction: column;
+                    .price-align{
+                        display: flex;
+                        gap: 10px;
+                        align-items: center;
+                        background-color: rgba(0, 0, 0, 0.342);
+                        padding:5px 10px;
+                        border-radius: 10px;
+                        .bold-price{
+                            color: white;
+                            font-size: 20px;
+                        }
+                        .red-price{
+                            color: red;  
+                            font-size: 16px;
+                            text-decoration: line-through; 
+                            font-style: italic;
+                        }
                     }
-                    .red-price{
-                        color: red;  
-                        text-decoration: line-through; 
-                        font-size: 30px; 
+                    .discount-procent{
+                        background-color: rgba(0, 0, 0, 0.342);
+                        padding:2px 2px;
+                        border-radius: 5px 5px 0px 0px;
+                        width: 50%;
+                        font-size: 12px;
+                        text-align: center;
+                        margin-left: 10px;
                     }
                 }
                 .order-button{
@@ -207,6 +238,7 @@
                     border: none;
                     outline: none;
                     transition: 0.3s;
+                    margin-top: 10px;
                 }
                 .order-button:hover{
                     background-color: rgb(13, 175, 13);

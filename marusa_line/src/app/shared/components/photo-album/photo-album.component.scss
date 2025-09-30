@@ -116,9 +116,10 @@
     position: absolute;
     top: 5px;
     right: 5px;
-    background-color: rgba(0, 0, 0, 0.61);
+    background-color: rgba(0, 0, 0, 0.726);
+    backdrop-filter: blur(10px);
     color: white;
-    padding: 2px 4px;
+    padding: 1px 5px;
     border-radius: 5px;
     font-size: 13px;
     z-index: 2;

@@ -1,5 +1,4 @@
 <div class="gallery-align">
-
     <div class="profile-align">
         <div class="profile-container-align">
             <div class="profile-container">
@@ -13,15 +12,49 @@
        </div>
     </div>
     <div class="profile-header">
-        <p (click)="changeProductSource(1)" [ngClass]="{'active':likesOrOrders ==1}">მოწონებული</p>
-        <p (click)="changeProductSource(2)" [ngClass]="{'active':likesOrOrders ==2}">ჩემი შეკვეთები</p>
+        <p (click)="changeProductSource(1)" [ngClass]="{'active':likesOrOrders ==1}">ჩემი შეკვეთები</p>
+        <p (click)="changeProductSource(2)" [ngClass]="{'active':likesOrOrders ==2}">მოწონებული</p>
     </div>
-    <div class="photo-align" *ngIf="Cards.length>0">
-        <ng-container *ngFor="let p of Cards; let index = index;" >
-            <app-photo-album [products]="p"[PhotoCongif]="PhotoConfig" class="album"  data-aos="fade-up"></app-photo-album>
-        </ng-container>
-    </div>
-    <div class="no-posts-todisplay" *ngIf="Cards.length<=0">
+    <ng-container *ngIf="likesOrOrders ==1">
+        <div class="photo-align orders-align" *ngIf="MyOrders.length>0">
+            <div *ngFor="let p of MyOrders; let index = index;">
+                <div class="order-container" [ngClass]="{'payed-container':p.isPaid}"data-aos="fade-in">
+                    <div class="order-details">
+                        <div class="detail payed" *ngIf="p.isPaid">
+                           <i class="fas fa-credit-card"></i>
+                            გადახდილი
+                        </div>
+                        <div class="detail">
+                            <i class="fas fa-calendar-check"></i>
+                            {{ p.createDate|date : 'dd/MM/YYYY   HH:mm'}}
+                        </div>
+                       
+                        <div class="detail">
+                            <p>ნომერი :</p>
+                            {{p.orderId}}
+                        </div>
+                        <div class="detail topay" *ngIf="!p.isPaid">
+                            <i class="fas fa-spinner"></i>
+                            გადასახდელი
+                        </div>
+                        <div class="detail">
+                          <i class="fas fa-chart-line"></i>
+                            {{getStatusName(p.statusId)}}
+                        </div>
+                    </div>
+                    <app-photo-album [products]="p"[PhotoCongif]="PhotoConfig" class="album"  ></app-photo-album>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="likesOrOrders ==2">
+        <div class="photo-align" *ngIf="LikedProducts.length>0">
+            <ng-container *ngFor="let p of LikedProducts; let index = index;" >
+                <app-photo-album [products]="p"[PhotoCongif]="PhotoConfig" class="album"  data-aos="fade-up"></app-photo-album>
+            </ng-container>
+        </div>
+    </ng-container>
+    <div class="no-posts-todisplay" *ngIf="LikedProducts.length<=0 && MyOrders.length<=0">
         <i class="far fa-camera"></i>
         <p>No products to dislpay!</p>
     </div>
