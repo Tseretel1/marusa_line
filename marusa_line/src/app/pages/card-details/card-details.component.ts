@@ -38,9 +38,9 @@ export class CardDetailsComponent implements OnInit{
           this.photosArray.push(item);
         });
         if(this.posts.discountedPrice!=null&& this.posts.discountedPrice>0){
-          this.postsLoaded = true;
           this.calculatediscountProcentage();
         }
+        this.postsLoaded = true;
       }
     );
   }

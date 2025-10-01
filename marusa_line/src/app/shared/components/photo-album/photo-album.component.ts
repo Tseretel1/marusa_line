@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import { Post, PostService } from '../../../Repositories/post.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { runPostSignalSetFn } from '@angular/core/primitives/signals';
+import { AuthorizationService } from '../../../pages/authorization/authorization.service';
 @Component({
   selector: 'app-photo-album',
   imports: [CommonModule, ],
@@ -12,7 +13,7 @@ import { runPostSignalSetFn } from '@angular/core/primitives/signals';
   styleUrl: './photo-album.component.scss'
 })
 export class PhotoAlbumComponent implements OnInit{
-  constructor(private router:Router,private productService:PostService){
+  constructor(private router:Router,private productService:PostService,private authService:AuthorizationService){
 
   }
   ngOnInit(): void {
@@ -47,6 +48,9 @@ export class PhotoAlbumComponent implements OnInit{
         this.postLiked= false;
         this.LikeCount--;
       }
+    }
+    else{
+      this.authService.show();
     }
   }
 

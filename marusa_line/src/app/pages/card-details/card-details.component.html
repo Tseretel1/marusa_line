@@ -1,4 +1,4 @@
-<div class="center-component">
+<div class="center-component" >
     <div class="component">
         <div class="header-grid">
             <div class="photo-align" >
@@ -19,8 +19,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-information">
-            
+            <div class="card-information" *ngIf="postsLoaded">
                 <div class="header-title" >
                     <p class="title backdrop-card">{{posts.title}}</p>     
                     <div class="price-tag-align" >

@@ -12,8 +12,6 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
-
-
     .filters-align{
         display: flex;
         gap: 10px;
@@ -292,6 +290,14 @@
                 background-color: rgba(0, 0, 0, 0.527);
                 display: flex;
                 gap: 5px;
+                p{
+                  display: flex;
+                  gap: 10px;
+                  color: white;
+                  b{
+                    color: white;
+                  }
+                }
                 b{
                   font-size: 18px;
                 }
@@ -305,12 +311,19 @@
               .detail-button{
                 font-size: 14px;
                 cursor: pointer;
+                transition: 0.2s all ease-in-out;
               }
               .payed{
                 background-color: green;
               }
               .topay{
                 background-color: rgba(255, 136, 0, 0.774);
+              }
+              .payed:hover{
+                background-color: rgb(2, 184, 2);
+              }
+              .topay:hover{
+                background-color: orangered;
               }
             }
           .order-container{
@@ -332,12 +345,16 @@
                 align-items: center;
                 gap: 10px;
                 border-radius: 10px;
+                max-width: 230px;
+                min-width: 130px;
                 padding: 5px 10px;
-                background-color: rgba(0, 0, 0, 0.527);
+                background-color: rgba(0, 0, 0, 0.418);
                 font-size: 14px;
                 justify-content: center;
                 text-align: center;
                 flex-direction: column;
+                overflow-x: scroll;
+                color: rgba(255, 255, 255, 0.856);
                 .fa-spinner{
                   animation: spinner 5.5s infinite;
                 }
@@ -353,6 +370,14 @@
                   }
                 }
               }
+              .detail::-webkit-scrollbar{
+                display: none;
+              }
+              .detail:hover{
+                color: white;
+                // background-color: rgba(0, 0, 0, 0.603);
+                cursor: pointer;
+              }
               
               .payed{
                 color: green;
@@ -361,9 +386,6 @@
                 color: orangered;
               }
             }
-          }
-          .payed-container{
-
           }
        }
     }
@@ -527,6 +549,15 @@
 }
 @media screen and (max-width:500px){
     .gallery-align{
+        .profile-align{
+          .profile-container-align
+          {
+            .profile-container{
+                width: 70px;
+                height: 70px;
+            }
+          }
+        }
       .orders-align{
         .order-container{
           .order-details{

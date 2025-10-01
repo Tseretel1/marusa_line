@@ -24,11 +24,10 @@
     .modal{
         width: 90%;
         max-width: 500px;
-        height: 500px;
         border-radius: 10px;
         backdrop-filter: blur(20px);
         z-index: 2;
-        padding: 20px;
+        padding: 70px 20px;
         display: flex;
         flex-direction: column;
         position: relative;
@@ -61,13 +60,13 @@
             width: 100%;
             gap: 20px;
             height: 100%;
-            padding-top: 15px;
             align-items: center;
             .header{
                 width: 100%;
                 display: flex;
                 justify-content: center;
                 color: white;
+                font-size: 20px;
             }
             .stage-oAuth{
                 height: 100%;
