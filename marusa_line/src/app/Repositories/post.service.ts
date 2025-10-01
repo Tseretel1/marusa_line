@@ -2,11 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { OrderProduct } from '../pages/profile/profile.component';
+import { AppUrl } from '../shared/Url/Appurl';
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  private apiUrl = 'https://localhost:7173/';
+  AppUrl= AppUrl;
+  private apiUrl = AppUrl.development;
   constructor(public http : HttpClient)
    
   {

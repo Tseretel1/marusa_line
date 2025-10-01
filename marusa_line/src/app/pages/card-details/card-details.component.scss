@@ -155,7 +155,7 @@
                 border-radius: 5px;
                 position: relative;
                 justify-content: space-between;
-                padding: 20px;
+                padding: 35px 10px;
                 .header-title{
                     color: white;
                     justify-content: space-between;
@@ -200,12 +200,15 @@
                     display: flex;
                     justify-content: center;
                     flex-direction: column;
+                    position: absolute;
+                    top: -10px;
+                    right: 5px;
                     .price-align{
                         display: flex;
                         gap: 10px;
                         align-items: center;
                         background-color: rgba(0, 0, 0, 0.342);
-                        padding:5px 10px;
+                        padding:2px 20px;
                         border-radius: 10px;
                         .bold-price{
                             color: white;
@@ -222,7 +225,7 @@
                         background-color: rgba(0, 0, 0, 0.342);
                         padding:2px 2px;
                         border-radius: 5px 5px 0px 0px;
-                        width: 50%;
+                        width: 50px;
                         font-size: 12px;
                         text-align: center;
                         margin-left: 10px;

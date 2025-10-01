@@ -12,6 +12,166 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
+
+
+    .filters-align{
+        display: flex;
+        gap: 10px;
+        overflow-x: scroll;
+        width: 80%;
+
+        .section-title-align{
+            display: flex;
+            width: 80%;
+            .section-title{
+                color: white;
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                text-wrap: nowrap;
+            }
+         }
+        .open-filter{
+          padding: 10px 20px;
+          border-radius: 5px;
+          border: none;
+          cursor: pointer;
+          color: white;
+          background-color: rgba(0, 0, 0, 0.541);
+        }
+        .modal-align{
+        position: fixed;
+        z-index: 20;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    .modal-background{
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .modal{
+        width: 90%;
+        max-width: 500px;
+        border-radius: 10px;
+        backdrop-filter: blur(40px);
+        z-index: 2;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.247);
+        animation: modalPopup 0.5s;
+        justify-content: center;
+        align-items: center;
+        .modal-header{
+            position: absolute;
+            top: 0px;
+            padding: 20px;
+            right: 0px;
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            .fa-times{
+                color: white;
+                scale: 1.5;
+            }
+            .fa-arrow-left{
+                color: white;
+                scale: 1.5;
+            }
+        }
+        .modal-body{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 20px;
+            height: 100%;
+            padding-top: 15px;
+            align-items: center;
+            .header{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                color: white;
+                text-shadow: 0px 0px 2px black;
+                font-weight: bold;
+            }
+            .stage-oAuth{
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                flex-wrap: wrap;
+                .filter-button{
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    background-color: rgba(0, 0, 0, 0.315);
+                    color: white;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 16px;
+                    text-wrap: nowrap;
+                    transition: 0.2s all ease-in-out;
+                    text-shadow: 0px 0px 2px black;
+                    flex:auto;
+                }
+                .filter-button:hover{
+                    background-color: rgba(0, 0, 0, 0.644);
+                }
+                .active-filter{
+                    background-color: rgba(0, 0, 0, 0.644);
+                }
+            }
+        }
+    }
+    .hide-modal{
+      animation: hideModal 0.55s;
+    }
+      @keyframes hideModal {
+        0%{
+          scale: 1;
+          box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.247);
+        }
+        30%{
+          scale:1.1
+        }
+        100%{
+          box-shadow:  0px 0px 10px rgba(0, 0, 0, 0);
+          scale: 0;
+        }
+    }
+    @keyframes modalPopup {
+        0%{
+            scale: 0.7;
+            box-shadow:  0px 0px 10px rgba(0, 0, 0, 0);
+        }
+        60%{
+            scale: 1.1;
+        }
+        100%{
+            box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.247);
+            scale: 1;
+        }
+    }
+}
+
+    }
+    .filters-align::-webkit-scrollbar{
+        display: none;
+    }
+
     .no-posts-todisplay{
         display: flex;
         width: 100%;
@@ -68,7 +228,6 @@
         padding: 10px 0px;
         gap: 30px;
         p{
-            font-size: 20px;
             color: white;
             cursor: pointer;
             padding: 5px 0px;
@@ -122,6 +281,7 @@
             background-color: rgba(0, 0, 0, 0.253);
             border-radius: 10px;
             gap: 10px;
+            backdrop-filter: blur(20px);
             .card-title-align{
               display: flex;
               justify-content: space-between;
@@ -270,18 +430,9 @@
         width: 90%;
       }
       .orders-align{
-        grid-template-columns: repeat(2,1fr);
         .order-card{
           .card-title-align{
-            flex-direction: column;
             gap: 5px;
-          }
-          .order-container{
-            .order-details{
-              .detail{
-                text-wrap: wrap;
-              }
-            }
           }
         }
         }
@@ -324,6 +475,8 @@
       }
   }
 }
+
+
 @media screen and (max-width:600px){
     .gallery-align{
        .photo-align{
@@ -361,6 +514,26 @@
        .orders-align{
           grid-template-columns: repeat(1,1fr);
         }
+    }
+    .gallery-align{
+      .orders-align{
+        .order-container{
+          .order-details{
+            width: 70%;
+          }
+        }
+      }
+    }
+}
+@media screen and (max-width:500px){
+    .gallery-align{
+      .orders-align{
+        .order-container{
+          .order-details{
+            width: 50%;
+          }
+        }
+      }
     }
 }
 @media screen and (max-width:400px){

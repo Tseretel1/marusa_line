@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from './authorization.service';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-
+import { AppUrl } from '../../shared/Url/Appurl';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AppRoutes } from '../../shared/AppRoutes/AppRoutes';
 @Component({
   selector: 'app-authorization',
   imports: [CommonModule,ReactiveFormsModule],
@@ -10,10 +12,9 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './authorization.component.scss'
 })
 export class AuthorizationComponent implements OnInit{
-
-
+  AppUrl = AppUrl ;
   loginForm!:FormGroup
-  constructor(private authService:AuthorizationService,private fb: FormBuilder){
+  constructor(private authService:AuthorizationService,private fb: FormBuilder,private Router:Router){
     this.loginForm = this.fb.group({
       name: ['', Validators.required],
       lastname: ['', Validators.required],
@@ -47,17 +48,36 @@ export class AuthorizationComponent implements OnInit{
   }
   loginWithGoogle() {
     window.open(
-      'https://localhost:7173/User/google',
+      `${AppUrl.development}User/google`,
       'googleLogin',
     );
     window.addEventListener('message', this.handleGoogleMessage.bind(this));
   }
   handleGoogleMessage(event: MessageEvent) {
-    if (event.origin !== 'https://localhost:7173') return;
+    if (event.origin !==`${AppUrl.devRedirection}`) return;
     const { token, user } = event.data;
     localStorage.setItem('user', JSON.stringify(user));
     localStorage.setItem('token', token);
     this.authService.userAuthorized();
     this.closeModal();
+    this.Router.navigate([AppRoutes.profile]);
+  }
+
+  loginWithFacebook() {
+  window.open(
+    `${AppUrl.development}User/facebook`,
+    'facebookLogin',
+  );
+    window.addEventListener('message', this.handleFacebookMessage.bind(this));
+  }
+
+  handleFacebookMessage(event: MessageEvent) {
+    if (event.origin !== `${AppUrl.devRedirection}`) return;
+    const { token, user } = event.data;
+    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('token', token);
+    this.authService.userAuthorized();
+    this.closeModal();
+    this.Router.navigate([AppRoutes.profile]);
   }
 }

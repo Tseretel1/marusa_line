@@ -67,6 +67,7 @@ export class ProfileComponent implements OnInit{
     return this.postService.getUserOrders(this.userId).subscribe(
       (resp)=>{
         this.MyOrders = resp;
+        console.log(this.MyOrders)
       }
     );
   }
@@ -76,7 +77,6 @@ export class ProfileComponent implements OnInit{
     this.postService.getOrderStatuses().subscribe(
       (resp)=>{
         this.orderStatuses = resp;
-        console.log(resp)
       }
     )
   }
@@ -119,6 +119,55 @@ export class ProfileComponent implements OnInit{
       }
     });
   }
+
+
+  activeFilterNum: number = 0;
+  filterModalVisible:boolean = false;
+  showFilterModal(){
+    this.filterModalVisible = true;
+  }
+
+  hideModalExecute:boolean = false;
+  hideFilterModal(){
+    this.hideModalExecute= true;
+    setTimeout(() => {
+      this.filterModalVisible = false;
+      this.hideModalExecute = false;
+    }, 500);
+  }
+
+  sortNum:number = 0;
+  sortByPriceHighToLow(): void {
+    this.MyOrders = [...this.MyOrders].sort((a, b) => b.price - a.price);
+    this.sortNum = 1;
+    this.hideFilterModal();
+  }
+  sortByPriceLowToHigh(): void {
+    this.MyOrders = [...this.MyOrders].sort((a, b) => a.price - b.price);
+    this.sortNum = 2;
+    this.hideFilterModal();
+  }
+ sortByIsPaied(paid: boolean) {
+  this.hideFilterModal();
+  this.MyOrders.sort((a, b) => {
+    if (paid) {
+      this.sortNum =3
+      console.log(this.sortNum)
+      return (b.isPaid === true ? 1 : 0) - (a.isPaid === true ? 1 : 0);
+    }
+    else {
+      this.sortNum =4
+      console.log(this.sortNum)
+      return (a.isPaid === true ? 1 : 0) - (b.isPaid === true ? 1 : 0);
+    }
+  });
+
+}
+
+  navigateTodetails(orderId:Number){
+    console.log(orderId);
+  }
+
 }
 
 

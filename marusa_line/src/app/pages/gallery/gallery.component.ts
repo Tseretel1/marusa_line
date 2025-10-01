@@ -48,7 +48,6 @@ export class GalleryComponent implements OnInit {
     setTimeout(() => {
   }, 500);
   }
-  activeFilterNum: number = 0;
 
   getAllPosts(productId: number) {
     const user = localStorage.getItem('user');
@@ -69,6 +68,7 @@ export class GalleryComponent implements OnInit {
     });
   }
 
+  activeFilterNum: number = 0;
 
   filterModalVisible:boolean = false;
   showFilterModal(){

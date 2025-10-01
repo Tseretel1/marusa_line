@@ -22,20 +22,65 @@
             <i class="fas fa-bookmark"></i>   <!-- solid bookmark -->
         </p>
     </div>
+
+      <div class="filters-align" *ngIf="likesOrOrders ==1">
+         <div class="section-title-align">
+            <b class="section-title">
+                <i class="fas fa-circle"></i> 
+                დაალაგე ფილტრით
+                <button class="open-filter" [ngClass]="{'active-filter': activeFilterNum == 0}" (click)="showFilterModal()"><i class="fas fa-sliders-h"></i> </button>
+            </b>
+        </div>
+        <div class="modal-align" *ngIf="filterModalVisible"> 
+            <div class="modal-background" (click)="hideFilterModal()">
+            </div>
+            <div class="modal" [ngClass]="{'hide-modal':hideModalExecute}">
+                <div class="modal-header" >
+                    <i></i>
+                    <i class="fas fa-times" (click)="hideFilterModal()"></i>
+                </div>
+                <div class="modal-body">
+                    <div class="header"> 
+                        <p>სტატუსის მიხედვით</p>
+                    </div>
+                    <div class="stage-oAuth" >
+                        <button class="filter-button" [ngClass]="{'active-filter': sortNum == 3}"(click)="sortByIsPaied(true)">გადახდილი</button>
+                        <button class="filter-button" [ngClass]="{'active-filter': sortNum == 4}"(click)="sortByIsPaied(false)">გადასახდელი</button>
+                    </div>
+                    <div class="header"> 
+                        <p>ფასის მიხედვით</p>
+                    </div>
+                    <div class="stage-oAuth" >
+                        <button class="filter-button" [ngClass]="{'active-filter': sortNum == 1}"(click)="sortByPriceHighToLow()">კლებადობით</button>
+                        <button class="filter-button" [ngClass]="{'active-filter': sortNum == 2}"(click)="sortByPriceLowToHigh()">ზრდადობით</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <ng-container *ngIf="likesOrOrders ==1">
         <div class="photo-align orders-align" *ngIf="MyOrders.length>0">
             <div *ngFor="let p of MyOrders; let index = index;">
                 <div class="order-card" [ngClass]="{'payed-container':p.isPaid}"data-aos="fade-in">
                         <div class="card-title-align">
+                          
                             <div class="detail" >
-                                {{p.title}}
+                                <p> 
+                                    შეკვეთის ნომერი 
+                                    <b>
+                                    {{p.orderId}}
+                                    </b>
+                                </p>
                             </div>
-                            <div class="detail detail-button" [ngClass]="{'payed':p.isPaid,'topay':!p.isPaid}">
+                            <div class="detail detail-button" [ngClass]="{'payed':p.isPaid,'topay':!p.isPaid}" (click)="navigateTodetails(p.orderId)">
                                 დეტალურად
                             </div>
                         </div>
                    <div class="order-container">
                        <div class="order-details">
+                           <div class="detail">
+                                  {{p.title}}
+                          </div>
                         <div class="detail " *ngIf="p.isPaid">
                            <i class="fas fa-credit-card payed"></i>
                             გადახდილი
@@ -44,17 +89,9 @@
                            <i class="fas fa-credit-card topay"></i>
                             გადასახდელი
                         </div>
-                        <div class="detail" >
-                            <p> 
-                                ნომერი 
-                                <b>
-                                  {{p.orderId}}
-                                </b>
-                            </p>
-                        </div>
                         <!-- <div class="detail">
                             <i class="fas fa-calendar"></i>
-                            {{ p.createDate|date : 'dd/MM/YYYY   HH:mm'}}
+                            {{ p.createDate | date : 'dd MMM yyyy HH:mm' }} 
                         </div> -->
                         <div class="detail">
                             <i class="fas fa-spinner topay" *ngIf="!p.isPaid"></i>
