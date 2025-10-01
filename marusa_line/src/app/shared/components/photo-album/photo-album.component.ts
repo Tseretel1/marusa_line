@@ -59,4 +59,5 @@ export interface PhotoConfig{
   priceVisible:boolean;
   likeVisible:boolean;
   navigationAvailable:boolean;
+  hoverVisible:boolean;
 }

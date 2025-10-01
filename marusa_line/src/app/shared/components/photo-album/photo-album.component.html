@@ -1,5 +1,5 @@
 <div class="photo-container desktop">
-    <div class="information-align">
+    <div class="information-align" *ngIf="PhotoCongif.hoverVisible" >
         <div class="navigate"  (click)="NavigateToDetails()" *ngIf="PhotoCongif.navigationAvailable"></div>
         <b class="title" >
             {{products.title}}

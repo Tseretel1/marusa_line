@@ -15,6 +15,7 @@ export class GalleryComponent implements OnInit {
   PhotoConfig:PhotoConfig={
     priceVisible :true,
     likeVisible : true,
+    hoverVisible : true,
     navigationAvailable:true,
   }
 

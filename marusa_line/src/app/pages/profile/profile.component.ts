@@ -16,12 +16,17 @@ import Swal from 'sweetalert2';
 export class ProfileComponent implements OnInit{
   AppRoutes=AppRoutes;
   constructor(private authService:AuthorizationService,private postService:PostService,private router:Router){
-    
+    const user = localStorage.getItem('user');
+    if(user){
+      this.user =JSON.parse(user);
+      this.userId = this.user.Id
+    }
   }
   PhotoConfig:PhotoConfig={
     likeVisible : true,
     priceVisible :true,
     navigationAvailable:true,
+    hoverVisible : true,
   }
   LikedProducts: Post[] = [];
   MyOrders: OrderProduct[] = [];
@@ -38,21 +43,32 @@ export class ProfileComponent implements OnInit{
   user:any = null;
   userId:number = 0;
 
+
   getMyLikedPosts() {
-    const user = localStorage.getItem('user');
-    if(user){
-      this.user =JSON.parse(user);
-      this.userId = this.user.Id
+    this.PhotoConfig.likeVisible= true;
+    this.PhotoConfig.priceVisible= true;
+    this.PhotoConfig.navigationAvailable= true;
+    this.PhotoConfig.hoverVisible = true;
+    if(this.LikedProducts.length>0){
+      return this.LikedProducts;
     }
-    return this.postService.getUserLikedPosts(this.userId);
+    return this.postService.getUserLikedPosts(this.userId).subscribe((resp) => {
+        this.LikedProducts = resp;
+      });
   }
   getMyOrderdProducts(){
-    const user = localStorage.getItem('user');
-    if(user){
-      this.user =JSON.parse(user);
-      this.userId = this.user.Id
+    this.PhotoConfig.priceVisible= false;
+    this.PhotoConfig.likeVisible= false;
+    this.PhotoConfig.navigationAvailable= false;
+    this.PhotoConfig.hoverVisible = false;
+    if(this.MyOrders.length>0){
+      return this.MyOrders;
     }
-    return this.postService.getUserOrders(this.userId);
+    return this.postService.getUserOrders(this.userId).subscribe(
+      (resp)=>{
+        this.MyOrders = resp;
+      }
+    );
   }
   
   orderStatuses:orderStatuses[]= [];
@@ -74,20 +90,10 @@ export class ProfileComponent implements OnInit{
   changeProductSource(num:number){
     this.likesOrOrders = num;
     if(num==1){
-      this.getMyOrderdProducts().subscribe((resp) => {
-        this.PhotoConfig.priceVisible= false;
-        this.PhotoConfig.likeVisible= false;
-        this.PhotoConfig.navigationAvailable= false;
-        this.MyOrders = resp;
-      });
+      this.getMyOrderdProducts();
     }
     else if(num==2){
-      this.getMyLikedPosts().subscribe((resp) => {
-        this.PhotoConfig.likeVisible= true;
-        this.PhotoConfig.priceVisible= true;
-        this.PhotoConfig.navigationAvailable= true;
-        this.LikedProducts = resp;
-      });
+      this.getMyLikedPosts();
     }
   }
   logout(){
