@@ -79,7 +79,7 @@
         <div class="photo-align" >
             <div class="photo-container"  data-aos="fade-in">
                 <div *ngFor="let p of photosArray; let i = index" >
-                    <img [src]="p.photoUrl" alt="" class="photo">
+                    <img [src]="p.photoUrl" *ngIf="i==0" alt="" class="photo">
                 </div>
             </div>
         </div>

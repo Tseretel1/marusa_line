@@ -142,6 +142,9 @@ export class OrderProductComponent {
         }
       )
     }
+    else{
+      this.mobileNumber = this.oldMobileNumber
+    }
   }
   insertLocation(){
     if(this.address!=''){
@@ -152,6 +155,9 @@ export class OrderProductComponent {
           }
         }
       )
+    }
+    else{
+      this.address = this.oldAddress
     }
   }
 
@@ -210,11 +216,12 @@ export class OrderProductComponent {
   acceptField(num:number){
     if(num==1){
       this.insertMobile();
+      this.editFieldNum =0;
     }
     else if(num ==2){
       this.insertLocation();
+      this.editFieldNum =0;
     }
-    this.editFieldNum =0;
   }
 }
  interface Photo {

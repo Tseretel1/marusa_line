@@ -22,6 +22,7 @@
             flex-direction: column;
             align-items: center;
             .header-grid{
+                width: 100%;
                 display: grid;
                 grid-template-columns: repeat(1,1fr);
                 .title{
