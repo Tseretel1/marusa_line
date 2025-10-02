@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Post, PostService } from '../../Repositories/post.service';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { elementAt } from 'rxjs';
 import { CommonModule, NgFor } from '@angular/common';
 import { DiscountMarkComponent } from "../../shared/components/discount-mark/discount-mark.component";
@@ -8,14 +8,19 @@ import * as  AOS from 'aos';
 import { Conditional } from '@angular/compiler';
 import { AuthorizationService } from '../authorization/authorization.service';
 import Swal from 'sweetalert2';
-import { AppRoutes } from '../../shared/AppRoutes/AppRoutes';
+import { FormsModule, ɵInternalFormsSharedModule } from "@angular/forms";
+
+
 @Component({
-  selector: 'app-card-details',
-  imports: [CommonModule],
-  templateUrl: './card-details.component.html',
-  styleUrl: './card-details.component.scss'
+  selector: 'app-order-product',
+  imports: [CommonModule, ɵInternalFormsSharedModule,FormsModule],
+  templateUrl: './order-product.component.html',
+  styleUrl: './order-product.component.scss'
 })
-export class CardDetailsComponent implements OnInit{
+export class OrderProductComponent {
+
+  
+
 
   productId:number = 0;
   posts:Post = {} as Post;
@@ -24,7 +29,7 @@ export class CardDetailsComponent implements OnInit{
 
   user:any = null;
   userId:number = 0;
-  constructor(private postService:PostService, private route :ActivatedRoute,private authServise:AuthorizationService,private Router:Router){
+  constructor(private postService:PostService, private route :ActivatedRoute,private authServise:AuthorizationService){
     const id = this.route.snapshot.paramMap.get('id');
     this.productId = Number(id);
     const user = localStorage.getItem('user');
@@ -54,12 +59,25 @@ export class CardDetailsComponent implements OnInit{
      top: 0,
      behavior: 'smooth' 
    });
-    // const loop = () => {
-    //   this.nextPhoto();
-    //   setTimeout(loop, 5000); 
-    // };
-    // loop(); 
+    const loop = () => {
+      this.nextPhoto();
+      setTimeout(loop, 5000); 
+    };
+    loop(); 
+    this.getUserDetails();
   }
+
+  mobileNumber:string = '595 10 72 35';
+  address:string = 'chikobavas 31';
+
+  oldMobileNumber:string = '';
+  oldAddress:string = '';
+
+  getUserDetails(){
+    this.oldAddress = this.address;
+    this.oldMobileNumber = this.mobileNumber;
+  }
+
   discountedPercentage:number = 0
   calculatediscountProcentage(){
     this.discountedPercentage = ((this.posts.price - this.posts.discountedPrice) / this.posts.price) * 100;
@@ -123,8 +141,40 @@ export class CardDetailsComponent implements OnInit{
 
   insertOrder(){
     if(this.isUserLogged()){
-      this.Router.navigate([AppRoutes.order_product+this.productId]);
+      // Swal.fire({
+      //     text: 'შეკვეთა მიღებულია!',
+      //     showCancelButton: true,
+      //     cancelButtonText:'',
+      //     background:'rgba(0, 0, 0, 0.77)',
+      //     color: '#00ff4cff',  
+      //     showConfirmButton:false,
+      // })
+      // this.postService.insertOrder(this.userId,this.productId).subscribe(
+      //   (resp)=>{
+      //   }
+      // )
     }
+  }
+
+  nextStepNum:number = 1;
+  nextStep(num:number){
+    this.nextStepNum=num;
+  }
+
+  editFieldNum:number = 0;
+  editField(num:number){
+    this.editFieldNum = num;
+  }
+  closeField(num:number){
+    this.editFieldNum = 0;
+    if(num==1){
+      this.mobileNumber = this.oldMobileNumber;
+      return;
+    }
+    this.address = this.oldAddress;
+  }
+  acceptField(){
+    this.editFieldNum =0;
   }
 }
  interface Photo {

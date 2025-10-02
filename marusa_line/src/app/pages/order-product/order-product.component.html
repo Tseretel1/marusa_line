@@ -1,0 +1,67 @@
+<div class="center-component" >
+    <div class="component">
+        <div class="header-grid">
+            <div class="photo-align" >
+                <div class="photo-container"  data-aos="fade-in">
+                    <div *ngFor="let p of photosArray; let i = index" >
+                        <img [src]="p.photoUrl" alt="" class="photo" *ngIf="i==photoVisibleNum" [ngClass]="{'pop-up':i==photoVisibleNum}">
+                    </div>
+                </div>
+            </div>
+            <div class="card-information" *ngIf="postsLoaded">
+                    <!-- <div class="price-tag-align" >
+                        <p class="discount-procent" *ngIf="this.posts.discountedPrice!=null&& this.posts.discountedPrice>0">-{{discountedPercentage}}%</p>
+                        <div class="price-align">
+                            <b class="bold-price" [ngClass]="{'red-price':posts.discountedPrice>0}" >{{posts.price}}₾</b>
+                            <b class="bold-price" *ngIf="posts.discountedPrice>0">{{posts.discountedPrice}}₾</b>
+                        </div>
+                    </div> -->
+                    <div class="">1</div>
+                    <div class="user-information">
+                        <div class="flex-columns">
+                            <div class="form-group">
+                                <label for="">მომხმარებელი <i class="fas fa-check"></i></label>
+                                <input class="form-control" type="text" [value]="user.Name" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="">იმეილი <i class="fas fa-check"></i></label>
+                                <input class="form-control" type="text" [value]="user.Email" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                             <label for="">
+                                მობილურის ნომერი 
+                                <i class="fas fa-check" *ngIf="mobileNumber!=''"></i>
+                                <i class="fas fa-close" *ngIf="mobileNumber==''"></i>
+                            </label>
+                            <div class="editable-fields">
+                                <input class="form-control" type="text" [disabled]="editFieldNum!=1" [(ngModel)]="mobileNumber">
+                                <button class="edit" (click)="editField(1)" *ngIf="editFieldNum!=1"><i class="fas fa-edit"></i></button>
+                                <button class="edit close" (click)="closeField(1)" *ngIf="editFieldNum==1"><i class="fas fa-close"></i></button>
+                                <button class="edit confirm" (click)="acceptField()" *ngIf="editFieldNum==1"><i class="fas fa-check"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">
+                                მისამართი 
+                                <i class="fas fa-check" *ngIf="address!=''"></i>
+                                <i class="fas fa-close" *ngIf="address==''"></i>
+                            </label>
+                            <div class="editable-fields">
+                                <input class="form-control" type="text" [disabled]="editFieldNum!=2" [(ngModel)]="address">
+                                <button class="edit" (click)="editField(2)" *ngIf="editFieldNum!=2"><i class="fas fa-edit"></i></button>
+                                <button class="edit close" (click)="closeField(2)" *ngIf="editFieldNum==2"><i class="fas fa-close"></i></button>
+                                <button class="edit confirm" (click)="acceptField()" *ngIf="editFieldNum==2"><i class="fas fa-check"></i></button>
+                            </div>
+                            <button class="order-button next-button" (click)="nextStep(2)" *ngIf="nextStepNum==1">შემდეგი</button>
+                        </div>
+                    </div>
+                    <div class="user-information" *ngIf="nextStepNum==2">
+                        <div class></div> 
+                        <button class="order-button next-button" (click)="nextStep(2)">შემდეგი</button>
+                    </div>
+                <button class="order-button" (click)="insertOrder()" *ngIf="nextStepNum==3">შეკვეთის დასრულება</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,285 @@
+.center-component{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .component{
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 600px;
+        .header-grid{
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+            backdrop-filter: blur(20px);
+            padding:20px;
+            background: linear-gradient( rgba(0, 0, 0, 0.199),);
+            border-radius: 10px;
+            .title{
+                display: flex;
+                align-items: center;
+                width: 100%;
+                justify-content: center;
+                color: white;
+                padding: 5px;
+            }
+           .photo-align{
+                display: flex;
+                flex-wrap: wrap;
+                gap: 5px;
+                justify-content: flex-start;
+                width: 100%;
+                .photo-container{
+                    border-radius: 5px;
+                    width: 100%;
+                    height: 300px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+                    position: relative;
+                    .photo{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                    .pop-up{
+                        animation: 0.3s animPopUp;
+                    }
+                    @keyframes animPopUp {
+                        0%{
+                            scale: 0.9;
+                        }
+                        100%{
+                            scale: 1;
+                        }
+                    }
+                }
+            }
+            .photo-align-one{
+                display: grid;
+                grid-template-columns: repeat(1,1fr);
+                width: 100%;
+                gap: 2px;
+                .photo-container{
+                    width: 100%;
+                    height: 350px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+                    .photo{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        transition: 0.3s all ease-in-out;
+                        cursor: pointer;
+                    }
+                }
+                 .photo-container:hover .photo{
+                    scale: 1.1;
+                }
+            }
+
+            .card-information{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                height: 100%;
+                border-radius: 5px;
+                position: relative;
+                justify-content: space-between;
+                padding: 20px 0px;
+                gap: 10px;
+                .price-tag-align{
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    .price-align{
+                        display: flex;
+                        gap: 10px;
+                        align-items: center;
+                        background-color: rgba(0, 0, 0, 0.342);
+                        padding:2px 20px;
+                        border-radius: 10px;
+                        .bold-price{
+                            color: white;
+                            font-size: 20px;
+                        }
+                        .red-price{
+                            color: red;  
+                            font-size: 16px;
+                            text-decoration: line-through; 
+                            font-style: italic;
+                        }
+                    }
+                    .discount-procent{
+                        background-color: rgba(0, 0, 0, 0.342);
+                        padding:2px 2px;
+                        border-radius: 5px 5px 0px 0px;
+                        width: 50px;
+                        font-size: 12px;
+                        text-align: center;
+                        margin-left: 10px;
+                        color: white;
+                    }
+                }
+                .user-information{
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 25px;
+                    border-radius: 10px;
+                    padding: 10px;
+                    box-shadow: 0px 0px 10px black;
+                    .flex-columns{
+                        width: 100%;
+                        display: flex;
+                        gap: 15px;
+                    }
+                    .form-group{
+                        display: flex;
+                        gap: 5px;
+                        flex-direction: column;
+                        width: 100%;
+                        label{
+                            color: white;
+                            .fa-check{
+                                color: green;
+                            }
+                            .fa-close{
+                                color: red;
+                            }
+                        }
+                        .form-control{
+                            color: white;
+                            background-color: rgba(0, 0, 0, 0.39);
+                            padding: 10px;
+                            border-radius: 10px;
+                            width: 100%;
+                            border: none;
+                        }
+                        .editable-fields{
+                            width: 100%;
+                            display: flex;
+                            gap: 10px;
+                            .edit{
+                                background-color: white;
+                                border: none;
+                                border-radius: 10px;
+                                padding:10px 20px;
+                                cursor: pointer;
+                                animation:saveButtons 0.5s
+                            }
+                            .close{
+                                background-color: red;
+                                color: white;
+                            }
+                            .confirm{
+                                background-color: green;
+                                color: white;
+                            }
+                            @keyframes saveButtons {
+                                0%{
+                                    opacity: 0;
+                                    scale: 0.7;
+                                }
+                                50%{
+                                    opacity: 1;
+                                    scale: 1.05;
+                                }
+                                100%{
+                                    scale: 1;
+                                }
+
+                            }
+                        }
+                    }
+                }
+                .order-button{
+                    width: 100%;
+                    padding: 5px;
+                    border-radius: 10px;
+                    background-color: green;
+                    cursor: pointer;
+                    color: white;
+                    border: none;
+                    outline: none;
+                    transition: 0.3s;
+                    margin-top: 10px;
+                }
+                .order-button:hover{
+                    background-color: rgb(13, 175, 13);
+                }
+                // .next-button{
+                //     background-color: transparent;
+                // }
+                // .next-button:hover{
+                //     background-color: rgba(0, 0, 0, 0.39);   
+                // }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width:1000px) {
+    .center-component{
+        .component{
+            .header-grid{
+                grid-template-columns: repeat(1,1fr);
+                .card-information{
+                    gap: 30px;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:700px) {
+    .center-component{
+        .component{
+            .header-grid{
+                .photo-align{
+                    .photo-container{
+                        height: 200px;
+                    }
+                }
+                .card-information{
+                    .header-title{
+                        .discount-mark{
+                            left: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:700px) {
+    .center-component{
+        .component{
+            width: 90%;
+        }
+    }
+}
+@media screen and (max-width:400px) {
+    .center-component{
+        .component{
+            .header-grid{
+                gap: 50px;
+                .photo-align{
+                    .photo-container{
+                        height: 200px;
+                    }
+                }
+                .card-information{
+                    .header-title{
+                        .discount-mark{
+                            left: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
