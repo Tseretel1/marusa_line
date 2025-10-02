@@ -59,23 +59,32 @@ export class OrderProductComponent {
      top: 0,
      behavior: 'smooth' 
    });
-    const loop = () => {
-      this.nextPhoto();
-      setTimeout(loop, 5000); 
-    };
-    loop(); 
+    // const loop = () => {
+    //   this.nextPhoto();
+    //   setTimeout(loop, 5000); 
+    // };
+    // loop(); 
     this.getUserDetails();
   }
 
-  mobileNumber:string = '595 10 72 35';
-  address:string = 'chikobavas 31';
+  mobileNumber:string = '';
+  address:string = '';
 
   oldMobileNumber:string = '';
   oldAddress:string = '';
 
   getUserDetails(){
-    this.oldAddress = this.address;
-    this.oldMobileNumber = this.mobileNumber;
+    this.postService.getuserOptionalFields(this.userId).subscribe(
+      (resp)=>{
+        this.address = resp.location;
+        this.mobileNumber = resp.phoneNumber;
+        this.oldAddress = this.address;
+        this.oldMobileNumber = this.mobileNumber;
+        if(this.validateFields()){
+           this.nextStep(2);
+        }
+      }
+    )
   }
 
   discountedPercentage:number = 0
@@ -84,50 +93,12 @@ export class OrderProductComponent {
     this.discountedPercentage = Math.round(this.discountedPercentage);
     console.log(this.posts)
   }
-
-  photoVisibleNum:number = 0;
-  nextPhoto(){
-      if(this.photosArray.length==this.photoVisibleNum+1){
-        this.photoVisibleNum = 0;
-        return;
-      }
-      this.photoVisibleNum ++;
-      return;
-  }
-  previousPhoto(){
-    if(this.photoVisibleNum ==0){
-      this.photoVisibleNum = this.photosArray.length-1;
-      return;
-    }
-    this.photoVisibleNum --;
-    return;
-  }
-
-
-
-  getOnTheClickedPhoto(num:number){
-    this.photoVisibleNum = num;
-  }
-
   bigPhotoVisible = false;
   showBigPhoto(){
     this.bigPhotoVisible = true;
   }
   hideBigPhoto(){
     this.bigPhotoVisible = false;
-  }
-
-
-  @HostListener('window:keydown', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.key === 'ArrowLeft') {
-      this.previousPhoto();
-    } else if (event.key === 'ArrowRight') {
-      this.nextPhoto();
-    }
-    else if (event.key === 'Escape') {
-      this.hideBigPhoto();
-    }
   }
 
   isUserLogged(){
@@ -161,6 +132,69 @@ export class OrderProductComponent {
     this.nextStepNum=num;
   }
 
+  insertMobile(){
+    if(this.mobileNumber!=''){
+      this.postService.insertPhoneNumber(this.userId, this.mobileNumber).subscribe(
+        (resp)=>{
+          if(resp==1){
+            this.oldMobileNumber = this.mobileNumber;
+          }
+        }
+      )
+    }
+  }
+  insertLocation(){
+    if(this.address!=''){
+      this.postService.insertLocation(this.userId, this.address).subscribe(
+        (resp)=>{
+          if(resp==1){
+            this.oldAddress= this.address;
+          }
+        }
+      )
+    }
+  }
+
+
+  mobileInvalid:boolean = false;
+  addressInvalid:boolean = false;
+  validateFields():boolean{
+    if(this.mobileNumber==''){
+      this.mobileInvalid = true;
+      this.editFieldNum =1;
+      setTimeout(() => {
+        this.mobileInvalid = false;
+      }, 3000);
+      return false;
+    }
+    if(this.address==''){
+      this.addressInvalid = true;
+      this.editFieldNum =2;
+      setTimeout(() => {
+        this.addressInvalid = false;
+      }, 3000);
+      return false;
+    }
+    this.addressInvalid = false;
+    this.mobileInvalid = false;
+    return true;
+
+  }
+  stepTwo(){
+    if(this.validateFields()){
+      this.nextStep(2);
+    }
+  }
+
+  rulesChecked:boolean = false;
+  finishOrder(){
+    if(this.rulesChecked){
+    }
+  }
+  stepThree(){
+    this.nextStep(3);
+  }
+
   editFieldNum:number = 0;
   editField(num:number){
     this.editFieldNum = num;
@@ -173,7 +207,13 @@ export class OrderProductComponent {
     }
     this.address = this.oldAddress;
   }
-  acceptField(){
+  acceptField(num:number){
+    if(num==1){
+      this.insertMobile();
+    }
+    else if(num ==2){
+      this.insertLocation();
+    }
     this.editFieldNum =0;
   }
 }

@@ -45,6 +45,15 @@ export class PostService {
   insertOrder(userid:number,productId:number): Observable<any> {
     return this.http.post<any>(this.apiUrl+`Product/insert-order?userId=${userid}&productId=${productId}`,{});
   }
+  insertLocation(userid:number,location:string): Observable<any> {
+    return this.http.post<any>(this.apiUrl+`Product/insert-location?userId=${userid}&location=${location}`,{});
+  }
+  insertPhoneNumber(userid:number,location:string): Observable<any> {
+    return this.http.post<any>(this.apiUrl+`Product/insert-phone?userId=${userid}&phone=${location}`,{});
+  }
+  getuserOptionalFields(userId:number): Observable<UserOptionalFields> {
+    return this.http.get<UserOptionalFields>(this.apiUrl+`Product/get-users-optional?id=${userId}`);
+  }
 }
 export interface Photo {
   id?: number;  
@@ -73,4 +82,10 @@ export interface ProductTypes{
 export interface orderStatuses{
  id:number;
  statusName:string;
+}
+
+export interface UserOptionalFields{
+  id:number;
+  location:string;
+  phoneNumber:string;
 }

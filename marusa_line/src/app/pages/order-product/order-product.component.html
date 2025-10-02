@@ -1,22 +1,8 @@
 <div class="center-component" >
-    <div class="component">
-        <div class="header-grid">
-            <div class="photo-align" >
-                <div class="photo-container"  data-aos="fade-in">
-                    <div *ngFor="let p of photosArray; let i = index" >
-                        <img [src]="p.photoUrl" alt="" class="photo" *ngIf="i==photoVisibleNum" [ngClass]="{'pop-up':i==photoVisibleNum}">
-                    </div>
-                </div>
-            </div>
+    <div class="body-align">
+        <div class="component">
+           <div class="header-grid">
             <div class="card-information" *ngIf="postsLoaded">
-                    <!-- <div class="price-tag-align" >
-                        <p class="discount-procent" *ngIf="this.posts.discountedPrice!=null&& this.posts.discountedPrice>0">-{{discountedPercentage}}%</p>
-                        <div class="price-align">
-                            <b class="bold-price" [ngClass]="{'red-price':posts.discountedPrice>0}" >{{posts.price}}₾</b>
-                            <b class="bold-price" *ngIf="posts.discountedPrice>0">{{posts.discountedPrice}}₾</b>
-                        </div>
-                    </div> -->
-                    <div class="">1</div>
                     <div class="user-information">
                         <div class="flex-columns">
                             <div class="form-group">
@@ -35,10 +21,10 @@
                                 <i class="fas fa-close" *ngIf="mobileNumber==''"></i>
                             </label>
                             <div class="editable-fields">
-                                <input class="form-control" type="text" [disabled]="editFieldNum!=1" [(ngModel)]="mobileNumber">
+                                <input class="form-control" type="text" [disabled]="editFieldNum!=1" [(ngModel)]="mobileNumber" [ngClass]="{'invalid-inputs': mobileInvalid}">
                                 <button class="edit" (click)="editField(1)" *ngIf="editFieldNum!=1"><i class="fas fa-edit"></i></button>
                                 <button class="edit close" (click)="closeField(1)" *ngIf="editFieldNum==1"><i class="fas fa-close"></i></button>
-                                <button class="edit confirm" (click)="acceptField()" *ngIf="editFieldNum==1"><i class="fas fa-check"></i></button>
+                                <button class="edit confirm" (click)="acceptField(1)" *ngIf="editFieldNum==1"><i class="fas fa-check"></i></button>
                             </div>
                         </div>
                         <div class="form-group">
@@ -48,20 +34,58 @@
                                 <i class="fas fa-close" *ngIf="address==''"></i>
                             </label>
                             <div class="editable-fields">
-                                <input class="form-control" type="text" [disabled]="editFieldNum!=2" [(ngModel)]="address">
+                                <input class="form-control" type="text" [disabled]="editFieldNum!=2" [(ngModel)]="address" [ngClass]="{'invalid-inputs': addressInvalid}">
                                 <button class="edit" (click)="editField(2)" *ngIf="editFieldNum!=2"><i class="fas fa-edit"></i></button>
                                 <button class="edit close" (click)="closeField(2)" *ngIf="editFieldNum==2"><i class="fas fa-close"></i></button>
-                                <button class="edit confirm" (click)="acceptField()" *ngIf="editFieldNum==2"><i class="fas fa-check"></i></button>
+                                <button class="edit confirm" (click)="acceptField(2)" *ngIf="editFieldNum==2"><i class="fas fa-check"></i></button>
                             </div>
-                            <button class="order-button next-button" (click)="nextStep(2)" *ngIf="nextStepNum==1">შემდეგი</button>
+                            <button class="order-button next-button" (click)="stepTwo()" *ngIf="nextStepNum==1">შემდეგი</button>
                         </div>
                     </div>
-                    <div class="user-information" *ngIf="nextStepNum==2">
-                        <div class></div> 
-                        <button class="order-button next-button" (click)="nextStep(2)">შემდეგი</button>
+                    <div class="user-information" *ngIf="nextStepNum>=2">
+                        <div class="price-tag-align" >
+                            <p class="discount-procent" *ngIf="this.posts.discountedPrice!=null&& this.posts.discountedPrice>0">-{{discountedPercentage}}%</p>
+                            <div class="price-align">
+                                <b class="bold-price" [ngClass]="{'red-price':posts.discountedPrice>0}" >{{posts.price}}₾</b>
+                                <b class="bold-price" *ngIf="posts.discountedPrice>0">{{posts.discountedPrice}}₾</b>
+                            </div>
+                        </div>
+                        <button class="order-button next-button" (click)="stepThree()" *ngIf="nextStepNum==2">შემდეგი</button>
                     </div>
-                <button class="order-button" (click)="insertOrder()" *ngIf="nextStepNum==3">შეკვეთის დასრულება</button>
-            </div>
+                    <div class="user-information" *ngIf="nextStepNum>=3">
+                        <div class="rules-align">
+                            <div class="title"><b>თქვენ უნდა იცოდეთ<i class="fas fa-file-alt"></i></b></div>
+                            <ul>
+                                <li>გთხოვთ გაითვალისწინოთ რომ, თითოეული შეძენილი ნივთი არის ხელნაკეთი, 
+                                შესაბამისად 100%-ით იდენტობა ფოტოზე ასახულ ნივთთან შეუძლებელია.
+                                 </li>
+                                 <li>
+                                     მათი დამზადება დროსთანაა დაკავშირებული, საშუალოდ შეძენილი 
+                                     პროდუქტი 2 კვირიდან 1 თვემდე ვადაში ბარდება მომხმარებელს. 
+                                 </li>
+                            </ul>
+                            <!-- <div class="checkbox-align" >
+                                <input type="checkbox" class="checkbox" [(ngModel)]="rulesChecked" id="check">
+                                <label for="check" class="checkbox" >ვეთანხმები</label>
+                            </div> -->
+                        </div> 
+                        <button class="order-button next-button" (click)="stepThree()" [disabled]="!rulesChecked">შეკვეთის დასრულება</button>
+                    </div>
+             </div>
         </div>
     </div>
+
+    <div class="component2">
+        <div class="photo-align" >
+            <div class="photo-container"  data-aos="fade-in">
+                <div *ngFor="let p of photosArray; let i = index" >
+                    <img [src]="p.photoUrl" alt="" class="photo">
+                </div>
+            </div>
+        </div>
+        <div class="user-information">
+        </div>
+    </div>
+    </div>
 </div>
+
