@@ -68,7 +68,12 @@ export class CardDetailsComponent implements OnInit{
   }
 
   photoVisibleNum:number = 0;
+  photoDissapear:boolean =false;
   nextPhoto(){
+      this.photoDissapear = true;
+      setTimeout(() => {
+        this.photoDissapear = false;
+      }, 500);
       if(this.photosArray.length==this.photoVisibleNum+1){
         this.photoVisibleNum = 0;
         return;
@@ -77,6 +82,10 @@ export class CardDetailsComponent implements OnInit{
       return;
   }
   previousPhoto(){
+    this.photoDissapear = true;
+      setTimeout(() => {
+        this.photoDissapear = false;
+      },500);
     if(this.photoVisibleNum ==0){
       this.photoVisibleNum = this.photosArray.length-1;
       return;
@@ -88,6 +97,10 @@ export class CardDetailsComponent implements OnInit{
 
 
   getOnTheClickedPhoto(num:number){
+    this.photoDissapear = true;
+      setTimeout(() => {
+        this.photoDissapear = false;
+    }, 500);
     this.photoVisibleNum = num;
   }
 

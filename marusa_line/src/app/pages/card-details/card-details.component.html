@@ -1,7 +1,27 @@
+<div class="background-photo-container" >
+    <div *ngFor="let p of photosArray; let i = index" >
+        <img [src]="p.photoUrl" alt="" class="photo" *ngIf="i==photoVisibleNum" [ngClass]="{'backfade':!photoDissapear,'backfadereverse':photoDissapear}">
+    </div>
+</div>
+<div class="background-photo-blur"></div>
+
+
 <div class="center-component" >
     <div class="component">
         <div class="header-grid">
+            <div class="card-information" *ngIf="postsLoaded" >
+                <div class="header-title" style="font-size: 20px;">
+                    <p class="title" >{{posts.title}}</p>     
+                    <div class="price-tag-align" >
+                        <div class="price-align">
+                            <b class="bold-price" [ngClass]="{'red-price':posts.discountedPrice>0}" >{{posts.price}}₾</b>
+                            <b class="bold-price" *ngIf="posts.discountedPrice>0">{{posts.discountedPrice}}₾</b>
+                        </div>
+                    </div>
+                </div> 
+            </div>
             <div class="photo-align" >
+                <p class="discount-procent" *ngIf="this.posts.discountedPrice!=null&& this.posts.discountedPrice>0">-{{discountedPercentage}}%</p>
                 <div class="photo-container"  data-aos="fade-in">
                     <div *ngFor="let p of photosArray; let i = index" >
                         <img [src]="p.photoUrl" alt="" class="photo" *ngIf="i==photoVisibleNum" [ngClass]="{'pop-up':i==photoVisibleNum}">
@@ -19,19 +39,10 @@
                     </div>
                 </div>
             </div>
+
             <div class="card-information" *ngIf="postsLoaded">
-                <div class="header-title" >
-                    <p class="title backdrop-card">{{posts.title}}</p>     
-                    <div class="price-tag-align" >
-                        <p class="discount-procent" *ngIf="this.posts.discountedPrice!=null&& this.posts.discountedPrice>0">-{{discountedPercentage}}%</p>
-                        <div class="price-align">
-                            <b class="bold-price" [ngClass]="{'red-price':posts.discountedPrice>0}" >{{posts.price}}₾</b>
-                            <b class="bold-price" *ngIf="posts.discountedPrice>0">{{posts.discountedPrice}}₾</b>
-                        </div>
-                    </div>
-                </div>
                 <div class="desc-align">
-                    <p class="desc-title">აღწერა</p>
+                    <!-- <p class="desc-title">აღწერა</p> -->
                     <p class="desc">{{posts.description}}</p>
                     <button class="order-button" (click)="insertOrder()">შეკვეთის დაწყება</button>
                 </div>

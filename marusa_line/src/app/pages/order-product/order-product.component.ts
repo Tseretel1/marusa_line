@@ -161,6 +161,33 @@ export class OrderProductComponent {
     }
   }
 
+  photoVisibleNum:number = 0;
+  photoDissapear:boolean =false;
+  nextPhoto(){
+      this.photoDissapear = true;
+      setTimeout(() => {
+        this.photoDissapear = false;
+      }, 500);
+      if(this.photosArray.length==this.photoVisibleNum+1){
+        this.photoVisibleNum = 0;
+        return;
+      }
+      this.photoVisibleNum ++;
+      return;
+  }
+  previousPhoto(){
+    this.photoDissapear = true;
+      setTimeout(() => {
+        this.photoDissapear = false;
+      },500);
+    if(this.photoVisibleNum ==0){
+      this.photoVisibleNum = this.photosArray.length-1;
+      return;
+    }
+    this.photoVisibleNum --;
+    return;
+  }
+
 
   mobileInvalid:boolean = false;
   addressInvalid:boolean = false;

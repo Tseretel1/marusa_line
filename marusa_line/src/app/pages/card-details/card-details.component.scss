@@ -1,15 +1,67 @@
+.background-photo-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: fixed;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    .photo{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        cursor: pointer;
+    }
+    .backfadereverse{
+        animation: 0.5s backFadeReverse;
+    }
+    .backfade{
+        animation: 0.5s backFade;
+    }
+    @keyframes backFade {
+        0%{
+            opacity: 0.2;
+        }
+        100%{
+            opacity: 1;
+        }
+    }
+    @keyframes backFadeReverse {
+        0%{
+            opacity: 1;
+        }
+        100%{
+            opacity: 0.2;
+        }
+    }
+}
+.background-photo-blur{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    backdrop-filter: blur(100px);
+}
+
 .center-component{
     width: 100%;
     display: flex;
     justify-content: center;
+    backdrop-filter: blur(2px);
+    z-index: 2;
     .component{
-        width: 80%;
+        width: 50%;
         display: flex;
         flex-direction: column;
         align-items: center;
         .header-grid{
             display: grid;
-            grid-template-columns: repeat(2,1fr);
+            grid-template-columns: repeat(1,1fr);
             gap: 20px;
            .photo-align{
                 display: flex;
@@ -17,6 +69,21 @@
                 gap: 5px;
                 justify-content: flex-start;
                 width: 100%;
+                position: relative;
+                .discount-procent{
+                    padding:5px 10px;
+                    border-radius: 5px;
+                    font-size: 15px;
+                    text-align: center;
+                    margin-left: 10px;
+                    color: white;
+                    background-color: green;
+                    position: absolute;
+                    z-index: 2;
+                    left: -30px;
+                    top: -10px;
+                    transform: rotate(-30deg);
+                }
                 .photo-container{
                     border-radius: 5px;
                     width: 100%;
@@ -34,6 +101,7 @@
                     .pop-up{
                         animation: 0.3s animPopUp;
                     }
+                    
                     @keyframes animPopUp {
                         0%{
                             scale: 0.9;
@@ -53,7 +121,7 @@
                         align-items: center;
                         .camera-button{
                             scale: 2;
-                            background-color: rgba(0, 0, 0, 0.027);
+                            background-color: rgba(0, 0, 0, 0.055);
                             color: rgba(255, 255, 255, 0.048);
                             border: none;
                             cursor: pointer;
@@ -61,6 +129,9 @@
                             border-radius: 5px;
                             transition: 0.2s all ease-in-out;
                             z-index: 5;
+                            .fas{
+                                color: rgba(255, 255, 255, 0.322);
+                            }
                         }               
                         .camera-button:hover{
                             color: white;
@@ -150,12 +221,14 @@
                 flex-direction: column;
                 width: 100%;
                 height: 100%;
-                backdrop-filter: blur(20px);
-                background: linear-gradient( rgba(0, 0, 0, 0.199),);
                 border-radius: 5px;
-                position: relative;
                 justify-content: space-between;
-                padding: 35px 10px;
+                // box-shadow: 0px 0px 10px black;
+                padding: 20px;
+                gap:20px;
+                overflow: hidden;
+                position: relative;
+                background-color: rgba(0, 0, 0, 0.342);
                 .header-title{
                     color: white;
                     justify-content: space-between;
@@ -180,11 +253,14 @@
                     display: flex;
                     justify-content: center;
                     flex-direction: column;
+                    align-items: center;
                     .desc{
                         color: white;
-                        background-color: rgba(0, 0, 0, 0.342);
+                        // background-color: rgba(0, 0, 0, 0.342);
                         padding: 10px;
                         border-radius: 10px;
+                        line-height: 30px;
+                        font-size: 20px;
                     }
                     .desc-title{
                         color: white;
@@ -200,9 +276,6 @@
                     display: flex;
                     justify-content: center;
                     flex-direction: column;
-                    position: absolute;
-                    top: -10px;
-                    right: 5px;
                     .price-align{
                         display: flex;
                         gap: 10px;
@@ -221,18 +294,9 @@
                             font-style: italic;
                         }
                     }
-                    .discount-procent{
-                        background-color: rgba(0, 0, 0, 0.342);
-                        padding:2px 2px;
-                        border-radius: 5px 5px 0px 0px;
-                        width: 50px;
-                        font-size: 12px;
-                        text-align: center;
-                        margin-left: 10px;
-                    }
+
                 }
                 .order-button{
-                    width: 100%;
                     padding: 5px;
                     border-radius: 10px;
                     background-color: green;
@@ -242,6 +306,10 @@
                     outline: none;
                     transition: 0.3s;
                     margin-top: 10px;
+                    max-width: 300px;
+                    padding: 10px 50px;
+                    font-size: 20px;
+                    font-family: inherit;
                 }
                 .order-button:hover{
                     background-color: rgb(13, 175, 13);
@@ -324,8 +392,7 @@
             .next-photo:focus{
                 background-color: transparent;
             }
-            .next-photo{
-            }
+
             .previous-photo{
                 justify-content: flex-start;
             }
@@ -381,6 +448,13 @@
         opacity: 1;
     }
 }
+@media screen and (max-width:1200px) {
+    .center-component{
+        .component{
+            width: 80%;
+        }
+    }
+}
 @media screen and (max-width:1000px) {
     .center-component{
         .component{
@@ -397,7 +471,6 @@
     .center-component{
         .component{
             .header-grid{
-                gap: 50px;
                 .photo-align{
                     .photo-container{
                         height: 300px;
@@ -425,7 +498,6 @@
     .center-component{
         .component{
             .header-grid{
-                gap: 50px;
                 .photo-align{
                     .photo-container{
                         height: 200px;

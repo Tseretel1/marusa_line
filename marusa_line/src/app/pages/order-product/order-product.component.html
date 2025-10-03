@@ -1,3 +1,12 @@
+<div class="background-photo-container" >
+    <div *ngFor="let p of photosArray; let i = index" >
+        <img [src]="p.photoUrl" alt="" class="photo" *ngIf="i==photoVisibleNum" [ngClass]="{'backfade':!photoDissapear,'backfadereverse':photoDissapear}">
+    </div>
+</div>
+<div class="background-photo-blur"></div>
+
+
+
 <div class="center-component" >
     <div class="body-align">
         <div class="component">
