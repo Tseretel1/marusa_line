@@ -23,7 +23,7 @@
     }
     @keyframes backFade {
         0%{
-            opacity: 0.2;
+            opacity: 0;
         }
         100%{
             opacity: 1;
@@ -70,20 +70,7 @@
                 justify-content: flex-start;
                 width: 100%;
                 position: relative;
-                .discount-procent{
-                    padding:5px 10px;
-                    border-radius: 5px;
-                    font-size: 15px;
-                    text-align: center;
-                    margin-left: 10px;
-                    color: white;
-                    background-color: green;
-                    position: absolute;
-                    z-index: 2;
-                    left: -30px;
-                    top: -10px;
-                    transform: rotate(-30deg);
-                }
+                
                 .photo-container{
                     border-radius: 5px;
                     width: 100%;
@@ -105,6 +92,9 @@
                     @keyframes animPopUp {
                         0%{
                             scale: 0.9;
+                        }
+                        50%{
+                            scale: 1.1;
                         }
                         100%{
                             scale: 1;
@@ -226,9 +216,22 @@
                 // box-shadow: 0px 0px 10px black;
                 padding: 20px;
                 gap:20px;
-                overflow: hidden;
                 position: relative;
                 background-color: rgba(0, 0, 0, 0.342);
+                .discount-procent{
+                    padding:5px 10px;
+                    border-radius: 5px;
+                    font-size: 15px;
+                    text-align: center;
+                    margin-left: 10px;
+                    color: white;
+                    background-color: green;
+                    position: absolute;
+                    z-index: 2;
+                    left: -25px;
+                    top: -0px;
+                    transform: rotate(-30deg);
+                }
                 .header-title{
                     color: white;
                     justify-content: space-between;
@@ -439,10 +442,10 @@
 }
 @keyframes photoScaleAnim {
     0%{
-        scale: 0.8;
+        scale: 0.95;
     }
     50%{
-        scale: 1.1;
+        scale: 1.05;
     }
     100%{
         opacity: 1;

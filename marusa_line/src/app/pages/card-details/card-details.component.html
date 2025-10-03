@@ -1,6 +1,6 @@
 <div class="background-photo-container" >
     <div *ngFor="let p of photosArray; let i = index" >
-        <img [src]="p.photoUrl" alt="" class="photo" *ngIf="i==photoVisibleNum" [ngClass]="{'backfade':!photoDissapear,'backfadereverse':photoDissapear}">
+        <img [src]="p.photoUrl" alt="" class="photo" *ngIf="i==photoVisibleNum" [ngClass]="{'backfade':photoDissapear,}">
     </div>
 </div>
 <div class="background-photo-blur"></div>
@@ -10,6 +10,7 @@
     <div class="component">
         <div class="header-grid">
             <div class="card-information" *ngIf="postsLoaded" >
+                <p class="discount-procent" *ngIf="this.posts.discountedPrice!=null&& this.posts.discountedPrice>0">-{{discountedPercentage}}%</p>
                 <div class="header-title" style="font-size: 20px;">
                     <p class="title" >{{posts.title}}</p>     
                     <div class="price-tag-align" >
@@ -21,7 +22,6 @@
                 </div> 
             </div>
             <div class="photo-align" >
-                <p class="discount-procent" *ngIf="this.posts.discountedPrice!=null&& this.posts.discountedPrice>0">-{{discountedPercentage}}%</p>
                 <div class="photo-container"  data-aos="fade-in">
                     <div *ngFor="let p of photosArray; let i = index" >
                         <img [src]="p.photoUrl" alt="" class="photo" *ngIf="i==photoVisibleNum" [ngClass]="{'pop-up':i==photoVisibleNum}">
