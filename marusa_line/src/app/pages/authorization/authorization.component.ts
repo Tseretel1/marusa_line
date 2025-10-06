@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AppUrl } from '../../shared/Url/Appurl';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppRoutes } from '../../shared/AppRoutes/AppRoutes';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-authorization',
   imports: [CommonModule,ReactiveFormsModule],
@@ -14,6 +15,7 @@ import { AppRoutes } from '../../shared/AppRoutes/AppRoutes';
 export class AuthorizationComponent implements OnInit{
   AppUrl = AppUrl ;
   loginForm!:FormGroup
+  user:any = null;
   constructor(private authService:AuthorizationService,private fb: FormBuilder,private Router:Router){
     this.loginForm = this.fb.group({
       name: ['', Validators.required],
@@ -59,8 +61,15 @@ export class AuthorizationComponent implements OnInit{
     localStorage.setItem('user', JSON.stringify(user));
     localStorage.setItem('token', token);
     this.authService.userAuthorized();
-    this.closeModal();
-    this.Router.navigate([AppRoutes.profile]);
+
+    const getUser  = localStorage.getItem('user');
+    if(getUser){
+      this.user =JSON.parse(getUser);
+      this.fireSwall(this.user.Name);
+      this.closeModal();
+       setTimeout(() => {
+      }, 3000);
+    }
   }
 
   loginWithFacebook() {
@@ -77,7 +86,33 @@ export class AuthorizationComponent implements OnInit{
     localStorage.setItem('user', JSON.stringify(user));
     localStorage.setItem('token', token);
     this.authService.userAuthorized();
-    this.closeModal();
-    this.Router.navigate([AppRoutes.profile]);
+
+    const getUser  = localStorage.getItem('user');
+    if(getUser){
+      this.user =JSON.parse(getUser);
+      this.fireSwall(this.user.Name);
+      this.closeModal();
+       setTimeout(() => {
+      }, 3000);
+    }
+  }
+  fireSwall(message:string){
+    Swal.fire({
+        icon:'success',
+        text: message,
+        showCancelButton: false,
+        showConfirmButton:false,
+        confirmButtonText: 'კი',
+        cancelButtonText: 'არა',
+        background:'rgb(25, 26, 25)',
+        color: '#ffffff',       
+        customClass: {
+          popup: 'custom-swal-popup',
+        },
+        timer:3000,
+        }).then((result) => {
+          if (result.isConfirmed) {
+          }
+    });
   }
 }

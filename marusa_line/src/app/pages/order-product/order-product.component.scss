@@ -56,15 +56,13 @@
     .body-align{
         display: grid;
         justify-content: center;
-        grid-template-columns: repeat(2,1fr);
-        width: 60%;
+        grid-template-columns: repeat(1,1fr);
+        width: 50%;
         position: relative;
-        height: 700px;
-        background: linear-gradient( rgba(0, 0, 0, 0.199),);
+        background: linear-gradient( rgb(17, 17, 17),rgb(31, 30, 30));
         backdrop-filter: blur(20px);
         padding:20px;
         border-radius: 10px;
-        overflow-y: scroll;
         gap: 10px;
         .component{
             width: 100%;
@@ -149,6 +147,85 @@
                 }
             }
         }
+.photo-align{
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    width: 100%;
+    .photo-container{
+        border-radius: 5px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+        height: 300px;
+        .photo{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .pop-up{
+            animation: 0.3s animPopUp;
+        }
+        @keyframes animPopUp {
+            0%{
+                scale: 0.9;
+            }
+            100%{
+                scale: 1;
+            }
+        }
+    }
+    .product-details-align{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        color: white;
+        justify-content: space-between;
+        padding: 20px;
+        gap: 20px;
+        border-radius: 5px;
+        box-shadow:  0px 0px 10px black;
+        align-items: center;
+        .title-price-align{
+            display: flex;
+        }
+        .quantity-align{
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            .quantity-button{
+                padding: 10px;
+                border-radius: 5px;
+                background-color: rgb(25, 26, 25);
+                box-shadow: 0px 0px 2px black;
+                margin:0px 10px;
+                border: none;
+                color: white;
+                cursor: pointer;
+            }
+        }
+        .price{
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px black;
+            b{
+                font-weight: bolder;
+                font-size: 18px;
+                display: flex;
+                align-items: center;
+                p{
+                    color: green;
+                }
+            }
+        }
+    }
+}
 .user-information{
     width: 100%;
     display: flex;
@@ -157,7 +234,7 @@
     border-radius: 10px;
     padding: 10px;
     animation:fadeIn 0.5s;
-    background-color: rgba(0, 0, 0, 0.247);
+    box-shadow:  0px 0px 10px black;
     .flex-columns{
         width: 100%;
         display: flex;
@@ -264,47 +341,6 @@
         }
     }
 }
-    .component2{
-        display: flex;
-        flex-direction: column;
-        position: sticky;
-        top: 10px;
-        height: 250px;
-        .photo-align{
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            justify-content: flex-start;
-            width: 100%;
-            height: 100%;
-            .photo-container{
-                border-radius: 5px;
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                overflow: hidden;
-                position: relative;
-                height: 100%;
-                .photo{
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                }
-                .pop-up{
-                    animation: 0.3s animPopUp;
-                }
-                @keyframes animPopUp {
-                    0%{
-                        scale: 0.9;
-                    }
-                    100%{
-                        scale: 1;
-                    }
-                }
-                }
-            }
-        }
     }
     .body-align::-webkit-scrollbar {
         width: 8px; 
@@ -355,20 +391,20 @@
         .body-align{
             width: 90%;
             grid-template-columns: repeat(1,1fr);
-            display: flex;
-            flex-direction: column-reverse;
             height: 100%;
-            overflow: auto;
             gap: 30px;
             .component{
                     padding: 0;
                 .header-grid{
                     padding: 0;
                     width: 100%;
+                    .photo-align{
+                        flex-direction: column;
+                        .photo-container{
+                            height: 250px;
+                        }
+                    }
                 }
-            }
-            .component2{
-                position: relative;
             }
         }
     }

@@ -124,7 +124,7 @@
     <ng-container *ngIf="likesOrOrders ==2">
         <div class="photo-align" *ngIf="LikedProducts.length>0">
             <ng-container *ngFor="let p of LikedProducts; let index = index;" >
-                <app-photo-album [products]="p"[PhotoCongif]="PhotoConfig" class="album"  data-aos="fade-up"></app-photo-album>
+                <app-photo-album [products]="p" [PhotoCongif]="PhotoConfig" class="album"  data-aos="fade-up"></app-photo-album>
             </ng-container>
         </div>
     </ng-container>

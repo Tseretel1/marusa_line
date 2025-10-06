@@ -18,7 +18,7 @@
                         </div>
                         <div class="form-group">
                              <label for="">
-                                მობილურის ნომერი 
+                                მობილური ნომერი 
                                 <i class="fas fa-check" *ngIf="mobileNumber!=''"></i>
                                 <i class="fas fa-close" *ngIf="mobileNumber==''"></i>
                             </label>
@@ -44,17 +44,57 @@
                             <button class="order-button next-button" (click)="stepTwo()" *ngIf="nextStepNum==1">შემდეგი</button>
                         </div>
                     </div>
-                    <div class="user-information" *ngIf="nextStepNum>=2">
-                        <div class="price-tag-align" >
-                            <p class="discount-procent" *ngIf="this.posts.discountedPrice!=null&& this.posts.discountedPrice>0">-{{discountedPercentage}}%</p>
-                            <div class="price-align">
-                                <b class="bold-price" [ngClass]="{'red-price':posts.discountedPrice>0}" >{{posts.price}}₾</b>
-                                <b class="bold-price" *ngIf="posts.discountedPrice>0">{{posts.discountedPrice}}₾</b>
+                  
+                    <div class="photo-align" >
+                        <div class="photo-container"  data-aos="fade-in">
+                            <div *ngFor="let p of photosArray; let i = index" >
+                                <img [src]="p.photoUrl" *ngIf="i==0" alt="" class="photo">
                             </div>
                         </div>
-                        <button class="order-button next-button" (click)="stepThree()" *ngIf="nextStepNum==2">შემდეგი</button>
+                        <div class="product-details-align">
+                            <div class="title-price-align">
+                                <p>
+                                   {{posts.title}}
+                                </p>
+                            </div>
+                            <!-- <div style="display: flex;">მარაგშია <p>{{posts.quantity}}</p></div> -->
+                            <div class="quantity-align">
+                                <p>რაოდენობა</p>
+                                <button class="quantity-button" (click)="minusQuantity()">-</button>
+                                <p>{{productQuantity}}</p>   
+                                <button class="quantity-button" (click)="plusQuantity()">+</button>
+                            </div>
+                            <div class="price">
+                                <p>სულ გადასახდელი</p>
+                                <b> {{productPrice}} <p>₾</p></b>
+                            </div>
+                        </div>
                     </div>
-                    <div class="user-information" *ngIf="nextStepNum>=3">
+
+                    <div class="user-information" >
+                        <div class="rules-align">
+                            <div class="title"><b>გადახდის წესები<i class="fas fa-file-alt"></i></b></div>
+                            <ul>
+                                <li>დროებით ონლაინ გადახდა არ მუშაობს, ამიტომ გთხოვთ პროდუქტის შეკვეთის
+                                    შემთხვევაში თანხა გადმორიცხოთ მითითებულ ანგარიშზე 
+                                 </li>
+                                 <li>
+                                     დანიშნულებაში აუცილებლად მიუთითეთ, 
+                                     <div>
+                                        <p>{{user.Name}}</p>
+                                        <b>ნომერი,20</b>
+                                     </div>
+                                 </li>
+                                 <li>შეკვეთა დადასტურდება მას შემდგომ რაც გადახდილი თანხა აისახება ანგარიშზე</li>
+                            </ul>
+                            <!-- <div class="checkbox-align" >
+                                <input type="checkbox" class="checkbox" [(ngModel)]="rulesChecked" id="check">
+                                <label for="check" class="checkbox" >ვეთანხმები</label>
+                            </div> -->
+                        </div> 
+                    </div>
+
+                    <div class="user-information" >
                         <div class="rules-align">
                             <div class="title"><b>თქვენ უნდა იცოდეთ<i class="fas fa-file-alt"></i></b></div>
                             <ul>
@@ -71,21 +111,10 @@
                                 <label for="check" class="checkbox" >ვეთანხმები</label>
                             </div> -->
                         </div> 
-                        <button class="order-button next-button" (click)="stepThree()" [disabled]="!rulesChecked">შეკვეთის დასრულება</button>
                     </div>
+                
+                    <button class="order-button next-button" (click)="stepThree()" [disabled]="!rulesChecked">შეკვეთის გაფორმება</button>
              </div>
-        </div>
-    </div>
-
-    <div class="component2">
-        <div class="photo-align" >
-            <div class="photo-container"  data-aos="fade-in">
-                <div *ngFor="let p of photosArray; let i = index" >
-                    <img [src]="p.photoUrl" *ngIf="i==0" alt="" class="photo">
-                </div>
-            </div>
-        </div>
-        <div class="user-information">
         </div>
     </div>
     </div>

@@ -17,6 +17,7 @@ export class GalleryComponent implements OnInit {
     likeVisible : true,
     hoverVisible : true,
     navigationAvailable:true,
+    likeCountvisible :false,
   }
 
   constructor(private postService:PostService){
@@ -65,6 +66,12 @@ export class GalleryComponent implements OnInit {
       this.Cards = resp;
       this.hideFilterModal();
       this.scrollToStartMethod();
+      if(this.sortNum==1){
+        this.sortByPriceHighToLow()
+      }
+      else if(this.sortNum==2){
+        this.sortByPriceLowToHigh()
+      }
     });
   }
 

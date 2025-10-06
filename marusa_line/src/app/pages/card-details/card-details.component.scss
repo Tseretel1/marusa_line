@@ -219,18 +219,13 @@
                 position: relative;
                 background-color: rgba(0, 0, 0, 0.342);
                 .discount-procent{
-                    padding:5px 10px;
-                    border-radius: 5px;
-                    font-size: 15px;
-                    text-align: center;
-                    margin-left: 10px;
                     color: white;
-                    background-color: green;
-                    position: absolute;
                     z-index: 2;
-                    left: -25px;
-                    top: -0px;
+                    left: -20px;
+                    top: 20px;
                     transform: rotate(-30deg);
+                    width: 0px;
+                    position: absolute;
                 }
                 .header-title{
                     color: white;
@@ -302,7 +297,8 @@
                 .order-button{
                     padding: 5px;
                     border-radius: 10px;
-                    background-color: green;
+                    background-color: rgb(25, 26, 25);
+                    box-shadow: 0px 5px 10px black;
                     cursor: pointer;
                     color: white;
                     border: none;
@@ -313,9 +309,10 @@
                     padding: 10px 50px;
                     font-size: 20px;
                     font-family: inherit;
+                    transition: 0.3s all ease-in-out;
                 }
                 .order-button:hover{
-                    background-color: rgb(13, 175, 13);
+                    background-color: rgb(65, 66, 65);
                 }
             }
         }
@@ -470,6 +467,20 @@
         }
     }
 }
+@media screen and (max-width:1000px) {
+    .center-component{
+        .component{
+            .header-grid{
+                .card-information{
+                    .discount-procent{
+                        left: -5px;
+                        top: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
 @media screen and (max-width:700px) {
     .center-component{
         .component{
@@ -477,6 +488,11 @@
                 .photo-align{
                     .photo-container{
                         height: 300px;
+                        .next-photo-align{
+                            .camera-button{
+                                scale: 1.5;
+                            }
+                        }
                     }
                 }
                 .card-information{

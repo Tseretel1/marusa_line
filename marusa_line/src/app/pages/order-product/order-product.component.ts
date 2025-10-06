@@ -45,7 +45,12 @@ export class OrderProductComponent {
         });
         if(this.posts.discountedPrice!=null&& this.posts.discountedPrice>0){
           this.calculatediscountProcentage();
+          this.productPrice = this.posts.discountedPrice;
         }
+        else{
+          this.productPrice = this.posts.price;
+        }
+        this.oneProductPrice = this.productPrice;
         this.postsLoaded = true;
       }
     );
@@ -248,6 +253,26 @@ export class OrderProductComponent {
     else if(num ==2){
       this.insertLocation();
       this.editFieldNum =0;
+    }
+  }
+
+  productPrice:number = 0;
+  oneProductPrice:number = 0;
+  productQuantity:number = 1;
+
+  calculatePrice(){
+    this.productPrice = this.oneProductPrice * this.productQuantity;
+  }
+  plusQuantity(){
+    if(this.productQuantity<this.posts.quantity){
+      this.productQuantity++;
+      this.calculatePrice();
+    }
+  }
+  minusQuantity(){
+    if(this.productQuantity>=2){
+      this.productQuantity--;
+      this.calculatePrice();
     }
   }
 }

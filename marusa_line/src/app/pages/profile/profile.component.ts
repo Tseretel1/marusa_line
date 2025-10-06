@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from '../authorization/authorization.service';
 import { Router, RouterLink } from '@angular/router';
 import { AppRoutes } from '../../shared/AppRoutes/AppRoutes';
-import { orderStatuses, PostService } from '../../Repositories/post.service';
+import { orderStatuses, Post, PostService } from '../../Repositories/post.service';
 import { PhotoAlbumComponent, PhotoConfig } from '../../shared/components/photo-album/photo-album.component';
 import { CommonModule, DatePipe } from '@angular/common';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile',
-  imports: [RouterLink, PhotoAlbumComponent, CommonModule,DatePipe],
+  imports: [PhotoAlbumComponent, CommonModule,DatePipe],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })
@@ -27,6 +27,7 @@ export class ProfileComponent implements OnInit{
     priceVisible :true,
     navigationAvailable:true,
     hoverVisible : true,
+    likeCountvisible :false,
   }
   LikedProducts: Post[] = [];
   MyOrders: OrderProduct[] = [];
@@ -103,8 +104,8 @@ export class ProfileComponent implements OnInit{
     showCancelButton: true,
     confirmButtonText: 'კი',
     cancelButtonText: 'არა',
-    background:'rgba(0, 0, 0, 0.64)',
     color: '#ffffff',       
+    background:'rgb(25, 26, 25)',
     confirmButtonColor: '#d33',
     cancelButtonColor: '#3085d6',
     customClass: {
@@ -179,26 +180,12 @@ export class ProfileComponent implements OnInit{
   postId?: number;
 }
 
- interface Post {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  discountedPrice: number;
-  photoUrl?: string | null; 
-  photoId?: number | null;  
-  postId?: number;        
-  likeCount: number;  
-  isLiked:boolean;      
-  photos: Photo[];
-}
-
 export interface OrderProduct {
   orderId: number;       
   createDate: string;     
   statusId: number;
   isPaid: boolean;
-
+  quantity:number;
   id: number;
   productId: number;
   title: string;

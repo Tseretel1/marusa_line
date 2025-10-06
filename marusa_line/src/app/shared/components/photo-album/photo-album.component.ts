@@ -62,6 +62,7 @@ export class PhotoAlbumComponent implements OnInit{
 export interface PhotoConfig{
   priceVisible:boolean;
   likeVisible:boolean;
+  likeCountvisible:boolean;
   navigationAvailable:boolean;
   hoverVisible:boolean;
 }

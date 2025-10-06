@@ -20,8 +20,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   
-  postsFirst: Post[] = [];
-  postsSecond: Post[] = [];
+  discountedFirst: Post[] = [];
+  discountedSecond: Post[] = [];
+  soldProductsFirst: Post[] = [];
+  soldProductsSecond: Post[] = [];
   user:any = null;
   userId:number = 0;
   constructor(private postService:PostService,private route: ActivatedRoute){
@@ -32,8 +34,14 @@ export class HomeComponent implements OnInit {
     }
     this.postService.getDiscountedPosts(this.userId).subscribe(
       (resp)=>{
-        this.postsFirst = resp.slice(0, 3); 
-        this.postsSecond = resp.slice(3);
+        this.discountedFirst = resp.slice(0, 3); 
+        this.discountedSecond = resp.slice(3);
+      }
+    )
+    this.postService.getMostSoldProducts(this.userId).subscribe(
+      (resp)=>{
+        this.soldProductsFirst = resp.slice(0, 3); 
+        this.soldProductsSecond = resp.slice(3);
       }
     )
   }
@@ -53,5 +61,6 @@ export class HomeComponent implements OnInit {
     priceVisible :true,
     navigationAvailable : true,
     hoverVisible : true,
+    likeCountvisible :false,
   }
 }

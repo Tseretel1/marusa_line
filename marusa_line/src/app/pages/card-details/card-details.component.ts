@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 import { AppRoutes } from '../../shared/AppRoutes/AppRoutes';
 @Component({
   selector: 'app-card-details',
-  imports: [CommonModule],
+  imports: [CommonModule, DiscountMarkComponent],
   templateUrl: './card-details.component.html',
   styleUrl: './card-details.component.scss'
 })

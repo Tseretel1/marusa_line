@@ -30,6 +30,9 @@ export class PostService {
   getDiscountedPosts(userId?:number): Observable<Post[]> {
     return this.http.get<Post[]>(this.apiUrl+`Product/get-most-discounted-posts?userid=${userId}`);
   }
+  getMostSoldProducts(userId?:number): Observable<Post[]> {
+    return this.http.get<Post[]>(this.apiUrl+`Product/get-most-sold-posts?userid=${userId}`);
+  }
   getAllPhotos(): Observable<Photo[]> {
     return this.http.get<Photo[]>(this.apiUrl+'Product/get-all-photos');
   }
@@ -72,7 +75,8 @@ export interface Post {
   photoId?: number | null;  
   postId?: number;        
   likeCount: number;  
-  isLiked:boolean;      
+  isLiked:boolean;  
+  quantity:number;    
   photos: Photo[];
 }
 export interface ProductTypes{
