@@ -26,7 +26,7 @@
                                 <input class="form-control" type="text" [disabled]="editFieldNum!=1" [(ngModel)]="mobileNumber" [ngClass]="{'invalid-inputs': mobileInvalid}">
                                 <button class="edit" (click)="editField(1)" *ngIf="editFieldNum!=1"><i class="fas fa-edit"></i></button>
                                 <button class="edit close" (click)="closeField(1)" *ngIf="editFieldNum==1"><i class="fas fa-close"></i></button>
-                                <button class="edit confirm" (click)="acceptField(1)" *ngIf="editFieldNum==1"><i class="fas fa-check"></i></button>
+                                <button class="edit confirm" (click)="acceptField(1)" *ngIf="editFieldNum==1"><i class="fas fa-check" style="color: white;"></i></button>
                             </div>
                         </div>
                         <div class="form-group">
@@ -39,23 +39,22 @@
                                 <input class="form-control" type="text" [disabled]="editFieldNum!=2" [(ngModel)]="address" [ngClass]="{'invalid-inputs': addressInvalid}">
                                 <button class="edit" (click)="editField(2)" *ngIf="editFieldNum!=2"><i class="fas fa-edit"></i></button>
                                 <button class="edit close" (click)="closeField(2)" *ngIf="editFieldNum==2"><i class="fas fa-close"></i></button>
-                                <button class="edit confirm" (click)="acceptField(2)" *ngIf="editFieldNum==2"><i class="fas fa-check"></i></button>
+                                <button class="edit confirm" (click)="acceptField(2)" *ngIf="editFieldNum==2"><i class="fas fa-check" style="color: white;"></i></button>
                             </div>
                             <button class="order-button next-button" (click)="stepTwo()" *ngIf="nextStepNum==1">შემდეგი</button>
                         </div>
                     </div>
                   
                     <div class="photo-align" >
-                        <div class="photo-container"  data-aos="fade-in">
-                            <div *ngFor="let p of photosArray; let i = index" >
-                                <img [src]="p.photoUrl" *ngIf="i==0" alt="" class="photo">
-                            </div>
-                        </div>
+                     
                         <div class="product-details-align">
                             <div class="title-price-align">
                                 <p>
                                    {{posts.title}}
                                 </p>
+                            </div>
+                            <div>
+                                <p>მარაგშია: {{posts.quantity}}</p>
                             </div>
                             <!-- <div style="display: flex;">მარაგშია <p>{{posts.quantity}}</p></div> -->
                             <div class="quantity-align">
@@ -69,41 +68,48 @@
                                 <b> {{productPrice}} <p>₾</p></b>
                             </div>
                         </div>
+                           <div class="photo-container"  data-aos="fade-in">
+                            <div *ngFor="let p of photosArray; let i = index" >
+                                <img [src]="p.photoUrl" *ngIf="i==0" alt="" class="photo">
+                            </div>
+                        </div>
                     </div>
 
                     <div class="user-information" >
                         <div class="rules-align">
-                            <div class="title"><b>გადახდის წესები<i class="fas fa-file-alt"></i></b></div>
-                            <ul>
-                                <li>დროებით ონლაინ გადახდა არ მუშაობს, ამიტომ გთხოვთ პროდუქტის შეკვეთის
-                                    შემთხვევაში თანხა გადმორიცხოთ მითითებულ ანგარიშზე 
-                                 </li>
-                                 <li>
-                                     დანიშნულებაში აუცილებლად მიუთითეთ, 
-                                     <div>
-                                        <p>{{user.Name}}</p>
-                                        <b>ნომერი,20</b>
+                            <div class="title"><b>გადახდა<i class="fas fa-file-alt"></i></b></div>
+                            <ol>
+                                <div class="rules">
+                                    გადასახდელი თანხა <b class="price"> ({{productPrice}} ლარი),</b>
+                                     <div class="rules-text-align">
+                                        <p>GE76BG0000000607705606</p>
+                                        <button class="copy-button">კოპირება <i class="fas fa-copy" style="color: white;"></i></button>
                                      </div>
-                                 </li>
-                                 <li>შეკვეთა დადასტურდება მას შემდგომ რაც გადახდილი თანხა აისახება ანგარიშზე</li>
-                            </ul>
-                            <!-- <div class="checkbox-align" >
-                                <input type="checkbox" class="checkbox" [(ngModel)]="rulesChecked" id="check">
-                                <label for="check" class="checkbox" >ვეთანხმები</label>
-                            </div> -->
+                                 </div>
+                                 <div class="rules">
+                                     დანიშნულებაში აუცილებლად მიუთითეთ, 
+                                     <div class="rules-text-align">
+                                        <p>{{user.Name}}, ნომერი {{posts.id}} </p>
+                                        <button class="copy-button">კოპირება <i class="fas fa-copy" style="color: white;"></i></button>
+                                     </div>
+                                 </div>
+                                 <div class="rules">შეკვეთა გადახდის შემდგომ ავტომატურად დადასტურდება <i class="fas fa-check"></i></div>
+                            </ol>
                         </div> 
                     </div>
 
-                    <div class="user-information" >
-                        <div class="rules-align">
+                    <div class="user-information" *ngIf="posts.quantity<=0">
+                        <div class="rules-align" >
                             <div class="title"><b>თქვენ უნდა იცოდეთ<i class="fas fa-file-alt"></i></b></div>
                             <ul>
-                                <li>გთხოვთ გაითვალისწინოთ რომ, თითოეული შეძენილი ნივთი არის ხელნაკეთი, 
+                                <li>
+                                    პროდუქტი არ არის მარაგში, რაც ნიშნავს იმას რომ მის დამზადებას დრო დასჭირდება.
+                                </li>
+                                <li>
+                                    საშუალოდ შეკვეთის დამზადებას 2 კვირიდან 1 თვემდე ვადაში ხდება.
+                                </li>
+                                <li>თითოეული შეძენილი ნივთი არის ხელნაკეთი, 
                                 შესაბამისად 100%-ით იდენტობა ფოტოზე ასახულ ნივთთან შეუძლებელია.
-                                 </li>
-                                 <li>
-                                     მათი დამზადება დროსთანაა დაკავშირებული, საშუალოდ შეძენილი 
-                                     პროდუქტი 2 კვირიდან 1 თვემდე ვადაში ბარდება მომხმარებელს. 
                                  </li>
                             </ul>
                             <!-- <div class="checkbox-align" >

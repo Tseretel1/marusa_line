@@ -1,3 +1,6 @@
+.fa-check{
+    color:green;
+}
 .background-photo-container{
     width: 100%;
     height: 100%;
@@ -211,9 +214,6 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            padding: 5px 10px;
-            border-radius: 5px;
-            box-shadow: 0px 0px 5px black;
             b{
                 font-weight: bolder;
                 font-size: 18px;
@@ -336,8 +336,54 @@
             display: flex;
             flex-direction: column;
             width: 100%;
-            align-items: center;
             gap: 10px;
+            li{
+                display: flex;
+                align-items: center;
+                div{
+                    display: flex;
+                    align-items: center;
+                    color: rgb(183, 116, 238);
+                    grid-area: 10px;
+                }
+            }
+        }
+        ol{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 10px;
+            .rules{
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                .rules-text-align{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    flex-wrap: wrap;
+                    p{
+                        color: rgb(175, 157, 255);
+                        font-size: 18px;
+                    }
+                    .price{
+                        text-shadow: 0px 0px 2px black;
+                        scale: 1.1;
+                    }
+                    .copy-button{
+                        display: flex;
+                        align-items: center;
+                        color: white;
+                        padding:5px 10px;
+                        border-radius: 5px;
+                        background-color: rgb(25, 26, 25);
+                        box-shadow: 0px 0px 5px black;
+                        border:none;
+                        cursor: pointer;
+                    }
+                }
+            }
         }
     }
 }
