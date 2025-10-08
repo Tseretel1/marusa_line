@@ -36,7 +36,7 @@
                 <div class="img-container"*ngIf="userPhoto">
                     <img [src]="userPhoto" class="user-image">
                 </div>
-                <!-- <p class="username">{{user.Name}}</p> -->
+                <p class="username">{{user.Name}}</p>
             </div>
             <span class="nav-link" routerLinkActive="active-link" [routerLink]="AppRoutes.home" (click)="scrollTotop()"><i class="fas fa-shopping-cart"></i><b>პროდუქტები</b> </span>
             <span class="nav-link" routerLinkActive="active-link" (click)="scrollToBottom()"><b ><i class="fas fa-address-book"></i> კონტაქტი</b> </span>

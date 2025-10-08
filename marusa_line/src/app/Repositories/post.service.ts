@@ -8,7 +8,7 @@ import { AppUrl } from '../shared/Url/Appurl';
 })
 export class PostService {
   AppUrl= AppUrl;
-  private apiUrl = AppUrl.development;
+  private apiUrl = AppUrl.network;
   constructor(public http : HttpClient)
    
   {

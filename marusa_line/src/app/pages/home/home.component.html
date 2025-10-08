@@ -1,13 +1,34 @@
 <div class="gallery-align">
+    
+    <div class="header-container">
+        <div class="section-title-align">
+           <b class="section-title" style="align-items: flex-end;">
+               ყველაზე მოთხოვნადი 
+               <img src="assets/icons/firetest.gif" alt="" width="30px">
+           </b>
+        </div>
+       <div class="photo-align align-3">
+           <div *ngFor="let p of soldProductsFirst; let index = index;" class="container" [ngClass]="{'hide-album': index==2}">
+               <!-- <app-discount-mark class="discount-mark" [discount]="p" data-aos="fade-down" ></app-discount-mark> -->
+               <app-photo-album [products]="p" [PhotoCongif]="PhotoConfig" data-aos="fade-in" class="album"></app-photo-album>
+           </div>
+       </div>
+       <div class="photo-align align-4">
+           <div *ngFor="let p of soldProductsSecond; let index = index;" class="container" [ngClass]="{'hide-album': index==2}">
+               <!-- <app-discount-mark class="discount-mark" [discount]="p" data-aos="fade-down" ></app-discount-mark> -->
+               <app-photo-album [products]="p" [PhotoCongif]="PhotoConfig" data-aos="fade-in" class="album"></app-photo-album>
+           </div>
+       </div>
+    </div>
    
     
-    <div class="section-title-align">
-        <b class="section-title">
-           <i class="fas fa-circle"></i> 
-            Top ფასდაკლებები
-        </b>
-    </div>
     <div class="header-container">
+        <div class="section-title-align">
+            <b class="section-title">
+                Top ფასდაკლებები
+                <img src="assets/icons/sale.png" alt="" width="30px">
+            </b>
+        </div>
         <div class="photo-align">
             <div *ngFor="let p of discountedFirst; let index = index;" class="container" [ngClass]="{'hide-album': index==2}">
                 <!-- <app-discount-mark class="discount-mark" [discount]="p" data-aos="fade-down" ></app-discount-mark> -->
@@ -22,27 +43,6 @@
         </div>
     </div>
 
-     
-    <div class="section-title-align">
-        <b class="section-title">
-           <i class="fas fa-circle"></i> 
-            ყველაზე მოთხოვნადი
-        </b>
-    </div>
-    <div class="header-container">
-        <div class="photo-align align-3">
-            <div *ngFor="let p of soldProductsFirst; let index = index;" class="container" [ngClass]="{'hide-album': index==2}">
-                <!-- <app-discount-mark class="discount-mark" [discount]="p" data-aos="fade-down" ></app-discount-mark> -->
-                <app-photo-album [products]="p" [PhotoCongif]="PhotoConfig" data-aos="fade-in" class="album"></app-photo-album>
-            </div>
-        </div>
-        <div class="photo-align align-4">
-            <div *ngFor="let p of soldProductsSecond; let index = index;" class="container" [ngClass]="{'hide-album': index==2}">
-                <!-- <app-discount-mark class="discount-mark" [discount]="p" data-aos="fade-down" ></app-discount-mark> -->
-                <app-photo-album [products]="p" [PhotoCongif]="PhotoConfig" data-aos="fade-in" class="album"></app-photo-album>
-            </div>
-        </div>
-    </div>
     <div class="gallery">
         <app-gallery ></app-gallery>
     </div>
