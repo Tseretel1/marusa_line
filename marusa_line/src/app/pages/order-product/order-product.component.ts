@@ -115,22 +115,7 @@ export class OrderProductComponent {
     return false;
   }
 
-  insertOrder(){
-    if(this.isUserLogged()){
-      // Swal.fire({
-      //     text: 'შეკვეთა მიღებულია!',
-      //     showCancelButton: true,
-      //     cancelButtonText:'',
-      //     background:'rgba(0, 0, 0, 0.77)',
-      //     color: '#00ff4cff',  
-      //     showConfirmButton:false,
-      // })
-      // this.postService.insertOrder(this.userId,this.productId).subscribe(
-      //   (resp)=>{
-      //   }
-      // )
-    }
-  }
+
 
   nextStepNum:number = 1;
   nextStep(num:number){
@@ -264,9 +249,17 @@ export class OrderProductComponent {
     this.productPrice = this.oneProductPrice * this.productQuantity;
   }
   plusQuantity(){
-    if(this.productQuantity<this.posts.quantity){
-      this.productQuantity++;
-      this.calculatePrice();
+    if(this.posts.quantity>0){
+      if(this.productQuantity<this.posts.quantity){
+        this.productQuantity++;
+        this.calculatePrice();
+      }
+    }
+    else{
+      if(this.productQuantity<10){
+        this.productQuantity++;
+        this.calculatePrice();
+      }
     }
   }
   minusQuantity(){
@@ -275,6 +268,62 @@ export class OrderProductComponent {
       this.calculatePrice();
     }
   }
+
+  delieveryChoise:number = 0;
+  deliveryString:string = "";
+  
+  delieveryChoiseChanged:boolean = false;
+  oldProductPrice: number = 0;
+  ondelieveryChange(){
+    this.oldProductPrice = this.productPrice;
+    if(this.delieveryChoise ==1){
+      this.delieveryChoiseChanged = true;
+      if(this.delieveryChoise){
+        this.deliveryString="კურიერის მომსახურება🚚";
+        this.productPrice = this.productPrice + 15;
+      }
+    }
+    else if(this.delieveryChoise ==2){
+      if(this.delieveryChoiseChanged){
+        this.productPrice = this.productPrice - 15;
+        this.deliveryString="ჩემით წავიღებ🚶‍♂️";
+        this.delieveryChoiseChanged = false;
+      }
+    }
+  }
+
+
+  orderObj!:orderPostObj;
+  insertOrder(){
+    if(this.isUserLogged()){
+      this.orderObj= {
+        userId:this.userId,
+        productId : this.productId,
+        productQuantity : this.productQuantity,
+        deliveryType : this.deliveryString, 
+      }
+      console.log(this.orderObj);
+      // Swal.fire({
+      //     text: 'შეკვეთა მიღებულია!',
+      //     showCancelButton: true,
+      //     cancelButtonText:'',
+      //     background:'rgba(0, 0, 0, 0.77)',
+      //     color: '#00ff4cff',  
+      //     showConfirmButton:false,
+      // })
+      // this.postService.insertOrder(this.userId,this.productId).subscribe(
+      //   (resp)=>{
+      //   }
+      // )
+    }
+  }
+}
+
+export interface orderPostObj{
+  userId:number;
+  productId:number;
+  productQuantity:number;
+  deliveryType:string;
 }
  interface Photo {
   Id?: number;

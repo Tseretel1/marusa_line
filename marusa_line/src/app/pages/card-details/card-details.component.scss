@@ -218,6 +218,12 @@
                 gap:20px;
                 position: relative;
                 background-color: rgba(0, 0, 0, 0.342);
+                .quantity-align{
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
                 .discount-procent{
                     color: white;
                     z-index: 2;
@@ -286,7 +292,7 @@
                             font-size: 20px;
                         }
                         .red-price{
-                            color: red;  
+                            color: orangered;  
                             font-size: 16px;
                             text-decoration: line-through; 
                             font-style: italic;
@@ -523,6 +529,9 @@
                     }
                 }
                 .card-information{
+                    .order-button{
+                        font-size: 16px
+                    }
                     .header-title{
                         .discount-mark{
                             left: 20px;
