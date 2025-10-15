@@ -63,12 +63,7 @@ export class OrderProductComponent {
     window.scrollTo({
      top: 0,
      behavior: 'smooth' 
-   });
-    // const loop = () => {
-    //   this.nextPhoto();
-    //   setTimeout(loop, 5000); 
-    // };
-    // loop(); 
+   }); 
     this.getUserDetails();
   }
 
@@ -85,9 +80,6 @@ export class OrderProductComponent {
         this.mobileNumber = resp.phoneNumber;
         this.oldAddress = this.address;
         this.oldMobileNumber = this.mobileNumber;
-        if(this.validateFields()){
-           this.nextStep(2);
-        }
       }
     )
   }
@@ -188,6 +180,10 @@ export class OrderProductComponent {
       setTimeout(() => {
         this.mobileInvalid = false;
       }, 3000);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth' 
+      });
       return false;
     }
     if(this.address==''){
@@ -196,6 +192,10 @@ export class OrderProductComponent {
       setTimeout(() => {
         this.addressInvalid = false;
       }, 3000);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth' 
+      });
       return false;
     }
     this.addressInvalid = false;
@@ -203,12 +203,6 @@ export class OrderProductComponent {
     return true;
 
   }
-  stepTwo(){
-    if(this.validateFields()){
-      this.nextStep(2);
-    }
-  }
-
   rulesChecked:boolean = false;
   finishOrder(){
     if(this.rulesChecked){
@@ -291,7 +285,7 @@ export class OrderProductComponent {
 
   orderObj!:orderPostObj;
   insertOrder(){
-    if(this.isUserLogged()){
+    if(this.validateFields()){
       this.orderObj= {
         userId:this.userId,
         productId : this.productId,

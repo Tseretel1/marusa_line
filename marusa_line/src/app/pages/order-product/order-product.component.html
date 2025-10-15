@@ -41,7 +41,6 @@
                                 <button class="edit close" (click)="closeField(2)" *ngIf="editFieldNum==2"><i class="fas fa-close"></i></button>
                                 <button class="edit confirm" (click)="acceptField(2)" *ngIf="editFieldNum==2"><i class="fas fa-check" style="color: white;"></i></button>
                             </div>
-                            <button class="order-button next-button" (click)="stepTwo()" *ngIf="nextStepNum==1">შემდეგი</button>
                         </div>
                     </div>
                   
@@ -55,13 +54,13 @@
                             <p *ngIf="posts.quantity>0">✅მარაგშია: {{posts.quantity}}</p>
                             <!-- <div style="display: flex;">მარაგშია <p>{{posts.quantity}}</p></div> -->
                             <div class="quantity-align card-background" *ngIf="posts.quantity>0">
-                                <p>რაოდენობა</p>
+                                <p class="primary-text">რაოდენობა</p>
                                 <button class="quantity-button" (click)="minusQuantity()">-</button>
                                 <p>{{productQuantity}}</p>   
                                 <button class="quantity-button" (click)="plusQuantity()">+</button>
                             </div>
                             <div class="delivery-align card-background">
-                                <p>მიწოდების საშუალება</p>
+                                <p class="primary-text">მიწოდების საშუალება</p>
                                 <select name="" class="form-control" id="" [(ngModel)]="delieveryChoise" (change)="ondelieveryChange()">
                                    <option value="0" disabled selected></option>
                                    <option value="1">კურიერის მომსახურება🚚</option>
@@ -123,9 +122,9 @@
                             <div class="title"><b>თქვენ უნდა იცოდეთ<i class="fas fa-file-alt"></i></b></div>
                             <ul>
                                 <li>
-                                   პროდუქტი მარაგში არაა,  საშუალოდ შეკვეთის დამზადება 2 კვირიდან 1 თვემდე ვადაში ხდება. ✅
+                                   პროდუქტი მარაგში არაა,  საშუალოდ მისი დამზადება 2 კვირიდან 1 თვემდე ვადაში ხდება. ✅
                                 </li>
-                                <li>თითოეული ნივთი არის ხელნაკეთი, 
+                                <li>თვითოეული ნივთი არის ხელნაკეთი, 
                                 შესაბამისად 100%-ით იდენტობა ფოტოზე ასახულ ნივთთან შეუძლებელია. ✅
                                  </li>
                             </ul>

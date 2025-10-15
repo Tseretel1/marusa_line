@@ -1,6 +1,9 @@
 .fa-check{
     color:green;
 }
+.primary-text{
+    font-size: 20px;
+}
 .center-component{
     width: 100%;
     display: flex;
@@ -12,9 +15,10 @@
         grid-template-columns: repeat(1,1fr);
         width: 50%;
         position: relative;
-        background: linear-gradient( rgba(31, 30, 30, 0.542),rgb(31, 30, 30));
         padding:20px;
         border-radius: 10px;
+        background-color: rgba(0, 0, 0, 0.185);
+        background-color: rgba(0, 0, 0, 0.418);
         gap: 10px;
         .component{
             width: 100%;
@@ -50,7 +54,6 @@
                             display: flex;
                             gap: 10px;
                             align-items: center;
-                            background-color: rgba(0, 0, 0, 0.342);
                             padding:2px 20px;
                             border-radius: 10px;
                             .bold-price{
@@ -65,7 +68,6 @@
                             }
                         }
                         .discount-procent{
-                            background-color: rgba(0, 0, 0, 0.342);
                             padding:2px 2px;
                             border-radius: 5px 5px 0px 0px;
                             width: 50px;
@@ -140,11 +142,10 @@
         gap: 20px;
         border-radius: 5px;
         box-shadow:  0px 0px 10px black;
-
         .delivery-align{
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
             gap: 10px;
             .form-control{
                 border: none;
@@ -153,7 +154,7 @@
                 outline: none;
                 color: white;
                 border: 1px solid grey;
-                background-color: rgb(31, 30, 30);
+                background-color:transparent;
                 cursor: pointer;
             }
             .form-control:focus{
@@ -171,7 +172,7 @@
             .quantity-button{
                 padding: 10px;
                 border-radius: 5px;
-                background-color: rgb(25, 26, 25);
+                background-color: rgba(25, 26, 25, 0);
                 border: 1px solid grey;
                 margin:0px 10px;
                 color: white;
@@ -182,6 +183,7 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            width: 100%;
             b{
                 font-weight: bolder;
                 font-size: 18px;
@@ -201,6 +203,7 @@
         .card-background{
             box-shadow: 0px 0px 5px black;
             padding: 10px;
+            width: 100%;
             border-radius: 5px;
         }
     }
@@ -214,6 +217,7 @@
     padding: 10px;
     animation:fadeIn 0.5s;
     box-shadow:  0px 0px 10px black;
+    background-color: rgba(29, 28, 28, 0.226);
     .flex-columns{
         width: 100%;
         display: flex;
