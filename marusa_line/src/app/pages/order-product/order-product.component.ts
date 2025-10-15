@@ -255,12 +255,6 @@ export class OrderProductComponent {
         this.calculatePrice();
       }
     }
-    else{
-      if(this.productQuantity<10){
-        this.productQuantity++;
-        this.calculatePrice();
-      }
-    }
   }
   minusQuantity(){
     if(this.productQuantity>=2){
@@ -280,17 +274,19 @@ export class OrderProductComponent {
       this.delieveryChoiseChanged = true;
       if(this.delieveryChoise){
         this.deliveryString="კურიერის მომსახურება🚚";
-        this.productPrice = this.productPrice + 15;
+        this.productPrice = this.productPrice + 10;
       }
     }
     else if(this.delieveryChoise ==2){
       if(this.delieveryChoiseChanged){
-        this.productPrice = this.productPrice - 15;
+        this.productPrice = this.productPrice - 10;
         this.deliveryString="ჩემით წავიღებ🚶‍♂️";
         this.delieveryChoiseChanged = false;
       }
     }
   }
+
+  comment:string = '';
 
 
   orderObj!:orderPostObj;

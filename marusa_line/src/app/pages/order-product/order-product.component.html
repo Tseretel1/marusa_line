@@ -54,7 +54,7 @@
                             </div>
                             <p *ngIf="posts.quantity>0">✅მარაგშია: {{posts.quantity}}</p>
                             <!-- <div style="display: flex;">მარაგშია <p>{{posts.quantity}}</p></div> -->
-                            <div class="quantity-align card-background">
+                            <div class="quantity-align card-background" *ngIf="posts.quantity>0">
                                 <p>რაოდენობა</p>
                                 <button class="quantity-button" (click)="minusQuantity()">-</button>
                                 <p>{{productQuantity}}</p>   
@@ -69,7 +69,7 @@
                                 </select>
                             </div>
                             <div class="price" *ngIf="delieveryChoise ==1">
-                                <div style="display: flex; align-items: center;"> კურიერი + 15  <b style="color: green;">₾</b></div>
+                                <div style="display: flex; align-items: center;"> კურიერი + 10  <b style="color: green;">₾</b></div>
                             </div>
                             <div class="price" *ngIf="delieveryChoise !=1">
                                 <div style="opacity: 0;"> კ </div>
@@ -109,6 +109,15 @@
                         </div> 
                     </div> -->
 
+                    <div class="user-information" >
+                        <div class="rules-align" >
+                            <div class="form-group">
+                                <label for="" style="display: flex; gap: 20px;">დატოვე კომენტარი <p style="color: gray;">{{comment.length}}/300</p> </label>
+                                <textarea [(ngModel)]="comment" class="form-control"  maxlength="300" style="min-height: 100px;"></textarea>
+                            </div>
+                        </div> 
+                    </div>
+
                     <div class="user-information" *ngIf="posts.quantity<=0">
                         <div class="rules-align" >
                             <div class="title"><b>თქვენ უნდა იცოდეთ<i class="fas fa-file-alt"></i></b></div>
@@ -127,6 +136,8 @@
                         </div> 
                     </div>
                 
+                   
+
                      <div class="user-information" >
                         <div class="rules-align" >
                             <ul>

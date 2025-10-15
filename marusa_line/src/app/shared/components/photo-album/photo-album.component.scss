@@ -70,9 +70,10 @@
     }
   }
 }
-.photo-container:hover .photo {
+.desktop:hover .photo {
   scale: 1.1;
 }
+
 .liked-post{
   animation: likeAnim 0.3s;
   color: rgb(247, 65, 65);
@@ -124,6 +125,8 @@
     border-radius: 5px;
     font-size: 13px;
     align-items: center;
+    z-index: 1;
+
     .discounted-price {
         font-size: 10px;
         color: rgb(255, 89, 89);
@@ -137,6 +140,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 2;
     .heart-align{
       z-index: 2;
     }
@@ -202,9 +206,10 @@
   display: flex;
   opacity: 1;
 }
-.mobile:hover .mobile-router{
-    display: flex;
-    z-index: 1;
+.mobile:hover .photo{
+    scale: 1.2;
+}
+.mobile:hover .discount-price-mobile{
 }
 @keyframes informationAlign{
   0%{

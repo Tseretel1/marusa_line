@@ -7,6 +7,7 @@ import { PhotoAlbumComponent, PhotoConfig } from '../../shared/components/photo-
 import { DiscountMarkComponent } from '../../shared/components/discount-mark/discount-mark.component';
 import { GalleryComponent } from '../gallery/gallery.component';
 import { ActivatedRoute } from '@angular/router';
+import { escapeRegExp } from '@angular/compiler';
 
 
 
@@ -22,8 +23,8 @@ export class HomeComponent implements OnInit {
   
   discountedFirst: Post[] = [];
   discountedSecond: Post[] = [];
-  soldProductsFirst: Post[] = [];
-  soldProductsSecond: Post[] = [];
+  soldProducts: Post[] = [];
+  soldProducts2: Post[] = [];
   user:any = null;
   userId:number = 0;
   constructor(private postService:PostService,private route: ActivatedRoute){
@@ -40,8 +41,8 @@ export class HomeComponent implements OnInit {
     )
     this.postService.getMostSoldProducts(this.userId).subscribe(
       (resp)=>{
-        this.soldProductsFirst = resp.slice(0, 3); 
-        this.soldProductsSecond = resp.slice(3);
+        this.soldProducts = resp.slice(0, 3);
+        this.soldProducts2 = resp.slice(3);
       }
     )
   }
