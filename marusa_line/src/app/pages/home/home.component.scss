@@ -41,6 +41,7 @@
     .section-title-align{
         display: flex;
         width: 80%;
+        padding: 10px 0px;
         .section-title{
             color: white;
             display: flex;
@@ -87,9 +88,6 @@
 @media screen and (max-width:800px){
    .gallery-align{
     gap: 20px;
-        .section-title-align{
-            padding: 0px;
-        }
        .photo-align{
          .container{
            height: 150px;

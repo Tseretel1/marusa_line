@@ -6,7 +6,7 @@
         </b>
     </div>
     <div class="heart-align" (click)="likePost()" *ngIf="PhotoCongif.likeVisible">
-        <i class="far fa-heart heart" *ngIf="!postLiked"></i>
+        <i class="fas fa-heart heart" *ngIf="!postLiked"></i>
         <i class="fas fa-heart liked-post" *ngIf="postLiked"></i>
         <p *ngIf="PhotoCongif.likeCountvisible">
             {{LikeCount}}

@@ -257,7 +257,7 @@ export class OrderProductComponent {
     }
   }
 
-  delieveryChoise:number = 0;
+  delieveryChoise:number = 1;
   deliveryString:string = "";
   
   delieveryChoiseChanged:boolean = false;
@@ -291,6 +291,7 @@ export class OrderProductComponent {
         productId : this.productId,
         productQuantity : this.productQuantity,
         deliveryType : this.deliveryString, 
+        comment :this.comment,
       }
       console.log(this.orderObj);
       // Swal.fire({
@@ -314,6 +315,7 @@ export interface orderPostObj{
   productId:number;
   productQuantity:number;
   deliveryType:string;
+  comment :string;
 }
  interface Photo {
   Id?: number;
