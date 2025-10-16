@@ -76,10 +76,14 @@ export class OrderProductComponent {
   getUserDetails(){
     this.postService.getuserOptionalFields(this.userId).subscribe(
       (resp)=>{
-        this.address = resp.location;
-        this.mobileNumber = resp.phoneNumber;
-        this.oldAddress = this.address;
-        this.oldMobileNumber = this.mobileNumber;
+        if(resp.location!=null){
+          this.address = resp.location;
+          this.oldAddress = this.address;
+        }
+        if(resp.phoneNumber!=null){
+          this.mobileNumber = resp.phoneNumber;
+          this.oldMobileNumber = this.mobileNumber;
+        }
       }
     )
   }

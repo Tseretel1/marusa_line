@@ -54,26 +54,26 @@
                             <p *ngIf="posts.quantity>0">✅მარაგშია: {{posts.quantity}}</p>
                             <!-- <div style="display: flex;">მარაგშია <p>{{posts.quantity}}</p></div> -->
                             <div class="quantity-align card-background" *ngIf="posts.quantity>0">
-                                <p class="primary-text">რაოდენობა</p>
+                                <p class="">რაოდენობა</p>
                                 <button class="quantity-button" (click)="minusQuantity()">-</button>
                                 <p>{{productQuantity}}</p>   
                                 <button class="quantity-button" (click)="plusQuantity()">+</button>
                             </div>
                             <div class="delivery-align card-background">
-                                <p class="primary-text">მიწოდების საშუალება</p>
+                                <p class="">მიწოდება</p>
                                 <select name="" class="form-control" id="" [(ngModel)]="delieveryChoise" (change)="ondelieveryChange()">
-                                   <option value="1"  selected>კურიერის მომსახურება🚚</option>
+                                   <option value="1"  selected>კურიერი🚚</option>
                                    <option value="2">ჩემით წავიღებ🚶‍♂️</option>
                                 </select>
                             </div>
-                            <div class="price" *ngIf="delieveryChoise ==1">
+                            <div class="price courier" *ngIf="delieveryChoise ==1">
                                 <div style="display: flex; align-items: center;"> კურიერი + 10  <b style="color: green;">₾</b></div>
                             </div>
                             <div class="price" *ngIf="delieveryChoise !=1">
                                 <div style="opacity: 0;"> კ </div>
                             </div>
                             <div class="price center-price" >
-                                <p>სულ გადასახდელი</p>
+                                <p>სულ </p>
                                 <b> {{productPrice}} <p>₾</p></b>
                             </div>
                         </div>
@@ -121,9 +121,9 @@
                             <div class="title"><b>თქვენ უნდა იცოდეთ<i class="fas fa-file-alt"></i></b></div>
                             <ul>
                                 <li>
-                                   პროდუქტი მარაგში არაა,  საშუალოდ მისი დამზადება 2 კვირიდან 1 თვემდე ვადაში ხდება. ✅
+                                  1.  პროდუქტი მარაგში არაა, ამიტომ მის დამზადებას შეკვეთის მიღებიდან 2-4 კვირამდე ვადაში შევძებთ. ✅
                                 </li>
-                                <li>თვითოეული ნივთი არის ხელნაკეთი, 
+                                <li>2. თვითოეული ნივთი არის ხელნაკეთი, 
                                 შესაბამისად 100%-ით იდენტობა ფოტოზე ასახულ ნივთთან შეუძლებელია. ✅
                                  </li>
                             </ul>

@@ -253,9 +253,7 @@
                 .order-button{
                     padding: 5px;
                     border-radius: 10px;
-                    background-color: rgb(25, 26, 25);
-                    // background-color: rgb(56, 133, 159);
-                    box-shadow: 0px 5px 10px black;
+                    background-color: rgba(0, 0, 0, 0.189);
                     cursor: pointer;
                     color: white;
                     border: none;
@@ -270,7 +268,7 @@
                     transition: 0.3s all ease-in-out;
                 }
                 .order-button:hover{
-                    background-color: rgb(65, 66, 65);
+                    background-color: rgba(0, 0, 0, 0.484);
                 }
             }
         }
