@@ -52,7 +52,6 @@
                                 </p>
                             </div>
                             <p *ngIf="posts.quantity>0">✅მარაგშია: {{posts.quantity}}</p>
-                            <!-- <div style="display: flex;">მარაგშია <p>{{posts.quantity}}</p></div> -->
                             <div class="quantity-align card-background" *ngIf="posts.quantity>0">
                                 <p class="">რაოდენობა</p>
                                 <button class="quantity-button" (click)="minusQuantity()">-</button>

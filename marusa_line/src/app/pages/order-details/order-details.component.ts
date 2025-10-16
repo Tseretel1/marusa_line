@@ -1,33 +1,33 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { Post, PostService } from '../../Repositories/post.service';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { CommonModule, NgFor } from '@angular/common';
+import { orderStatuses, Post, PostService } from '../../Repositories/post.service';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { CommonModule, DatePipe, NgFor } from '@angular/common';
 import * as  AOS from 'aos';
 import { AuthorizationService } from '../authorization/authorization.service';
 import Swal from 'sweetalert2';
 import { FormsModule, ɵInternalFormsSharedModule } from "@angular/forms";
-import { AppRoutes } from '../../shared/AppRoutes/AppRoutes';
 
 
 @Component({
-  selector: 'app-order-product',
-  imports: [CommonModule, ɵInternalFormsSharedModule,FormsModule],
-  templateUrl: './order-product.component.html',
-  styleUrl: './order-product.component.scss'
+  selector: 'app-order-details',
+  imports: [CommonModule,FormsModule,DatePipe],
+  templateUrl: './order-details.component.html',
+  styleUrl: './order-details.component.scss'
 })
-export class OrderProductComponent {
+export class OrderDetailsComponent {
 
   
 
 
   productId:number = 0;
   posts:Post = {} as Post;
+  order:OrderDetailsDto = {} as OrderDetailsDto;
   photosArray:Photo[]= [];
   postsLoaded:boolean = false;
 
   user:any = null;
   userId:number = 0;
-  constructor(private postService:PostService, private route :ActivatedRoute,private authServise:AuthorizationService,private router:Router){
+  constructor(private postService:PostService, private route :ActivatedRoute,private authServise:AuthorizationService){
     const id = this.route.snapshot.paramMap.get('id');
     this.productId = Number(id);
     const user = localStorage.getItem('user');
@@ -35,16 +35,18 @@ export class OrderProductComponent {
       this.user =JSON.parse(user);
       this.userId = this.user.Id
     }
-    this.postService.getPostWithId(this.productId,this.userId).subscribe(
+    this.getOrderStatuses();
+    this.postService.getOrderById(this.productId).subscribe(
       (resp)=>{
-        this.posts = resp;
+        this.posts = resp.product;
+        this.order = resp.orders;
+        this.comment = this.order.comment;
+        console.log(this.order)
         this.posts.photos.forEach(item => {
           this.photosArray.push(item);
         });
+        this.productPrice = this.order.finalPrice;
         this.postsLoaded = true;
-        this.productPrice = resp.price;
-        this.oldProductPrice = this.productPrice;
-        this.oneProductPrice = this.productPrice;
       }
     );
   }
@@ -235,93 +237,39 @@ export class OrderProductComponent {
   productPrice:number = 0;
   oneProductPrice:number = 0;
   productQuantity:number = 1;
-
-  calculatePrice(){
-    this.productPrice = this.oneProductPrice * this.productQuantity;
-  }
-  plusQuantity(){
-    if(this.posts.quantity>0){
-      if(this.productQuantity<this.posts.quantity){
-        this.productQuantity++;
-        this.calculatePrice();
-      }
-    }
-  }
-  minusQuantity(){
-    if(this.productQuantity>=2){
-      this.productQuantity--;
-      this.calculatePrice();
-    }
-  }
-
-  delieveryChoise:number = 1;
-  deliveryString:string = "კურიერის მომსახურება🚚";
-  
-  delieveryChoiseChanged:boolean = false;
-  oldProductPrice: number = 0;
-  ondelieveryChange(){
-    this.oldProductPrice = this.productPrice;
-    if(this.delieveryChoise ==1){
-      if(this.delieveryChoise){
-        this.deliveryString="კურიერის მომსახურება🚚";
-        this.productPrice = this.productPrice + 10;
-      }
-    }
-    else if(this.delieveryChoise ==2){
-        this.productPrice = this.productPrice - 10;
-        this.deliveryString="ჩემით წავიღებ🚶‍♂️";
-    }
-  }
-
   comment:string = '';
 
 
-  orderObj!:orderPostObj;
-  insertOrder(){
-    if(this.validateFields()){
-      this.orderObj= {
-        userId:this.userId,
-        productId : this.productId,
-        productQuantity : this.productQuantity,
-        deliveryType : this.deliveryString, 
-        comment :this.comment,
-        finalPrice : this.productPrice
-      }
-      this.postService.insertOrder(this.orderObj).subscribe(
+  orderStatuses:orderStatuses[]= [];
+    getOrderStatuses(){
+      this.postService.getOrderStatuses().subscribe(
         (resp)=>{
-          if(resp!=null){
-            Swal.fire({
-                text: 'შეკვეთა მიღებულია!',
-                icon:'success',
-                showCancelButton: false,
-                showConfirmButton:false,
-                confirmButtonText: 'კი',
-                cancelButtonText: 'არა',
-                background:'rgb(25, 26, 25)',
-                color: '#ffffff',       
-                customClass: {
-                  popup: 'custom-swal-popup',
-                },
-                timer:3000,
-            }),
-            this.router.navigate([AppRoutes.order_details + resp])
-          }
-      })
+          this.orderStatuses = resp;
+        }
+      )
     }
+  getStatusName(statusid:number){
+    const name  = this.orderStatuses.find((x)=> x.id == statusid);
+    return name?.statusName;
   }
 }
 
-export interface orderPostObj{
-  userId:number;
-  productId:number;
-  productQuantity:number;
-  deliveryType:string;
-  comment :string;
-  finalPrice:number;
-}
  interface Photo {
   Id?: number;
   photoId?: number;
   photoUrl?: string;
   postId?: number;
+}
+
+export interface OrderDetailsDto {
+  orderId: number;
+  userId: number;
+  productId: number;
+  isPaid: boolean;
+  statusId: number;
+  createDate: string; 
+  deliveryType?: string;
+  productQuantity: number;
+  comment: string;
+  finalPrice: number;
 }

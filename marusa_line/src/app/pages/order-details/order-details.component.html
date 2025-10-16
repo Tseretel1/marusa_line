@@ -1,0 +1,96 @@
+
+
+<div class="center-component" >
+    <div class="body-align">
+        <div class="component">
+            <div class="header-grid">
+                <div class="card-information" *ngIf="postsLoaded">
+                    <div class="photo-align" >
+                        <div class="title-price-align">
+                            <p>
+                                {{posts.title}}
+                            </p>
+                        </div>
+                          <div class="info-background date">
+                                <p class="secondary-text">შეკვეთის თარიღი:</p>
+                                {{ order.createDate | date : 'dd MMM, yyyy - HH:mm' }} 
+                            </div>  
+                        <div class="photo-container"  data-aos="fade-in">
+                             <div *ngFor="let p of photosArray; let i = index" >
+                                 <img [src]="p.photoUrl" *ngIf="i==0" alt="" class="photo">
+                             </div>
+                        </div>
+                        <div class="product-details-align user-information">
+                            <div class="delivery-align info-background" *ngIf="posts.quantity>0">
+                                <p class="secondary-text ">რაოდენობა :</p>
+                                <p>{{productQuantity}}</p>   
+                            </div>
+                            <div class="delivery-align info-background">
+                                <p style="text-align: center;">{{order.deliveryType}}</p>
+                            </div>                          
+                            <div class="detail-align">
+                                <div class="detail info-background">
+                                    <p class="secondary-text">
+                                        სტატუსი:
+                                    </p>
+                                    {{getStatusName(order.statusId)}}
+                                    <i class="fas fa-spinner topay" *ngIf="!order.isPaid"></i>
+                                    <i class="fas fa-chart-line payed" *ngIf="order.isPaid"></i>
+                                </div>
+                            </div>
+                            <div class="detail-align ">
+                                <div class="detail info-background">
+                                    <p class="secondary-text">
+                                        თანხა:
+                                    </p>
+                                    <p> {{order.finalPrice}}₾</p>
+                                    <i class="fas fa-credit-card topay"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment-align info-background" >
+                            <div class="form-group">
+                                <label for="" style="display: flex; gap: 20px;" class="secondary-text">კომენტარი <p style="color: gray;">{{comment.length}}/300</p> </label>
+                                <textarea [(ngModel)]="comment" disabled="true" class="form-control"  maxlength="300" style="min-height: 100px;"></textarea>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="user-information">
+                        <div class="rules-align">
+                            <div class="title"><b>გადახდის წესები<i class="fas fa-file-alt"></i></b></div>
+                            <div class="rulessss" >
+                                   <div>
+                                        <div class="rules">
+                                            <p>1.</p>
+                                            <p class="to-pay-text">
+                                                გადარიცხე თანხა 
+                                                  <b class="price" style="color: white;"> ({{productPrice}} ლარი),</b>
+                                            </p>
+                                            <p class="to-pay-text">მითითებულ ანგარიშზე</p>
+                                        </div>
+                                        <div class="rules-text-align">
+                                        <p>GE18BG0000000607735653</p>
+                                        <button class="copy-button">კოპირება <i class="fas fa-copy" style="color: white;"></i></button>
+                                        </div>
+
+                                    </div>
+                                    <div>
+                                        <div class="rules">
+                                            <p class="">2. დანიშნულებაში აუცილებლად მიუთითეთ</p>
+                                            
+                                        </div>
+                                        <div class="rules-text-align">
+                                            <p> შეკვეთა : {{order.orderId}} </p>
+                                            <button class="copy-button">კოპირება <i class="fas fa-copy" style="color: white;"></i></button>
+                                        </div>
+                                    </div>
+                                   <div class="rules">შეკვეთა დადასტურდება გადახდის შემდგომ <i class="fas fa-check"></i></div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

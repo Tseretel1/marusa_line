@@ -34,7 +34,7 @@ export class CardDetailsComponent implements OnInit{
     }
     this.postService.getPostWithId(this.productId,this.userId).subscribe(
       (resp)=>{
-        this.posts = resp[0];
+        this.posts = resp;
         this.posts.photos.forEach(item => {
           this.photosArray.push(item);
         });

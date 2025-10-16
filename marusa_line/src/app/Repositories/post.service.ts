@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { OrderProduct } from '../pages/profile/profile.component';
 import { AppUrl } from '../shared/Url/Appurl';
+import { orderPostObj } from '../pages/order-product/order-product.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -45,9 +46,6 @@ export class PostService {
   likeProduct(userid:number,productId:number): Observable<any> {
     return this.http.get<any>(this.apiUrl+`Product/like-post?userid=${userid}&productid=${productId}`);
   }
-  insertOrder(userid:number,productId:number): Observable<any> {
-    return this.http.post<any>(this.apiUrl+`Product/insert-order?userId=${userid}&productId=${productId}`,{});
-  }
   insertLocation(userid:number,location:string): Observable<any> {
     return this.http.post<any>(this.apiUrl+`Product/insert-location?userId=${userid}&location=${location}`,{});
   }
@@ -56,6 +54,14 @@ export class PostService {
   }
   getuserOptionalFields(userId:number): Observable<UserOptionalFields> {
     return this.http.get<UserOptionalFields>(this.apiUrl+`Product/get-users-optional?id=${userId}`);
+  }
+
+  getOrderById(orderId:number): Observable<any> {
+    return this.http.get<any>(this.apiUrl+`Product/get-order-details?orderId=${orderId}`);
+  }
+
+  insertOrder(order:orderPostObj): Observable<any> {
+    return this.http.post<any>(this.apiUrl+`Product/insert-order`,order);
   }
 }
 export interface Photo {

@@ -166,9 +166,8 @@ export class ProfileComponent implements OnInit{
 }
 
   navigateTodetails(orderId:Number){
-    console.log(orderId);
+    this.router.navigate([AppRoutes.order_details+orderId])
   }
-
 }
 
 
