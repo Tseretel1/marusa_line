@@ -4,6 +4,9 @@
 .primary-text{
     font-size: 20px;
 }
+*{
+    color: rgb(236, 226, 206);
+}
 .center-component{
     width: 100%;
     display: flex;
@@ -58,7 +61,6 @@
                             padding:2px 20px;
                             border-radius: 10px;
                             .bold-price{
-                                color: white;
                                 font-size: 20px;
                             }
                             .red-price{
@@ -118,17 +120,18 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
+        padding: 20px;
         .form-group{
             display: flex;
             flex-direction: column;
             gap: 10px;
             .form-control{
                 width: 100%;
-                background-color: transparent;
+                background-color: rgba(0, 0, 0, 0.397);
                 color: white;
                 padding: 10px;
-                border: 1px solid gray;
                 border-radius: 5px;
+                border: none;
             }
         }
     }
@@ -309,14 +312,21 @@
             gap: 20px;
             .rules{
                 display: flex;
-                flex-wrap: wrap;
                 align-items: center;
-                text-align: center;
-                gap: 10px;
                 width: 100%;
                 padding: 5px 0px;
+                gap: 5px;
                 .to-pay-text{
                     color: orange;
+                    display: flex;
+                    align-items: center;
+                    text-wrap: nowrap;
+                    gap: 5px;
+                }
+                .email{
+                    padding: 10px;
+                    border-radius: 5px;
+                    background-color: rgba(0, 0, 0, 0.267);
                 }
             }
             .rules-text-align{
@@ -375,23 +385,53 @@ textarea{
 }
 .detail-align{
     width: 100%;
+    .payed-container{
+    }
 }
 .detail{
     display: flex;
     align-items: center;
     gap: 5px;
+    cursor: pointer;
+    min-height: 80px;
 }
+
 .info-background{
     padding: 10px ;
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.397);
     color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 .date{
     display: flex;
     width: 100%;
     gap: 10px;
 }
+.order-num-align{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    .order-box{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: white;
+        font-weight: bolder;
+        padding: 5px;
+        background-color: rgba(0, 0, 0, 0.363);
+        border-radius: 5px;
+        .order-status{
+            font-weight: 500;
+        }
+        .order-id{
+            font-size: 18px;
+        }
+    }
+}
+
 @keyframes spinner {
     0%{
     transform: rotate(0deg);
@@ -520,6 +560,16 @@ textarea{
                         }
                         .photo-container{
                             height: 250px;
+                        }
+                    }
+                }
+                .user-information{
+                    .rules-align{
+                        .rulessss{
+                            .rules{
+                                flex-direction: column;
+                                align-items: flex-start;
+                            }
                         }
                     }
                 }

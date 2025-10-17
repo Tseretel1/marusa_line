@@ -6,65 +6,66 @@
             <div class="header-grid">
                 <div class="card-information" *ngIf="postsLoaded">
                     <div class="photo-align" >
+                        <div class="order-num-align">
+                            <div class="order-box" [ngClass]="{'status-waiting':order.statusId ==1,'status-inprogress':order.statusId ==2,'status-ready':order.statusId ==3,}">
+                                <p class="order-status">No. </p>
+                                <p class="order-id">
+                                    {{order.orderId}}
+                                </p>    
+                            </div>
+                        </div>
                         <div class="title-price-align">
                             <p>
                                 {{posts.title}}
                             </p>
-                        </div>
-                          <div class="info-background date">
-                                <p class="secondary-text">შეკვეთის თარიღი:</p>
-                                {{ order.createDate | date : 'dd MMM, yyyy - HH:mm' }} 
-                            </div>  
+                        </div> 
                         <div class="photo-container"  data-aos="fade-in">
                              <div *ngFor="let p of photosArray; let i = index" >
                                  <img [src]="p.photoUrl" *ngIf="i==0" alt="" class="photo">
                              </div>
                         </div>
                         <div class="product-details-align user-information">
-                            <div class="delivery-align info-background" *ngIf="posts.quantity>0">
+                            <div class="info-background date detail">
+                                <i class="fas fa-calendar"></i>
+                                {{ order.createDate | date : 'dd MMM, yyyy - HH:mm' }} 
+                            </div> 
+                            <div class="delivery-align info-background detail" *ngIf="posts.quantity>0">
                                 <p class="secondary-text ">რაოდენობა :</p>
                                 <p>{{productQuantity}}</p>   
                             </div>
-                            <div class="delivery-align info-background">
+                            <div class="delivery-align info-background detail">
                                 <p style="text-align: center;">{{order.deliveryType}}</p>
                             </div>                          
-                            <div class="detail-align">
-                                <div class="detail info-background">
-                                    <p class="secondary-text">
-                                        სტატუსი:
-                                    </p>
-                                    {{getStatusName(order.statusId)}}
-                                    <i class="fas fa-spinner topay" *ngIf="!order.isPaid"></i>
-                                    <i class="fas fa-chart-line payed" *ngIf="order.isPaid"></i>
-                                </div>
-                            </div>
+
                             <div class="detail-align ">
-                                <div class="detail info-background">
-                                    <p class="secondary-text">
-                                        თანხა:
-                                    </p>
+                                <div class="detail info-background" *ngIf="!order.isPaid">
+                                    <p class="secondary-text" >გადასახდელი</p>
                                     <p> {{order.finalPrice}}₾</p>
-                                    <i class="fas fa-credit-card topay"></i>
+                                    <i class="fas fa-credit-card topay" ></i>
+                                </div>
+                                <div class="detail info-background payed-container" *ngIf="order.isPaid">
+                                    <p class="secondary-text" >გადახდილი</p>
+                                    <p> {{order.finalPrice}}₾</p>
+                                    <i class="fas fa-credit-card payed" ></i>
                                 </div>
                             </div>
                         </div>
-                        <div class="comment-align info-background" >
+                        <div class="comment-align user-information" >
                             <div class="form-group">
-                                <label for="" style="display: flex; gap: 20px;" class="secondary-text">კომენტარი <p style="color: gray;">{{comment.length}}/300</p> </label>
+                                <label for="" style="display: flex; gap: 20px; color: white;" >კომენტარი <p style="color: gray;">{{comment.length}}/300</p> </label>
                                 <textarea [(ngModel)]="comment" disabled="true" class="form-control"  maxlength="300" style="min-height: 100px;"></textarea>
                             </div>
                         </div> 
                     </div>
-                    <div class="user-information">
+                    <div class="user-information" *ngIf="!order.isPaid">
                         <div class="rules-align">
                             <div class="title"><b>გადახდის წესები<i class="fas fa-file-alt"></i></b></div>
                             <div class="rulessss" >
                                    <div>
                                         <div class="rules">
-                                            <p>1.</p>
                                             <p class="to-pay-text">
-                                                გადარიცხე თანხა 
-                                                  <b class="price" style="color: white;"> ({{productPrice}} ლარი),</b>
+                                               1. გადარიცხე თანხა 
+                                                  <b> ({{productPrice}} ლარი),</b>
                                             </p>
                                             <p class="to-pay-text">მითითებულ ანგარიშზე</p>
                                         </div>
@@ -84,7 +85,33 @@
                                             <button class="copy-button">კოპირება <i class="fas fa-copy" style="color: white;"></i></button>
                                         </div>
                                     </div>
-                                   <div class="rules">შეკვეთა დადასტურდება გადახდის შემდგომ <i class="fas fa-check"></i></div>
+                                   <div class="rules">3. შეკვეთა დადასტურდება თანხის ჩარიცხვის შემდეგ ✅</div>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="user-information" *ngIf="order.isPaid">
+                        <div class="rules-align">
+                            <div class="rulessss" >
+                                <div class="title"><b>შეკვეთის დეტაილები<i class="fas fa-file-alt"></i></b></div>
+                                <div class="rules">
+                                    <div class="detail-align">
+                                        <div class="detail info-background" >
+                                            {{getStatusName(order.statusId)}}
+                                            <i class="fas fa-spinner topay" *ngIf="!order.isPaid"></i>
+                                            <p class="" *ngIf="order.isPaid"></p>
+                                            <p *ngIf="order.statusId ==3">✅</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rulessss" *ngIf="order.statusId ==2">
+                                <div class="rules"> 1. შეკვეთის მზადება უკვე დაწყებულია✅</div>
+                                <div class="rules"> 
+                                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                                        2. დამზადების შემდგომ თქვენ მიიღებთ ტექსტურ შეტყობინებას იმეილზე
+                                        <p class="email">{{user.Email}} </p>
+                                    </div>
+                                </div>
                             </div>
                         </div> 
                     </div>

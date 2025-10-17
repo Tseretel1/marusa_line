@@ -41,12 +41,15 @@
                     <i class="fas fa-times" (click)="hideFilterModal()"></i>
                 </div>
                 <div class="modal-body">
+                    <div class="stage-oAuth" >
+                        <button class="filter-button" [ngClass]="{'active-filter': sortNum == 3}"(click)="sortByIsPaied(true)">გადახდილი</button>
+                        <button class="filter-button" [ngClass]="{'active-filter': sortNum == 4}"(click)="sortByIsPaied(false)">გადასახდელი</button>
+                    </div>
                     <div class="header"> 
                         <p>სტატუსის მიხედვით</p>
                     </div>
                     <div class="stage-oAuth" >
-                        <button class="filter-button" [ngClass]="{'active-filter': sortNum == 3}"(click)="sortByIsPaied(true)">გადახდილი</button>
-                        <button class="filter-button" [ngClass]="{'active-filter': sortNum == 4}"(click)="sortByIsPaied(false)">გადასახდელი</button>
+                        <button *ngFor="let i of orderStatuses" class="filter-button" [ngClass]="{'active-filter': sortNum == i.id +5}"(click)="sortByStatus(i.id)">{{i.statusName}}</button>
                     </div>
                     <div class="header"> 
                         <p>ფასის მიხედვით</p>
@@ -97,12 +100,7 @@
                             გადასახდელი
                              <div style="display: flex; align-items: center; gap: 2px;">
                                 <i class="fas fa-credit-card topay"></i>
-                                 <ng-container *ngIf="p.discountedPrice>0">
-                                    {{p.discountedPrice}} <b class="">₾</b> 
-                                </ng-container>
-                                <ng-container *ngIf="p.discountedPrice<=0 ||p.discountedPrice==null">
-                                    {{p.price}} <b class="">₾</b> 
-                                </ng-container>
+                                 {{p.finalPrice}}
                             </div>
                         </div>
                         <!-- <div class="detail">
@@ -113,6 +111,10 @@
                             {{getStatusName(p.statusId)}}
                             <i class="fas fa-spinner topay" *ngIf="!p.isPaid"></i>
                             <i class="fas fa-chart-line payed" *ngIf="p.isPaid"></i>
+                        </div>
+                        <div class="detail">
+                            რაოდენობა
+                            {{p.productQuantity}}
                         </div>
                       </div>
                       <app-photo-album [products]="p"[PhotoCongif]="PhotoConfig" class="album"></app-photo-album>

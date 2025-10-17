@@ -69,10 +69,11 @@
         animation: modalPopup 0.5s;
         justify-content: center;
         align-items: center;
+        background-color: rgba(0, 0, 0, 0.267);
         .modal-header{
             position: absolute;
             top: 0px;
-            padding: 20px;
+            padding: 10px 10px 0px 0px;
             right: 0px;
             display: flex;
             width: 100%;
@@ -395,7 +396,6 @@
         gap: 10px;
         overflow-x: scroll;
         width: 80%;
-
         .section-title-align{
             display: flex;
             width: 80%;

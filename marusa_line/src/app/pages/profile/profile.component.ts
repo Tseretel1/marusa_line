@@ -148,6 +148,23 @@ export class ProfileComponent implements OnInit{
     this.sortNum = 2;
     this.hideFilterModal();
   }
+
+ sortByStatus(statusId: number): void {
+  this.MyOrders = [...this.MyOrders].sort((a, b) => {
+    const aMatch = a.statusId === statusId ? 0 : 1;
+    const bMatch = b.statusId === statusId ? 0 : 1;
+    return aMatch - bMatch;
+  });
+  const myOrders = this.MyOrders;
+
+  this.MyOrders =[];
+  setTimeout(() => {
+    this.MyOrders= myOrders;
+  }, 1);
+  this.sortNum =statusId +5;
+  this.hideFilterModal();
+}
+
  sortByIsPaied(paid: boolean) {
   this.hideFilterModal();
   this.MyOrders.sort((a, b) => {
@@ -192,6 +209,10 @@ export interface OrderProduct {
   price: number;
   discountedPrice: number;
   productTypeId: number;
+  finalPrice:number;
+  comment:string;
+  deliveryType:string;
+  productQuantity:string;
 
   likeCount: number;
   isLiked: boolean;

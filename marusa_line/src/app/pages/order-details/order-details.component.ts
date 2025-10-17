@@ -83,20 +83,6 @@ export class OrderDetailsComponent {
     )
   }
 
-  discountedPercentage:number = 0
-  calculatediscountProcentage(){
-    this.discountedPercentage = ((this.posts.price - this.posts.discountedPrice) / this.posts.price) * 100;
-    this.discountedPercentage = Math.round(this.discountedPercentage);
-    console.log(this.posts)
-  }
-  bigPhotoVisible = false;
-  showBigPhoto(){
-    this.bigPhotoVisible = true;
-  }
-  hideBigPhoto(){
-    this.bigPhotoVisible = false;
-  }
-
   isUserLogged(){
     const user = localStorage.getItem('user');
     if(user){
@@ -105,135 +91,6 @@ export class OrderDetailsComponent {
     this.authServise.show();
     return false;
   }
-
-
-
-  nextStepNum:number = 1;
-  nextStep(num:number){
-    this.nextStepNum=num;
-  }
-
-  insertMobile(){
-    if(this.mobileNumber!=''){
-      this.postService.insertPhoneNumber(this.userId, this.mobileNumber).subscribe(
-        (resp)=>{
-          if(resp==1){
-            this.oldMobileNumber = this.mobileNumber;
-          }
-        }
-      )
-    }
-    else{
-      this.mobileNumber = this.oldMobileNumber
-    }
-  }
-  insertLocation(){
-    if(this.address!=''){
-      this.postService.insertLocation(this.userId, this.address).subscribe(
-        (resp)=>{
-          if(resp==1){
-            this.oldAddress= this.address;
-          }
-        }
-      )
-    }
-    else{
-      this.address = this.oldAddress
-    }
-  }
-
-  photoVisibleNum:number = 0;
-  photoDissapear:boolean =false;
-  nextPhoto(){
-      this.photoDissapear = true;
-      setTimeout(() => {
-        this.photoDissapear = false;
-      }, 500);
-      if(this.photosArray.length==this.photoVisibleNum+1){
-        this.photoVisibleNum = 0;
-        return;
-      }
-      this.photoVisibleNum ++;
-      return;
-  }
-  previousPhoto(){
-    this.photoDissapear = true;
-      setTimeout(() => {
-        this.photoDissapear = false;
-      },500);
-    if(this.photoVisibleNum ==0){
-      this.photoVisibleNum = this.photosArray.length-1;
-      return;
-    }
-    this.photoVisibleNum --;
-    return;
-  }
-
-
-  mobileInvalid:boolean = false;
-  addressInvalid:boolean = false;
-  validateFields():boolean{
-    if(this.mobileNumber==''){
-      this.mobileInvalid = true;
-      this.editFieldNum =1;
-      setTimeout(() => {
-        this.mobileInvalid = false;
-      }, 3000);
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth' 
-      });
-      return false;
-    }
-    if(this.address==''){
-      this.addressInvalid = true;
-      this.editFieldNum =2;
-      setTimeout(() => {
-        this.addressInvalid = false;
-      }, 3000);
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth' 
-      });
-      return false;
-    }
-    this.addressInvalid = false;
-    this.mobileInvalid = false;
-    return true;
-
-  }
-  rulesChecked:boolean = false;
-  finishOrder(){
-    if(this.rulesChecked){
-    }
-  }
-  stepThree(){
-    this.nextStep(3);
-  }
-
-  editFieldNum:number = 0;
-  editField(num:number){
-    this.editFieldNum = num;
-  }
-  closeField(num:number){
-    this.editFieldNum = 0;
-    if(num==1){
-      this.mobileNumber = this.oldMobileNumber;
-      return;
-    }
-    this.address = this.oldAddress;
-  }
-  acceptField(num:number){
-    if(num==1){
-      this.insertMobile();
-      this.editFieldNum =0;
-    }
-    else if(num ==2){
-      this.insertLocation();
-      this.editFieldNum =0;
-    }
-  }
-
   productPrice:number = 0;
   oneProductPrice:number = 0;
   productQuantity:number = 1;
@@ -241,13 +98,13 @@ export class OrderDetailsComponent {
 
 
   orderStatuses:orderStatuses[]= [];
-    getOrderStatuses(){
-      this.postService.getOrderStatuses().subscribe(
-        (resp)=>{
-          this.orderStatuses = resp;
-        }
-      )
-    }
+  getOrderStatuses(){
+    this.postService.getOrderStatuses().subscribe(
+      (resp)=>{
+        this.orderStatuses = resp;
+      }
+    )
+  }
   getStatusName(statusid:number){
     const name  = this.orderStatuses.find((x)=> x.id == statusid);
     return name?.statusName;
