@@ -23,7 +23,7 @@
                                 <i class="fas fa-close" *ngIf="mobileNumber==''"></i>
                             </label>
                             <div class="editable-fields">
-                                <input class="form-control" type="text" [disabled]="editFieldNum!=1" [(ngModel)]="mobileNumber" [ngClass]="{'invalid-inputs': mobileInvalid}">
+                                <input class="form-control" type="text" [disabled]="editFieldNum!=1" [(ngModel)]="mobileNumber" [ngClass]="{'invalid-inputs': mobileInvalid}" maxlength="30">
                                 <button class="edit" (click)="editField(1)" *ngIf="editFieldNum!=1"><i class="fas fa-edit"></i></button>
                                 <button class="edit close" (click)="closeField(1)" *ngIf="editFieldNum==1"><i class="fas fa-close"></i></button>
                                 <button class="edit confirm" (click)="acceptField(1)" *ngIf="editFieldNum==1"><i class="fas fa-check" style="color: white;"></i></button>
@@ -36,7 +36,7 @@
                                 <i class="fas fa-close" *ngIf="address==''"></i>
                             </label>
                             <div class="editable-fields">
-                                <input class="form-control" type="text" [disabled]="editFieldNum!=2" [(ngModel)]="address" [ngClass]="{'invalid-inputs': addressInvalid}">
+                                <input class="form-control" type="text" [disabled]="editFieldNum!=2" [(ngModel)]="address" [ngClass]="{'invalid-inputs': addressInvalid}"  maxlength="100">
                                 <button class="edit" (click)="editField(2)" *ngIf="editFieldNum!=2"><i class="fas fa-edit"></i></button>
                                 <button class="edit close" (click)="closeField(2)" *ngIf="editFieldNum==2"><i class="fas fa-close"></i></button>
                                 <button class="edit confirm" (click)="acceptField(2)" *ngIf="editFieldNum==2"><i class="fas fa-check" style="color: white;"></i></button>

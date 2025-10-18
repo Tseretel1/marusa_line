@@ -3,10 +3,11 @@ import { Component, ElementRef, OnInit, ViewChild, } from '@angular/core';
 import AOS from 'aos';
 import { Photo, Post, PostService, ProductTypes } from '../../Repositories/post.service';
 import { PhotoAlbumComponent, PhotoConfig } from '../../shared/components/photo-album/photo-album.component';
+import { DiscountMarkComponent } from "../../shared/components/discount-mark/discount-mark.component";
 
 @Component({
   selector: 'app-gallery',
-  imports: [CommonModule, PhotoAlbumComponent],
+  imports: [CommonModule, PhotoAlbumComponent, DiscountMarkComponent],
   templateUrl: './gallery.component.html',
   styleUrl: './gallery.component.scss'
 })

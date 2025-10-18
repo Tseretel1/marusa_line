@@ -13,9 +13,20 @@
         gap: 5px;
         display: grid;
         grid-template-columns: repeat(4,1fr);
-        .album{
-           height: 350px;
-           max-width: 600px;
+        .container{
+          position: relative;
+          height: 300px;
+          .discount-procent{
+            position: absolute;
+            left: -10px;
+            top: -10px;
+            width: 20px;
+            height: 20px;
+            z-index: 1;
+          }
+          .album{
+             max-width: 600px;
+          }
         }
         .sort-cards{
           animation: openSortCards 0.5s;
@@ -198,7 +209,7 @@
     .gallery-align{
        .photo-align{
         grid-template-columns: repeat(3,1fr);
-         .album{
+        .container{
            height: 250px;
         }
     }
@@ -208,8 +219,8 @@
     .gallery-align{
        .photo-align{
         grid-template-columns: repeat(2,1fr);
-         .album{
-           height: 200px;
+         .container{
+           height: 250px;
         }
     }
   }
@@ -221,8 +232,8 @@
     .gallery-align{
        .photo-align{
         width: 90%;
-         .album{
-           height: 200px;
+         .container{
+           height: 250px;
         }
       }
       .filters-align{
@@ -239,8 +250,8 @@
       .photo-align{
         grid-template-columns: repeat(1,1fr);
         width: 90%;
-         .album{
-           height: 200px;
+        .container{
+           height: 250px;
         }
       }
   }

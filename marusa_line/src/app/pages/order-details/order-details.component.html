@@ -8,7 +8,7 @@
                     <div class="photo-align" >
                         <div class="order-num-align">
                             <div class="order-box" [ngClass]="{'status-waiting':order.statusId ==1,'status-inprogress':order.statusId ==2,'status-ready':order.statusId ==3,}">
-                                <p class="order-status">No. </p>
+                                <p class="order-status">შეკვეთა </p>
                                 <p class="order-id">
                                     {{order.orderId}}
                                 </p>    
@@ -24,10 +24,25 @@
                                  <img [src]="p.photoUrl" *ngIf="i==0" alt="" class="photo">
                              </div>
                         </div>
+                        
                         <div class="product-details-align user-information">
+
+                            
+                            <div class="detail-align ">
+                                <div class="detail info-background" *ngIf="!order.isPaid" [ngClass]="{'to-payed':!order.isPaid}">
+                                    <p class="" >გადასახდელი</p>
+                                    <b> {{order.finalPrice}}₾</b>
+                                    <i class="fas fa-credit-card" ></i>
+                                </div>
+                                <div class="detail info-background payed-container" *ngIf="order.isPaid" [ngClass]="{'is-payed':order.isPaid }">
+                                    <p class="" >გადახდილი</p>
+                                    <b> {{order.finalPrice}}₾</b>
+                                    <i class="fas fa-credit-card" ></i>
+                                </div>
+                            </div>
                             <div class="info-background date detail">
                                 <i class="fas fa-calendar"></i>
-                                {{ order.createDate | date : 'dd MMM, yyyy - HH:mm' }} 
+                                {{ order.createDate | date : 'dd MMM yyyy' }} 
                             </div> 
                             <div class="delivery-align info-background detail" *ngIf="posts.quantity>0">
                                 <p class="secondary-text ">რაოდენობა :</p>
@@ -37,18 +52,6 @@
                                 <p style="text-align: center;">{{order.deliveryType}}</p>
                             </div>                          
 
-                            <div class="detail-align ">
-                                <div class="detail info-background" *ngIf="!order.isPaid">
-                                    <p class="secondary-text" >გადასახდელი</p>
-                                    <p> {{order.finalPrice}}₾</p>
-                                    <i class="fas fa-credit-card topay" ></i>
-                                </div>
-                                <div class="detail info-background payed-container" *ngIf="order.isPaid">
-                                    <p class="secondary-text" >გადახდილი</p>
-                                    <p> {{order.finalPrice}}₾</p>
-                                    <i class="fas fa-credit-card payed" ></i>
-                                </div>
-                            </div>
                         </div>
                         <div class="comment-align user-information" >
                             <div class="form-group">
@@ -81,7 +84,7 @@
                                             
                                         </div>
                                         <div class="rules-text-align">
-                                            <p> შეკვეთა ნომერი: {{order.orderId}} </p>
+                                            <p> შეკვეთის ნომერი: {{order.orderId}} </p>
                                             <button class="copy-button">კოპირება <i class="fas fa-copy" style="color: white;"></i></button>
                                         </div>
                                     </div>

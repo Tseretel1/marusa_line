@@ -1,11 +1,3 @@
-<!-- <div class="background-photo-container" >
-    <div *ngFor="let p of photosArray; let i = index" >
-        <img [src]="p.photoUrl" alt="" class="photo" *ngIf="i==photoVisibleNum" [ngClass]="{'backfade':photoDissapear,}">
-    </div>
-</div>
-<div class="background-photo-blur"></div> -->
-
-
 <div class="center-component" >
     <div class="component">
         <div class="header-grid">
@@ -18,7 +10,6 @@
                             <div class="next-photo previous" (click)="previousPhoto()"><i class="fas fa-chevron-left chevron"></i></div>
                             <div class="camera-button" (click)="showBigPhoto()">
                                 <i class="fas fa-expand"></i>
-                                <!-- <i class="fas fa-compress"></i> -->
                             </div>
                             <div  class="next-photo" (click)="nextPhoto()"><i class="fas fa-chevron-right chevron"></i></div>
                         </div>
@@ -32,8 +23,7 @@
                 </div>
             </div>
            <div class="card-information" *ngIf="postsLoaded" >
-                <!-- <p class="discount-procent" *ngIf="this.posts.discountedPrice!=null&& this.posts.discountedPrice>0">-{{discountedPercentage}}%</p> -->
-                <app-discount-mark *ngIf="this.posts.discountedPrice!=null&& this.posts.discountedPrice>0" class="discount-procent" [discount]="posts"></app-discount-mark>
+                <!-- <app-discount-mark *ngIf="this.posts.discountedPrice!=null&& this.posts.discountedPrice>0" class="discount-procent" [discount]="posts"></app-discount-mark> -->
                 <div class="header-title">
                     <p class="title" >{{posts.title}}</p>     
                     <div class="price-tag-align" >

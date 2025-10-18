@@ -64,7 +64,6 @@ export class CardDetailsComponent implements OnInit{
   calculatediscountProcentage(){
     this.discountedPercentage = ((this.posts.price - this.posts.discountedPrice) / this.posts.price) * 100;
     this.discountedPercentage = Math.round(this.discountedPercentage);
-    console.log(this.posts)
   }
 
   photoVisibleNum:number = 0;

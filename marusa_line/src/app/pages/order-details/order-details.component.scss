@@ -17,7 +17,7 @@
         display: grid;
         justify-content: center;
         grid-template-columns: repeat(1,1fr);
-        width: 40%;
+        width: 45%;
         position: relative;
         padding:20px;
         border-radius: 10px;
@@ -393,7 +393,6 @@ textarea{
     cursor: pointer;
     min-height: 80px;
 }
-
 .info-background{
     padding: 10px ;
     border-radius: 5px;
@@ -407,6 +406,12 @@ textarea{
     display: flex;
     width: 100%;
     gap: 10px;
+}
+.to-payed{
+    background-color: rgba(255, 136, 0, 0.774);
+}
+.is-payed{
+    background-color: green;
 }
 .order-num-align{
     width: 100%;
