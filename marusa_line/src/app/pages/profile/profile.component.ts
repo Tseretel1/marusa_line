@@ -68,7 +68,6 @@ export class ProfileComponent implements OnInit{
     return this.postService.getUserOrders(this.userId).subscribe(
       (resp)=>{
         this.MyOrders = resp;
-        console.log(this.MyOrders)
       }
     );
   }
@@ -170,12 +169,10 @@ export class ProfileComponent implements OnInit{
   this.MyOrders.sort((a, b) => {
     if (paid) {
       this.sortNum =3
-      console.log(this.sortNum)
       return (b.isPaid === true ? 1 : 0) - (a.isPaid === true ? 1 : 0);
     }
     else {
       this.sortNum =4
-      console.log(this.sortNum)
       return (a.isPaid === true ? 1 : 0) - (b.isPaid === true ? 1 : 0);
     }
   });

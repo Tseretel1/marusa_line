@@ -9,7 +9,7 @@
         width: 100%;
         display: flex;
         justify-content: center;
-        padding: 10px 0px;
+        height: 55px;
         background-color: rgba(0, 0, 0, 0.418);
         backdrop-filter: blur(5px);
         .header-align{
@@ -22,6 +22,8 @@
                 display: flex;
                 align-items: center;
                 gap: 15px;
+                position: absolute;
+                top: 5px;
                 cursor: pointer;
                 .logo-container{
                     overflow: hidden;
@@ -56,7 +58,7 @@
             .navigation-align{
                 width: 100%;
                 display: flex;
-                justify-content: center;
+                justify-content: flex-end;
                 gap: 25px;
                 align-items: center;
                 .nav-link{
@@ -291,6 +293,7 @@
 @media screen and (max-width: 900px){
 .component{
     .header{
+        padding: 10px 0px;
         .header-align{
             align-items: center;
             .float-logo{
