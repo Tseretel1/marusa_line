@@ -6,6 +6,7 @@ import { AppUrl } from '../../shared/Url/Appurl';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppRoutes } from '../../shared/AppRoutes/AppRoutes';
 import Swal from 'sweetalert2';
+import { Token } from '@angular/compiler';
 @Component({
   selector: 'app-authorization',
   imports: [CommonModule,ReactiveFormsModule],
@@ -26,7 +27,7 @@ export class AuthorizationComponent implements OnInit{
     });
   }
   ngOnInit(): void {
-
+this.insertautomaticaly();
   }
   hideModalExecute:boolean = false;
   closeModal(){
@@ -36,6 +37,14 @@ export class AuthorizationComponent implements OnInit{
       this.hideModalExecute = false;
     }, 500);
   }
+
+  insertautomaticaly(){
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIyIiwiZW1haWwiOiJ0aWNrZXRlci5wckBnbWFpbC5jb20iLCJuYW1lIjoiVGlja2V0ZXIiLCJleHAiOjE3NjA5ODEzMDUsImlzcyI6Im1hcnVzYV9saW5lIiwiYXVkIjoibWFydXNhX2xpbmVfdXNlcnMifQ.D02c_2l7iU-Irv5iZAO0y-7vMJ_LyJ2yLSiNZ8Tq6DY';
+    const user = '{"Id":2,"Email":"ticketer.pr@gmail.com","Name":"Ticketer","Picture":"https://lh3.googleusercontent.com/a/ACg8ocIJvwkV1b1FhS3ru4WEIXhDONEJAzuuPF3PXBw6IoHj6R-m5N8=s96-c"}'
+    localStorage.setItem('user', user);
+    localStorage.setItem('token', token);
+  }
+
 
   stageNumber:number = 0;
   modalName:string = 'ავტორიზაცია'

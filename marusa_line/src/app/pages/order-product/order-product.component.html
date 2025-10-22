@@ -54,9 +54,9 @@
                             <p *ngIf="posts.quantity>0">✅მარაგშია: {{posts.quantity}}</p>
                             <div class="quantity-align card-background" *ngIf="posts.quantity>0">
                                 <p class="">რაოდენობა</p>
-                                <button class="quantity-button" (click)="minusQuantity()">-</button>
+                                <div class="quantity-button" (click)="minusQuantity()">-</div>
                                 <p>{{productQuantity}}</p>   
-                                <button class="quantity-button" (click)="plusQuantity()">+</button>
+                                <div class="quantity-button" (click)="plusQuantity()">+</div>
                             </div>
                             <div class="delivery-align card-background">
                                 <p class="">მიწოდება</p>

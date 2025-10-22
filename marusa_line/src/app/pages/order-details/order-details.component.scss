@@ -128,6 +128,7 @@
             .form-control{
                 width: 100%;
                 background-color: rgba(0, 0, 0, 0.397);
+                background-color: rgb(37, 36, 36);
                 color: white;
                 padding: 10px;
                 border-radius: 5px;
@@ -320,7 +321,6 @@
                     color: orange;
                     display: flex;
                     align-items: center;
-                    text-wrap: nowrap;
                     gap: 5px;
                 }
                 .email{
@@ -335,9 +335,23 @@
                 justify-content: center;
                 gap: 10px;
                 flex-wrap: wrap;
-                background-color: rgba(0, 0, 0, 0.445);
+                background-color: rgb(37, 36, 36);
                 padding: 10px;
                 border-radius: 5px;
+                .logo-container{
+                    width: 50px;
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    .logo{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
                 p{
                     font-size: 18px;
                 }
@@ -349,10 +363,9 @@
                     display: flex;
                     align-items: center;
                     color: white;
-                    padding:5px 10px;
+                    padding:10px 20px;
                     border-radius: 5px;
                     background-color: rgb(25, 26, 25);
-                    box-shadow: 0px 0px 5px black;
                     border:none;
                     cursor: pointer;
                 }
@@ -386,6 +399,24 @@ textarea{
 .detail-align{
     width: 100%;
 }
+.order-road{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .order-road-component{
+        background-color: rgb(48, 48, 48);
+        color: white;
+        width: 100%;
+        border-radius: 5px;
+        padding: 5px 10px;
+        text-align: center;
+        opacity: 0.7;
+    }
+    .selected-status{
+        opacity: 1;
+        background-color: gray;
+    }
+}
 .detail{
     display: flex;
     align-items: center;
@@ -396,7 +427,7 @@ textarea{
 .info-background{
     padding: 10px ;
     border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0.397);
+    background-color: rgb(37, 36, 36);
     color: white;
     text-align: center;
     display: flex;
@@ -424,7 +455,6 @@ textarea{
         color: white;
         font-weight: bolder;
         padding: 5px;
-        background-color: rgba(0, 0, 0, 0.363);
         border-radius: 5px;
         .order-status{
             font-weight: 500;

@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { orderStatuses, Post, PostService } from '../../Repositories/post.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CommonModule, DatePipe, NgFor } from '@angular/common';
@@ -15,8 +15,13 @@ import { FormsModule, ɵInternalFormsSharedModule } from "@angular/forms";
   styleUrl: './order-details.component.scss'
 })
 export class OrderDetailsComponent {
+ @ViewChild('scrollToBottom') scrollToStart!: ElementRef;
 
-  
+  scrollToBottomMethod() {
+    this.scrollToStart.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => {
+  }, 500);
+  }
 
 
   productId:number = 0;

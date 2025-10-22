@@ -109,10 +109,6 @@
                             </div>
                         </div>
                         <div class="detail">
-                            რაოდენობა
-                            {{p.productQuantity}}
-                        </div>
-                        <div class="detail">
                             {{getStatusName(p.statusId)}}
                             <i class="fas fa-spinner topay" *ngIf="!p.isPaid"></i>
                             <i class="fas fa-chart-line payed" *ngIf="p.isPaid"></i>
@@ -125,13 +121,13 @@
         </div>
     </ng-container>
     <ng-container *ngIf="likesOrOrders ==2">
-        <div class="photo-align" *ngIf="LikedProducts.length>0">
+        <div class="photo-align" *ngIf="LikedProducts">
             <ng-container *ngFor="let p of LikedProducts; let index = index;" >
                 <app-photo-album [products]="p" [PhotoCongif]="PhotoConfig" class="album"  data-aos="fade-up"></app-photo-album>
             </ng-container>
         </div>
     </ng-container>
-    <div class="no-posts-todisplay" *ngIf="LikedProducts.length<=0 && MyOrders.length<=0">
+    <div class="no-posts-todisplay" *ngIf="LikedProducts==null && MyOrders == null">
         <i class="far fa-camera"></i>
         <p>No products to dislpay!</p>
     </div>
