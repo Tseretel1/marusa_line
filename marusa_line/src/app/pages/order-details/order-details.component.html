@@ -63,6 +63,21 @@
                 <p style="text-align: center">{{ order.deliveryType }}</p>
               </div>
             </div>
+            <div class="comment-align user-information" #scrollToBottom>
+              <div class="form-group">
+                <label for="" style="display: flex; gap: 20px; color: white"
+                  >კომენტარი
+                  <p style="color: gray">{{ comment.length }}/300</p>
+                </label>
+                <textarea
+                  [(ngModel)]="comment"
+                  disabled="true"
+                  class="form-control"
+                  maxlength="300"
+                  style="min-height: 100px"
+                ></textarea>
+              </div>
+            </div>
             <div class="user-information" *ngIf="order.isPaid">
               <div class="rules-align">
                 <div class="rulessss">
@@ -105,21 +120,6 @@
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="comment-align user-information" #scrollToBottom>
-              <div class="form-group">
-                <label for="" style="display: flex; gap: 20px; color: white"
-                  >კომენტარი
-                  <p style="color: gray">{{ comment.length }}/300</p>
-                </label>
-                <textarea
-                  [(ngModel)]="comment"
-                  disabled="true"
-                  class="form-control"
-                  maxlength="300"
-                  style="min-height: 100px"
-                ></textarea>
               </div>
             </div>
           </div>
