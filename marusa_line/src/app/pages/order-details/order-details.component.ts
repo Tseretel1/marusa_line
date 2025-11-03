@@ -114,6 +114,20 @@ export class OrderDetailsComponent {
     const name  = this.orderStatuses.find((x)=> x.id == statusid);
     return name?.statusName;
   }
+
+  copiedNumber:number = 0;
+
+  copyToClipboard(text: string,numebr:number): void {
+    this.copiedNumber = numebr;
+    navigator.clipboard.writeText(text)
+    .then(() => {
+    })
+    .catch(err => {
+    });
+    setTimeout(() => {
+      this.copiedNumber = 0;
+    }, 3000);
+  }
 }
 
  interface Photo {
