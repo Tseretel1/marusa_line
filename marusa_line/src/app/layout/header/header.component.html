@@ -1,16 +1,46 @@
 <div class="component">
     <div class="header">
     <div class="header-align">
-        <div class="float-logo">
-            <a class="logo-container" href="https://www.instagram.com/marusa__line/" target="_blank">
-                <img class="logo" src="assets/img/marusa_line.jpg" alt="">
-            </a>
-            <p class="header-title">marusa_line</p>
+        <div class="float-logo" [routerLink]="AppRoutes.home"(click)="scrollTotop()">
+            <span class="logo-container">
+                <img class="logo" src="assets/img/picolo.png" alt="" style="scale: 2;">
+            </span>
+            <p class="header-title">Piccolo</p>
         </div> 
-        <ul class="navigation-align">
-            <li class="nav-link"><b>პროდუქტები</b> </li>
-            <li class="nav-link" ><b (click)="scrollToBottom()"> კონტაქტი</b> </li>
-        </ul>
+        <div class="navigation-align">
+            <span [ngClass]="{'login-popup': Authorised}" class="nav-link" routerLinkActive="active-link" [routerLink]="AppRoutes.home"(click)="scrollTotop()"><i class="fas fa-house"></i><b>მთავარი</b> </span>
+            <span [ngClass]="{'login-popup': Authorised}" class="nav-link" routerLinkActive="active-link" (click)="scrollToBottom()"><b ><i class="fas fa-address-book"></i> კონტაქტი</b> </span>
+            <span [ngClass]="{'login-popup': Authorised}" *ngIf="!Authorised" class="nav-link" routerLinkActive="active-link" (click)="openAuthorization()"><b ><i class="fas fa-user-shield"></i> ავტორიზაცია</b> </span>
+            <div *ngIf="Authorised" class="nav-link profile-link" [routerLink]="AppRoutes.profile" [ngClass]="{'login-popup': Authorised}" >
+                <div class="img-container" *ngIf="userPhoto">
+                    <img [src]="userPhoto" class="user-image">
+                </div>
+                <p class="username">{{user.Name}}</p>
+            </div>
+        </div>
+        <div class="burger-icon-align" >
+            <span class="nav-link" routerLinkActive="active-link" (click)="openSidenav()"><i class="fas fa-bars"></i></span>
+        </div>
     </div>
 </div>
+</div>
+
+<div class="sidenav-align"*ngIf="sidenavVisible">
+    <div class="background-exit" [ngClass]="{'background-close':leftToright}" (click)="hideSidenav()"></div>
+    <div class="mobile-navigation-align" [ngClass]="{'left-toright':leftToright}">
+        <div class="cancel-icon-align">
+            <i class="fas fa-times" (click)="hideSidenav()"></i>
+        </div>
+        <div class="nav-center">
+            <div *ngIf="Authorised" class="nav-link profile-link" [routerLink]="AppRoutes.profile"(click)="hideSidenav()" routerLinkActive="active-link"><img src="" alt="">
+                <div class="img-container"*ngIf="userPhoto">
+                    <img [src]="userPhoto" class="user-image">
+                </div>
+                <p class="username">{{user.Name}}</p>
+            </div>
+            <span class="nav-link" routerLinkActive="active-link" [routerLink]="AppRoutes.home" (click)="scrollTotop()"><i class="fas fas fa-house"></i><b>მთავარი</b> </span>
+            <span class="nav-link" routerLinkActive="active-link" (click)="scrollToBottom()"><b ><i class="fas fa-address-book"></i> კონტაქტი</b> </span>
+            <span *ngIf="!Authorised" class="nav-link" routerLinkActive="active-link" (click)="openAuthorization()"><b ><i class="fas fa-user-shield"></i> ავტორიზაცია</b> </span>
+        </div>
+    </div>
 </div>

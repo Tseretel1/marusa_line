@@ -1,0 +1,134 @@
+<div class="gallery-align">
+    <div class="profile-align">
+        <div class="profile-container-align">
+            <div class="profile-container">
+                <img [src]="user.Picture" class="profile" alt="">
+            </div>
+            <p class="username">{{user.Name}}</p>
+        </div>
+       <div (click)="logout()" class="log-out">
+          <i class="fas fa-sign-out-alt"></i>
+          <p> გასვლა</p> 
+       </div>
+    </div>
+    <div class="profile-header">
+        <p (click)="changeProductSource(1)" [ngClass]="{'active':likesOrOrders ==1}">
+            შეკვეთები
+            <i class="fas fa-receipt"></i>       
+            <!-- <i class="fas fa-truck"></i> -->
+        </p>
+        <p (click)="changeProductSource(2)" [ngClass]="{'active':likesOrOrders ==2}">
+            მოწონებული
+            <!-- <i class="fas fa-bookmark" ></i>    -->
+            <i class="fas fa-heart" ></i>   
+        </p>
+    </div>
+
+      <div class="filters-align" *ngIf="likesOrOrders ==1">
+         <div class="section-title-align">
+            <b class="section-title">
+                <i class="fas fa-circle"></i> 
+                დაალაგე ფილტრით
+                <button class="open-filter" [ngClass]="{'active-filter': activeFilterNum == 0}" (click)="showFilterModal()"><i class="fas fa-sliders-h"></i> </button>
+            </b>
+        </div>
+        <div class="modal-align" *ngIf="filterModalVisible"> 
+            <div class="modal-background" (click)="hideFilterModal()">
+            </div>
+            <div class="modal" [ngClass]="{'hide-modal':hideModalExecute}">
+                <div class="modal-header" >
+                    <i></i>
+                    <i class="fas fa-times" (click)="hideFilterModal()"></i>
+                </div>
+                <div class="modal-body">
+                    <div class="stage-oAuth" >
+                        <button class="filter-button" [ngClass]="{'active-filter': sortNum == 3}"(click)="sortByIsPaied(true)">გადახდილი</button>
+                        <button class="filter-button" [ngClass]="{'active-filter': sortNum == 4}"(click)="sortByIsPaied(false)">გადასახდელი</button>
+                    </div>
+                    <div class="header"> 
+                        <p>სტატუსის მიხედვით</p>
+                    </div>
+                    <div class="stage-oAuth" >
+                        <button *ngFor="let i of orderStatuses" class="filter-button" [ngClass]="{'active-filter': sortNum == i.id +5}"(click)="sortByStatus(i.id)">{{i.statusName}}</button>
+                    </div>
+                    <div class="header"> 
+                        <p>ფასის მიხედვით</p>
+                    </div>
+                    <div class="stage-oAuth" >
+                        <button class="filter-button" [ngClass]="{'active-filter': sortNum == 1}"(click)="sortByPriceHighToLow()">კლებადობით</button>
+                        <button class="filter-button" [ngClass]="{'active-filter': sortNum == 2}"(click)="sortByPriceLowToHigh()">ზრდადობით</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-container *ngIf="likesOrOrders ==1">
+        <div class="photo-align orders-align" *ngIf="MyOrders.length>0">
+            <div *ngFor="let p of MyOrders; let index = index;">
+                <div class="order-card" [ngClass]="{'payed-container':p.isPaid}"data-aos="fade-in">
+                        <div class="card-title-align">                         
+                            <div class="detail" >
+                                <p> 
+                                    შეკვეთის ნომერი 
+                                    <b>
+                                    {{p.orderId}}
+                                    </b>
+                                </p>
+                            </div>
+                            <div class="detail detail-button" [ngClass]="{'payed':p.isPaid,'topay':!p.isPaid}" (click)="navigateTodetails(p.orderId)">
+                                დეტალურად
+                            </div>
+                        </div>
+                   <div class="order-container">
+                       <div class="order-details">
+                           <!-- <div class="detail">
+                                  {{p.title}}
+                          </div> -->
+                          <div class="detail " style="border: 1px solid rgb(116, 113, 113)">
+                              <div style="display: flex; align-items: center; gap: 2px;">
+                                  {{p.title}}
+                            </div>
+                        </div>
+                        <div class="detail " *ngIf="p.isPaid">
+                            გადახდილი
+                            <div style="display: flex; align-items: center; gap: 2px;">
+                                <i class="fas fa-credit-card payed"></i>
+                                <ng-container *ngIf="p.discountedPrice>0">
+                                    {{p.discountedPrice}} <b class="">₾</b> 
+                                </ng-container>
+                                <ng-container *ngIf="p.discountedPrice<=0 ||p.discountedPrice==null">
+                                    {{p.price}} <b class="">₾</b> 
+                                </ng-container>
+                            </div>
+                        </div>
+                        <div class="detail " *ngIf="!p.isPaid">
+                            გადასახდელი
+                            <div style="display: flex; align-items: center; gap: 2px;">
+                                <i class="fas fa-credit-card topay"></i>
+                                {{p.finalPrice}}₾
+                            </div>
+                        </div>
+                        <div class="detail">
+                            {{getStatusName(p.statusId)}}
+                            <i class="fas fa-spinner topay" *ngIf="!p.isPaid"></i>
+                            <i class="fas fa-chart-line payed" *ngIf="p.isPaid"></i>
+                        </div>
+                      </div>
+                      <app-photo-album [products]="p"[PhotoCongif]="PhotoConfig" class="album"></app-photo-album>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="likesOrOrders ==2">
+        <div class="photo-align" *ngIf="LikedProducts">
+            <ng-container *ngFor="let p of LikedProducts; let index = index;" >
+                <app-photo-album [products]="p" [PhotoCongif]="PhotoConfig" class="album"  data-aos="fade-up"></app-photo-album>
+            </ng-container>
+        </div>
+    </ng-container>
+    <div class="no-posts-todisplay" *ngIf="LikedProducts==null && MyOrders == null">
+        <i class="far fa-camera"></i>
+        <p>No products to dislpay!</p>
+    </div>
+</div>

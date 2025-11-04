@@ -1,0 +1,153 @@
+
+
+<div class="center-component" >
+    <div class="body-align">
+        <div class="component">
+           <div class="header-grid">
+            <div class="card-information" *ngIf="postsLoaded">
+                    <div class="user-information">
+                        <div class="flex-columns">
+                            <div class="form-group">
+                                <label for="">მომხმარებელი <i class="fas fa-check"></i></label>
+                                <input class="form-control" type="text" [value]="user.Name" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="">იმეილი <i class="fas fa-check"></i></label>
+                                <input class="form-control" type="text" [value]="user.Email" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                             <label for="">
+                                მობილური ნომერი 
+                                <i class="fas fa-check" *ngIf="mobileNumber!=''"></i>
+                                <i class="fas fa-close" *ngIf="mobileNumber==''"></i>
+                            </label>
+                            <div class="editable-fields">
+                                <input class="form-control" type="text" [disabled]="editFieldNum!=1" [(ngModel)]="mobileNumber" [ngClass]="{'invalid-inputs': mobileInvalid}" maxlength="30">
+                                <button class="edit" (click)="editField(1)" *ngIf="editFieldNum!=1"><i class="fas fa-edit"></i></button>
+                                <button class="edit close" (click)="closeField(1)" *ngIf="editFieldNum==1"><i class="fas fa-close"></i></button>
+                                <button class="edit confirm" (click)="acceptField(1)" *ngIf="editFieldNum==1"><i class="fas fa-check" style="color: white;"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">
+                                მისამართი 
+                                <i class="fas fa-check" *ngIf="address!=''"></i>
+                                <i class="fas fa-close" *ngIf="address==''"></i>
+                            </label>
+                            <div class="editable-fields">
+                                <input class="form-control" type="text" [disabled]="editFieldNum!=2" [(ngModel)]="address" [ngClass]="{'invalid-inputs': addressInvalid}"  maxlength="100">
+                                <button class="edit" (click)="editField(2)" *ngIf="editFieldNum!=2"><i class="fas fa-edit"></i></button>
+                                <button class="edit close" (click)="closeField(2)" *ngIf="editFieldNum==2"><i class="fas fa-close"></i></button>
+                                <button class="edit confirm" (click)="acceptField(2)" *ngIf="editFieldNum==2"><i class="fas fa-check" style="color: white;"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                  
+                    <div class="photo-align" >
+                        <div class="product-details-align">
+                            <div class="title-price-align">
+                                <p>
+                                   {{posts.title}}
+                                </p>
+                            </div>
+                            <p *ngIf="posts.quantity>0">✅მარაგშია: {{posts.quantity}}</p>
+                            <div class="quantity-align card-background" *ngIf="posts.quantity>0">
+                                <p class="">რაოდენობა</p>
+                                <div class="quantity-button" (click)="minusQuantity()">-</div>
+                                <p>{{productQuantity}}</p>   
+                                <div class="quantity-button" (click)="plusQuantity()">+</div>
+                            </div>
+                            <div class="delivery-align card-background">
+                                <p class="">მიწოდება</p>
+                                <select name="" class="form-control" id="" [(ngModel)]="delieveryChoise" (change)="ondelieveryChange()">
+                                   <option value="1"  selected>კურიერი🚚</option>
+                                   <option value="2">ჩემით წავიღებ🚶‍♂️</option>
+                                </select>
+                            </div>
+                            <div class="price courier" *ngIf="delieveryChoise ==1">
+                                <div style="display: flex; align-items: center;"> კურიერი + 10  <b style="color: green;">₾</b></div>
+                            </div>
+                            <div class="price" *ngIf="delieveryChoise !=1">
+                                <div style="opacity: 0;"> კ </div>
+                            </div>
+                            <div class="price center-price" >
+                                <p>სულ </p>
+                                <b> {{productPrice}} <p>₾</p></b>
+                            </div>
+                        </div>
+                           <div class="photo-container"  data-aos="fade-in">
+                            <div *ngFor="let p of photosArray; let i = index" >
+                                <img [src]="p.photoUrl" *ngIf="i==0" alt="" class="photo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="user-information" >
+                        <div class="rules-align">
+                            <div class="title"><b>გადახდა<i class="fas fa-file-alt"></i></b></div>
+                            <ol>
+                                <div class="rules">
+                                    გადასახდელი თანხა <b class="price"> ({{productPrice}} ლარი),</b>
+                                     <div class="rules-text-align">
+                                        <p>GE76BG0000000607705606</p>
+                                        <button class="copy-button">კოპირება <i class="fas fa-copy" style="color: white;"></i></button>
+                                     </div>
+                                 </div>
+                                 <div class="rules">
+                                     დანიშნულებაში აუცილებლად მიუთითეთ, 
+                                     <div class="rules-text-align">
+                                        <p> ნომერი {{posts.id}} </p>
+                                        <button class="copy-button">კოპირება <i class="fas fa-copy" style="color: white;"></i></button>
+                                     </div>
+                                 </div>
+                                 <div class="rules">შეკვეთა გადახდის შემდგომ ავტომატურად დადასტურდება <i class="fas fa-check"></i></div>
+                            </ol>
+                        </div> 
+                    </div> -->
+
+                    <div class="user-information" >
+                        <div class="rules-align" >
+                            <div class="form-group">
+                                <label for="" style="display: flex; gap: 20px;">დატოვე კომენტარი <p style="color: gray;">{{comment.length}}/300</p> </label>
+                                <textarea [(ngModel)]="comment" class="form-control"  maxlength="300" style="min-height: 100px;"></textarea>
+                            </div>
+                        </div> 
+                    </div>
+
+                    <div class="user-information" *ngIf="posts.quantity<=0">
+                        <div class="rules-align" >
+                            <div class="title"><b>თქვენ უნდა იცოდეთ<i class="fas fa-file-alt"></i></b></div>
+                            <ul>
+                                <li>
+                                  1.  პროდუქტი მარაგში არაა, ამიტომ მის დამზადებას შეკვეთის მიღებიდან 2-4 კვირამდე ვადაში შევძებთ. ✅
+                                </li>
+                                <li>2. თვითოეული ნივთი არის ხელნაკეთი, 
+                                შესაბამისად 100%-ით იდენტობა ფოტოზე ასახულ ნივთთან შეუძლებელია. ✅
+                                 </li>
+                            </ul>
+                            <!-- <div class="checkbox-align" >
+                                <input type="checkbox" class="checkbox" [(ngModel)]="rulesChecked" id="check">
+                                <label for="check" class="checkbox" >ვეთანხმები</label>
+                            </div> -->
+                        </div> 
+                    </div>
+                
+                   
+
+                     <div class="user-information" >
+                        <div class="rules-align" >
+                            <ul>
+                                <li>
+                                    თანხის გადახდა ხდება შეკვეთის გაფორმების შემდგომ.✅
+                                </li>
+                            </ul>
+                        </div> 
+                    </div>
+                    <button class="order-button next-button" (click)="insertOrder()">შეკვეთის გაფორმება</button>
+             </div>
+        </div>
+    </div>
+    </div>
+</div>
+

@@ -1,0 +1,52 @@
+.overlay{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.281);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  animation:0.5s overlayFadeIn;
+  justify-content: center;
+  align-items: center;
+}
+.four-buble{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 30px;
+    animation: rotates 2.5s infinite;
+}
+@keyframes rotates{
+    0%{
+        rotate: 0deg;
+    }
+    50%{
+        rotate: 180deg;
+    }
+    100%{
+        rotate: 360deg;
+    }
+}
+.text-anim{
+    width: 50px;
+    height: 50px;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.253);
+    animation: LoaderAnim 1s infinite;
+}
+@keyframes LoaderAnim{
+    0%{
+        border-radius: 10%;
+        scale: 1;
+    }
+    50%{
+        background-color: rgba(0, 0, 0, 0.418);
+        scale: 1.5;
+        border-radius: 50%;
+    }
+    100%{
+        border-radius: 10%;
+        scale: 1;
+    }
+}

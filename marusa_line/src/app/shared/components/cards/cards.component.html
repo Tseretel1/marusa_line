@@ -1,18 +1,18 @@
 <div class="card">
     <div class="title-price">
-        <p class="title">{{cards.name}}</p>
+        <p class="title">{{posts.title}}</p>
     </div>
     <div class="img-container">
-        <img class="img" [src]="cards.photoUrl" alt="">
+        <img class="img" [src]="posts.photos[0].photoUrl" alt="">
     </div>
 
     <div class="description">
         <div class="price-align">
-            <b class="">{{cards.price}}</b>
+            <b class="price">{{posts.price}}</b>
             <p class="price">₾ </p>
         </div>
         <div >
-            <p class="description-text">{{cards.description}}</p>
+            <p class="description-text">{{posts.description}}</p>
         </div>
     </div>
 </div>

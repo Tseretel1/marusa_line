@@ -1,0 +1,38 @@
+<div class="photo-container desktop">
+    <div class="information-align" *ngIf="PhotoCongif.hoverVisible" >
+        <div class="navigate"  (click)="NavigateToDetails()" *ngIf="PhotoCongif.navigationAvailable"></div>
+        <b class="title" >
+            {{products.title}}
+        </b>
+    </div>
+    <div class="heart-align" (click)="likePost()" *ngIf="PhotoCongif.likeVisible">
+        <i class="fas fa-heart heart" *ngIf="!postLiked"></i>
+        <i class="fas fa-heart liked-post" *ngIf="postLiked"></i>
+        <p *ngIf="PhotoCongif.likeCountvisible">
+            {{LikeCount}}
+        </p>
+    </div>
+    <div class="discount-price-mobile" *ngIf="PhotoCongif.priceVisible" >
+        <b [ngClass]="{'discounted-price': products.discountedPrice>0}" >{{products.price}}₾</b>
+        <!-- <b *ngIf="products.discountedPrice<=0" >{{products.price}}₾</b> -->
+        <b *ngIf="products.discountedPrice>0">{{products.discountedPrice}}₾</b>
+    </div>
+    <img [src]="products.photos[0].photoUrl" alt="" class="photo">
+</div>
+
+<div class="photo-container mobile">
+    <div class="mobile-router" (click)="NavigateToDetails()" *ngIf="PhotoCongif.navigationAvailable"></div>
+    <div class="heart-align" (click)="likePost()" *ngIf="PhotoCongif.likeVisible">
+        <i class="fas fa-heart heart" *ngIf="!postLiked"></i>
+        <i class="fas fa-heart liked-post" *ngIf="postLiked"></i>
+        <p *ngIf="PhotoCongif.likeCountvisible">
+            {{LikeCount}}
+        </p>
+    </div>
+    <div class="discount-price-mobile" *ngIf="PhotoCongif.priceVisible" >
+        <b [ngClass]="{'discounted-price': products.discountedPrice>0}">{{products.price}}₾</b>
+        <b *ngIf="products.discountedPrice>0">{{products.discountedPrice}}₾</b>
+    </div>
+    <img [src]="products.photos[0].photoUrl" alt="" class="photo">
+</div>
+

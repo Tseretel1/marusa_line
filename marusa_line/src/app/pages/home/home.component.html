@@ -1,5 +1,52 @@
-<div class="component-align">
-    <div class="epoxy-align">
-        <app-cards data-aos="fade-up"  class="epoxy-card"  *ngFor="let c of cards" [cards]="c"></app-cards>
+<div class="gallery-align">
+    
+    <div class="header-container">
+        <div class="section-title-align">
+           <b class="section-title" style="display: flex; align-items: center;">
+               ყველაზე მოთხოვნადი 
+               <!-- <img src="assets/icons/fire.gif" alt="" width="30px"> -->
+                <!-- <i class="fas fa-fire" style="color: orange; scale: 1.2;"></i> -->
+           </b>
+        </div>
+       <div class="photo-align align-3">
+           <div *ngFor="let p of soldProducts; let index = index;" class="container" [ngClass]="{'hide-album':index==2}">
+               <!-- <app-discount-mark class="discount-mark" [discount]="p" data-aos="fade-down" ></app-discount-mark> -->
+               <app-photo-album [products]="p" [PhotoCongif]="PhotoConfig" data-aos="fade-in" class="album"></app-photo-album>
+           </div>
+       </div>
+       <div class="photo-align align-4">
+           <div *ngFor="let p of soldProducts2; let index = index;" class="container" [ngClass]="{'hide-album': index==2}">
+               <app-photo-album [products]="p" [PhotoCongif]="PhotoConfig" data-aos="fade-in" class="album"></app-photo-album>
+           </div>
+       </div>
+    </div>
+   
+<!--     
+    <div class="header-container">
+        <div class="section-title-align">
+            <b class="section-title">
+                Top ფასდაკლებები
+                <img src="assets/icons/sale.png" alt="" width="30px">
+            </b>
+        </div>
+        <div class="photo-align">
+            <div *ngFor="let p of discountedFirst; let index = index;" class="container" [ngClass]="{'hide-album': index==2}">
+                <app-discount-mark class="discount-mark" [discount]="p" data-aos="fade-down" ></app-discount-mark>
+                <app-discount-mark class="discount-mark" [discount]="p" data-aos="fade-down" ></app-discount-mark>
+                <app-photo-album [products]="p" [PhotoCongif]="PhotoConfig" data-aos="fade-in" class="album"></app-photo-album>
+            </div>
+        </div>
+        <div class="photo-align align-2">
+            <div *ngFor="let p of discountedSecond; let index = index;" class="container" [ngClass]="{'hide-album': index==2}">
+                <app-discount-mark class="discount-mark" [discount]="p" data-aos="fade-down" ></app-discount-mark>
+                <app-discount-mark class="discount-mark" [discount]="p" data-aos="fade-down" ></app-discount-mark>
+                <app-photo-album [products]="p" [PhotoCongif]="PhotoConfig" data-aos="fade-in" class="album"></app-photo-album>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="gallery">
+        <app-gallery ></app-gallery>
     </div>
 </div>
+

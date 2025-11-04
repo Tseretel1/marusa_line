@@ -1,55 +1,67 @@
 import { Component, OnInit } from '@angular/core';
-import { Cards, CardsComponent } from '../../shared/components/cards/cards.component';
+import { CardsComponent } from '../../shared/components/cards/cards.component';
 import { CommonModule } from '@angular/common';
 import AOS from 'aos';
+import { Post, PostService, ProductTypes } from '../../Repositories/post.service';
+import { PhotoAlbumComponent, PhotoConfig } from '../../shared/components/photo-album/photo-album.component';
+import { DiscountMarkComponent } from '../../shared/components/discount-mark/discount-mark.component';
+import { GalleryComponent } from '../gallery/gallery.component';
+import { ActivatedRoute } from '@angular/router';
+import { escapeRegExp } from '@angular/compiler';
+
+
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CardsComponent, CommonModule],
+  imports: [CommonModule, PhotoAlbumComponent, DiscountMarkComponent, GalleryComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  cards: Cards[] = [];
-
+  
+  discountedFirst: Post[] = [];
+  discountedSecond: Post[] = [];
+  soldProducts: Post[] = [];
+  soldProducts2: Post[] = [];
+  user:any = null;
+  userId:number = 0;
+  constructor(private postService:PostService,private route: ActivatedRoute){
+    const user = localStorage.getItem('user');
+    if(user){
+      this.user =JSON.parse(user);
+      this.userId = this.user.Id
+    }
+    this.postService.getDiscountedPosts(this.userId).subscribe(
+      (resp)=>{
+        this.discountedFirst = resp.slice(0, 3); 
+        this.discountedSecond = resp.slice(3);
+      }
+    )
+    this.postService.getMostSoldProducts(this.userId).subscribe(
+      (resp)=>{
+        this.soldProducts = resp.slice(0, 3);
+        this.soldProducts2 = resp.slice(3);
+      }
+    )
+  }
   ngOnInit(): void {
     window.scrollTo({
      top: 0,
      behavior: 'smooth' 
    });
-    this.cards = this.generateCards(15);
     AOS.init({
       easing: 'ease-in-out',
       once: false, 
     });
   }
 
-  private generateCards(count: number): Cards[] {
-    const randomCards: Cards[] = [];
-
-    const epoxyProducts = [
-      'დომინო',
-    ];
-
-    const sampleDescriptions = [
-      'დომინო ახალ ფერებში🤍💙 მზადდება სასურველ ფერში✨ შესაკვეთად მომწერე💌 #დომინო #Domino #BoardGames #TableGames #თამაშები #სათამაშოები #GameNight #თამაშისდღეა🚀'
-    ];
-
-    for (let i = 0; i < count; i++) {
-      const product = epoxyProducts[Math.floor(Math.random() * epoxyProducts.length)];
-      const description = sampleDescriptions[Math.floor(Math.random() * sampleDescriptions.length)];
-
-      randomCards.push({
-        name: `${product}`,
-        price: Math.floor(Math.random() * 300) + 20, 
-        description,
-        viewCount: Math.floor(Math.random() * 1000),
-        photoUrl: "assets/img/epo.png" 
-      });
-    }
-
-    return randomCards;
+  PhotoConfig:PhotoConfig={
+    likeVisible : true,
+    priceVisible :true,
+    navigationAvailable : true,
+    hoverVisible : true,
+    likeCountvisible :false,
   }
 }

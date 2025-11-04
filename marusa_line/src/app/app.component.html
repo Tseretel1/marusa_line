@@ -1,3 +1,8 @@
+<app-loader></app-loader>
+
 <app-header></app-header>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<div class="router-outlet">
+  <app-authorization *ngIf="authorizationVisible"></app-authorization>
+  <router-outlet></router-outlet>
+</div>
+<app-footer class="footer"></app-footer>

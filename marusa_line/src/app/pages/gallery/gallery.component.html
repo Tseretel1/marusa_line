@@ -1,0 +1,46 @@
+<div #scrollToStart class="scrollto"></div>
+<div class="gallery-align">
+    <div class="filters-align">
+         <div class="section-title-align">
+            <b class="section-title">
+                <i class="fas fa-circle"></i> 
+                მოძებნე ფილტრით
+                <button class="open-filter" [ngClass]="{'active-filter': activeFilterNum == 0}" (click)="showFilterModal()"><i class="fas fa-sliders-h"></i> </button>
+            </b>
+        </div>
+        <div class="modal-align" *ngIf="filterModalVisible"> 
+            <div class="modal-background" (click)="hideFilterModal()">
+            </div>
+            <div class="modal" [ngClass]="{'hide-modal':hideModalExecute}">
+                <div class="modal-header" >
+                    <i></i>
+                    <i class="fas fa-times" (click)="hideFilterModal()"></i>
+                </div>
+                <div class="modal-body">
+                    <div class="header"> 
+                        <p>აირჩიე სასურველი კატეგორია</p>
+                    </div>
+                    <div class="stage-oAuth" >
+                        <button class="filter-button" [ngClass]="{'active-filter': activeFilterNum == 0}"(click)="getPostByFilter(0)">ყველა</button>
+                        <button class="filter-button" *ngFor="let product of productTypesList" [ngClass]="{'active-filter': activeFilterNum == product.id}" (click)="getPostByFilter(product.id)">{{product.productType}}</button>
+                    </div>
+                    <div class="header"> 
+                        <p>დაალაგე ფასის მიხედვით</p>
+                    </div>
+                    <div class="stage-oAuth" >
+                        <button class="filter-button" [ngClass]="{'active-filter': sortNum == 2}"(click)="sortByPriceLowToHigh()">ზრდადობით</button>
+                        <button class="filter-button" [ngClass]="{'active-filter': sortNum == 1}"(click)="sortByPriceHighToLow()">კლებადობით</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="photo-align">
+        <ng-container *ngFor="let p of Cards; let index = index;">
+            <div class="container">
+                <!-- <app-discount-mark *ngIf="p.discountedPrice!=null&&p.discountedPrice>0" class="discount-procent" [discount]="p"></app-discount-mark> -->
+                <app-photo-album [products]="p"[PhotoCongif]="PhotoConfig" class="album"  data-aos="fade-up" [ngClass]="{'sort-cards':sortNum == 1 || sortNum == 2}"></app-photo-album>
+            </div>
+        </ng-container>
+    </div>
+</div>
