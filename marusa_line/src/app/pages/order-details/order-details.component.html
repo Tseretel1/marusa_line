@@ -63,6 +63,21 @@
                 <p style="text-align: center">{{ order.deliveryType }}</p>
               </div>
             </div>
+            <div class="comment-align user-information" #scrollToBottom>
+              <div class="form-group">
+                <label for="" style="display: flex; gap: 20px; color: white"
+                  >კომენტარი
+                  <p style="color: gray">{{ comment.length }}/300</p>
+                </label>
+                <textarea
+                  [(ngModel)]="comment"
+                  disabled="true"
+                  class="form-control"
+                  maxlength="300"
+                  style="min-height: 100px"
+                ></textarea>
+              </div>
+            </div>
             <div class="user-information" *ngIf="order.isPaid">
               <div class="rules-align">
                 <div class="rulessss">
@@ -107,21 +122,6 @@
                 </div>
               </div>
             </div>
-            <div class="comment-align user-information" #scrollToBottom>
-              <div class="form-group">
-                <label for="" style="display: flex; gap: 20px; color: white"
-                  >კომენტარი
-                  <p style="color: gray">{{ comment.length }}/300</p>
-                </label>
-                <textarea
-                  [(ngModel)]="comment"
-                  disabled="true"
-                  class="form-control"
-                  maxlength="300"
-                  style="min-height: 100px"
-                ></textarea>
-              </div>
-            </div>
           </div>
           <div class="user-information" *ngIf="!order.isPaid">
             <div class="rules-align">
@@ -142,7 +142,8 @@
                       <img src="assets/img/bog.png" class="logo" alt="" />
                     </div>
                     <p>GE18BG0000000607735653</p>
-                    <button class="copy-button">
+                    <button class="copy-button" (click)="copyToClipboard('GE18BG0000000607735653',1)">
+                      <span class="copied" *ngIf="copiedNumber ==1">კოპირებული ✅</span>
                       კოპირება <i class="fas fa-copy" style="color: white"></i>
                     </button>
                   </div>
@@ -150,8 +151,9 @@
                     <div class="logo-container">
                       <img src="assets/img/tbc.jpg" class="logo" alt="" />
                     </div>
-                    <p>GE18BG0000000607735653</p>
-                    <button class="copy-button">
+                    <p>GE61TB7903545064300036</p>
+                    <button class="copy-button" (click)="copyToClipboard('GE61TB7903545064300036',2)">
+                      <span class="copied" *ngIf="copiedNumber ==2">კოპირებული ✅</span>
                       კოპირება <i class="fas fa-copy" style="color: white"></i>
                     </button>
                   </div>
@@ -164,7 +166,8 @@
                   </div>
                   <div class="rules-text-align">
                     <p>შეკვეთის ნომერი: {{ order.orderId }}</p>
-                    <button class="copy-button">
+                    <button class="copy-button" (click)="copyToClipboard('შეკვეთის ნომერი: ' + order.orderId, 3)">
+                      <span class="copied" *ngIf="copiedNumber ==3">კოპირებული ✅</span>
                       კოპირება <i class="fas fa-copy" style="color: white"></i>
                     </button>
                   </div>

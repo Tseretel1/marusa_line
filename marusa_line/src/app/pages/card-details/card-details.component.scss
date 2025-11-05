@@ -220,12 +220,11 @@
                     }
                     .desc-title{
                         color: white;
-                        background-color: rgba(0, 0, 0, 0.342);
+                        background-color: rgba(75, 73, 73, 0.342);
                         width: 100px;
                         text-align: center;
-                        padding: 5px 0px 10px 0px;
-                        margin-left: 30px;
-                        border-radius: 5px 5px 0px 0px;
+                        padding: 5px 10px;
+                        border-radius: 5px;
                     }
                 }
                 .price-tag-align{
@@ -236,9 +235,9 @@
                         display: flex;
                         gap: 10px;
                         align-items: center;
-                        background-color: rgba(0, 0, 0, 0.342);
+                        background-color: rgba(82, 80, 80, 0.342);
                         padding:2px 20px;
-                        border-radius: 10px;
+                        border-radius: 5px;
                         .bold-price{
                             color: white;
                             font-size: 20px;

@@ -9,7 +9,7 @@ import { orderPostObj } from '../pages/order-product/order-product.component';
 })
 export class PostService {
   AppUrl= AppUrl;
-  private apiUrl = AppUrl.network;
+  private apiUrl = AppUrl.development;
   constructor(public http : HttpClient)
   {
     
