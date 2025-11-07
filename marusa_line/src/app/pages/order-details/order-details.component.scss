@@ -428,11 +428,9 @@ textarea{
 .order-road{
     display: flex;
     flex-direction: column;
-    align-items: center;
     .order-road-component{
         background-color: rgb(48, 48, 48);
         color: white;
-        width: 100%;
         border-radius: 5px;
         padding: 5px 10px;
         text-align: center;
@@ -441,6 +439,7 @@ textarea{
     .selected-status{
         opacity: 1;
         background-color: green;
+        font-weight: bolder;
     }
 }
 .detail{

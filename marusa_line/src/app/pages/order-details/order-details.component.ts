@@ -7,7 +7,6 @@ import { AuthorizationService } from '../authorization/authorization.service';
 import Swal from 'sweetalert2';
 import { FormsModule, ɵInternalFormsSharedModule } from "@angular/forms";
 
-
 @Component({
   selector: 'app-order-details',
   imports: [CommonModule,FormsModule,DatePipe],
@@ -40,13 +39,13 @@ export class OrderDetailsComponent {
       this.user =JSON.parse(user);
       this.userId = this.user.Id
     }
-    this.getOrderStatuses();
+      this.getOrderStatuses();
     this.postService.getOrderById(this.productId).subscribe(
       (resp)=>{
         this.posts = resp.product;
         this.order = resp.orders;
         this.comment = this.order.comment;
-        console.log(this.order)
+        console.log(resp)
         this.posts.photos.forEach(item => {
           this.photosArray.push(item);
         });

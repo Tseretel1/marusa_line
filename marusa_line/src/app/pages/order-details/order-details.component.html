@@ -78,8 +78,7 @@
                 ></textarea>
               </div>
             </div>
-            <div class="user-information" *ngIf="order.isPaid">
-              <div class="rules-align">
+              <div class="rules-align" *ngIf="order.isPaid">
                 <div class="rulessss">
                   <div class="title">
                     <b>შეკვეთის დეტაილები<i class="fas fa-file-alt"></i></b>
@@ -99,30 +98,14 @@
                           {{ getStatusName(o.id) }}
                         </div>
                         <div *ngIf="!last">
-                          <i
-                            *ngIf="o.id < order.statusId"
-                            class="fas fa-arrow-down"
-                          ></i>
+                          <i class="fas fa-arrow-down"></i>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="rulessss" *ngIf="order.statusId == 2">
-                  <div class="rules">1. შეკვეთის მზადება უკვე დაწყებულია✅</div>
-                  <div class="rules">
-                    <div
-                      style="display: flex; flex-direction: column; gap: 10px"
-                    >
-                      2. დამზადების შემდგომ თქვენ მიიღებთ ტექსტურ შეტყობინებას
-                      იმეილზე
-                      <p class="email">{{ user.Email }}</p>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
-          </div>
           <div class="user-information" *ngIf="!order.isPaid">
             <div class="rules-align">
               <div class="title">
