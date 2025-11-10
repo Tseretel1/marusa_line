@@ -76,7 +76,7 @@
                     }
                     .order-button{
                         width: 100%;
-                        padding: 5px;
+                        padding:10px 5px;
                         border-radius: 10px;
                         background-color: green;
                         cursor: pointer;
@@ -176,30 +176,8 @@
                 cursor: pointer;
             }
         }
-        
-        .price{
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            width: 100%;
-            b{
-                font-weight: bolder;
-                font-size: 18px;
-                display: flex;
-                align-items: center;
-                p{
-                    color: green;
-                }
-            }
-        }
-        .center-price{
-            justify-content: center;
-            border-radius: 5px;
-            box-shadow: 0px 0px 5px black;
-            padding: 3px 0px;
-        }
         .card-background{
-            box-shadow: 0px 0px 5px black;
+            background-color: rgb(29, 28, 28);
             padding: 10px;
             width: 100%;
             border-radius: 5px;
@@ -212,7 +190,7 @@
     flex-direction: column;
     gap: 25px;
     border-radius: 10px;
-    padding: 20px;
+    padding: 15px;
     animation:fadeIn 0.5s;
     background-color: rgba(0, 0, 0, 0.342);
     .flex-columns{
@@ -239,8 +217,10 @@
             padding: 10px;
             border-radius: 5px;
             width: 100%;
+            background-color: rgb(24, 23, 23);
+            max-height: 350px;
             border: 1px solid grey;
-            background-color: transparent;
+            outline: none;
         }
         .invalid-inputs{
             border: 1px solid red;
@@ -291,6 +271,24 @@
         gap: 15px;
         color: white;
         padding: 10px;
+                
+        .price{
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            font-size: 20px;
+            justify-content: center;
+            b{
+                font-weight: bolder;
+                font-size: 25px;
+                display: flex;
+                align-items: center;
+                p{
+                    color: green;
+                }
+            }
+        }
         .title{
             width: 100%;
             display: flex;
@@ -349,7 +347,7 @@
                     }
                     .price{
                         text-shadow: 0px 0px 2px black;
-                        scale: 1.1;
+                        scale: 1.1;            
                     }
                     .copy-button{
                         display: flex;

@@ -62,18 +62,14 @@
                                 <p class="">მიწოდება</p>
                                 <select name="" class="form-control" id="" [(ngModel)]="delieveryChoise" (change)="ondelieveryChange()">
                                    <option value="1"  selected>კურიერი🚚</option>
-                                   <option value="2">ჩემით წავიღებ🚶‍♂️</option>
+                                   <!-- <option value="2">ჩემით წავიღებ🚶‍♂️</option> -->
                                 </select>
                             </div>
-                            <div class="price courier" *ngIf="delieveryChoise ==1">
+                            <!-- <div class="price courier" *ngIf="delieveryChoise ==1">
                                 <div style="display: flex; align-items: center;"> კურიერი + 10  <b style="color: green;">₾</b></div>
-                            </div>
+                            </div> -->
                             <div class="price" *ngIf="delieveryChoise !=1">
                                 <div style="opacity: 0;"> კ </div>
-                            </div>
-                            <div class="price center-price" >
-                                <p>სულ </p>
-                                <b> {{productPrice}} <p>₾</p></b>
                             </div>
                         </div>
                         <div class="photo-container"  data-aos="fade-in">
@@ -83,36 +79,19 @@
                         </div>
                     </div>
 
-                    <!-- <div class="user-information" >
-                        <div class="rules-align">
-                            <div class="title"><b>გადახდა<i class="fas fa-file-alt"></i></b></div>
-                            <ol>
-                                <div class="rules">
-                                    გადასახდელი თანხა <b class="price"> ({{productPrice}} ლარი),</b>
-                                     <div class="rules-text-align">
-                                        <p>GE76BG0000000607705606</p>
-                                        <button class="copy-button">კოპირება <i class="fas fa-copy" style="color: white;"></i></button>
-                                     </div>
-                                 </div>
-                                 <div class="rules">
-                                     დანიშნულებაში აუცილებლად მიუთითეთ, 
-                                     <div class="rules-text-align">
-                                        <p> ნომერი {{posts.id}} </p>
-                                        <button class="copy-button">კოპირება <i class="fas fa-copy" style="color: white;"></i></button>
-                                     </div>
-                                 </div>
-                                 <div class="rules">შეკვეთა გადახდის შემდგომ ავტომატურად დადასტურდება <i class="fas fa-check"></i></div>
-                            </ol>
-                        </div> 
-                    </div> -->
-
                     <div class="user-information" >
                         <div class="rules-align" >
+                        
                             <div class="form-group">
                                 <label for="" style="display: flex; gap: 20px;">დატოვე კომენტარი <p style="color: gray;">{{comment.length}}/300</p> </label>
                                 <textarea [(ngModel)]="comment" class="form-control"  maxlength="300" style="min-height: 100px;"></textarea>
                             </div>
-                        </div> 
+                            <div class="price center-price" >
+                                <p>ჯამში </p>
+                                <b> {{productPrice}} <p>₾</p></b>
+                            </div>    
+                        </div>
+                         
                     </div>
 
                     <div class="user-information" *ngIf="posts.quantity<=0">
@@ -126,10 +105,6 @@
                                 შესაბამისად 100%-ით იდენტობა ფოტოზე ასახულ ნივთთან შეუძლებელია. ✅
                                  </li>
                             </ul>
-                            <!-- <div class="checkbox-align" >
-                                <input type="checkbox" class="checkbox" [(ngModel)]="rulesChecked" id="check">
-                                <label for="check" class="checkbox" >ვეთანხმები</label>
-                            </div> -->
                         </div> 
                     </div>
                 

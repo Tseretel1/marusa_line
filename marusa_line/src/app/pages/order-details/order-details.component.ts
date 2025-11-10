@@ -127,6 +127,14 @@ export class OrderDetailsComponent {
       this.copiedNumber = 0;
     }, 3000);
   }
+
+  statusModalOpened:boolean = false;
+  openStatusModal(){
+    this.statusModalOpened= true;
+  }
+  hideStatusModal(){
+    this.statusModalOpened= false;
+  }
 }
 
  interface Photo {
