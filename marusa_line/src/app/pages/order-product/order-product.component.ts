@@ -41,10 +41,19 @@ export class OrderProductComponent {
         this.posts.photos.forEach(item => {
           this.photosArray.push(item);
         });
-        this.postsLoaded = true;
-        this.productPrice = resp.price;
-        this.oldProductPrice = this.productPrice;
-        this.oneProductPrice = this.productPrice;
+        if(this.posts.discountedPrice==0|| this.posts.discountedPrice==null){
+          this.postsLoaded = true;
+          this.productPrice = resp.price;
+          this.oldProductPrice = this.productPrice;
+          this.oneProductPrice = this.productPrice;
+        }
+        else{
+          this.postsLoaded = true;
+          this.productPrice = resp.discountedPrice;
+          this.oldProductPrice = this.productPrice;
+          this.oneProductPrice = this.productPrice;
+
+        }
       }
     );
   }
@@ -259,20 +268,6 @@ export class OrderProductComponent {
   
   delieveryChoiseChanged:boolean = false;
   oldProductPrice: number = 0;
-  ondelieveryChange(){
-    this.oldProductPrice = this.productPrice;
-    if(this.delieveryChoise ==1){
-      if(this.delieveryChoise){
-        this.deliveryString="კურიერის მომსახურება🚚";
-        this.productPrice = this.productPrice + 10;
-      }
-    }
-    else if(this.delieveryChoise ==2){
-        this.productPrice = this.productPrice - 10;
-        this.deliveryString="ჩემით წავიღებ🚶‍♂️";
-    }
-  }
-
   comment:string = '';
 
 
