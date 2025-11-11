@@ -130,6 +130,15 @@
             }
         }
     }
+    .title-price-align{
+        display: flex;
+        justify-content: center;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.342);
+        width: 100%;
+        padding: 5px;
+        border-radius: 5px;
+    }
     .product-details-align{
         width: 100%;
         display: flex;
@@ -158,10 +167,7 @@
                 background-color: rgb(31, 30, 30);
             }
         }
-        .title-price-align{
-            display: flex;
-            justify-content: center;
-        }
+
         .quantity-align{
             display: flex;
             gap: 5px;

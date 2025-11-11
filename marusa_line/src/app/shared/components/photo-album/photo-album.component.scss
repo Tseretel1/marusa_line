@@ -225,8 +225,10 @@
   display: flex;
   opacity: 1;
 }
-.mobile:hover .photo{
-    scale: 1.2;
+.mobile:hover .information-align {
+  animation: informationAlign 0.5s;
+  display: flex;
+  opacity: 1;
 }
 @keyframes informationAlign{
   0%{

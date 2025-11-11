@@ -15,7 +15,7 @@ import { AppRoutes } from '../../shared/AppRoutes/AppRoutes';
   templateUrl: './order-product.component.html',
   styleUrl: './order-product.component.scss'
 })
-export class OrderProductComponent {
+export class OrderProductComponent implements OnInit{
 
   
 

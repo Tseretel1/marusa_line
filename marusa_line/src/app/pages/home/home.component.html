@@ -11,12 +11,12 @@
        <div class="photo-align align-3">
            <div *ngFor="let p of soldProducts; let index = index;" class="container" [ngClass]="{'hide-album':index==2}">
                <!-- <app-discount-mark class="discount-mark" [discount]="p" data-aos="fade-down" ></app-discount-mark> -->
-               <app-photo-album [products]="p" [PhotoCongif]="PhotoConfig" data-aos="fade-in" class="album"></app-photo-album>
+               <app-photo-album [products]="p" [PhotoCongif]="PhotoConfig" class="album"></app-photo-album>
            </div>
        </div>
        <div class="photo-align align-4">
            <div *ngFor="let p of soldProducts2; let index = index;" class="container" [ngClass]="{'hide-album': index==2}">
-               <app-photo-album [products]="p" [PhotoCongif]="PhotoConfig" data-aos="fade-in" class="album"></app-photo-album>
+               <app-photo-album [products]="p" [PhotoCongif]="PhotoConfig" class="album"></app-photo-album>
            </div>
        </div>
     </div>

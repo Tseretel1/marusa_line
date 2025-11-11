@@ -551,10 +551,10 @@ textarea{
             justify-content: center;
             width: 100%;
             transition: 0.2s all ease-in-out;
-            opacity: 0.6;
         }
         .before-steps{
-            opacity: 0.6;
+            opacity: 0.4;
+            text-decoration: line-through;
         }
         .status-step1{
             opacity: 1;

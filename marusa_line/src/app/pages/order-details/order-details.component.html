@@ -92,12 +92,13 @@
                     <div class="statuses-modal-back" *ngIf="statusModalOpened" (click)="hideStatusModal()"></div>
                     <div class="detail-align">
                       <div class="hide-modal-align"><button class="hide-modal-button" (click)="hideStatusModal()">x</button></div>
-                      <div class="detail order-road"  *ngFor="let o of orderStatuses; let last = last" >
+                      <div class="detail order-road"  *ngFor="let o of orderStatuses; let last = last; let index=index;" >
                         <div class="order-status-align">
+                            <p>{{index+1}}.</p>
+                            <p *ngIf="o.id<order.statusId">✅</p>
                           <div class="order-road-component"  [ngClass]="{'status-step1': o.id == order.statusId,'before-steps': o.id < order.statusId}">
                             {{ getStatusName(o.id) }}
                           </div>
-                          <p *ngIf="o.id<=order.statusId">✅</p>
                         </div>
                         <div *ngIf="!last" >
                           <i class="fas fa-caret-down"></i>
