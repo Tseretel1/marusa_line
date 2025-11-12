@@ -7,7 +7,6 @@ import { AuthorizationService } from '../authorization/authorization.service';
 import Swal from 'sweetalert2';
 import { FormsModule, ɵInternalFormsSharedModule } from "@angular/forms";
 import { AppRoutes } from '../../shared/AppRoutes/AppRoutes';
-import * as L from 'leaflet';
 import { HttpClient } from '@angular/common/http';
 import { Lnglat, MapConfig, MapPickerComponent } from "./map/map.component";
 import { ReloadService } from '../../shared/services/ReloadService';

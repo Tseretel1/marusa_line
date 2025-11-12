@@ -258,36 +258,17 @@
             // background-color: rgb(37, 36, 36);   
         }
         .statuses-modal{
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 2;
             width: 100%;
-            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            .statuses-modal-back{
-                position: fixed;
-                top: 0;
-                left: 0;
-                background-color: rgba(0, 0, 0, 0.158);
-                z-index: 1;
-                width: 100%;
-                height: 100%;
-                backdrop-filter: blur(5px);
-                animation: statusAnim 0.3s;
-            }
             .detail-align{
-                background-color: rgb(29, 28, 28);
                 z-index: 2;
-                max-width: 450px;
-                width: 90%;
+                width: 100%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 padding: 10px;
-                box-shadow: 0px 5px 10px black;
                 border-radius: 10px;
                 animation: statusAnimPopUp 0.5s;
                 .hide-modal-align{

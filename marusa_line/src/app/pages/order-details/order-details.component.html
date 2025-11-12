@@ -83,15 +83,8 @@
                   <div class="title">
                     <b>შეკვეთის სტატუსი<i class="fas fa-file-alt"></i></b>
                   </div>
-
-                  <div class="waiting" (click)="openStatusModal()">
-                     {{ getStatusName(order.statusId) }}
-                  </div>
-
-                  <div class="statuses-modal" *ngIf="statusModalOpened">
-                    <div class="statuses-modal-back" *ngIf="statusModalOpened" (click)="hideStatusModal()"></div>
+                  <div class="statuses-modal">
                     <div class="detail-align">
-                      <div class="hide-modal-align"><button class="hide-modal-button" (click)="hideStatusModal()">x</button></div>
                       <div class="order-road">
                         <div *ngFor="let o of orderStatuses; let last = last;" class="order-step">
                           <div class="step-marker" [ngClass]="{'completed': o.id < order.statusId, 'current': o.id === order.statusId}"></div>
