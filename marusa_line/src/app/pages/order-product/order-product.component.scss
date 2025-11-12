@@ -267,17 +267,10 @@
                 background-color: green;
                 color: white;
             }
-            .edit-map{
-                width: 100px;
-                height: 50px;
-                overflow: hidden;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: red;
-                border-radius: 10px;
-                animation: 0.5s modalPopUp;
-                cursor: pointer;
+            .location-selected{
+                background-color: green;
+                color: white;
+                animation:modalPopUp 0.5s;
             }
         }
     }

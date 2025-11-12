@@ -51,8 +51,7 @@
                             <div class="editable-fields">
                                 <input class="form-control" type="text" [disabled]="editFieldNum!=2" [(ngModel)]="address" [ngClass]="{'invalid-inputs': addressInvalid}"  maxlength="100">
                                 <button class="edit" (click)="editField(2)" *ngIf="editFieldNum!=2"><i class="fas fa-edit"></i></button>
-                                <button class="edit" (click)="openMapModal()" *ngIf="editFieldNum!=2 &&!locationselected" ><i class="fas fa-location-dot" style="scale: 1.5;"></i></button>
-                                <div class="edit-map" (click)="openMapModal()" *ngIf="editFieldNum!=2 && locationselected && !mapModalVisible"><app-map-picker [config]="mapConfig"></app-map-picker></div>
+                                <button class="edit" (click)="openMapModal()" *ngIf="editFieldNum!=2"[ngClass]="{'location-selected':locationselected}"  ><i class="fas fa-location-dot" style="scale: 1.5;"></i></button>
                                 <button class="edit close" (click)="closeField(2)" *ngIf="editFieldNum==2"><i class="fas fa-close"></i></button>
                                 <button class="edit confirm" (click)="acceptField(2)" *ngIf="editFieldNum==2"><i class="fas fa-check" style="color: white;"></i></button>
                             </div>

@@ -84,6 +84,7 @@ export class OrderProductComponent implements OnInit{
         this.getMapLocation();
       }
     })
+    this.getMapLocation();
   }
 
   mobileNumber:string = '';
@@ -109,8 +110,6 @@ export class OrderProductComponent implements OnInit{
 
   mapModalVisible:boolean = false;
   openMapModal(){
-    this.mapConfig.height = 100;
-    this.mapConfig.height= 400;
     this.mapModalVisible = true;
   }
   hideMapModal(){
@@ -306,21 +305,18 @@ export class OrderProductComponent implements OnInit{
   getMapLocation(){
     const lng = localStorage.getItem('lng');
     const lat = localStorage.getItem('lat');
-    if(lng){
+    if(lng && lat){
       this.location.lng = lng.toString();
-    }
-    if(lat){
       this.location.lat = lat.toString();
+      this.locationselected = true;
+      this.mapModalVisible = false;
     }
-    this.locationselected = true;
-    this.mapConfig.height = 100;
-    this.mapConfig.height= 50;
-    this.mapModalVisible = false;
   }
 
   mapConfig:MapConfig={
     width:100,
     height:400,
+    zoom:13,
   }
 }
 

@@ -84,4 +84,5 @@ export interface Lnglat{
 export interface MapConfig{
   width:number;
   height:number;
+  zoom:number;
 }
