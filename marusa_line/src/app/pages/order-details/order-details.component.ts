@@ -155,4 +155,7 @@ export interface OrderDetailsDto {
   productQuantity: number;
   comment: string;
   finalPrice: number;
+  lng: string|null;
+  lat: string|null;
+  address: string|null;
 }

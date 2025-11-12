@@ -4,9 +4,21 @@
     <div class="body-align">
         <div class="component">
            <div class="header-grid">
-            <div class="card-information" *ngIf="postsLoaded">
-                    <div class="user-information">
-                        <div class="flex-columns">
+                <div class="card-information" *ngIf="postsLoaded">
+                    <div class="photo-align">
+                        <div class="photo-container" >
+                            <div *ngFor="let p of photosArray; let i = index" >
+                                <img [src]="p.photoUrl" *ngIf="i==0" alt="" class="photo">
+                            </div>
+                        </div>
+                        <div class="title-price-align">
+                            <p>
+                                {{posts.title}}
+                            </p>
+                        </div>
+                    </div>
+                <div class="user-information">
+                        <!-- <div class="flex-columns">
                             <div class="form-group">
                                 <label for="">მომხმარებელი <i class="fas fa-check"></i></label>
                                 <input class="form-control" type="text" [value]="user.Name" disabled>
@@ -15,7 +27,7 @@
                                 <label for="">იმეილი <i class="fas fa-check"></i></label>
                                 <input class="form-control" type="text" [value]="user.Email" disabled>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                              <label for="">
                                 მობილური ნომერი 
@@ -30,15 +42,17 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="">
+                            <label for="" style="display: flex; gap: 4px; align-items: flex-end;">
                                 მისამართი 
                                 <i class="fas fa-check" *ngIf="address!=''"></i>
                                 <i class="fas fa-close" *ngIf="address==''"></i>
+                                <p style="opacity: 0.7; font-size: 12px;"  >(მონიშნე რუკაზე ან ჩაწერე ხელით)</p>
                             </label>
                             <div class="editable-fields">
                                 <input class="form-control" type="text" [disabled]="editFieldNum!=2" [(ngModel)]="address" [ngClass]="{'invalid-inputs': addressInvalid}"  maxlength="100">
                                 <button class="edit" (click)="editField(2)" *ngIf="editFieldNum!=2"><i class="fas fa-edit"></i></button>
-                                <button class="edit" (click)="editField(2)" *ngIf="editFieldNum!=2"><i class="fas fa-location-dot" style="scale: 1.5;"></i></button>
+                                <button class="edit" (click)="openMapModal()" *ngIf="editFieldNum!=2 &&!locationselected" ><i class="fas fa-location-dot" style="scale: 1.5;"></i></button>
+                                <div class="edit-map" (click)="openMapModal()" *ngIf="editFieldNum!=2 && locationselected && !mapModalVisible"><app-map-picker [config]="mapConfig"></app-map-picker></div>
                                 <button class="edit close" (click)="closeField(2)" *ngIf="editFieldNum==2"><i class="fas fa-close"></i></button>
                                 <button class="edit confirm" (click)="acceptField(2)" *ngIf="editFieldNum==2"><i class="fas fa-check" style="color: white;"></i></button>
                             </div>
@@ -61,22 +75,18 @@
                                     <!-- <option value="2">ჩემით წავიღებ🚶‍♂️</option> -->
                                 </select>
                             </div>
-                            <!-- <div class="price courier" *ngIf="delieveryChoise ==1">
-                                <div style="display: flex; align-items: center;"> კურიერი + 10  <b style="color: green;">₾</b></div>
-                            </div> -->
                             <div class="price" *ngIf="delieveryChoise !=1">
                                 <div style="opacity: 0;"> კ </div>
                             </div>
                         </div>
-                        <div class="photo-container"  data-aos="fade-in">
-                            <div *ngFor="let p of photosArray; let i = index" >
-                                <img [src]="p.photoUrl" *ngIf="i==0" alt="" class="photo">
+
+                        <div class="map-align" [ngClass]="{'map-visible':mapModalVisible}">
+                            <div class="map-modal">
+                                <div class="close-modal-align">
+                                    <button class="close-button" (click)="hideMapModal()">X</button>
+                                </div>
+                                <app-map-picker [config]="mapConfig"></app-map-picker>
                             </div>
-                        </div>
-                        <div class="title-price-align">
-                            <p>
-                               {{posts.title}}
-                            </p>
                         </div>
                     </div>
 
@@ -126,4 +136,3 @@
     </div>
     </div>
 </div>
-

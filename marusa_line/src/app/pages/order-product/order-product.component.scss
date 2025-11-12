@@ -267,7 +267,18 @@
                 background-color: green;
                 color: white;
             }
-
+            .edit-map{
+                width: 100px;
+                height: 50px;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: red;
+                border-radius: 10px;
+                animation: 0.5s modalPopUp;
+                cursor: pointer;
+            }
         }
     }
     .rules-align{
@@ -409,10 +420,117 @@ textarea{
     }
 }
 
-@media screen and (max-width:1000px) {
+@keyframes  modalFadeIn {
+    0%{
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+    100%{
+        opacity: 1;
+        backdrop-filter: blur(2px);
+    }
+}
+@keyframes modalPopUp {
+    0%{
+        scale: 0.7;
+    }
+    50%{
+        scale: 1.1;
+    }
+    100%{
+        scale: 1;
+    }
+}
+
+.map-align{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    animation:modalFadeIn 0.3s;
+    width: 100%;
+    scale: 0;
+    display: none;
+    .map-modal{
+        display: flex;
+        padding: 10px;
+        border-radius: 5px;
+        width: 100%;
+        z-index: 2;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.342);   
+        animation:modalPopUp 0.5s;
+        gap: 15px;
+        .close-modal-align{
+            display: flex;
+            width: 100%;
+            justify-content: flex-end;
+            .close-button{
+                background-color: transparent;
+                color: white;
+                padding: 5px 10px;
+                border-radius: 5px;
+                border: 1px solid white;
+                transition: 0.3s all ease-in-out;
+                cursor: pointer;
+            }
+            .close-button:hover{
+                color: white;
+                border:1px solid red;
+                background-color: red;
+            }
+        }
+        .map-container {
+            width:100%;
+            height: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+    }
+}
+.map-visible{
+    display: flex;
+    scale: 1;
+    animation: 0.5s showMap;
+}
+@keyframes showMap {
+    0%{
+        display: flex;
+        scale: 0;
+    }
+    50%{
+        scale: 1.1;
+    }
+    100%{
+        scale: 1;
+    }
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width:1500px) {
+    .center-component{
+        .body-align{
+            width: 50%;
+        }
+    }
+}
+@media screen and (max-width:1200px) {
     .center-component{
         .body-align{
             width: 60%;
+        }
+    }
+}
+@media screen and (max-width:1000px) {
+    .center-component{
+        .body-align{
+            width: 70%;
             .component{
                     padding: 0;
                 .header-grid{

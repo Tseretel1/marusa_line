@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { Post, PostService } from '../../Repositories/post.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CommonModule, NgFor } from '@angular/common';
@@ -7,11 +7,15 @@ import { AuthorizationService } from '../authorization/authorization.service';
 import Swal from 'sweetalert2';
 import { FormsModule, ɵInternalFormsSharedModule } from "@angular/forms";
 import { AppRoutes } from '../../shared/AppRoutes/AppRoutes';
-
+import * as L from 'leaflet';
+import { HttpClient } from '@angular/common/http';
+import { Lnglat, MapConfig, MapPickerComponent } from "./map/map.component";
+import { ReloadService } from '../../shared/services/ReloadService';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-order-product',
-  imports: [CommonModule, ɵInternalFormsSharedModule,FormsModule],
+  imports: [CommonModule, ɵInternalFormsSharedModule, FormsModule, MapPickerComponent],
   templateUrl: './order-product.component.html',
   styleUrl: './order-product.component.scss'
 })
@@ -27,7 +31,12 @@ export class OrderProductComponent implements OnInit{
 
   user:any = null;
   userId:number = 0;
-  constructor(private postService:PostService, private route :ActivatedRoute,private authServise:AuthorizationService,private router:Router){
+  constructor(private postService:PostService, 
+    private route :ActivatedRoute,
+    private authServise:AuthorizationService,
+    private router:Router,private http:HttpClient,
+    private reloadService:ReloadService
+  ){
     const id = this.route.snapshot.paramMap.get('id');
     this.productId = Number(id);
     const user = localStorage.getItem('user');
@@ -57,6 +66,8 @@ export class OrderProductComponent implements OnInit{
       }
     );
   }
+  reloadSubscription!: Subscription;
+
   ngOnInit(): void {
     AOS.init({
       easing: 'ease-in-out',
@@ -67,6 +78,12 @@ export class OrderProductComponent implements OnInit{
      behavior: 'smooth' 
    }); 
     this.getUserDetails();
+      this.reloadSubscription = this.reloadService.alert$.subscribe(
+      (show)=>{
+      if(show){
+        this.getMapLocation();
+      }
+    })
   }
 
   mobileNumber:string = '';
@@ -90,34 +107,14 @@ export class OrderProductComponent implements OnInit{
     )
   }
 
-  discountedPercentage:number = 0
-  calculatediscountProcentage(){
-    this.discountedPercentage = ((this.posts.price - this.posts.discountedPrice) / this.posts.price) * 100;
-    this.discountedPercentage = Math.round(this.discountedPercentage);
-    console.log(this.posts)
+  mapModalVisible:boolean = false;
+  openMapModal(){
+    this.mapConfig.height = 100;
+    this.mapConfig.height= 400;
+    this.mapModalVisible = true;
   }
-  bigPhotoVisible = false;
-  showBigPhoto(){
-    this.bigPhotoVisible = true;
-  }
-  hideBigPhoto(){
-    this.bigPhotoVisible = false;
-  }
-
-  isUserLogged(){
-    const user = localStorage.getItem('user');
-    if(user){
-      return true;
-    }
-    this.authServise.show();
-    return false;
-  }
-
-
-
-  nextStepNum:number = 1;
-  nextStep(num:number){
-    this.nextStepNum=num;
+  hideMapModal(){
+    this.mapModalVisible = false;
   }
 
   insertMobile(){
@@ -134,6 +131,7 @@ export class OrderProductComponent implements OnInit{
       this.mobileNumber = this.oldMobileNumber
     }
   }
+  
   insertLocation(){
     if(this.address!=''){
       this.postService.insertLocation(this.userId, this.address).subscribe(
@@ -209,15 +207,6 @@ export class OrderProductComponent implements OnInit{
     return true;
 
   }
-  rulesChecked:boolean = false;
-  finishOrder(){
-    if(this.rulesChecked){
-    }
-  }
-  stepThree(){
-    this.nextStep(3);
-  }
-
   editFieldNum:number = 0;
   editField(num:number){
     this.editFieldNum = num;
@@ -273,6 +262,7 @@ export class OrderProductComponent implements OnInit{
 
   orderObj!:orderPostObj;
   insertOrder(){
+    this.getMapLocation();
     if(this.validateFields()){
       this.orderObj= {
         userId:this.userId,
@@ -280,8 +270,12 @@ export class OrderProductComponent implements OnInit{
         productQuantity : this.productQuantity,
         deliveryType : this.deliveryString, 
         comment :this.comment,
-        finalPrice : this.productPrice
+        finalPrice : this.productPrice,
+        lng:this.location.lng,
+        lat:this.location.lat,
+        address:this.address,
       }
+      console.log(this.orderObj)
       this.postService.insertOrder(this.orderObj).subscribe(
         (resp)=>{
           if(resp!=null){
@@ -304,6 +298,30 @@ export class OrderProductComponent implements OnInit{
       })
     }
   }
+  location : Lnglat = {
+    lng:'',
+    lat:''
+  };
+  locationselected:boolean = false;
+  getMapLocation(){
+    const lng = localStorage.getItem('lng');
+    const lat = localStorage.getItem('lat');
+    if(lng){
+      this.location.lng = lng.toString();
+    }
+    if(lat){
+      this.location.lat = lat.toString();
+    }
+    this.locationselected = true;
+    this.mapConfig.height = 100;
+    this.mapConfig.height= 50;
+    this.mapModalVisible = false;
+  }
+
+  mapConfig:MapConfig={
+    width:100,
+    height:400,
+  }
 }
 
 export interface orderPostObj{
@@ -313,6 +331,9 @@ export interface orderPostObj{
   deliveryType:string;
   comment :string;
   finalPrice:number;
+  lng: string|null;
+  lat: string|null;
+  address: string|null;
 }
  interface Photo {
   Id?: number;
