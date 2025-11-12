@@ -62,6 +62,6 @@ export class HomeComponent implements OnInit {
     priceVisible :true,
     navigationAvailable : true,
     hoverVisible : true,
-    likeCountvisible :false,
+    likeCountvisible :true,
   }
 }

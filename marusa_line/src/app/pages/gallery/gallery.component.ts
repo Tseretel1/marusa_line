@@ -18,7 +18,7 @@ export class GalleryComponent implements OnInit {
     likeVisible : true,
     hoverVisible : true,
     navigationAvailable:true,
-    likeCountvisible :false,
+    likeCountvisible :true,
   }
 
   constructor(private postService:PostService){
