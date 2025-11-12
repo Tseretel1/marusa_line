@@ -3,6 +3,7 @@ import { Component, Input, input, OnInit } from '@angular/core';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { LatLng } from 'leaflet';
 import { ReloadService } from '../../../shared/services/ReloadService';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-map-picker',
@@ -72,8 +73,27 @@ export class MapPickerComponent implements OnInit{
     localStorage.setItem('lat', this.location.lat.toString())
     this.locationChosen = false;
     this.reloadService.reload();
+    this.fireSuccess('');
     return this.location;
   }
+    fireSuccess(message:string){
+      Swal.fire({
+          icon:'success',
+          text: message,
+          showCancelButton: false,
+          showConfirmButton:false,
+          background:'rgb(25, 26, 25)',
+          color: '#ffffff',       
+          customClass: {
+            popup: 'custom-swal-popup',
+          },
+          timer:3000,
+          }).then((result) => {
+            if (result.isConfirmed) {
+            }
+      });
+    }
+
 }
 
 export interface Lnglat{

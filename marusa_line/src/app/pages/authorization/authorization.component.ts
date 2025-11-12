@@ -111,8 +111,6 @@ export class AuthorizationComponent implements OnInit{
         text: message,
         showCancelButton: false,
         showConfirmButton:false,
-        confirmButtonText: 'კი',
-        cancelButtonText: 'არა',
         background:'rgb(25, 26, 25)',
         color: '#ffffff',       
         customClass: {
