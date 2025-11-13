@@ -317,6 +317,8 @@ export class OrderProductComponent implements OnInit{
     height:400,
     zoom:13,
   }
+
+
 }
 
 export interface orderPostObj{

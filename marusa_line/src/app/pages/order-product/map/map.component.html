@@ -1,12 +1,4 @@
 <div class="map-wrap">
-  <google-map
-    [height]="config.height "
-    [width]="config.width+ '%'"
-    [center]="center"
-    [zoom]="13"
-    (mapClick)="selectLocation($event)">
-    <map-marker *ngIf="marker" [position]="marker!"></map-marker>
-  </google-map>
-
-  <button (click)="confirmLocation()" *ngIf="locationChosen">მისამართის არჩევა</button>
+  <button (click)="confirmLocation()">მისამართის არჩევა</button> 
+  <div id="map"></div>
 </div>

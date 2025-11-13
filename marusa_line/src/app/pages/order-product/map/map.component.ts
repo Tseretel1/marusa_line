@@ -1,108 +1,130 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { GoogleMapsModule } from '@angular/google-maps';
-import { LatLng } from 'leaflet';
 import { ReloadService } from '../../../shared/services/ReloadService';
 import Swal from 'sweetalert2';
+import * as L from 'leaflet';
 
 @Component({
   selector: 'app-map-picker',
   standalone: true,
-  imports: [GoogleMapsModule,CommonModule],
+  imports: [GoogleMapsModule, CommonModule],
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapPickerComponent implements OnInit{
+export class MapPickerComponent implements OnInit {
 
-  @Input() config! :MapConfig;
-  constructor(private reloadService:ReloadService){
+  @Input() config!: MapConfig;
 
-  }
+  Map: Lnglat = {
+    lat: '41.7151',
+    lng: '44.8271'
+  };
+
+  map!: L.Map;
+  marker!: L.Marker;
+  location!: Lnglat;
+
+  constructor(private reloadService: ReloadService) {}
+
   ngOnInit(): void {
-    this.setMarker();
+    this.initMap();
   }
 
-  setMarker() {
-    const lngStr = localStorage.getItem('lng');
-    const latStr = localStorage.getItem('lat');
-    if (lngStr && latStr) {
-      const lng = parseFloat(lngStr);
-      const lat = parseFloat(latStr);
-      if (!isNaN(lat) && !isNaN(lng)) {
-        this.marker = { lat, lng };
-        this.center = { lat, lng };
-      }
+  private initMap(): void {
+    // clean existing map if reloading
+    if (this.map) {
+      this.map.remove();
     }
-    else{
-        this.center = { lat: 41.7151, lng: 44.8271 };
-        this.marker = { lat: 41.7151, lng: 44.8271 };
-    }
-  }
 
-  
-  center = { lat: 41.7151, lng: 44.8271 };
-  zoom = 13;
-  marker: google.maps.LatLngLiteral | null = null;
-  selectedAddress: string | null = null;
+    // marker icon configuration
+    delete (L.Icon.Default.prototype as any)._getIconUrl;
+    L.Icon.Default.mergeOptions({
+      iconUrl: 'assets/icons/location.png',
+      shadowUrl: '',
+      iconSize: [35, 35],
+    });
 
-  locationChosen:boolean = false;
-  selectLocation(event: google.maps.MapMouseEvent) {
-    if (event.latLng) {
-      this.marker = event.latLng.toJSON();
-      this.getAddress(this.marker.lat, this.marker.lng);
-      this.location ={
-        lat: this.marker.lat.toString(),
-        lng: this.marker.lng.toString(),
-      };
-      this.locationChosen = true;
-    }
-  }
-
-  async getAddress(lat: number, lng: number) {
-    const res = await fetch(
-      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyCOqsY8UCE2ObuvRQBj13gGDDm_XINhTuU`
+    // initialize map
+    this.map = L.map('map').setView(
+      [Number(this.Map.lat), Number(this.Map.lng)],
+      this.config?.zoom || 17
     );
-    const data = await res.json();
-    this.selectedAddress = data.results[0]?.formatted_address || 'Unknown address';
-    console.log('Selected:', data);
+
+    // add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors',
+    }).addTo(this.map);
+
+    // place initial marker
+    this.marker = L.marker([Number(this.Map.lat), Number(this.Map.lng)]).addTo(this.map);
+
+    // listen for map clicks
+    this.map.on('click', (e: L.LeafletMouseEvent) => {
+      const { lat, lng } = e.latlng;
+
+      // if marker exists, move it; otherwise, create new one
+      if (this.marker) {
+        this.marker.setLatLng(e.latlng);
+      } else {
+        this.marker = L.marker(e.latlng).addTo(this.map);
+      }
+
+      // store location
+      this.location = {
+        lat: lat.toString(),
+        lng: lng.toString()
+      };
+    });
   }
 
-  location! : Lnglat;
   confirmLocation() {
-    localStorage.setItem('lng', this.location.lng.toString())
-    localStorage.setItem('lat', this.location.lat.toString())
-    this.locationChosen = false;
+    if (!this.location) {
+      this.fireError('გთხოვთ აირჩიოთ ადგილი რუკაზე');
+      return;
+    }
+
+    localStorage.setItem('lng', this.location.lng);
+    localStorage.setItem('lat', this.location.lat);
+
     this.reloadService.reload();
     this.fireSuccess('');
     return this.location;
   }
-    fireSuccess(message:string){
-      Swal.fire({
-          icon:'success',
-          text: message,
-          showCancelButton: false,
-          showConfirmButton:false,
-          background:'rgb(25, 26, 25)',
-          color: '#ffffff',       
-          customClass: {
-            popup: 'custom-swal-popup',
-          },
-          timer:3000,
-          }).then((result) => {
-            if (result.isConfirmed) {
-            }
-      });
-    }
 
+  private fireSuccess(message: string) {
+    Swal.fire({
+      icon: 'success',
+      text: message,
+      showCancelButton: false,
+      showConfirmButton: false,
+      background: 'rgb(25, 26, 25)',
+      color: '#ffffff',
+      customClass: {
+        popup: 'custom-swal-popup',
+      },
+      timer: 2500,
+    });
+  }
+
+  private fireError(message: string) {
+    Swal.fire({
+      icon: 'error',
+      text: message,
+      background: 'rgb(25, 26, 25)',
+      color: '#ffffff',
+      confirmButtonText: 'OK',
+    });
+  }
 }
 
-export interface Lnglat{
-  lat:string;
-  lng:string;
+export interface Lnglat {
+  lat: string;
+  lng: string;
 }
 
-export interface MapConfig{
-  width:number;
-  height:number;
-  zoom:number;
+export interface MapConfig {
+  width: number;
+  height: number;
+  zoom: number;
 }
