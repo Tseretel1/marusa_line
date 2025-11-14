@@ -79,7 +79,7 @@
                             </div>
                         </div>
 
-                        <div class="map-align" [ngClass]="{'map-visible':mapModalVisible}">
+                        <div class="map-align" *ngIf="mapModalVisible" [ngClass]="{'map-visible':mapModalVisible}">
                             <div class="map-modal">
                                 <div class="close-modal-align">
                                     <button class="close-button" (click)="hideMapModal()">X</button>

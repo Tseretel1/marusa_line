@@ -23,7 +23,10 @@ export class MapPickerComponent implements OnInit {
 
   map!: L.Map;
   marker!: L.Marker;
-  location!: Lnglat;
+  location: Lnglat={
+    lat: '',
+    lng: ''
+  };
 
   constructor(private reloadService: ReloadService) {}
 
@@ -31,13 +34,16 @@ export class MapPickerComponent implements OnInit {
     this.initMap();
   }
 
-  private initMap(): void {
-    // clean existing map if reloading
+   initMap(): void {
+    const lng = localStorage.getItem('lng');
+    const lat = localStorage.getItem('lat');
+    if(lng && lat){
+      this.Map.lng = lng.toString();
+      this.Map.lat = lat.toString();
+    }
     if (this.map) {
       this.map.remove();
     }
-
-    // marker icon configuration
     delete (L.Icon.Default.prototype as any)._getIconUrl;
     L.Icon.Default.mergeOptions({
       iconUrl: 'assets/icons/location.png',
@@ -45,32 +51,22 @@ export class MapPickerComponent implements OnInit {
       iconSize: [35, 35],
     });
 
-    // initialize map
     this.map = L.map('map').setView(
       [Number(this.Map.lat), Number(this.Map.lng)],
       this.config?.zoom || 17
     );
 
-    // add OpenStreetMap tiles
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors',
     }).addTo(this.map);
-
-    // place initial marker
     this.marker = L.marker([Number(this.Map.lat), Number(this.Map.lng)]).addTo(this.map);
-
-    // listen for map clicks
     this.map.on('click', (e: L.LeafletMouseEvent) => {
       const { lat, lng } = e.latlng;
-
-      // if marker exists, move it; otherwise, create new one
       if (this.marker) {
         this.marker.setLatLng(e.latlng);
       } else {
         this.marker = L.marker(e.latlng).addTo(this.map);
       }
-
-      // store location
       this.location = {
         lat: lat.toString(),
         lng: lng.toString()
