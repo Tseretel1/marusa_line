@@ -34,45 +34,51 @@ export class MapPickerComponent implements OnInit {
     this.initMap();
   }
 
-   initMap(): void {
-    const lng = localStorage.getItem('lng');
-    const lat = localStorage.getItem('lat');
-    if(lng && lat){
-      this.Map.lng = lng.toString();
-      this.Map.lat = lat.toString();
-    }
+  initMap(): void {
+    const savedLng = localStorage.getItem('lng');
+    const savedLat = localStorage.getItem('lat');
+
+    const lat = savedLat ? Number(savedLat) : 41.7151;
+    const lng = savedLng ? Number(savedLng) : 44.8271;
+
+    this.Map.lat = lat.toString();
+    this.Map.lng = lng.toString();
+
     if (this.map) {
       this.map.remove();
     }
+
     delete (L.Icon.Default.prototype as any)._getIconUrl;
     L.Icon.Default.mergeOptions({
-      iconUrl: 'assets/icons/location.png',
+      iconUrl: 'assets/icons/location.png', 
       shadowUrl: '',
       iconSize: [35, 35],
     });
 
-    this.map = L.map('map').setView(
-      [Number(this.Map.lat), Number(this.Map.lng)],
-      this.config?.zoom || 17
-    );
+    this.map = L.map('map').setView([lat, lng], this.config?.zoom || 17);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors',
     }).addTo(this.map);
-    this.marker = L.marker([Number(this.Map.lat), Number(this.Map.lng)]).addTo(this.map);
+
+    if (!isNaN(lat) && !isNaN(lng)) {
+      this.marker = L.marker([lat, lng]).addTo(this.map);
+      this.location = { lat: lat.toString(), lng: lng.toString() };
+    }
+
     this.map.on('click', (e: L.LeafletMouseEvent) => {
       const { lat, lng } = e.latlng;
+
       if (this.marker) {
         this.marker.setLatLng(e.latlng);
       } else {
         this.marker = L.marker(e.latlng).addTo(this.map);
       }
-      this.location = {
-        lat: lat.toString(),
-        lng: lng.toString()
-      };
+
+      this.location = { lat: lat.toString(), lng: lng.toString() };
     });
   }
+
 
   confirmLocation() {
     if (!this.location) {
@@ -84,7 +90,7 @@ export class MapPickerComponent implements OnInit {
     localStorage.setItem('lat', this.location.lat);
 
     this.reloadService.reload();
-    this.fireSuccess('');
+    this.fireSuccess('მისამართი წარმატებით მოინიშნა!');
     return this.location;
   }
 

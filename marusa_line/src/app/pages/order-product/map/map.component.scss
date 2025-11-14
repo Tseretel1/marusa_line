@@ -9,34 +9,40 @@
   overflow: hidden;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 #map {
   height: 400px; 
   width: 100%;
-  border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   z-index: 1;
 }
-button {
-  position: absolute;
-  bottom: 10px;
+.footer{
+  bottom: 0;
   left: 50%;
+  position: absolute;
   transform: translateX(-50%);
+  padding: 5px 0px;
+  backdrop-filter: blur(20px);
   z-index: 10;
-  padding: 8px 16px;
-  background-color: #3f51b5;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  z-index: 2;
-
-  &:hover {
-    background-color: #5c6bc0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  button {
+    padding: 8px 16px;
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 2;
+    
+    &:hover {
+      background-color: #5c6bc0;
+    }
   }
 }
-
 
 @media screen and (max-width:600px){
   #map{
