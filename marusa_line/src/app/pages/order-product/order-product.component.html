@@ -58,7 +58,18 @@
                         </div>
                     </div>
                   
-                    <div class="photo-align" data-aos="fade-up">
+                    <div class="user-information" *ngIf="mapModalVisible" >
+                        <div class="map-align" [ngClass]="{'map-visible':mapModalVisible}">
+                            <div class="map-modal">
+                                <div class="close-modal-align">
+                                    <button class="close-button" (click)="hideMapModal()">X</button>
+                                </div>
+                                <app-map-picker [config]="mapConfig"></app-map-picker>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="photo-align user-information">
                         <div class="product-details-align">
                             <p *ngIf="posts.quantity>0">✅მარაგშია: {{posts.quantity}}</p>
                             <div class="quantity-align card-background" *ngIf="posts.quantity>0">
@@ -76,15 +87,6 @@
                             </div>
                             <div class="price" *ngIf="delieveryChoise !=1">
                                 <div style="opacity: 0;"> კ </div>
-                            </div>
-                        </div>
-
-                        <div class="map-align" *ngIf="mapModalVisible" [ngClass]="{'map-visible':mapModalVisible}">
-                            <div class="map-modal">
-                                <div class="close-modal-align">
-                                    <button class="close-button" (click)="hideMapModal()">X</button>
-                                </div>
-                                <app-map-picker [config]="mapConfig"></app-map-picker>
                             </div>
                         </div>
                     </div>

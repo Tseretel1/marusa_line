@@ -70,8 +70,7 @@
           <i class="fas fa-times"></i>
         </button>
         <ng-container *ngFor="let p of photosArray; let i = index" >
-            
-            <img [src]="p.photoUrl" alt="" class="photo" *ngIf="i==photoVisibleNum" [ngClass]="{'pop-up':i==photoVisibleNum}">
+            <img [src]="p.photoUrl" alt="" class="photo" [ngClass]="{'pop-up':i==photoVisibleNum}">
             <div class="next-photo-align">
                 <div class="next-photo previous-photo" (click)="previousPhoto()"><i class="fas fa-chevron-left"></i></div>
                 <div  class="next-photo" (click)="nextPhoto()"><i class="fas fa-chevron-right"></i></div>

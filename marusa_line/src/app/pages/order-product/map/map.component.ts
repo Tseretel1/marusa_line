@@ -10,22 +10,21 @@ import * as L from 'leaflet';
   standalone: true,
   imports: [GoogleMapsModule, CommonModule],
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.scss']
+  styleUrls: ['./map.component.scss'],
 })
 export class MapPickerComponent implements OnInit {
-
   @Input() config!: MapConfig;
 
   Map: Lnglat = {
-    lat: '41.7151',
-    lng: '44.8271'
+    lat: '41.6938',
+    lng: '44.8015',
   };
 
   map!: L.Map;
   marker!: L.Marker;
-  location: Lnglat={
+  location: Lnglat = {
     lat: '',
-    lng: ''
+    lng: '',
   };
 
   constructor(private reloadService: ReloadService) {}
@@ -50,9 +49,10 @@ export class MapPickerComponent implements OnInit {
 
     delete (L.Icon.Default.prototype as any)._getIconUrl;
     L.Icon.Default.mergeOptions({
-      iconUrl: 'assets/icons/location.png', 
-      shadowUrl: '',
-      iconSize: [35, 35],
+        iconRetinaUrl: 'assets/leaflet/marker-icon-2x.png',
+        iconUrl: 'assets/leaflet/marker-icon.png',
+        shadowUrl: 'assets/leaflet/marker-shadow.png',
+        iconSize: [20, 30],
     });
 
     this.map = L.map('map').setView([lat, lng], this.config?.zoom || 17);
@@ -78,7 +78,6 @@ export class MapPickerComponent implements OnInit {
       this.location = { lat: lat.toString(), lng: lng.toString() };
     });
   }
-
 
   confirmLocation() {
     if (!this.location) {

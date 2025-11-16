@@ -17,12 +17,12 @@
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   z-index: 1;
 }
+@import "leaflet/dist/leaflet.css";
 .footer{
   bottom: 0;
   left: 50%;
   position: absolute;
   transform: translateX(-50%);
-  padding: 5px 0px;
   backdrop-filter: blur(20px);
   z-index: 10;
   width: 100%;

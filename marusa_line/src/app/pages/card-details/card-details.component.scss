@@ -23,6 +23,7 @@
                 background-color: rgba(0, 0, 0, 0.342);   
                 position: relative;
                 border-radius: 5px;
+                border: 1px solid grey;
                 .photo-container{
                     border-radius: 5px;
                     width: 100%;
@@ -37,6 +38,7 @@
                         height: 100%;
                         object-fit: cover;
                         max-width: 1000px;
+
                     }
                     .pop-up{
                         animation: 0.3s animPopUp;
@@ -171,6 +173,7 @@
                 gap:20px;
                 position: relative;
                 background-color: rgba(0, 0, 0, 0.342);
+                border: 1px solid grey;
                 .quantity-align{
                     color: white;
                     display: flex;
@@ -217,14 +220,13 @@
                         border-radius: 10px;
                         line-height: 30px;
                         font-size: 20px;
-                        text-wrap: wrap;
                     }
                     .desc-title{
                         color: white;
-                        background-color: rgba(75, 73, 73, 0.342);
                         width: 100px;
                         text-align: center;
                         padding: 5px 10px;
+                        border: 1px solid grey;
                         border-radius: 5px;
                     }
                 }
@@ -236,9 +238,9 @@
                         display: flex;
                         gap: 10px;
                         align-items: center;
-                        background-color: rgba(82, 80, 80, 0.342);
                         padding:2px 20px;
                         border-radius: 5px;
+                        border: 1px solid grey;
                         .bold-price{
                             color: white;
                             font-size: 20px;
@@ -283,9 +285,9 @@
     left: 0;
     top: 0;
     z-index: 90;
-    background-color: rgba(0, 0, 0, 0.193);
+    // background-color: rgb(24, 23, 23);
     backdrop-filter: blur(30px);
-    animation: bigPhotoEnter 0.5s;
+    animation: bigPhotoEnter 0.3s;
     .whole-screen-img{
         display: flex;
         justify-content: center;
@@ -296,10 +298,29 @@
         padding: 50px;
         position: relative;
         .photo{
-            animation: photoScaleAnim 0.5s;
             height: 100%;
             width: 100%;
             object-fit: contain;
+            display: none;
+        }
+        .scroll-left{
+            animation: scrolLeft 0.3s;
+        }
+        .scroll-right{
+            animation: scrolRight 0.3s;
+        }
+        .pop-up{
+            animation: popup 0.3s;
+            display: flex;
+        }
+        @keyframes popup {
+            0%{
+                display: flex;
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
         }
         .x-button{
             position: absolute;
@@ -388,24 +409,11 @@
 @keyframes bigPhotoEnter {
     0%{
         background-color: transparent;
-        backdrop-filter: blur(0px);
     }
     100%{
-        background-color: rgba(0, 0, 0, 0.193);
-        backdrop-filter: blur(30px);
     }
 }
-@keyframes photoScaleAnim {
-    0%{
-        scale: 0.95;
-    }
-    50%{
-        scale: 1.05;
-    }
-    100%{
-        opacity: 1;
-    }
-}
+
 @media screen and (max-width:1200px) {
     .center-component{
         .component{

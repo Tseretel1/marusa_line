@@ -200,6 +200,7 @@
     padding: 15px;
     animation:fadeIn 0.5s;
     background-color: rgba(0, 0, 0, 0.342);
+    border: 1px solid grey;
     .flex-columns{
         width: 100%;
         display: flex;
@@ -447,7 +448,6 @@ textarea{
     display: none;
     .map-modal{
         display: flex;
-        padding: 10px;
         border-radius: 5px;
         width: 100%;
         z-index: 2;
