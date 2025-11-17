@@ -407,7 +407,6 @@
                 align-items: center;
                 justify-content: center;
                 gap: 10px;
-                flex-wrap: wrap;
                 background-color: rgb(37, 36, 36);
                 padding: 10px;
                 border-radius: 5px;
@@ -758,6 +757,11 @@ p{
                 .user-information{
                     .rules-align{
                         .rulessss{
+                            .rules-text-align{
+                                flex-direction: column;
+                                gap: 5px;
+                                padding: 5px;
+                            }
                             .rules{
                                 flex-direction: column;
                                 align-items: flex-start;

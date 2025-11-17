@@ -148,7 +148,6 @@
         padding: 20px;
         gap: 20px;
         border-radius: 5px;
-        background-color: rgba(0, 0, 0, 0.342);
         border-radius: 10px;
         .delivery-align{
             display: flex;
@@ -298,6 +297,32 @@
                 align-items: center;
                 p{
                     color: green;
+                }
+            }
+        }
+        .ul{
+            .li{
+                display: flex; 
+                flex-direction: column;
+                gap: 5px;
+                .socials-align{
+                    display: flex;  
+                    width: 100%; 
+                    gap: 5px;
+                    color: white;
+                    .socials{
+                        padding: 5px 10px;
+                        border-radius: 5px;
+                        color: white;
+                        cursor: pointer;
+                        text-decoration: none;
+                    }
+                    .instagram{
+                        background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+                    }
+                    .facebook{
+                        background: rgba(0, 135, 255, 0.4);
+                    }
                 }
             }
         }

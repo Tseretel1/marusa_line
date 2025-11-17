@@ -45,7 +45,6 @@ export class OrderDetailsComponent {
         this.posts = resp.product;
         this.order = resp.orders;
         this.comment = this.order.comment;
-        console.log(resp)
         this.posts.photos.forEach(item => {
           this.photosArray.push(item);
         });
