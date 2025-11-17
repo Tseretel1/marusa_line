@@ -84,13 +84,14 @@ export class GalleryComponent implements OnInit {
     this.getPosts.pageNumber = 1;
     this.selectedPage = 1;
     this.getAllPosts();
-      this.hideFilterModal();
-      this.scrollToStartMethod();
-      if(this.sortNum==1){
-        this.sortByPriceHighToLow()
-      }
-      else if(this.sortNum==2){
-        this.sortByPriceLowToHigh()
+    this.hideFilterModal();
+    this.scrollToStartMethod();
+
+    if(this.sortNum==1){
+      this.sortByPriceHighToLow()
+    }
+    else if(this.sortNum==2){
+      this.sortByPriceLowToHigh()
     }
   }
 
@@ -138,6 +139,7 @@ export class GalleryComponent implements OnInit {
     }
     localStorage.setItem('PageNumber', this.selectedPage.toString());
     this.getAllPosts();
+    this.scrollToStartMethod();
   }
   totalPages:number =0;
 }
