@@ -17,7 +17,8 @@
         <!-- <b *ngIf="products.discountedPrice<=0" >{{products.price}}₾</b> -->
         <b *ngIf="products.discountedPrice>0">{{products.discountedPrice}}₾</b>
     </div>
-    <img [src]="products.photos[0].photoUrl" alt="" class="photo">
+    <img *ngIf="products.photos.length>0" [src]="products.photos[0].photoUrl" alt="" class="photo">
+    <img *ngIf="products.photoUrl" [src]="products.photoUrl" alt="" class="photo">
 </div>
 
 <div class="photo-container mobile">
@@ -39,6 +40,7 @@
         <b [ngClass]="{'discounted-price': products.discountedPrice>0}">{{products.price}}₾</b>
         <b *ngIf="products.discountedPrice>0">{{products.discountedPrice}}₾</b>
     </div>
-    <img [src]="products.photos[0].photoUrl" alt="" class="photo">
+    <img *ngIf="products.photos.length>0" [src]="products.photos[0].photoUrl" alt="" class="photo">
+    <img *ngIf="products.photoUrl" [src]="products.photoUrl" alt="" class="photo">
 </div>
 

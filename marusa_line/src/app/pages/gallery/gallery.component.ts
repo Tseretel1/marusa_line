@@ -21,6 +21,12 @@ export class GalleryComponent implements OnInit {
     likeCountvisible :false,
   }
 
+  getPosts:GetPostsDto={
+    pageNumber : 1,
+    pageSize: 10,
+    userId: 0,
+    productTypeId :null,
+  }
   constructor(private postService:PostService){
     this.getProductTypes();
   }
@@ -29,10 +35,7 @@ export class GalleryComponent implements OnInit {
           easing: 'ease-in-out',
           once: false, 
     });
-      this.getAllPosts(0).subscribe((resp) => {
-        this.Cards = resp;
-        this.hideFilterModal();
-      });
+    this.getAllPosts();
   }
  
   productTypesList :ProductTypes[]= [];
@@ -51,20 +54,36 @@ export class GalleryComponent implements OnInit {
   }, 500);
   }
 
-  getAllPosts(productId: number) {
+  getAllPosts() {
     const user = localStorage.getItem('user');
     if(user){
       this.user =JSON.parse(user);
       this.userId = this.user.Id
+      this.getPosts.userId = this.user.Id;
     }
-    return this.postService.getPosts(productId,this.userId);
+    this.postService.getPosts(this.getPosts).subscribe(
+      (resp)=>{
+        this.Cards = resp.products;
+        this.totalCount = resp.totalCount;
+        this.totalPages = Math.ceil(this.totalCount / this.getPosts.pageSize);
+        this.lastPage = Math.ceil(this.totalCount / this.getPosts.pageSize);
+      }
+    )
   }
+  
   user:any = null;
   userId:number = 0;
-  getPostByFilter(num: number) {
-    this.activeFilterNum = num;
-    this.getAllPosts(num,).subscribe((resp) => {
-      this.Cards = resp;
+  ApplyFitler(num: number|null) {
+    if(num){
+      this.activeFilterNum = num;
+      this.getPosts.productTypeId = num;
+    }
+    else{
+      this.getPosts.productTypeId = null;  
+    }
+    this.getPosts.pageNumber = 1;
+    this.selectedPage = 1;
+    this.getAllPosts();
       this.hideFilterModal();
       this.scrollToStartMethod();
       if(this.sortNum==1){
@@ -72,8 +91,7 @@ export class GalleryComponent implements OnInit {
       }
       else if(this.sortNum==2){
         this.sortByPriceLowToHigh()
-      }
-    });
+    }
   }
 
   activeFilterNum: number = 0;
@@ -103,4 +121,30 @@ export class GalleryComponent implements OnInit {
     this.sortNum = 2;
     this.hideFilterModal();
   }
+
+  totalCount:number = 0;
+  lastPage: number = 0; 
+  selectedPage: number = 1;
+  pageNumber: number = 1;
+  changePage(page: number) {
+    if (page < 1 || page > this.lastPage) return;
+    this.selectedPage = page;
+    this.getPosts.pageNumber = page;
+    const middle = this.pageNumber + 2;
+    if (page > middle) {
+      this.pageNumber = page - 2;
+    } else if (page < middle && this.pageNumber > 1) {
+      this.pageNumber = Math.max(1, page - 2);
+    }
+    localStorage.setItem('PageNumber', this.selectedPage.toString());
+    this.getAllPosts();
+  }
+  totalPages:number =0;
+}
+
+export interface GetPostsDto{
+  pageNumber:number;
+  pageSize:number;
+  userId:number;
+  productTypeId:number|null;
 }

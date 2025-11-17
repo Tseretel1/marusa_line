@@ -60,7 +60,6 @@ export class OrderProductComponent implements OnInit{
           this.productPrice = resp.discountedPrice;
           this.oldProductPrice = this.productPrice;
           this.oneProductPrice = this.productPrice;
-
         }
       }
     );

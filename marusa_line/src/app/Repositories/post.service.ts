@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { OrderProduct } from '../pages/profile/profile.component';
 import { AppUrl } from '../shared/Url/Appurl';
 import { orderPostObj } from '../pages/order-product/order-product.component';
+import { GetPostsDto } from '../pages/gallery/gallery.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,8 +16,8 @@ export class PostService {
     
   }
 
-  getPosts(productId:number, userId?:number): Observable<Post[]> {
-    return this.http.get<Post[]>(this.apiUrl+`Product/get-posts?productId=${productId}&userid=${userId}`);
+  getPosts(posts:GetPostsDto): Observable<ProductObject> {
+    return this.http.post<ProductObject>(this.apiUrl+`Product/get-posts`,posts);
   }
   getUserLikedPosts(userId:number): Observable<Post[]> {
     return this.http.get<Post[]>(this.apiUrl+`Product/get-user-liked-posts?userid=${userId}`);
@@ -68,6 +69,11 @@ export interface Photo {
   photoId?: number;  
   photoUrl?: string;
   postId?: number;
+}
+
+export interface ProductObject{
+  products:Post[];
+  totalCount:number;
 }
 
 export interface Post {

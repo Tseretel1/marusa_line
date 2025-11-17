@@ -21,8 +21,8 @@
                         <p>აირჩიე სასურველი კატეგორია</p>
                     </div>
                     <div class="stage-oAuth" >
-                        <button class="filter-button" [ngClass]="{'active-filter': activeFilterNum == 0}"(click)="getPostByFilter(0)">ყველა</button>
-                        <button class="filter-button" *ngFor="let product of productTypesList" [ngClass]="{'active-filter': activeFilterNum == product.id}" (click)="getPostByFilter(product.id)">{{product.productType}}</button>
+                        <button class="filter-button" [ngClass]="{'active-filter': activeFilterNum == 0}" (click)="ApplyFitler(null)">ყველა</button>
+                        <button class="filter-button" *ngFor="let product of productTypesList" [ngClass]="{'active-filter': activeFilterNum == product.id}" (click)="ApplyFitler(product.id)">{{product.productType}}</button>
                     </div>
                     <div class="header"> 
                         <p>დაალაგე ფასის მიხედვით</p>
@@ -43,4 +43,30 @@
             </div>
         </ng-container>
     </div>
+</div>
+
+
+<div class="center-pagenation">
+     <div class="pageination-align">
+    <div class="buttons-align">
+       <button class="next-button" type="button" (click)="changePage(selectedPage - 1)">
+         <span class="btn-inner--icon">
+           ◀
+         </span>
+       </button>
+       <div class="page-numbers-align">
+         <ng-container *ngFor="let p of [0,1,2,3,4]">
+           <button *ngIf="(pageNumber + p) <= totalPages" class="pageination-buttons"
+             [class.selected]="selectedPage === (pageNumber + p)" (click)="changePage(pageNumber + p)">
+             {{ pageNumber + p }}
+           </button>
+         </ng-container>
+       </div>
+       <button class="next-button" type="button" (click)="changePage(selectedPage + 1)">
+         <span class="btn-inner--icon">
+          ▶
+         </span>
+       </button>
+    </div>
+</div>
 </div>
