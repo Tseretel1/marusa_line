@@ -47,18 +47,42 @@
     .filters-align{
         display: flex;
         gap: 10px;
-        overflow-x: scroll;
         width: 80%;
-
-        .section-title-align{
+        .section-filters-align{
             display: flex;
-            width: 80%;
+            width: 100%;
+            flex-direction: column;
+            gap: 5px;
             .section-title{
                 color: white;
                 display: flex;
                 gap: 10px;
                 align-items: center;
                 text-wrap: nowrap;
+            }
+            .filters-align{
+              width: 100%;
+              display: flex;
+              gap: 10px;
+              overflow: scroll;
+              .filters{
+                padding: 8px 16px;
+                border-radius: 5px;
+                color: white;
+                background-color: rgba(0, 0, 0, 0.192);
+                border: 1px solid rgba(128, 128, 128, 0.514);
+                cursor: pointer;
+                text-wrap: nowrap;
+              }
+              .active-filter{
+                background-color: white;
+                color: black; 
+              }
+            }
+            .filters-align::-webkit-scrollbar{
+            }
+            .filters-align:hover .filters-align::-webkit-scrollbar{
+              display: flex;
             }
          }
         .open-filter{
@@ -155,6 +179,7 @@
                     text-wrap: nowrap;
                     transition: 0.2s all ease-in-out;
                     text-shadow: 0px 0px 2px black;
+                    border: 1px solid rgba(128, 128, 128, 0.671);
                     flex:auto;
                 }
                 .filter-button:hover{

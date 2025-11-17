@@ -123,6 +123,7 @@
                     text-wrap: nowrap;
                     transition: 0.2s all ease-in-out;
                     text-shadow: 0px 0px 2px black;
+                    border: 1px solid rgba(128, 128, 128, 0.63);
                     flex:auto;
                 }
                 .filter-button:hover{
@@ -281,6 +282,7 @@
             border-radius: 10px;
             gap: 10px;
             // border: 1px solid grey;
+              border: 1px solid rgba(128, 128, 128, 0.514);
             box-shadow: 0px 0px 5px black;
             .card-title-align{
               display: flex;
@@ -292,6 +294,7 @@
                 background-color: rgba(0, 0, 0, 0.527);
                 display: flex;
                 gap: 5px;
+                border: 1px solid rgba(128, 128, 128, 0.514);
                 p{
                   display: flex;
                   gap: 10px;
@@ -350,13 +353,14 @@
                 border-radius: 10px;
                 max-width: 230px;
                 min-width: 130px;
-                padding: 5px 10px;
+                padding: 10px 20px;
                 background-color: rgba(0, 0, 0, 0.418);
                 font-size: 14px;
                 justify-content: center;
                 text-align: center;
                 flex-direction: column;
                 overflow-x: scroll;
+                border: 1px solid rgba(128, 128, 128, 0.514);
                 color: rgba(255, 255, 255, 0.856);
                 .fa-spinner{
                   animation: spinner 5.5s infinite;
@@ -471,15 +475,11 @@
         }
       }
       .orders-align{
-        grid-template-columns: repeat(2,1fr);
         .order-card{
-          padding: 5px;
-          gap: 5px;
         .card-title-align{
-          flex-direction: row;
           .detail{
             font-size: 12px;
-            max-width: 150px;
+            max-width: 160px;
             padding: 5px 10px;
           }
           .detail-button{
@@ -508,8 +508,7 @@
          .album{
            height: 200px;
         }
-       
-      }
+    }
       .filters-align{
         width: 90%;
       }

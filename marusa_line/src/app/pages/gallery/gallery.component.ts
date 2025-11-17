@@ -79,7 +79,8 @@ export class GalleryComponent implements OnInit {
       this.getPosts.productTypeId = num;
     }
     else{
-      this.getPosts.productTypeId = null;  
+      this.getPosts.productTypeId = null; 
+      this.activeFilterNum = 0; 
     }
     this.getPosts.pageNumber = 1;
     this.selectedPage = 1;

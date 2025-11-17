@@ -2,12 +2,18 @@
 <div class="scrollto"></div>
 <div class="gallery-align">
     <div class="filters-align">
-         <div class="section-title-align">
+         <div class="section-filters-align">
             <b class="section-title">
                 <i class="fas fa-circle"></i> 
                 მოძებნე ფილტრით
                 <button class="open-filter" [ngClass]="{'active-filter': activeFilterNum == 0}" (click)="showFilterModal()"><i class="fas fa-sliders-h"></i> </button>
             </b>
+            <div class="filters-align">
+                <div class="filters" [ngClass]="{'active-filter': activeFilterNum == 0}"  (click)="ApplyFitler(null)">ყველა</div>
+                <div class="filters" [ngClass]="{'active-filter': activeFilterNum == i.id}"  *ngFor="let i of productTypesList" (click)="ApplyFitler(i.id)">
+                    {{i.productType}}
+                </div>
+            </div> 
         </div>
         <div class="modal-align" *ngIf="filterModalVisible"> 
             <div class="modal-background" (click)="hideFilterModal()">
