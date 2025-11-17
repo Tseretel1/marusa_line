@@ -49,10 +49,10 @@ export class MapPickerComponent implements OnInit {
 
     delete (L.Icon.Default.prototype as any)._getIconUrl;
     L.Icon.Default.mergeOptions({
-        iconRetinaUrl: 'assets/leaflet/marker-icon-2x.png',
-        iconUrl: 'assets/leaflet/marker-icon.png',
-        shadowUrl: 'assets/leaflet/marker-shadow.png',
-        iconSize: [20, 30],
+      iconRetinaUrl: 'assets/leaflet/marker-icon-2x.png',
+      iconUrl: 'assets/leaflet/marker-icon.png',
+      shadowUrl: 'assets/leaflet/marker-shadow.png',
+      iconSize: [20, 30],
     });
 
     this.map = L.map('map').setView([lat, lng], this.config?.zoom || 17);

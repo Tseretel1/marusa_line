@@ -1,6 +1,6 @@
-:host{
-    width: 100%;
-    height: 100%;
+:host {
+  width: 100%;
+  height: 100%;
 }
 .map-wrap {
   width: 100%;
@@ -12,13 +12,13 @@
   position: relative;
 }
 #map {
-  height: 400px; 
+  height: 400px;
   width: 100%;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 1;
 }
 @import "leaflet/dist/leaflet.css";
-.footer{
+.footer {
   bottom: 0;
   left: 50%;
   position: absolute;
@@ -37,15 +37,15 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     z-index: 2;
-    
+
     &:hover {
       background-color: #5c6bc0;
     }
   }
 }
 
-@media screen and (max-width:600px){
-  #map{
+@media screen and (max-width: 600px) {
+  #map {
     height: 300px;
   }
 }

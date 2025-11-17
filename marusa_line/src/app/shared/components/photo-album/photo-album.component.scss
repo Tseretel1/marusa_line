@@ -3,7 +3,8 @@
   overflow: hidden;
   height: 100%;
   position: relative;
-  box-shadow: 0px 0px 5px black;
+  // box-shadow: 0px 0px 5px black;
+  border: 1px solid rgba(128, 128, 128, 0.603);  position: relative;
   cursor: pointer;
   .photo {
     width: 100%;

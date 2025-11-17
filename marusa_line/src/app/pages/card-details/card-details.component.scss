@@ -23,7 +23,7 @@
                 background-color: rgba(0, 0, 0, 0.342);   
                 position: relative;
                 border-radius: 5px;
-                border: 1px solid grey;
+                border: 1px solid rgba(128, 128, 128, 0.342);
                 .photo-container{
                     border-radius: 5px;
                     width: 100%;
@@ -173,7 +173,7 @@
                 gap:20px;
                 position: relative;
                 background-color: rgba(0, 0, 0, 0.342);
-                border: 1px solid grey;
+                border: 1px solid rgba(128, 128, 128, 0.342);
                 .quantity-align{
                     color: white;
                     display: flex;
@@ -226,7 +226,7 @@
                         width: 100px;
                         text-align: center;
                         padding: 5px 10px;
-                        border: 1px solid grey;
+                        border: 1px solid rgba(128, 128, 128, 0.342);
                         border-radius: 5px;
                     }
                 }
@@ -240,7 +240,7 @@
                         align-items: center;
                         padding:2px 20px;
                         border-radius: 5px;
-                        border: 1px solid grey;
+                        border: 1px solid rgba(128, 128, 128, 0.342);
                         .bold-price{
                             color: white;
                             font-size: 20px;
