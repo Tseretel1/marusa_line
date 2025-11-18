@@ -50,6 +50,7 @@ export class OrderDetailsComponent {
         });
         this.productPrice = this.order.finalPrice;
         this.postsLoaded = true;
+        console.log(this.order)
       }
     );
   }
