@@ -7,6 +7,27 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    .no-posts-align{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      height: 100%;
+      padding: 100px;
+      .no-posts{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        color: white;
+        .far{
+          font-size: 40px;
+          scale: 2;
+        }
+        P{
+          font-size: 25px;
+        }
+      }
+    }
     .photo-align{
         width: 80%;
         display: flex;
@@ -52,7 +73,7 @@
             display: flex;
             width: 100%;
             flex-direction: column;
-            gap: 5px;
+            gap: 10px;
             .section-title{
                 color: white;
                 display: flex;
@@ -66,7 +87,7 @@
               gap: 10px;
               overflow: scroll;
               .filters{
-                padding: 8px 16px;
+                padding: 4px 16px;
                 border-radius: 5px;
                 color: white;
                 background-color: rgba(0, 0, 0, 0.192);
@@ -79,19 +100,18 @@
                 color: black; 
               }
             }
-            .filters-align::-webkit-scrollbar{
-            }
             .filters-align:hover .filters-align::-webkit-scrollbar{
               display: flex;
             }
          }
         .open-filter{
-          padding: 10px 20px;
+          padding: 4px 16px;
           border-radius: 5px;
           border: none;
           cursor: pointer;
           color: white;
-          background-color: rgba(0, 0, 0, 0.541);
+          background-color: rgba(0, 0, 0, 0.315);
+          border: 1px solid rgba(128, 128, 128, 0.514);
         }
         .modal-align{
         position: fixed;
@@ -183,10 +203,12 @@
                     flex:auto;
                 }
                 .filter-button:hover{
-                    background-color: rgba(0, 0, 0, 0.644);
+                  background-color: white;
+                  color: black; 
                 }
                 .active-filter{
-                    background-color: rgba(0, 0, 0, 0.644);
+                  background-color: white;
+                  color: black; 
                 }
             }
         }

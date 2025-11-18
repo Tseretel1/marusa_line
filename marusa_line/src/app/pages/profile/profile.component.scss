@@ -127,10 +127,12 @@
                     flex:auto;
                 }
                 .filter-button:hover{
-                    background-color: rgba(0, 0, 0, 0.644);
+                  background-color: white;
+                  color: black; 
                 }
                 .active-filter{
-                    background-color: rgba(0, 0, 0, 0.644);
+                  background-color: white;
+                  color: black; 
                 }
             }
         }

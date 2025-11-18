@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CardsComponent } from '../../shared/components/cards/cards.component';
 import { CommonModule } from '@angular/common';
 import AOS from 'aos';
-import { Post, PostService, ProductTypes } from '../../Repositories/post.service';
+import { Photo, Post, PostService, ProductTypes } from '../../Repositories/post.service';
 import { PhotoAlbumComponent, PhotoConfig } from '../../shared/components/photo-album/photo-album.component';
 import { DiscountMarkComponent } from '../../shared/components/discount-mark/discount-mark.component';
 import { GalleryComponent } from '../gallery/gallery.component';
@@ -21,8 +21,6 @@ import { escapeRegExp } from '@angular/compiler';
 })
 export class HomeComponent implements OnInit {
   
-  discountedFirst: Post[] = [];
-  discountedSecond: Post[] = [];
   soldProducts: Post[] = [];
   soldProducts2: Post[] = [];
   user:any = null;
@@ -33,12 +31,6 @@ export class HomeComponent implements OnInit {
       this.user =JSON.parse(user);
       this.userId = this.user.Id
     }
-    this.postService.getDiscountedPosts(this.userId).subscribe(
-      (resp)=>{
-        this.discountedFirst = resp.slice(0, 3); 
-        this.discountedSecond = resp.slice(3);
-      }
-    )
     this.postService.getMostSoldProducts(this.userId).subscribe(
       (resp)=>{
         this.soldProducts = resp.slice(0, 3);

@@ -42,7 +42,7 @@
             </div>
         </div>
     </div>
-    <div class="photo-align">
+    <div class="photo-align"*ngIf="Cards.length>0">
         <ng-container *ngFor="let p of Cards; let index = index;">
             <div class="container">
                 <!-- <app-discount-mark *ngIf="p.discountedPrice!=null&&p.discountedPrice>0" class="discount-procent" [discount]="p"></app-discount-mark> -->
@@ -50,10 +50,16 @@
             </div>
         </ng-container>
     </div>
+    <div class="no-posts-align" *ngIf="Cards.length<=0">
+        <div class="no-posts">
+            <i class="far fa-camera"></i>
+            <p class="">No posts yet!</p>
+        </div>
+    </div>
 </div>
 
 
-<div class="center-pagenation">
+<div class="center-pagenation" *ngIf="Cards.length>0">
      <div class="pageination-align">
     <div class="buttons-align">
        <button class="next-button" type="button" (click)="changePage(selectedPage - 1)">
