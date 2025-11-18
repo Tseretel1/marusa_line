@@ -67,6 +67,7 @@ export class GalleryComponent implements OnInit {
         this.totalCount = resp.totalCount;
         this.totalPages = Math.ceil(this.totalCount / this.getPosts.pageSize);
         this.lastPage = Math.ceil(this.totalCount / this.getPosts.pageSize);
+        
       }
     )
   }

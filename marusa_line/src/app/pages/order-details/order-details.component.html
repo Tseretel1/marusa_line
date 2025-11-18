@@ -20,14 +20,14 @@
                 {{ posts.title }}
               </p>
             </div>
-            <div class="photo-container" data-aos="fade-in">
+            <div class="photo-container">
               <div *ngFor="let p of photosArray; let i = index">
                 <img [src]="p.photoUrl" *ngIf="i == 0" alt="" class="photo" />
               </div>
             </div>
 
-            <div class="user-information">
-               <div class="rules-align" *ngIf="order.isPaid">
+            <div class="user-information" *ngIf="order.isPaid">
+               <div class="rules-align" >
                   <div class="title">
                     <b>შეკვეთის სტატუსი<i class="fas fa-file-alt"></i></b>
                   </div>
@@ -47,7 +47,6 @@
               </div>
             </div>
             <div class="product-details-align user-information">
-              
               <div class="detail-align">
                 <div
                   class="detail info-background"

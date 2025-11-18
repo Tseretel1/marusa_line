@@ -46,7 +46,7 @@
         <ng-container *ngFor="let p of Cards; let index = index;">
             <div class="container">
                 <!-- <app-discount-mark *ngIf="p.discountedPrice!=null&&p.discountedPrice>0" class="discount-procent" [discount]="p"></app-discount-mark> -->
-                <app-photo-album [products]="p"[PhotoCongif]="PhotoConfig" class="album" data-aos="fade-up"   [ngClass]="{'sort-cards':sortNum == 1 || sortNum == 2}"></app-photo-album>
+                <app-photo-album [products]="p"[PhotoCongif]="PhotoConfig" class="album"  [ngClass]="{'sort-cards':sortNum == 1 || sortNum == 2}"></app-photo-album>
             </div>
         </ng-container>
     </div>

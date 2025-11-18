@@ -15,7 +15,7 @@
                 <div class="img-container" *ngIf="userPhoto">
                     <img [src]="userPhoto" class="user-image">
                 </div>
-                <p class="username">{{user.Name}}</p>
+                <p class="username">{{user?.Name}}</p>
             </div>
         </div>
         <div class="burger-icon-align" >
@@ -33,10 +33,10 @@
         </div>
         <div class="nav-center">
             <div *ngIf="Authorised" class="nav-link profile-link" [routerLink]="AppRoutes.profile"(click)="hideSidenav()" routerLinkActive="active-link"><img src="" alt="">
-                <div class="img-container"*ngIf="userPhoto">
+                <div class="img-container">
                     <img [src]="userPhoto" class="user-image">
                 </div>
-                <p class="username">{{user.Name}}</p>
+                <p class="username">{{user?.Name}}</p>
             </div>
             <span class="nav-link" routerLinkActive="active-link" [routerLink]="AppRoutes.home" (click)="scrollTotop()"><i class="fas fas fa-house"></i><b>მთავარი</b> </span>
             <span class="nav-link" routerLinkActive="active-link" (click)="scrollToBottom()"><b ><i class="fas fa-address-book"></i> კონტაქტი</b> </span>

@@ -65,7 +65,7 @@
     <ng-container *ngIf="likesOrOrders ==1">
         <div class="photo-align orders-align" *ngIf="MyOrders.length>0">
             <div *ngFor="let p of MyOrders; let index = index;">
-                <div class="order-card" [ngClass]="{'payed-container':p.isPaid}"data-aos="fade-in">
+                <div class="order-card" [ngClass]="{'payed-container':p.isPaid}">
                         <div class="card-title-align">                         
                             <div class="detail" >
                                 <p> 
@@ -123,7 +123,7 @@
     <ng-container *ngIf="likesOrOrders ==2">
         <div class="photo-align" *ngIf="LikedProducts">
             <ng-container *ngFor="let p of LikedProducts; let index = index;" >
-                <app-photo-album [products]="p" [PhotoCongif]="PhotoConfig" class="album"  data-aos="fade-up"></app-photo-album>
+                <app-photo-album [products]="p" [PhotoCongif]="PhotoConfig" class="album" ></app-photo-album>
             </ng-container>
         </div>
     </ng-container>

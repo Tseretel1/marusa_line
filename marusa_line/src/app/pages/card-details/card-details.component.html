@@ -3,7 +3,7 @@
         <div class="header-grid">
           
             <div class="photo-align" >
-                <div class="photo-container"  data-aos="fade-in">
+                <div class="photo-container"  >
                     <div *ngFor="let p of photosArray; let i = index" >
                         <img [src]="p.photoUrl" alt="" class="photo" *ngIf="i==photoVisibleNum" [ngClass]="{'pop-up':i==photoVisibleNum}">
                         <div class="next-photo-align">
