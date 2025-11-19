@@ -61,15 +61,31 @@ export class GalleryComponent implements OnInit {
       this.userId = this.user.Id
       this.getPosts.userId = this.user.Id;
     }
+    this.applyPageAndType();
     this.postService.getPosts(this.getPosts).subscribe(
       (resp)=>{
         this.Cards = resp.products;
         this.totalCount = resp.totalCount;
         this.totalPages = Math.ceil(this.totalCount / this.getPosts.pageSize);
         this.lastPage = Math.ceil(this.totalCount / this.getPosts.pageSize);
-        
       }
     )
+  }
+  applyPageAndType(){
+    const PageNum = localStorage.getItem('PageNum');
+    const TypeId = localStorage.getItem('TypeId');
+    if(PageNum){
+      const Page = Number(PageNum);
+      this.selectedPage = Page;
+      this.getPosts.pageNumber = Page;
+    }
+    if(TypeId!='null'){
+      this.getPosts.productTypeId= Number(TypeId);
+      this.activeFilterNum = Number(TypeId);
+    }
+    else{
+      this.activeFilterNum = 0;
+    }
   }
   
   user:any = null;
@@ -78,13 +94,14 @@ export class GalleryComponent implements OnInit {
     if(num){
       this.activeFilterNum = num;
       this.getPosts.productTypeId = num;
+      localStorage.setItem('TypeId',num.toString());
     }
     else{
       this.getPosts.productTypeId = null; 
       this.activeFilterNum = 0; 
+      localStorage.setItem('TypeId','null');
     }
-    this.getPosts.pageNumber = 1;
-    this.selectedPage = 1;
+    localStorage.setItem('PageNum','1');
     this.getAllPosts();
     this.hideFilterModal();
     this.scrollToStartMethod();
@@ -139,7 +156,7 @@ export class GalleryComponent implements OnInit {
     } else if (page < middle && this.pageNumber > 1) {
       this.pageNumber = Math.max(1, page - 2);
     }
-    localStorage.setItem('PageNumber', this.selectedPage.toString());
+    localStorage.setItem('PageNum', this.selectedPage.toString());
     this.getAllPosts();
     this.scrollToStartMethod();
   }
