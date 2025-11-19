@@ -4,6 +4,7 @@ import AOS from 'aos';
 import { Photo, Post, PostService, ProductTypes } from '../../Repositories/post.service';
 import { PhotoAlbumComponent, PhotoConfig } from '../../shared/components/photo-album/photo-album.component';
 import { DiscountMarkComponent } from "../../shared/components/discount-mark/discount-mark.component";
+import { getAppScopedQueuedEventInfos } from '@angular/core/primitives/event-dispatch';
 
 @Component({
   selector: 'app-gallery',
@@ -79,12 +80,15 @@ export class GalleryComponent implements OnInit {
       this.selectedPage = Page;
       this.getPosts.pageNumber = Page;
     }
-    if(TypeId!='null'){
-      this.getPosts.productTypeId= Number(TypeId);
-      this.activeFilterNum = Number(TypeId);
-    }
-    else{
-      this.activeFilterNum = 0;
+    if(TypeId){
+      if(TypeId!='null'){
+        this.getPosts.productTypeId= Number(TypeId);
+        this.activeFilterNum = Number(TypeId);
+      }
+      else{
+        this.activeFilterNum = 0;
+        this.getPosts.productTypeId = null;
+      }
     }
   }
   

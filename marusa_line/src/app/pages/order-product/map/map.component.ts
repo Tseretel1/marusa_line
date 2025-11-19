@@ -16,8 +16,8 @@ export class MapPickerComponent implements OnInit {
   @Input() config!: MapConfig;
 
   Map: Lnglat = {
-    lat: '41.6938',
-    lng: '44.8015',
+    lat: '41.693376147867006',
+    lng: '44.801519215106964',
   };
 
   map!: L.Map;
@@ -37,8 +37,8 @@ export class MapPickerComponent implements OnInit {
     const savedLng = localStorage.getItem('lng');
     const savedLat = localStorage.getItem('lat');
 
-    const lat = savedLat ? Number(savedLat) : 41.7151;
-    const lng = savedLng ? Number(savedLng) : 44.8271;
+    const lat = savedLat ? Number(savedLat) : 41.693376147867006;
+    const lng = savedLng ? Number(savedLng) : 44.801519215106964;
 
     this.Map.lat = lat.toString();
     this.Map.lng = lng.toString();
