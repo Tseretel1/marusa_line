@@ -199,6 +199,28 @@ export class OrderProductComponent implements OnInit{
       });
       return false;
     }
+    if(this.location.lat=='' && this.location.lng==''){
+      Swal.fire({
+          text: 'გთხოვთ მონიშნოთ მისამართი რუკაზე🙏',
+          icon:'error',
+          showCancelButton: false,
+          showConfirmButton:false,
+          confirmButtonText: 'კი',
+          cancelButtonText: 'არა',
+          background:'rgb(25, 26, 25)',
+          color: '#ffffff',       
+          customClass: {
+            popup: 'custom-swal-popup',
+          },
+          timer:3000,
+      });
+       window.scrollTo({
+        top: 0,
+        behavior: 'smooth' 
+      });
+      this.openMapModal();
+      return false;
+    }
     this.addressInvalid = false;
     this.mobileInvalid = false;
     return true;
