@@ -128,12 +128,11 @@
             gap: 10px;
             .form-control{
                 width: 100%;
-                background-color: rgba(0, 0, 0, 0.397);
-                background-color: rgb(37, 36, 36);
+                background-color: rgba(0, 0, 0, 0.204);
+                border: 1px solid rgba(128, 128, 128, 0.473);
                 color: white;
                 padding: 10px;
                 border-radius: 5px;
-                border: none;
             }
         }
     }
@@ -408,10 +407,10 @@
                 align-items: center;
                 justify-content: center;
                 gap: 10px;
-                background-color: rgb(37, 36, 36);
-                padding: 10px;
+                background-color: rgba(0, 0, 0, 0.204);padding: 10px;
                 border-radius: 5px;
                 position: relative;
+                border: 1px solid rgba(128, 128, 128, 0.423);
                 
                 .logo-container{
                     width: 50px;
@@ -440,8 +439,8 @@
                     color: white;
                     padding:10px 20px;
                     border-radius: 5px;
-                    background-color: rgb(25, 26, 25);
-                    border:none;
+                    background-color: rgba(0, 0, 0, 0);
+                    border:1px solid rgba(128, 128, 128, 0.359);
                     position: relative;
                     cursor: pointer;
                     .copied{
@@ -514,7 +513,9 @@ p{
 .info-background{
     padding: 10px ;
     border-radius: 5px;
-    background-color: rgb(37, 36, 36);
+    background-color: rgba(0, 0, 0, 0.299);
+  border: 1px solid rgba(128, 128, 128, 0.473);
+
     color: white;
     text-align: center;
     display: flex;
@@ -651,7 +652,8 @@ p{
 .step-label {
   margin-left: 25px;
   font-size: 15px;
-  background: #2d2d2d;
+  background: #00000032;
+  border: 1px solid rgba(128, 128, 128, 0.473);
   padding: 6px 14px;
   border-radius: 8px;
   color: #ccc;

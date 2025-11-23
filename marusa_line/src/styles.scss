@@ -1,111 +1,130 @@
 @font-face {
-    font-family: 'helv';
-    src: url('/assets//fonts/HelveticaNeueLTGEO-45Light.eot');
-    src: url('/assets/fonts/HelveticaNeueLTGEO-45Light.eot?#iefix') format('embedded-opentype'),
-    url('/assets/fonts/HelveticaNeueLTGEO-45Light.woff2') format('woff2'),
-    url('/assets/fonts/HelveticaNeueLTGEO-45Light.woff') format('woff'),
-    url('/assets/fonts/HelveticaNeueLTGEO-45Light.ttf') format('truetype');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
+  font-family: "helv";
+  src: url("/assets//fonts/HelveticaNeueLTGEO-45Light.eot");
+  src: url("/assets/fonts/HelveticaNeueLTGEO-45Light.eot?#iefix")
+      format("embedded-opentype"),
+    url("/assets/fonts/HelveticaNeueLTGEO-45Light.woff2") format("woff2"),
+    url("/assets/fonts/HelveticaNeueLTGEO-45Light.woff") format("woff"),
+    url("/assets/fonts/HelveticaNeueLTGEO-45Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'helv';
-    src: url('/assets/fonts/HelveticaNeueLTGEO-75Bold.eot');
-    src: url('/assets/fonts/HelveticaNeueLTGEO-75Bold.eot?#iefix') format('embedded-opentype'),
-    url('/assets/fonts/HelveticaNeueLTGEO-75Bold.woff2') format('woff2'),
-    url('/assets/fonts/HelveticaNeueLTGEO-75Bold.woff') format('woff'),
-    url('/assets/fonts/HelveticaNeueLTGEO-75Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
+  font-family: "helv";
+  src: url("/assets/fonts/HelveticaNeueLTGEO-75Bold.eot");
+  src: url("/assets/fonts/HelveticaNeueLTGEO-75Bold.eot?#iefix")
+      format("embedded-opentype"),
+    url("/assets/fonts/HelveticaNeueLTGEO-75Bold.woff2") format("woff2"),
+    url("/assets/fonts/HelveticaNeueLTGEO-75Bold.woff") format("woff"),
+    url("/assets/fonts/HelveticaNeueLTGEO-75Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'helv';
-    src: url('/assets/fonts/HelveticaNeueLTGEO-55Roman.eot');
-    src: url('/assets/fonts/HelveticaNeueLTGEO-55Roman.eot?#iefix') format('embedded-opentype'),
-    url('/assets/fonts/HelveticaNeueLTGEO-55Roman.woff2') format('woff2'),
-    url('/assets/fonts/HelveticaNeueLTGEO-55Roman.woff') format('woff'),
-    url('/assets/fonts/HelveticaNeueLTGEO-55Roman.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "helv";
+  src: url("/assets/fonts/HelveticaNeueLTGEO-55Roman.eot");
+  src: url("/assets/fonts/HelveticaNeueLTGEO-55Roman.eot?#iefix")
+      format("embedded-opentype"),
+    url("/assets/fonts/HelveticaNeueLTGEO-55Roman.woff2") format("woff2"),
+    url("/assets/fonts/HelveticaNeueLTGEO-55Roman.woff") format("woff"),
+    url("/assets/fonts/HelveticaNeueLTGEO-55Roman.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 .light-font {
-    font-family: 'helv'; font-weight: 300; font-style: normal;
+  font-family: "helv";
+  font-weight: 300;
+  font-style: normal;
 }
 
 .normal-font {
-    font-family: 'helv'; font-weight: normal; font-style: normal;
-}
-
-.bold-font {
-    font-family: 'helv'; font-weight: bold; font-style: normal;
-}
-
-.light-font-upper {
-    font-family: 'helv'; font-weight: 300; font-style: normal;
-    font-feature-settings: 'case' on;
-}
-
-.normal-font-upper {
-    font-family: 'helv'; font-weight: normal; font-style: normal;
-    font-feature-settings: 'case' on;
-}
-
-.bold-font-upper {
-    font-family: 'helv'; font-weight: bold; font-style: normal;
-    font-feature-settings: 'case' on;
-}
-
-a, span, div, body, tr, td {
-  font-family: 'helv';
+  font-family: "helv";
   font-weight: normal;
   font-style: normal;
 }
 
+.bold-font {
+  font-family: "helv";
+  font-weight: bold;
+  font-style: normal;
+}
 
-html,body{
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    overflow-x: hidden;
-  }
-  p{
-    margin: 0;
+.light-font-upper {
+  font-family: "helv";
+  font-weight: 300;
+  font-style: normal;
+  font-feature-settings: "case" on;
 }
-ul{
-    margin: 0;
+
+.normal-font-upper {
+  font-family: "helv";
+  font-weight: normal;
+  font-style: normal;
+  font-feature-settings: "case" on;
 }
-button{
-    color: black;
+
+.bold-font-upper {
+  font-family: "helv";
+  font-weight: bold;
+  font-style: normal;
+  font-feature-settings: "case" on;
+}
+
+a,
+span,
+div,
+body,
+tr,
+td {
+  font-family: "helv";
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,
+body {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+p {
+  margin: 0;
+}
+ul {
+  margin: 0;
+}
+button {
+  color: black;
 }
 
 * {
-    margin: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-    padding: 0;
-  }
-  .background{
-    background: linear-gradient(to bottom, #272626, #1a1716, #1d1c1b);
-    // background: linear-gradient(to bottom, #1a1919, #3c526d, #142752);
-    width: 100%;
-    height: 120%;
-    z-index: -2;
-    overflow: hidden;
-    position: fixed;
-    display: grid;
-    grid-template-columns: repeat(1,1fr);
-    place-items: center;
-  }
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  padding: 0;
+}
+.background {
+  // Sophisticated dark gradient - elegant and minimalist for a premium brand
+  // background: linear-gradient(135deg, #48484d 0%, #1c202b 25%, #233750 50%, #27273c 75%, #0d1b2a 100%);
+  background-color: #23232b;
+  width: 100%;
+  height: 120%;
+  z-index: -2;
+  overflow: hidden;
+  position: fixed;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  place-items: center;
+}
 
-
-
- @keyframes rotate {
+@keyframes rotate {
   0% {
     transform: rotate(0deg);
   }
@@ -114,165 +133,155 @@ button{
   }
 }
 
-  .stars {
-    width: 1px;
-    height: 1px;
-    position: absolute;
-    background: white;
-    box-shadow: 2vw 5vh 2px white, 10vw 8vh 2px white, 15vw 15vh 1px white,
-      22vw 22vh 1px white, 28vw 12vh 2px white, 32vw 32vh 1px white,
-      38vw 18vh 2px white, 42vw 35vh 1px white, 48vw 25vh 2px white,
-      53vw 42vh 1px white, 58vw 15vh 2px white, 63vw 38vh 1px white,
-      68vw 28vh 2px white, 73vw 45vh 1px white, 78vw 32vh 2px white,
-      83vw 48vh 1px white, 88vw 20vh 2px white, 93vw 52vh 1px white,
-      98vw 35vh 2px white, 5vw 60vh 1px white, 12vw 65vh 2px white,
-      18vw 72vh 1px white, 25vw 78vh 2px white, 30vw 85vh 1px white,
-      35vw 68vh 2px white, 40vw 82vh 1px white, 45vw 92vh 2px white,
-      50vw 75vh 1px white, 55vw 88vh 2px white, 60vw 95vh 1px white,
-      65vw 72vh 2px white, 70vw 85vh 1px white, 75vw 78vh 2px white,
-      80vw 92vh 1px white, 85vw 82vh 2px white, 90vw 88vh 1px white,
-      95vw 75vh 2px white;
-    animation: twinkle 8s infinite linear;
-  }
-  
-  .shooting-star {
-    position: absolute;
-    width: 100px;
-    height: 2px;
-    background: linear-gradient(90deg, white, transparent);
-    animation: shoot 3s infinite ease-in;
-  }
-  
-  .shooting-star:nth-child(1) {
-    top: 20%;
-    left: -100px;
-    animation-delay: 0s;
-  }
-  
-  .shooting-star:nth-child(2) {
-    top: 35%;
-    left: -100px;
-    animation-delay: 1s;
-  }
-  
-  .shooting-star:nth-child(3) {
-    top: 50%;
-    left: -100px;
-    animation-delay: 2s;
-  }
-  .shooting-star:nth-child(4) {
-    top: 75%;
-    left: -100px;
-    animation-delay: 2s;
-  }
-  @keyframes twinkle {
-    0%,
-    100% {
-      opacity: 0.8;
-    }
-    50% {
-      opacity: 0.4;
-    }
-  }
-  
-  @keyframes shoot {
-    0% {
-      transform: translateX(0) translateY(0) rotate(25deg);
-      opacity: 1;
-    }
-    100% {
-      transform: translateX(120vw) translateY(50vh) rotate(25deg);
-      opacity: 0;
-    }
-  }
-  
-  .stars::after {
-    content: "";
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    background: white;
-    box-shadow: 8vw 12vh 2px white, 16vw 18vh 1px white, 24vw 25vh 2px white,
-      33vw 15vh 1px white, 41vw 28vh 2px white, 49vw 35vh 1px white,
-      57vw 22vh 2px white, 65vw 42vh 1px white, 73vw 28vh 2px white,
-      81vw 48vh 1px white, 89vw 32vh 2px white, 97vw 45vh 1px white,
-      3vw 68vh 2px white, 11vw 75vh 1px white, 19vw 82vh 2px white,
-      27vw 88vh 1px white, 35vw 72vh 2px white, 43vw 85vh 1px white,
-      51vw 92vh 2px white, 59vw 78vh 1px white;
-    animation: twinkle 6s infinite linear reverse;
-  }
- label{
-    min-width: none;
+.stars {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  background: white;
+  animation: twinkle 8s infinite linear;
 }
 
+.shooting-star {
+  position: absolute;
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, white, transparent);
+  animation: shoot 3s infinite ease-in;
+}
 
-.center-pagenation{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-.pageination-align{
+.shooting-star:nth-child(1) {
+  top: 20%;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+.shooting-star:nth-child(2) {
+  top: 35%;
+  left: -100px;
+  animation-delay: 1s;
+}
+
+.shooting-star:nth-child(3) {
+  top: 50%;
+  left: -100px;
+  animation-delay: 2s;
+}
+.shooting-star:nth-child(4) {
+  top: 75%;
+  left: -100px;
+  animation-delay: 2s;
+}
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes shoot {
+  0% {
+    transform: translateX(0) translateY(0) rotate(25deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(120vw) translateY(50vh) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+.stars::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background: rgba(212, 175, 55, 0.8);
+  box-shadow: 8vw 12vh 2px rgba(184, 134, 11, 0.7),
+    16vw 18vh 1px rgba(212, 175, 55, 0.8), 24vw 25vh 2px rgba(184, 134, 11, 0.6),
+    33vw 15vh 1px rgba(212, 175, 55, 0.7), 41vw 28vh 2px rgba(184, 134, 11, 0.8),
+    49vw 35vh 1px rgba(212, 175, 55, 0.6), 57vw 22vh 2px rgba(184, 134, 11, 0.7),
+    65vw 42vh 1px rgba(212, 175, 55, 0.8), 73vw 28vh 2px rgba(184, 134, 11, 0.6),
+    81vw 48vh 1px rgba(212, 175, 55, 0.7), 89vw 32vh 2px rgba(184, 134, 11, 0.8),
+    97vw 45vh 1px rgba(212, 175, 55, 0.6), 3vw 68vh 2px rgba(184, 134, 11, 0.7),
+    11vw 75vh 1px rgba(212, 175, 55, 0.8), 19vw 82vh 2px rgba(184, 134, 11, 0.6),
+    27vw 88vh 1px rgba(212, 175, 55, 0.7), 35vw 72vh 2px rgba(184, 134, 11, 0.8),
+    43vw 85vh 1px rgba(212, 175, 55, 0.6), 51vw 92vh 2px rgba(184, 134, 11, 0.7),
+    59vw 78vh 1px rgba(212, 175, 55, 0.8);
+  animation: twinkle 6s infinite linear reverse;
+}
+label {
+  min-width: none;
+}
+
+.center-pagenation {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  .pageination-align {
     width: 80%;
     display: flex;
     justify-content: flex-start;
     padding: 20px 0px 50px 0px;
-    .buttons-align{
+    .buttons-align {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      .next-button {
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: rgba(0, 0, 0, 0.274);
+        box-shadow: 0px 0px 2px grey;
+        cursor: pointer;
+        color: white;
         display: flex;
         align-items: center;
-        gap: 10px;
         justify-content: center;
-        .next-button{
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-            background-color: rgba(0, 0, 0, 0.274);
-            box-shadow: 0px 0px 2px grey;
-            cursor: pointer;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+      }
+      .icon-rotate-left {
+        transform: rotate(180deg);
+      }
+      .btn {
+        transition: 0.2s all ease-in-out;
+        margin: 0;
+      }
+      .btn:hover {
+        background-color: white;
+      }
+      .page-numbers-align {
+        display: flex;
+        gap: 3px;
+        .pageination-buttons {
+          border: none;
+          padding: 5px 10px;
+          border-radius: 5px;
+          font-size: 14px;
+          transition: 0.2s;
+          background-color: rgba(0, 0, 0, 0.274);
+          box-shadow: 0px 0px 2px grey;
+          cursor: pointer;
+          color: white;
         }
-       .icon-rotate-left {
-         transform: rotate(180deg);
+        .pageination-buttons:hover {
+          color: black;
+          background-color: white;
         }
-        .btn{
-            transition: 0.2s all ease-in-out;
-            margin: 0;
+        .selected {
+          color: black;
+          background-color: white;
         }
-        .btn:hover{
-            background-color: white;
-        }
-        .page-numbers-align{
-            display: flex;
-            gap: 3px;
-            .pageination-buttons{
-                border: none;
-                padding: 5px 10px;
-                border-radius: 5px;
-                font-size: 14px;
-                transition: 0.2s ;
-                background-color: rgba(0, 0, 0, 0.274);
-                box-shadow: 0px 0px 2px grey;
-                cursor: pointer;
-                color: white;            }
-            .pageination-buttons:hover{
-                color: black;
-                background-color: white;
-            }
-            .selected {
-                color: black;
-                background-color: white;
-            }
-        }
+      }
     }
   }
 }
 
-
- @media screen and (max-width:600px){
-  .center-pagenation{
-    .pageination-align{
+@media screen and (max-width: 600px) {
+  .center-pagenation {
+    .pageination-align {
       width: 90%;
     }
   }
- }
+}

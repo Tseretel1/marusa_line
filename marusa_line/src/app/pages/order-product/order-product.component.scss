@@ -138,6 +138,7 @@
         justify-content: center;
         color: white;
         background-color: rgba(0, 0, 0, 0.342);
+        border: 1px solid rgba(128, 128, 128, 0.422);
         width: 100%;
         padding: 5px;
         border-radius: 5px;
@@ -162,8 +163,8 @@
                 padding: 5px 10px;
                 outline: none;
                 color: white;
-                border: 1px solid rgba(128, 128, 128, 0.342);
-                background-color:transparent;
+                background-color: rgba(0, 0, 0, 0.204);
+                border: 1px solid rgba(128, 128, 128, 0.473);
                 cursor: pointer;
             }
             .form-control:focus{
@@ -186,7 +187,8 @@
             }
         }
         .card-background{
-            background-color: rgb(29, 28, 28);
+            background-color: rgba(0, 0, 0, 0.204);
+            border: 1px solid rgba(128, 128, 128, 0.473);
             padding: 10px;
             width: 100%;
             border-radius: 5px;
@@ -227,9 +229,9 @@
             padding: 10px;
             border-radius: 5px;
             width: 100%;
-            background-color: rgb(24, 23, 23);
             max-height: 350px;
-            border: 1px solid rgba(128, 128, 128, 0.342);
+            background-color: rgba(0, 0, 0, 0.204);
+            border: 1px solid rgba(128, 128, 128, 0.473);
             outline: none;
         }
         .invalid-inputs{

@@ -3,12 +3,10 @@ import { Component, ElementRef, OnInit, ViewChild, } from '@angular/core';
 import AOS from 'aos';
 import { Photo, Post, PostService, ProductTypes } from '../../Repositories/post.service';
 import { PhotoAlbumComponent, PhotoConfig } from '../../shared/components/photo-album/photo-album.component';
-import { DiscountMarkComponent } from "../../shared/components/discount-mark/discount-mark.component";
-import { getAppScopedQueuedEventInfos } from '@angular/core/primitives/event-dispatch';
 
 @Component({
   selector: 'app-gallery',
-  imports: [CommonModule, PhotoAlbumComponent, DiscountMarkComponent],
+  imports: [CommonModule, PhotoAlbumComponent],
   templateUrl: './gallery.component.html',
   styleUrl: './gallery.component.scss'
 })
@@ -32,18 +30,28 @@ export class GalleryComponent implements OnInit {
     this.getProductTypes();
   }
   ngOnInit(): void {
-    AOS.init({
-          easing: 'ease-in-out',
-          once: false, 
-    });
     this.getAllPosts();
   }
  
+    moveProductTypeTOFirst(){
+    const TypeId = localStorage.getItem('TypeId');
+    if(TypeId){
+      if(TypeId!='null'){
+        const index = this.productTypesList.findIndex(x => x.id === Number(TypeId));
+        if (index !== -1) {
+          const selected = this.productTypesList[index];
+          this.productTypesList.splice(index, 1);
+          this.productTypesList.unshift(selected);
+        }
+      }
+    }
+  }
   productTypesList :ProductTypes[]= [];
   getProductTypes(){
     this.postService.getProductTypes().subscribe(
       (resp)=>{
         this.productTypesList = resp;
+        this.moveProductTypeTOFirst();
       }
     )
   }
@@ -91,6 +99,7 @@ export class GalleryComponent implements OnInit {
       }
     }
   }
+
   
   user:any = null;
   userId:number = 0;
