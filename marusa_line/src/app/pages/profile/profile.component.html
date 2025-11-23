@@ -45,12 +45,12 @@
                         <button class="filter-button" [ngClass]="{'active-filter': sortNum == 3}"(click)="sortByIsPaied(true)">გადახდილი</button>
                         <button class="filter-button" [ngClass]="{'active-filter': sortNum == 4}"(click)="sortByIsPaied(false)">გადასახდელი</button>
                     </div>
-                    <div class="header"> 
+                    <!-- <div class="header"> 
                         <p>სტატუსის მიხედვით</p>
                     </div>
                     <div class="stage-oAuth" >
                         <button *ngFor="let i of orderStatuses" class="filter-button" [ngClass]="{'active-filter': sortNum == i.id +5}"(click)="sortByStatus(i.id)">{{i.statusName}}</button>
-                    </div>
+                    </div> -->
                     <div class="header"> 
                         <p>ფასის მიხედვით</p>
                     </div>
