@@ -143,12 +143,14 @@ button {
 
 .shooting-star {
   position: absolute;
-  width: 100px;
+  width: 50px;
   height: 2px;
   background: linear-gradient(90deg, white, transparent);
   animation: shoot 3s infinite ease-in;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
 .shooting-star:nth-child(1) {
   top: 20%;
   left: -100px;
@@ -169,6 +171,31 @@ button {
 .shooting-star:nth-child(4) {
   top: 75%;
   left: -100px;
+  animation-delay: 2s;
+}
+.shooting-star:nth-child(5) {
+  top: 105%;
+  left: -100px;
+  animation-delay: 2s;
+}
+.shooting-star:nth-child(6) {
+  top: 25%;
+  left: -800px;
+  animation-delay: 2s;
+}
+.shooting-star:nth-child(7) {
+  top: 25%;
+  left: -200px;
+  animation-delay: 2s;
+}
+.shooting-star:nth-child(8) {
+  top: 45%;
+  left: -400px;
+  animation-delay: 2s;
+}
+.shooting-star:nth-child(9) {
+  top: 5%;
+  left: -600px;
   animation-delay: 2s;
 }
 @keyframes twinkle {
@@ -198,17 +225,6 @@ button {
   width: 1px;
   height: 1px;
   background: rgba(212, 175, 55, 0.8);
-  box-shadow: 8vw 12vh 2px rgba(184, 134, 11, 0.7),
-    16vw 18vh 1px rgba(212, 175, 55, 0.8), 24vw 25vh 2px rgba(184, 134, 11, 0.6),
-    33vw 15vh 1px rgba(212, 175, 55, 0.7), 41vw 28vh 2px rgba(184, 134, 11, 0.8),
-    49vw 35vh 1px rgba(212, 175, 55, 0.6), 57vw 22vh 2px rgba(184, 134, 11, 0.7),
-    65vw 42vh 1px rgba(212, 175, 55, 0.8), 73vw 28vh 2px rgba(184, 134, 11, 0.6),
-    81vw 48vh 1px rgba(212, 175, 55, 0.7), 89vw 32vh 2px rgba(184, 134, 11, 0.8),
-    97vw 45vh 1px rgba(212, 175, 55, 0.6), 3vw 68vh 2px rgba(184, 134, 11, 0.7),
-    11vw 75vh 1px rgba(212, 175, 55, 0.8), 19vw 82vh 2px rgba(184, 134, 11, 0.6),
-    27vw 88vh 1px rgba(212, 175, 55, 0.7), 35vw 72vh 2px rgba(184, 134, 11, 0.8),
-    43vw 85vh 1px rgba(212, 175, 55, 0.6), 51vw 92vh 2px rgba(184, 134, 11, 0.7),
-    59vw 78vh 1px rgba(212, 175, 55, 0.8);
   animation: twinkle 6s infinite linear reverse;
 }
 label {
