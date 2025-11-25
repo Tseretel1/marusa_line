@@ -46,7 +46,7 @@
                                 მისამართი 
                                 <p *ngIf="address!=''">✅</p>
                                 <i class="fas fa-close" *ngIf="address==''"></i>
-                                <p style="opacity: 0.7; font-size: 12px;"  >(მონიშნე რუკაზე ან ჩაწერე ხელით)</p>
+                                <p style="opacity: 0.7; font-size: 12px;text-wrap: nowrap;"  >(მონიშნე რუკაზე ან ჩაწერე ხელით)</p>
                             </label>
                             <div class="editable-fields">
                                 <input class="form-control" type="text" [disabled]="editFieldNum!=2" placeholder="დეტალური ინფორმაცია, ქუჩა, კორპუსი, სადარბაზო.... " [(ngModel)]="address" [ngClass]="{'invalid-inputs': addressInvalid}"  maxlength="100">
