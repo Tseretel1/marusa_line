@@ -7,10 +7,11 @@ import { AuthorizationComponent } from "./pages/authorization/authorization.comp
 import { Observable, Subscription } from 'rxjs';
 import { AuthorizationService } from './pages/authorization/authorization.service';
 import { CommonModule } from '@angular/common';
+import { BackgroundComponent } from "./shared/components/background/background.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, LoaderComponent, AuthorizationComponent,CommonModule],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, LoaderComponent, AuthorizationComponent, CommonModule, BackgroundComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
