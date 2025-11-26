@@ -97,7 +97,10 @@
                 ></textarea>
               </div>
             </div>
-            </div>
+          </div>
+          <div class="user-information" *ngIf="order.isPaid">
+            <div id="map"></div>
+          </div>
           <div class="user-information" *ngIf="!order.isPaid">
             <div class="rules-align">
               <div class="title">

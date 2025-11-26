@@ -310,6 +310,10 @@
     animation:fadeIn 0.5s;
     background-color: rgba(29, 28, 28, 0.226);
     border:1px solid rgba(128, 128, 128, 0.267);
+    #map{
+        width: 100%;
+        height: 300px;
+    }
     .flex-columns{
         width: 100%;
         display: flex;
@@ -687,9 +691,6 @@ p{
                     width: 100%;
                     .photo-align{
                         align-items: center;
-                        .product-details-align{
-                            align-items: center;
-                        }
                         .photo-container{
                             height: 250px;
                         }
@@ -708,7 +709,26 @@ p{
                 .user-information{
                     .rules-align{
                         .rulessss{
-                            padding: 5px;
+                            padding: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:800px) {
+    .user-information{
+        .rules-align{
+            .rulessss{
+                .rules{
+                    flex-direction: column;
+                    align-items: center;
+                    .to-pay-text{
+                        flex-direction: column;
+                        text-align: center;
+                        b{
+                            scale: 1.2;
                         }
                     }
                 }
@@ -741,7 +761,7 @@ p{
             height: 100%;
             gap: 30px;
             .component{
-                    padding: 0;
+                padding: 0;
                 .header-grid{
                     padding: 0;
                     width: 100%;
@@ -767,19 +787,11 @@ p{
                             }
                             .rules{
                                 flex-direction: column;
-                                align-items: flex-start;
                             }
                         }
                     }
                 }
             }
-        }
-    }
-}
-@media screen and (max-width:700px) {
-    .center-component{
-        .component{
-            width: 90%;
         }
     }
 }
@@ -808,4 +820,5 @@ p{
             }
         }
     }
+    
 }

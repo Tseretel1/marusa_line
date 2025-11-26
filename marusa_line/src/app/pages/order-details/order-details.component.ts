@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { orderStatuses, Post, PostService } from '../../Repositories/post.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CommonModule, DatePipe, NgFor } from '@angular/common';
@@ -6,15 +6,19 @@ import * as  AOS from 'aos';
 import { AuthorizationService } from '../authorization/authorization.service';
 import Swal from 'sweetalert2';
 import { FormsModule, ɵInternalFormsSharedModule } from "@angular/forms";
+import L from 'leaflet';
+import { Lnglat } from '../order-product/map/map.component';
+import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-order-details',
-  imports: [CommonModule,FormsModule,DatePipe],
+  imports: [CommonModule,FormsModule],
   templateUrl: './order-details.component.html',
   styleUrl: './order-details.component.scss'
 })
-export class OrderDetailsComponent {
+export class OrderDetailsComponent implements OnInit{
  @ViewChild('scrollToBottom') scrollToStart!: ElementRef;
+  marker: any;
 
   scrollToBottomMethod() {
     this.scrollToStart.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -39,7 +43,7 @@ export class OrderDetailsComponent {
       this.user =JSON.parse(user);
       this.userId = this.user.Id
     }
-      this.getOrderStatuses();
+    this.getOrderStatuses();
     this.postService.getOrderById(this.productId).subscribe(
       (resp)=>{
         this.posts = resp.product;
@@ -50,10 +54,15 @@ export class OrderDetailsComponent {
         });
         this.productPrice = this.order.finalPrice;
         this.postsLoaded = true;
-        console.log(this.order)
+        if(this.order.isPaid){
+          setTimeout(() => {
+            this.initMap(Number(this.order.lat), Number(this.order.lng));
+          }, 500);
+        }
       }
     );
   }
+
   ngOnInit(): void {
     AOS.init({
       easing: 'ease-in-out',
@@ -87,6 +96,36 @@ export class OrderDetailsComponent {
     )
   }
 
+    map!: L.Map;
+    location: Lnglat = {
+      lat: '',
+      lng: '',
+    };
+   initMap(lat: number, lng: number): void {
+  
+    L.Icon.Default.mergeOptions({
+      iconRetinaUrl: '../assets/leaflet/marker-icon-2x.png',
+      iconUrl: '../assets/leaflet/marker-icon.png',
+      shadowUrl: '../assets/leaflet/marker-shadow.png',
+      iconSize: [20, 30],
+    });
+  
+  
+    this.map = L.map('map').setView([lat, lng],15);
+  
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors',
+    }).addTo(this.map);
+    this.marker = L.marker([lat, lng]).addTo(this.map);
+    this.map.on('click', (e: L.LeafletMouseEvent) => {
+      const { lat, lng } = e.latlng;
+      this.marker?.setLatLng(e.latlng);
+      this.location = {
+        lat: lat.toString(),
+        lng: lng.toString()
+      };
+    });
+  }
   isUserLogged(){
     const user = localStorage.getItem('user');
     if(user){
