@@ -46,24 +46,23 @@
                                 მისამართი 
                                 <p *ngIf="address!=''">✅</p>
                                 <i class="fas fa-close" *ngIf="address==''"></i>
-                                <p style="opacity: 0.7; font-size: 12px;text-wrap: nowrap;"  >(მონიშნე რუკაზე ან ჩაწერე ხელით)</p>
+                                <p style="opacity: 0.7; font-size: 12px;text-wrap: nowrap;"  ></p>
                             </label>
                             <div class="editable-fields">
                                 <input class="form-control" type="text" [disabled]="editFieldNum!=2" placeholder="დეტალური ინფორმაცია, ქუჩა, კორპუსი, სადარბაზო.... " [(ngModel)]="address" [ngClass]="{'invalid-inputs': addressInvalid}"  maxlength="100">
                                 <button class="edit" (click)="editField(2)" *ngIf="editFieldNum!=2"><i class="fas fa-edit"></i></button>
-                                <button class="edit" (click)="openMapModal()" *ngIf="editFieldNum!=2"[ngClass]="{'location-selected':locationselected}"  ><i class="fas fa-location-dot" style="scale: 1.5;"></i></button>
                                 <button class="edit close" (click)="closeField(2)" *ngIf="editFieldNum==2"><i class="fas fa-close"></i></button>
                                 <button class="edit confirm" (click)="acceptField(2)" *ngIf="editFieldNum==2"><i class="fas fa-check" style="color: white;"></i></button>
                             </div>
                         </div>
                     </div>
                   
-                    <div class="user-information" *ngIf="mapModalVisible" >
-                        <div class="map-align" [ngClass]="{'map-visible':mapModalVisible}">
+                    <div class="user-information">
+                        <div class="map-align">
                             <div class="map-modal">
-                                <div class="close-modal-align">
+                                <!-- <div class="close-modal-align">
                                     <button class="close-button" (click)="hideMapModal()">X</button>
-                                </div>
+                                </div> -->
                                 <app-map-picker [config]="mapConfig"></app-map-picker>
                             </div>
                         </div>

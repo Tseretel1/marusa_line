@@ -15,6 +15,7 @@ import * as L from 'leaflet';
 export class MapPickerComponent implements OnInit {
   @Input() config!: MapConfig;
 
+  saveButtonVisible:boolean = false;
   Map: Lnglat = {
     lat: '41.693376147867006',
     lng: '44.801519215106964',
@@ -30,8 +31,8 @@ export class MapPickerComponent implements OnInit {
   constructor(private reloadService: ReloadService) {}
 
   async ngOnInit() {
-      const { lat, lng } = await this.getUserCoordinates();
-      this.initMap(lat, lng);
+    const { lat, lng } = await this.getUserCoordinates();
+    this.initMap(lat, lng);
   }
 
 getUserCoordinates(): Promise<{ lat: number, lng: number }> {
@@ -118,6 +119,8 @@ getFallbackCoordinates(): { lat: number, lng: number } {
       lat: lat.toString(),
       lng: lng.toString()
     };
+    this.saveButtonVisible =true;
+    
   });
 }
 
@@ -133,6 +136,7 @@ getFallbackCoordinates(): { lat: number, lng: number } {
 
     this.reloadService.reload();
     this.fireSuccess('მისამართი წარმატებით მოინიშნა!');
+    this.saveButtonVisible =false;
     return this.location;
   }
 

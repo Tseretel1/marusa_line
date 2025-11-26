@@ -112,19 +112,11 @@ export class OrderDetailsComponent implements OnInit{
   
   
     this.map = L.map('map').setView([lat, lng],15);
-  
+    this.marker = L.marker([lat, lng], { draggable: false }).addTo(this.map);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors',
     }).addTo(this.map);
     this.marker = L.marker([lat, lng]).addTo(this.map);
-    this.map.on('click', (e: L.LeafletMouseEvent) => {
-      const { lat, lng } = e.latlng;
-      this.marker?.setLatLng(e.latlng);
-      this.location = {
-        lat: lat.toString(),
-        lng: lng.toString()
-      };
-    });
   }
   isUserLogged(){
     const user = localStorage.getItem('user');
@@ -138,7 +130,6 @@ export class OrderDetailsComponent implements OnInit{
   oneProductPrice:number = 0;
   productQuantity:number = 1;
   comment:string = '';
-
 
   orderStatuses:orderStatuses[]= [];
   getOrderStatuses(){

@@ -471,8 +471,7 @@ textarea{
     z-index: 2;
     animation:modalFadeIn 0.3s;
     width: 100%;
-    scale: 0;
-    display: none;
+    display: flex;
     .map-modal{
         display: flex;
         border-radius: 5px;
@@ -509,11 +508,7 @@ textarea{
         }
     }
 }
-.map-visible{
-    display: flex;
-    scale: 1;
-    animation: 0.5s showMap;
-}
+
 @keyframes showMap {
     0%{
         display: flex;

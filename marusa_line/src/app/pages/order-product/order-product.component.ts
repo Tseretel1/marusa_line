@@ -106,14 +106,6 @@ export class OrderProductComponent implements OnInit{
     )
   }
 
-  mapModalVisible:boolean = false;
-  openMapModal(){
-    this.mapModalVisible = true;
-  }
-  hideMapModal(){
-    this.mapModalVisible = false;
-  }
-
   insertMobile(){
     if(this.mobileNumber!=''){
       this.postService.insertPhoneNumber(this.userId, this.mobileNumber).subscribe(
@@ -218,7 +210,6 @@ export class OrderProductComponent implements OnInit{
         top: 0,
         behavior: 'smooth' 
       });
-      this.openMapModal();
       return false;
     }
     this.addressInvalid = false;
@@ -329,7 +320,6 @@ export class OrderProductComponent implements OnInit{
       this.location.lng = lng.toString();
       this.location.lat = lat.toString();
       this.locationselected = true;
-      this.mapModalVisible = false;
     }
   }
 

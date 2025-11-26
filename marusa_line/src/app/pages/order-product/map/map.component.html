@@ -1,6 +1,6 @@
 <div class="map-wrap">
   <div id="map"></div>
   <div class="footer">
-    <button (click)="confirmLocation()">მისამართის არჩევა</button> 
+    <button (click)="confirmLocation()" *ngIf="saveButtonVisible">მისამართის არჩევა</button> 
   </div>
 </div>
