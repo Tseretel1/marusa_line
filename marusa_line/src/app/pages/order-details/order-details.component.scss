@@ -128,7 +128,7 @@
             gap: 10px;
             .form-control{
                 width: 100%;
-                background-color: rgba(0, 0, 0, 0.204);
+                background-color: rgba(0, 0, 0, 0.136);
                 border: 1px solid rgba(128, 128, 128, 0.473);
                 color: white;
                 padding: 10px;
@@ -411,8 +411,9 @@
                 align-items: center;
                 justify-content: center;
                 gap: 10px;
-                background-color: rgba(0, 0, 0, 0.204);padding: 10px;
+                background-color: rgba(0, 0, 0, 0.136);
                 border-radius: 5px;
+                padding: 10px;
                 position: relative;
                 border: 1px solid rgba(128, 128, 128, 0.423);
                 
@@ -441,7 +442,7 @@
                     display: flex;
                     align-items: center;
                     color: white;
-                    padding:10px 20px;
+                    padding:5px 10px;
                     border-radius: 5px;
                     background-color: rgba(0, 0, 0, 0);
                     border:1px solid rgba(128, 128, 128, 0.359);
@@ -517,8 +518,8 @@ p{
 .info-background{
     padding: 10px ;
     border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0.299);
-  border: 1px solid rgba(128, 128, 128, 0.473);
+    background-color: rgba(0, 0, 0, 0.136);
+    border: 1px solid rgba(128, 128, 128, 0.473);
 
     color: white;
     text-align: center;
@@ -782,7 +783,6 @@ p{
                         .rulessss{
                             .rules-text-align{
                                 flex-direction: column;
-                                gap: 5px;
                                 padding: 5px;
                             }
                             .rules{

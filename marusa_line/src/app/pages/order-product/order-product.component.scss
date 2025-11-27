@@ -157,6 +157,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            justify-content: center;
             .form-control{
                 border: none;
                 border-radius: 5px;
@@ -176,16 +177,16 @@
             align-items: center;
             gap: 10px;
             width: 100%;
-            max-width: 250px;
             font-size: 20px;
             justify-content: center;
             border-radius: 5px;
             padding: 5px 10px;
             outline: none;
             color: white;
-            background-color: rgba(0, 0, 0, 0.204);
-            border: 1px solid rgba(128, 128, 128, 0.473); p{
-            font-size: 16px;
+            // background-color: rgba(0, 0, 0, 0.204);
+            // border: 1px solid rgba(128, 128, 128, 0.473); 
+            p{
+               font-size: 16px;
             }
             b{
                 font-weight: bolder;
@@ -200,6 +201,7 @@
             display: flex;
             gap: 5px;
             align-items: center;
+            justify-content: center;
             .quantity-button{
                 padding: 10px;
                 border-radius: 5px;
