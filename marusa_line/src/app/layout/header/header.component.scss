@@ -162,6 +162,7 @@
     left: 0;
     display: flex;
     justify-content: flex-end;
+    z-index: 50;
     .background-exit{
         display: flex;
         position: fixed;

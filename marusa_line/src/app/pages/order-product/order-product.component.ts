@@ -107,7 +107,7 @@ export class OrderProductComponent implements OnInit{
   }
 
   insertMobile(){
-    if(this.mobileNumber!=''){
+    if(this.mobileNumber.length>8){
       this.postService.insertPhoneNumber(this.userId, this.mobileNumber).subscribe(
         (resp)=>{
           if(resp==1){
@@ -122,7 +122,7 @@ export class OrderProductComponent implements OnInit{
   }
   
   insertLocation(){
-    if(this.address!=''){
+    if(this.address.length>10){
       this.postService.insertLocation(this.userId, this.address).subscribe(
         (resp)=>{
           if(resp==1){
@@ -248,11 +248,13 @@ export class OrderProductComponent implements OnInit{
     this.productPrice = this.oneProductPrice * this.productQuantity;
   }
   plusQuantity(){
-    if(this.posts.quantity>0){
-      if(this.productQuantity<this.posts.quantity){
-        this.productQuantity++;
-        this.calculatePrice();
-      }
+    if(this.productQuantity < this.posts.quantity){
+      this.productQuantity++;
+      this.calculatePrice();
+    }
+    else if(this.posts.quantity==0|| this.posts.quantity==null){
+      this.productQuantity++;
+      this.calculatePrice();
     }
   }
   minusQuantity(){
