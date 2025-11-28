@@ -1,7 +1,7 @@
 .background {
   // Sophisticated dark gradient - elegant and minimalist for a premium brand
 //   background: linear-gradient(135deg, #2d2d5c 0%, #1c202b 25%, #233750 50%, #27273c 75%, #0d1b2a 100%);
-  background-color: #20202c;
+  background-color: #1b1b1f;
   width: 100%;
   height: 120%;
   z-index: -2;
@@ -117,93 +117,3 @@
 }
 
 
-
-.circles { 
-    position: absolute;
-    bottom: 0%;
-    right: 0%;
-    width: 50%;
-    height: 50%;
-    border-radius: 50%;
-    background-color: #24355c; 
-    filter: blur(50px);
-}
-
-.circle-1 {
-    left: 0%;
-    top: 0%;
-    background-color: #233252; 
-    animation: circle1 10s infinite;
-}
-
-.circle-2 {
-    right: 0%;
-    top: 0%;
-    background-color: #3d466d75; 
-    animation: circle2 10s infinite;
-}
-
-.circle-3 {
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #212f6488; 
-    animation: circle3 10s infinite;
-}
-
-.circle-4 {
-    left: 0%;
-    bottom: 0%;
-    background-color: #1f294da1; 
-    animation: circle4 10s infinite;
-}
-
-@keyframes circle1 {
-    0%{
-        left: 0%;
-    }
-    50%{
-        left: 7%;
-    }
-    100%{
-        left: 0%;
-    }
-}
-
-@keyframes circle2 {
-    0%{
-        right: 0%;
-    }
-    50%{
-        top: 7%;
-        right:5%;
-    }
-    100%{
-        top: 0%;
-        right:0%
-    }
-}
-@keyframes circle3 {
-    0%{
-        scale: 1;
-    }
-    50%{
-        scale: 1.2;
-    }
-    100%{
-        scale: 1;
-    }
-}
-@keyframes circle4 {
-    0%{
-        left: 0%;
-    }
-    50%{
-        left: 7%;
-        bottom: 5%;
-    }
-    100%{
-        left: 0%;
-        bottom: 0%;
-    }
-}
