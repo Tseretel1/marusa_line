@@ -6,9 +6,10 @@ import { Post, PostService } from '../../../Repositories/post.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { runPostSignalSetFn } from '@angular/core/primitives/signals';
 import { AuthorizationService } from '../../../pages/authorization/authorization.service';
+import { DiscountMarkComponent } from '../discount-mark/discount-mark.component';
 @Component({
   selector: 'app-photo-album',
-  imports: [CommonModule, ],
+  imports: [CommonModule, DiscountMarkComponent],
   templateUrl: './photo-album.component.html',
   styleUrl: './photo-album.component.scss'
 })

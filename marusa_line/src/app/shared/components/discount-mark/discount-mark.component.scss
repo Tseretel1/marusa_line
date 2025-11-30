@@ -1,68 +1,27 @@
 
 .span {
-  width: 90px;
-  padding: 5px;
+  width: 50px;
+  padding: 2px 5px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  .spans{
-      display: flex;
-      gap: 5px;
-      width: 100%;
-      height: 100%;
-      align-items: center;
-      .display{
-        display: flex;
-        gap: 5px;
-        position: relative;
-        width: 100%;
-        justify-content: center;
-        color: white;
-    }
+  background-color: rgb(175, 9, 9); 
+  font-size: 14px;
+  border-radius: 5px;
+  .last{
+    color: white;
   }
-}
-
-.span::before {
-    content: '.';
-    position: absolute;
-    width: 50px;
-    padding: 5px;
-    background-color: rgb(29, 28, 28);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: transparent;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    top: 0px;
-    border-radius: 10px;
 }
 
 @media screen and (max-width:800px){
     .span{
-        width: 30px;
         font-size: 13px;
-        padding: 6px;
-    }
-    .span::before{
-      width: 30px;
-      padding: 8px;
-      font-size: 10px
     }
 }
 
 @media screen and (max-width:600px){
     .span{
-        width: 30px;
-        font-size: 10px;
-        padding: 5px;
+        font-size: 12px;
       }
-      .span::before{
-      border-radius: 5px;
-      width: 30px;
-      padding: 5px;
-      font-size: 10px
-    }
 }
