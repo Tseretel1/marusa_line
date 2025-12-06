@@ -1,6 +1,9 @@
 :host{
   width: 100%;
 }
+.scrll-to{
+  margin: 100px;
+}
 .gallery-align{
     width: 100%;
     display: flex;
@@ -89,15 +92,15 @@
               .filters{
                 padding: 4px 16px;
                 border-radius: 5px;
-                color: white;
-                background-color: rgba(0, 0, 0, 0.192);
+                color: black;
                 border: 1px solid rgba(128, 128, 128, 0.514);
                 cursor: pointer;
                 text-wrap: nowrap;
               }
               .active-filter{
                 background-color: white;
-                color: black; 
+                color: white; 
+                background-color: rgba(0, 0, 0, 0.749);
               }
             }
             .filters-align:hover .filters-align::-webkit-scrollbar{
@@ -277,6 +280,9 @@
   }
 }
 @media screen and (max-width:600px){
+  .scrll-to{
+  margin: 50px;
+}
     .gallery-align{
        .photo-align{
         gap: 5px;

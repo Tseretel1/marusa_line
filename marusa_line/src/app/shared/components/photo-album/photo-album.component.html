@@ -15,9 +15,8 @@
         </p>
     </div>
     <div class="discount-price-mobile" *ngIf="PhotoCongif.priceVisible" >
-        <b [ngClass]="{'discounted-price': products.discountedPrice>0}" >{{products.price}}₾</b>
-        <!-- <b *ngIf="products.discountedPrice<=0" >{{products.price}}₾</b> -->
         <b *ngIf="products.discountedPrice>0">{{products.discountedPrice}}₾</b>
+        <b *ngIf="products.discountedPrice<=0 || products.discountedPrice==null">{{products.price}}₾</b>
     </div>
     <img *ngIf="products.photos.length>0" [src]="products.photos[0].photoUrl" alt="" class="photo">
     <img *ngIf="products.photoUrl" [src]="products.photoUrl" alt="" class="photo">
@@ -41,8 +40,9 @@
         </p>
     </div>
     <div class="discount-price-mobile" *ngIf="PhotoCongif.priceVisible" >
-        <b [ngClass]="{'discounted-price': products.discountedPrice>0}">{{products.price}}₾</b>
+        <!-- <b [ngClass]="{'discounted-price': products.discountedPrice>0}">{{products.price}}₾</b> -->
         <b *ngIf="products.discountedPrice>0">{{products.discountedPrice}}₾</b>
+        <b *ngIf="products.discountedPrice<=0 || products.discountedPrice==null">{{products.price}}₾</b>
     </div>
     <img *ngIf="products.photos.length>0" [src]="products.photos[0].photoUrl" alt="" class="photo">
     <img *ngIf="products.photoUrl" [src]="products.photoUrl" alt="" class="photo">

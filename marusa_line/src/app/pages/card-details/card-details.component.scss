@@ -13,7 +13,7 @@
         .header-grid{
             display: grid;
             grid-template-columns: repeat(1,1fr);
-            gap: 20px;
+            gap: 5px;
             .photo-align{
                 display: flex;
                 flex-wrap: wrap;
@@ -172,7 +172,7 @@
                 padding: 20px;
                 gap:20px;
                 position: relative;
-                background-color: rgba(0, 0, 0, 0.342);
+                background-color: rgba(0, 0, 0, 0.821);
                 border: 1px solid rgba(128, 128, 128, 0.342);
                 .quantity-align{
                     color: white;

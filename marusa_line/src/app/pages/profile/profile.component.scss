@@ -22,7 +22,7 @@
             display: flex;
             width: 80%;
             .section-title{
-                color: white;
+                color: black;
                 display: flex;
                 gap: 10px;
                 align-items: center;
@@ -34,7 +34,7 @@
           border-radius: 5px;
           border: none;
           cursor: pointer;
-          color: white;
+          color: black;
           background-color: rgba(0, 0, 0, 0.541);
         }
         .modal-align{
@@ -190,7 +190,7 @@
         gap: 10px;
         justify-content: space-between;
         .log-out{
-           color: white;
+           color: black;
            display: flex;
            gap: 5px;
            cursor: pointer;
@@ -220,7 +220,8 @@
                 text-wrap: nowrap;
                 max-width: 250px;
                 overflow: hidden;    
-                color: white;
+                color: black;
+                font-weight: bolder;
             }
         }
     }
@@ -230,13 +231,14 @@
         padding: 10px 0px;
         gap: 30px;
         p{
-            color: white;
-            cursor: pointer;
-            padding: 5px 0px;
-            border-bottom:2px solid transparent;
+          color: black;
+          cursor: pointer;
+          font-weight: bolder;
+          padding: 5px 0px;
+          border-bottom:2px solid transparent;
         }
         .active{
-            border-bottom:2px solid white;
+            border-bottom:2px solid black;
             animation: active 0.5s;
         }
         @keyframes active {
@@ -244,7 +246,7 @@
                border-bottom:2px solid transparent;
             }
             100%{
-               border-bottom:2px solid white;
+               border-bottom:2px solid black;
             }
         }
     }
@@ -280,12 +282,10 @@
             display: flex;
             flex-direction: column;
             padding: 15px;
-            background-color: rgba(0, 0, 0, 0.336);
+            background-color: rgba(0, 0, 0, 0.822);
             border-radius: 10px;
             gap: 10px;
             // border: 1px solid grey;
-              border: 1px solid rgba(128, 128, 128, 0.514);
-            box-shadow: 0px 0px 5px black;
             .card-title-align{
               display: flex;
               justify-content: space-between;
@@ -407,7 +407,7 @@
             display: flex;
             width: 80%;
             .section-title{
-                color: white;
+                color: black;
                 display: flex;
                 gap: 10px;
                 align-items: center;
