@@ -50,7 +50,7 @@
         </div>
         <div class="top-align other-shops">
             <div class="shop-card" *ngFor="let i of shopList">
-                <div class="shop-header" [routerLink]="AppRoutes.shop+i.id" style="align-items: center; justify-content: center;">
+                <div class="shop-header"  [routerLink]="AppRoutes.shop+i.id" style="align-items: center; justify-content: center;">
                     <div class="shop-title-container">
                         <div class="shop-logo-container">
                             <img [src]="i.logo" alt="" class="shop-logo">
@@ -62,7 +62,8 @@
                     </div>
                 </div>
                 <div class="shop-scroll-align small-shop-scroll-align">
-                    <div class="shop-products-align " >
+                    <button class="scroll-button" (click)="scrollLeft(container)"> <i class="fas fa-chevron-left chevron"></i> </button>
+                    <div class="shop-products-align " #container>
                         <ng-container  *ngFor="let s of i.products;let index = index;">
                             <div class="shop-product small-shop-product"  [routerLink]="AppRoutes.shop+i.id">
                                 <div class="shop-product-container">
@@ -71,7 +72,11 @@
                             </div>
                         </ng-container>
                     </div>
+                    <button class="scroll-button" (click)="scrollRight(container)"> <i class="fas fa-chevron-right"></i></button>
+
                 </div>
+                
+
             </div>
         </div>
     </div>

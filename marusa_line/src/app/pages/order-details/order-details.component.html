@@ -71,10 +71,10 @@
               <div class="delivery-align info-background detail">
                <p style="text-align: center">რაოდენობა <b style="font-size: 18px; background-color: rgba(0, 0, 0, 0.342); border-radius: 5px; padding: 5px 10px;">{{ order.productQuantity }}</b></p>
              </div>
-              <div class="delivery-align info-background detail">
+              <div class="delivery-align info-background detail" *ngIf="order.isPaid">
                 <p style="text-align: center">{{ order.deliveryType }}</p>
               </div>
-               <div class="delivery-align info-background detail" style="flex-direction: column;">
+               <div class="delivery-align info-background detail" style="flex-direction: column;" *ngIf="order.isPaid">
                 <p>მისამართი</p>
                 <p style="text-align: center" style="font-size: 18px;  background-color: rgba(0, 0, 0, 0.136); border-radius: 5px; padding: 5px 10px; word-break: break-all;">{{ order.address }}</p>
               </div>
@@ -82,7 +82,7 @@
                 <p style="text-align: center">{{ order.address }}</p>
               </div> -->
             </div>
-            <div class="comment-align user-information" #scrollToBottom>
+            <div class="comment-align user-information" #scrollToBottom *ngIf="order.isPaid">
               <div class="form-group">
                 <label for="" style="display: flex; gap: 20px; color: white"
                   >კომენტარი
