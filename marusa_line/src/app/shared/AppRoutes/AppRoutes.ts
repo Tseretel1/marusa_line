@@ -5,4 +5,5 @@ export const AppRoutes = {
   order_product: '/order-product/',
   order_details:'/order-details/',
   profile:'/profile',
+  shop: 'shop/',
 };

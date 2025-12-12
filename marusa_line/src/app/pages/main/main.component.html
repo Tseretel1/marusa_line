@@ -1,0 +1,51 @@
+<div class="center-component">
+    <div class="component-align">
+        <div class="categories-align">
+            <div class="categorie" [ngClass]="{'selected-categorie':selectedCategorie ==0}"(click)="selectCategorie(0)">
+                ყველა
+            </div>    
+            <div class="categorie" *ngFor="let c of catergorieList" [ngClass]="{'selected-categorie':selectedCategorie ==c.id}" (click)="selectCategorie(c.id)">
+                {{c.categoryName}}
+                <img class="categorie-img" [src]="c.categoryPhoto" alt="">
+            </div>    
+        </div>
+
+        <p style="color: white; margin-top: 50px;">ტოპ მაღაზიები</p>
+        <div class="top-align">
+            <div class="shop-card" *ngFor="let i of TopShopList" >
+                <div class="shop-header" (click)="AppRoutes.shop+i.id">
+                    <div class="shop-title-container">
+                        <div class="shop-logo-container">
+                            <img [src]="i.logo" alt="" class="shop-logo">
+                        </div>
+                        <p class="shop-title">{{i.name}}</p>
+                    </div>
+                    <!-- <div class="rate-align">
+                        <i class="fas fa-star" [ngClass]="{'rate':i.rate>=1}"></i>
+                        <i class="fas fa-star" [ngClass]="{'rate':i.rate>=2}"></i>
+                        <i class="fas fa-star" [ngClass]="{'rate':i.rate>=3}"></i>
+                        <i class="fas fa-star" [ngClass]="{'rate':i.rate>=4}"></i>
+                        <i class="fas fa-star" [ngClass]="{'rate':i.rate>=5}"></i>
+                    </div> -->
+                    <div class="subscribers-align">
+                        <p class="subscribers">გამომწერი: {{i.subscribersCount}}K </p>
+                        <!-- <div class="subscribe-button" [ngClass]="{'subscribed':true}">გამოწერა <i class="fas fa-bell"></i> </div> -->
+                    </div>
+                </div>
+
+                <div class="shop-products-align">
+                    <ng-container *ngFor="let s of i.products">
+                        <div class="shop-product" *ngIf="s.id<=1">
+                            <p class="product-title">
+                                {{s.productName}}
+                            </p>
+                            <div class="shop-product-container">
+                                <img [src]="s.productPhoto" alt="" class="shop-product-img">
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
