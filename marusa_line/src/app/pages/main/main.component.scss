@@ -44,13 +44,31 @@
         }
         .top-align{
             width: 100%;
-            display: grid;
-            grid-template-columns: repeat(2,1fr);
+            display: flex;
+            overflow-x: scroll;
             gap: 20px;
             position: relative;
         }
+        .scrollable-top{
+            // background-color: rgba(0, 0, 0, 0.253);
+            // border: 1px solid rgba(128, 128, 128, 0.288);
+            border-radius: 10px;
+            .shop-card{
+                flex: 0 0 48%;  
+                .shop-products-align{
+                    grid-template-columns: repeat(3,1fr);
+                    .shop-product-container{
+                        height: 150px;
+                    }
+                }
+            }
+        }
+        .top-align::-webkit-scrollbar{
+            display: none;
+        }
         .other-shops{
-            grid-template-columns: repeat(3,1fr);
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
             gap: 10px;
         }
     }
@@ -59,13 +77,13 @@
     display: flex;
     flex-direction: column;
     padding:10px;
-    align-items: center;
     gap: 5px;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.253);
     border: 1px solid rgba(128, 128, 128, 0.288);
     color: white;
     overflow: hidden;
+    width: 100%;
     .shop-header{
         width: 100%;
         display: flex;
@@ -79,21 +97,29 @@
             flex-direction: column;
             align-items: center;
             gap: 5px;
-            .shop-logo-container{
-                width: 50px;
-                height: 50px;
-                background-color: black;
-                border-radius: 50%;
+            .logo-title-align{
                 display: flex;
                 align-items: center;
-                justify-content: center;
-                overflow: hidden;
-                border: 1px solid grey;
-                .shop-logo{
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
+                gap: 10px;
+                .shop-logo-container{
+                    width: 50px;
+                    height: 50px;
+                    background-color: black;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+                    border: 1px solid grey;
+                    .shop-logo{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
                 }
+            .subscribers{
+                color: grey;
+                font-size: 12px;
             }
         }
         .rate-align{
@@ -104,38 +130,15 @@
                 color: gold;
             }
         }
-        .subscribers-align{
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            .subscribers{
-                color: grey;
-                font-size: 12px;
-            }
-            .subscribe-button{
-                border: 1px solid grey;
-                color: white;
-                border-radius: 10px;
-                padding: 10px 20px;
-                cursor: pointer;
-                transition: 0.2s;
-            }
-            .subscribe-button:hover{
-                background-color: white;
-                color: black;
-            }
+        
         }
-    }
-    .shop-header:hover{
     }
     .shop-scroll-align{
         display: flex;
         align-items: center;
         position: relative;
         width: 100%;
-        height: 300px;
         justify-content: space-between;
-        padding: 10px;
         .scroll-button{
             padding: 15px;
             cursor: pointer;
@@ -148,14 +151,11 @@
             border: 1px solid rgba(128, 128, 128, 0.26);
         }
         .shop-products-align{
-            display: flex;
-            overflow-x: scroll;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
             width: 100%;
             gap: 10px;
-            position: absolute;
-            left: 0;
-            top: 0;
-            border-radius: 10px;
+            overflow-x: scroll;
             .shop-product{
                 display: flex;
                 flex: 0 0 100%;       
@@ -163,7 +163,6 @@
                 flex-direction: column;
                 gap: 10px;
                 align-items: center;
-                height: 300px;
                 width: 100%;
                 .shop-product-container{
                     width: 100%;
@@ -171,7 +170,9 @@
                     overflow: hidden;
                     cursor: pointer;
                     border: 5px;
+                    border-radius: 10px;
                     position: relative;
+                    height: 150px;
                     .shop-product-img{
                         width: 100%;
                         height: 100%;
@@ -195,25 +196,37 @@
                 .shop-product-container:hover .shop-product-img{
                     scale: 1.1;
                 }
-                
+                .small-shop-product-container{
+                    height: 150px;
+                }
             }
-            .small-shop-product{
-                height: 200px;
-            }
-       
         }
         .shop-products-align::-webkit-scrollbar{
             display: none;
         }
-    }
-    .small-shop-scroll-align{
-        height: 200px;
+        .small-shop-product-align{
+            grid-template-columns: repeat(2,1fr);
+        }
     }
 }
 
 
 
 @media screen and (max-width:1000px) {
+    .center-component{
+        .component-align{
+            .top-align{
+                grid-template-columns: repeat(2,1fr);
+             
+            }
+            .other-shops{
+                grid-template-columns: repeat(3,1fr);
+                gap: 10px;
+            }
+        }
+    }
+}
+@media screen and (max-width:800px) {
     .center-component{
         .component-align{
             .top-align{
@@ -227,7 +240,6 @@
         }
     }
 }
-
 @media screen and (max-width:600px) {
     .center-component{
         .component-align{
@@ -236,13 +248,9 @@
                 grid-template-columns: repeat(1,1fr);
                    .shop-card{
                         .shop-scroll-align{
-                        height: 200px;
                         .scroll-button{
                             padding: 10px;
                         }
-                        .shop-product-container{
-                            height: 200px;
-                        }   
                     }
                 }
             }
