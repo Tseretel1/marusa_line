@@ -24,6 +24,8 @@ export class MainComponent {
   user:any = null;
   userId:number = 0;
   constructor(private postService:PostService,private route: ActivatedRoute){
+    localStorage.removeItem('PageNum');
+    localStorage.removeItem('TypeId');
     const user = localStorage.getItem('user');
     if(user){
       this.user =JSON.parse(user);
