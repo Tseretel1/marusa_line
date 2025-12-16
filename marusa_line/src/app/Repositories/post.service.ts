@@ -87,7 +87,8 @@ export interface Post {
   postId?: number;        
   likeCount: number;  
   isLiked:boolean;  
-  quantity:number;    
+  quantity:number; 
+  orderNotAllowed:boolean;   
   photos: Photo[];
 }
 export interface ProductTypes{

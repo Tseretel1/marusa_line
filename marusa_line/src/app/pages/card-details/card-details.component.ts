@@ -122,6 +122,21 @@ export class CardDetailsComponent implements OnInit{
 
   insertOrder(){
     if(this.isUserLogged()){
+        if(this.posts.orderNotAllowed){
+            Swal.fire({
+              text: 'დროებით ამ პროდუქტის შეკვეთა შეზღუდულია',
+              icon:'error',
+              showCancelButton: false,
+              showConfirmButton:false,
+              background:'rgb(25, 26, 25)',
+              color: '#ffffff',       
+              customClass: {
+                popup: 'custom-swal-popup',
+              },
+              timer:5000,
+          });
+          return;
+        }
       this.Router.navigate([AppRoutes.order_product+this.productId]);
     }
   }

@@ -46,6 +46,7 @@ export class OrderProductComponent implements OnInit{
     this.postService.getPostWithId(this.productId,this.userId).subscribe(
       (resp)=>{
         this.posts = resp;
+        console.log(this.posts)
         this.posts.photos.forEach(item => {
           this.photosArray.push(item);
         });
@@ -274,6 +275,21 @@ export class OrderProductComponent implements OnInit{
 
   orderObj!:orderPostObj;
   insertOrder(){
+    if(this.posts.orderNotAllowed){
+        Swal.fire({
+          text: 'დროებით ამ პროდუქტის შეკვეთა შეზღუდულია',
+          icon:'error',
+          showCancelButton: false,
+          showConfirmButton:false,
+          background:'rgb(25, 26, 25)',
+          color: '#ffffff',       
+          customClass: {
+            popup: 'custom-swal-popup',
+          },
+          timer:5000,
+      });
+      return;
+    }
     this.getMapLocation();
     if(this.validateFields()){
       this.orderObj= {
