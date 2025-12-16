@@ -1,10 +1,11 @@
 <div class="center-component">
     <div class="component-align">
-        <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="header">
+            <button class="scroll-button  left-scroll" (click)="scrollLeft(container)"> <i class="fas fa-chevron-left chevron"></i> </button>
             <p style="color: white; z-index: 2; text-wrap: nowrap;">ყველაზე მოთხოვნადი მაღაზიები</p>
                 <div class="top-align scrollable-top" #container>
                     <ng-container  *ngFor="let i of shopList;">
-                        <div class="shop-card" >
+                        <div class="shop-card">
                             <div class="shop-header" [routerLink]="AppRoutes.shop+i.id">
                                 <div class="shop-title-container">
                                     <div class="logo-title-align">
@@ -19,22 +20,24 @@
                                 </div>
                             </div>
                             <div class="shop-scroll-align">
-                                <div class="shop-products-align" #container>
-                                    <ng-container  *ngFor="let s of i.products;let index = index;">
-                                    <div class="shop-product"  [routerLink]="AppRoutes.shop+i.id" >
-                                        <div class="shop-product-container">
-                                            <!-- <p class="product-title">
-                                                {{s.productName}}
-                                            </p> -->
+                            <div class="shop-products-align" #container>
+                                <ng-container  *ngFor="let s of i.products;let index = index;" >
+                                    <div class="shop-product" *ngIf="index==scrollIndex && i.id==productIndex||index<=0&&i.id!=productIndex">
+                                        <!-- <div class="shop-product-container">
                                             <img [src]="s.productPhoto" alt="" class="shop-product-img">
-                                        </div>
+                                        </div> -->
+                                       <app-photo-album [products]="s"[PhotoCongif]="PhotoConfig" class="album"></app-photo-album>
                                     </div>
                                 </ng-container>
+                                <div class="hover-div-align">
+                                   <div class="hover-div" *ngFor="let d of i.products;let index = index;"(click)="onphotoHover(index,i.id)"><i class="far fa-circle" [ngClass]="{'fas ':index==scrollIndex}"></i></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </ng-container>
             </div>
+            <button class="scroll-button right-scroll" (click)="scrollRight(container)"> <i class="fas fa-chevron-right chevron"></i> </button>
         </div>
         <div class="categories-align">
             <div class="categorie" [ngClass]="{'selected-categorie':selectedCategorie ==0}"(click)="selectCategorie(0)">
@@ -64,9 +67,7 @@
                     <div class="shop-products-align small-shop-product-align" #container>
                         <ng-container  *ngFor="let s of i.products;let index = index;">
                             <div class="shop-product small-shop-product" *ngIf="index<4"  [routerLink]="AppRoutes.shop+i.id">
-                                <div class="shop-product-container small-shop-product-container">
-                                    <img [src]="s.productPhoto" alt="" class="shop-product-img">
-                                </div>
+                                <app-photo-album [products]="s"[PhotoCongif]="SmallConfig" class="album"></app-photo-album>
                             </div>
                         </ng-container>
                     </div>

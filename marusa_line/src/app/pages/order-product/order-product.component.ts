@@ -275,7 +275,7 @@ export class OrderProductComponent implements OnInit{
 
   orderObj!:orderPostObj;
   insertOrder(){
-    if(this.posts.orderNotAllowed){
+    if(this.posts.orderNotAllowed&& this.posts.quantity<=0){
         Swal.fire({
           text: 'დროებით ამ პროდუქტის შეკვეთა შეზღუდულია',
           icon:'error',

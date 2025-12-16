@@ -1,5 +1,5 @@
 <div class="photo-container desktop">
-    <app-discount-mark *ngIf="products.discountedPrice!=null&&products.discountedPrice>0 &&PhotoCongif.navigationAvailable" class="discount-procent" [discount]="products"></app-discount-mark>
+    <app-discount-mark *ngIf="products.discountedPrice!=null&&products.discountedPrice>0 &&PhotoCongif.priceVisible" class="discount-procent" [discount]="products"></app-discount-mark>
 
     <div class="information-align" *ngIf="PhotoCongif.hoverVisible" >
         <div class="navigate"  (click)="NavigateToDetails()" *ngIf="PhotoCongif.navigationAvailable"></div>
@@ -30,7 +30,7 @@
             {{products.title}}
         </b>
     </div> -->
-    <app-discount-mark *ngIf="products.discountedPrice!=null&&products.discountedPrice>0 &&PhotoCongif.navigationAvailable" class="discount-procent" [discount]="products"></app-discount-mark>
+    <app-discount-mark *ngIf="products.discountedPrice!=null&&products.discountedPrice>0 &&PhotoCongif.priceVisible" class="discount-procent" [discount]="products"></app-discount-mark>
   
     <div class="mobile-router" (click)="NavigateToDetails()" *ngIf="PhotoCongif.navigationAvailable"></div>
     <div class="heart-align" (click)="likePost()" *ngIf="PhotoCongif.likeVisible">

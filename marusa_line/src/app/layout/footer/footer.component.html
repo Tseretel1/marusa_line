@@ -1,4 +1,4 @@
-  <div class="container">
+  <div class="container" *ngIf="footer">
     <header class="header">
         <div class="logo-align" >
             <p class="sub-title">გამოგვყევი სოც-ქსელებში!</p>
@@ -6,31 +6,31 @@
     </header>
     <div class="midlle">
         <div class="link-align">
-            <a class="link-button instagram" href="https://www.instagram.com/tsereteli__g/" target="_blank" >
+            <a class="link-button instagram" [href]="footer.instagram" target="_blank" >
                <div style="display: flex; align-items: center;">
-                 <img src="assets/icons/instagram.svg" alt="">
-                  Marusa_handmade
+                    <img src="assets/icons/instagram.svg" alt="">
+                    {{footer.shopTitle}}
                </div>
                <div class="main-logo">
-                <img src="assets/img/picolo.png" alt="" class="logo">
+                    <img [src]="footer.shopPhoto" alt="">
                </div>
             </a>
-            <a class="link-button facebook" href="https://www.facebook.com/giorgi.wereteli.33" target="_blank">
+            <a class="link-button facebook" [href]="footer.facebook" target="_blank">
                 <div style="display: flex; align-items: center;">
                       <img src="assets/icons/facebook.svg" alt="">
-                    Marusa_handmade
+                    {{footer.shopTitle}}
                </div>
                <div class="main-logo">
-                <img src="assets/img/picolo.png" alt="" class="logo">
+                    <img [src]="footer.shopPhoto" alt="">
                </div>
             </a>
-            <a class="link-button tiktok" href="https://www.tiktok.com/@ts3r00" target="_blank">
+            <a class="link-button tiktok" href="" [href]="footer.tiktok" target="_blank">
                 <div style="display: flex; align-items: center;">
                     <img src="assets/icons/tiktok.svg" alt="" >
-                    Marusa_handmade
+                    {{footer.shopTitle}}
                </div>
                <div class="main-logo">
-                <img src="assets/img/picolo.png" alt="" class="logo">
+                    <img [src]="footer.shopPhoto" alt="">
                </div>
             </a>
         </div>

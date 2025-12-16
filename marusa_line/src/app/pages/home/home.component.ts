@@ -8,6 +8,7 @@ import { DiscountMarkComponent } from '../../shared/components/discount-mark/dis
 import { GalleryComponent } from '../gallery/gallery.component';
 import { ActivatedRoute } from '@angular/router';
 import { escapeRegExp } from '@angular/compiler';
+import { Footer, FooterComponent } from '../../layout/footer/footer.component';
 
 
 
@@ -15,7 +16,7 @@ import { escapeRegExp } from '@angular/compiler';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, PhotoAlbumComponent, DiscountMarkComponent, GalleryComponent],
+  imports: [CommonModule, PhotoAlbumComponent, FooterComponent, GalleryComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
@@ -43,11 +44,34 @@ export class HomeComponent implements OnInit {
      top: 0,
      behavior: 'smooth' 
    });
-    AOS.init({
-      easing: 'ease-in-out',
-      once: false, 
-    });
+   this.createRandomShop();
   }
+  randomShop!: shopObject;
+  footer!: Footer;
+  createRandomShop(){
+    this.randomShop ={
+        shopPhoto: 'https://picsum.photos/400/300?random=12',
+        shopTitle: 'LumiCraft Studio',
+        followerCount: 1287,
+        isFollowed: false,
+        description: 'Handmade epoxy crafts and home decor made with love.',
+        instagram: 'https://instagram.com/lumicraftstudio',
+        facebook: 'https://facebook.com/lumicraftstudio',
+        tiktok: 'https://tiktok.com/@lumicraftstudio'
+    };
+    this.footer={
+      facebook:this.randomShop.facebook,
+      instagram:this.randomShop.instagram,
+      tiktok:this.randomShop.tiktok,
+      shopPhoto:this.randomShop.shopPhoto,
+      shopTitle:this.randomShop.shopTitle,
+    }
+  }
+
+  
+
+
+
 
   PhotoConfig:PhotoConfig={
     likeVisible : true,
@@ -56,4 +80,15 @@ export class HomeComponent implements OnInit {
     hoverVisible : true,
     likeCountvisible :false,
   }
+}
+
+export interface shopObject{
+  shopPhoto:string;
+  shopTitle:string;
+  followerCount:number;
+  isFollowed:boolean;
+  description:string;
+  instagram:string;
+  facebook:string;
+  tiktok:string;
 }

@@ -122,7 +122,7 @@ export class CardDetailsComponent implements OnInit{
 
   insertOrder(){
     if(this.isUserLogged()){
-        if(this.posts.orderNotAllowed){
+        if(this.posts.orderNotAllowed&& this.posts.quantity<=0){
             Swal.fire({
               text: 'დროებით ამ პროდუქტის შეკვეთა შეზღუდულია',
               icon:'error',

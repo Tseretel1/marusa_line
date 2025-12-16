@@ -14,7 +14,7 @@ import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: 'app-main',
-  imports: [CommonModule, RouterLink, FormsModule],
+  imports: [CommonModule, RouterLink, FormsModule, PhotoAlbumComponent],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })
@@ -32,8 +32,7 @@ export class MainComponent {
     this.postService.getMostSoldProducts(this.userId).subscribe(
       (resp)=>{
         this.soldProducts = resp;
-        console.log(resp)
-        this.TopShopList = this.generateRandomShops(2);
+        this.shopList = this.generateRandomShops(10);
       }
     )
   }
@@ -42,22 +41,29 @@ export class MainComponent {
      top: 0,
      behavior: 'smooth' 
    });
-    AOS.init({
-      easing: 'ease-in-out',
-      once: false, 
-    });
     this.RandomCategories();
-    this.shopList = this.generateRandomShops(10);
   }
 
+  productIndex:number = 0;
+  onphotoHover(index:number,productIndex:number){
+    this.scrollIndex = index;
+    this.productIndex = productIndex;
+  }
   PhotoConfig:PhotoConfig={
-    likeVisible : true,
+    likeVisible : false,
     priceVisible :true,
-    navigationAvailable : true,
+    navigationAvailable : false,
     hoverVisible : true,
     likeCountvisible :false,
   }
 
+  SmallConfig:PhotoConfig={
+    likeVisible : false,
+    priceVisible :false,
+    navigationAvailable : false,
+    hoverVisible : false,
+    likeCountvisible :false,
+  }
   catergorieList:categories[]=[];
 
   
@@ -67,7 +73,6 @@ export class MainComponent {
   }
   
    shopList: ShopCard[] = [];
-   shopProducts: shopProducts[] = [];
    TopShopList: ShopCard[] = [];
    
   RandomCategories() {
@@ -81,7 +86,7 @@ export class MainComponent {
     }));
   }
 
-   generateRandomShops(shopCount:number): ShopCard[] {
+  generateRandomShops(shopCount:number): ShopCard[] {
     const productNames = [
       "Laptop", "Headphones", "Shoes", "T-shirt",
       "Apple", "Phone Case", "Backpack", "Keyboard",
@@ -89,15 +94,6 @@ export class MainComponent {
     ];
 
     const shops: ShopCard[] = [];
-
-    this.soldProducts.forEach(element => {
-      const shopProducts:shopProducts={
-        id:element.id,
-        productPhoto:element.photos[0].photoUrl,
-        productName: element.title,
-      }
-      this.shopProducts.push(shopProducts);
-    });
     for(let i =0;i<shopCount;i++){
       shops.push({
         id: 2,
@@ -105,7 +101,7 @@ export class MainComponent {
         logo: `https://picsum.photos/100?random=${Math.random()}`,
         rate: parseFloat((Math.random() * 5).toFixed(1)),
         subscribersCount: parseFloat((Math.random() * 999).toFixed(1)),
-        products:this.shopProducts,
+        products:this.soldProducts,
       });
     }
     return shops;
@@ -120,13 +116,9 @@ export class MainComponent {
   }
 
 
-  private randomNumber(min: number, max: number) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
-
-  subscribeChanel(num:number){
-    
+  scrollIndex:number = 0;
+  IncreaseIndex(productsLength: number) {
+    this.scrollIndex = (this.scrollIndex + 1) % productsLength;
   }
 }
 
@@ -144,11 +136,5 @@ export interface ShopCard{
   logo:string;
   rate:number;
   subscribersCount:number;
-  products:shopProducts[];
-}
-
-export interface shopProducts{
-  id:number;
-  productName:string;
-  productPhoto?:string|null;
+  products:Post[];
 }
