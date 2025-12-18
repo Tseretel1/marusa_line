@@ -56,15 +56,14 @@
             position: relative;
         }
         .scrollable-top{
-            border-radius: 10px;
             .shop-card{
-                flex: 0 0 48%;  
+                flex: 0 0 49%;  
                 position: relative;
                 .shop-products-align{
-                    grid-template-columns: repeat(1,1fr);
+                    grid-template-columns: repeat(3,1fr);
                     .album{
                         width: 100%;
-                        height: 300px;
+                        height: 250px;
                     }
                 }
                 .shop-card-top{
@@ -85,8 +84,23 @@
         .other-shops{
             display: grid;
             grid-template-columns: repeat(3,1fr);
-            gap: 10px;
+            gap: 5px;
             margin-top: 10px;
+            .shop-card{
+                .shop-header{
+                    .shop-title-container{
+                        .logo-title-align{
+                            .shop-logo-container{
+                                width: 50px;
+                                height: 50px;
+                            }
+                            .shop-title{
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -121,7 +135,6 @@
     flex-direction: column;
     padding:10px;
     gap: 5px;
-    border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.253);
     border: 1px solid rgba(128, 128, 128, 0.288);
     color: white;
@@ -131,20 +144,18 @@
         display: flex;
         justify-content: space-between;
         cursor: pointer;
-        padding: 5px 10px;
         border-radius: 5px;
         transition: 0.3s ;
         .shop-title-container{
             display: flex;
             flex-direction: column;
-            gap: 5px;
             .logo-title-align{
                 display: flex;
                 align-items: center;
                 gap: 10px;
                 .shop-logo-container{
-                    width: 50px;
-                    height: 50px;
+                    width: 80px;
+                    height: 80px;
                     background-color: black;
                     border-radius: 50%;
                     display: flex;
@@ -158,9 +169,48 @@
                         object-fit: cover;
                     }
                 }
-            .subscribers{
-                color: grey;
-                font-size: 12px;
+
+            .shop-title{
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+            .followers-align{
+                display: flex; 
+                align-items: center;
+                gap: 10px;
+            }
+            .followers-container-align {
+              display: flex;
+              align-items: center;
+              .followers-container {
+                  width: 25px;
+                  height: 25px;
+                  border-radius: 50%;
+                  overflow: hidden;
+                  border: 1px solid grey; 
+                  margin-left: -9px; 
+
+                  &:first-child {
+                  margin-left: 0;
+                  }
+
+                  img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                  }
+              }
+          }
+            .followers{
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                color: white;
+                font-size: 14px;
+                p{
+                    text-wrap: nowrap;
+                }
             }
         }
         .rate-align{
@@ -184,7 +234,7 @@
             display: grid;
             grid-template-columns: repeat(4,1fr);
             width: 100%;
-            gap: 10px;
+            gap: 2px;
             overflow-x: scroll;
             .hover-div-align{
                 position: absolute;
@@ -289,8 +339,21 @@
             .top-align{
                 grid-template-columns: repeat(2,1fr);
                 .shop-card{
+                .shop-header{
+                    .shop-title-container{
+                        .logo-title-align{
+                            .shop-logo-container{
+                                .sho-title{
+                                    .sho-title-title{
+                                        font-size: 16px;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
+        }
             .scrollable-top{
                 border-radius: 10px;
                 .shop-card{
@@ -307,8 +370,7 @@
                 gap: 10px;
             }
             .other-shops{
-                grid-template-columns: repeat(2,1fr);
-                gap: 10px;
+                grid-template-columns: repeat(3,1fr);
             }
         }
     }
@@ -349,8 +411,7 @@
                 grid-template-columns: repeat(1,1fr);
             }
             .other-shops{
-                grid-template-columns: repeat(2,1fr);
-                gap: 10px;
+                grid-template-columns: repeat(3,1fr);
             }
         }
     }
@@ -369,18 +430,7 @@
                 }
             }
             .other-shops{
-                .shop-scroll-align{
-                    .shop-products-align{
-                       grid-template-columns: repeat(3,1fr);
-                       .small-shop-product{
-                        .album{
-                            height: 100px;
-                        }
-                       }
-                    }
-                }
-                grid-template-columns: repeat(1,1fr);
-                gap: 50px;
+                grid-template-columns: repeat(2,1fr);
             }
         }
     }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CardsComponent } from '../../shared/components/cards/cards.component';
 import { CommonModule } from '@angular/common';
 import AOS from 'aos';
@@ -10,6 +10,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { escapeRegExp } from '@angular/compiler';
 import { AppRoutes } from '../../shared/AppRoutes/AppRoutes';
 import { FormsModule } from "@angular/forms";
+import { interval, Subscription, timeInterval, timeout } from 'rxjs';
 
 
 @Component({
@@ -18,7 +19,7 @@ import { FormsModule } from "@angular/forms";
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })
-export class MainComponent {
+export class MainComponent implements OnInit, AfterViewInit,AfterViewInit{
   AppRoutes= AppRoutes;
   soldProducts: Post[] = [];
   user:any = null;
@@ -46,16 +47,27 @@ export class MainComponent {
     this.RandomCategories();
   }
 
-  productIndex:number = 0;
-  onphotoHover(index:number,productIndex:number){
-    this.scrollIndex = index;
-    this.productIndex = productIndex;
+ @ViewChild('container')
+  container!: ElementRef<HTMLElement>;
+
+  subscription!: Subscription;
+
+  ngAfterViewInit() {
+    this.subscription = interval(5000).subscribe(() => {
+      this.scrollRight(this.container.nativeElement);
+    });
   }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+
   PhotoConfig:PhotoConfig={
     likeVisible : false,
-    priceVisible :true,
+    priceVisible :false,
     navigationAvailable : false,
-    hoverVisible : true,
+    hoverVisible : false,
     likeCountvisible :false,
   }
 
@@ -104,6 +116,7 @@ export class MainComponent {
         rate: parseFloat((Math.random() * 5).toFixed(1)),
         subscribersCount: parseFloat((Math.random() * 999).toFixed(1)),
         products:this.soldProducts,
+        lastFollowers : this.generateRandomFollowers(4)
       });
     }
     return shops;
@@ -122,6 +135,19 @@ export class MainComponent {
   IncreaseIndex(productsLength: number) {
     this.scrollIndex = (this.scrollIndex + 1) % productsLength;
   }
+
+  generateRandomFollowers(count: number = 10): Followers[] {
+  const names = [
+    'alex', 'maria', 'niko', 'luka', 'sophia',
+    'giorgi', 'ana', 'dato', 'elene', 'irakli',
+    'nina', 'levan', 'tekla', 'sandri', 'keto'
+  ];
+
+  return Array.from({ length: count }, (_, i) => ({
+    userName: `${names[Math.floor(Math.random() * names.length)]}_${Math.floor(Math.random() * 1000)}`,
+    profilePhoto: `https://i.pravatar.cc/150?img=${Math.floor(Math.random() * 70) + 1}`
+  }));
+}
 }
 
 
@@ -139,4 +165,10 @@ export interface ShopCard{
   rate:number;
   subscribersCount:number;
   products:Post[];
+  lastFollowers:Followers[];
+}
+
+export interface Followers{
+  userName:string;
+  profilePhoto:string;
 }
