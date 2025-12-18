@@ -29,13 +29,13 @@
                                        <app-photo-album [products]="s"[PhotoCongif]="PhotoConfig" class="album"></app-photo-album>
                                     </div>
                                 </ng-container>
-                                <div class="hover-div-align" [routerLink]="AppRoutes.shop + i.id" >
+                                <!-- <div class="hover-div-align" [routerLink]="AppRoutes.shop + i.id" >
                                     <ng-container *ngFor="let d of i.products;let index = index;">
                                         <div class="hover-div" *ngIf="index%2===0"  (mouseenter)="onphotoHover(index,i.id)">
                                             <i class="far fa-circle" [ngClass]="{'fas ':index==scrollIndex}"></i>
                                         </div>
                                     </ng-container>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
