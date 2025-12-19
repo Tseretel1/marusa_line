@@ -16,11 +16,11 @@
                                             <p class="sho-title-title">marusa_handmade</p>
                                             <div class="followers-align">
                                                 <div class="followers">
-                                                    <p>{{i.subscribersCount}}</p>
+                                                    <p>{{i.postCount}}</p>
                                                     <p style="color:grey">posts</p> 
                                                 </div>
                                                 <div class="followers">
-                                                    <p>{{i.subscribersCount}}</p>
+                                                    <p>{{i.followerCount}}</p>
                                                     <p style="color:grey">followers</p> 
                                                 </div>
                                             </div>
@@ -80,7 +80,7 @@
                                 <p>marusa_handmade</p>
                                 <div class="followers-align">
                                     <div class="followers">
-                                        <p>{{i.subscribersCount}}</p>
+                                        <p>{{i.followerCount}}</p>
                                         <p style="color:grey">followers</p> 
                                     </div>
                                 </div>
@@ -91,7 +91,7 @@
                 <div class="shop-scroll-align small-shop-scroll-align">
                     <div class="shop-products-align small-shop-product-align" #container>
                         <ng-container  *ngFor="let s of i.products;let index = index;">
-                            <div class="shop-product small-shop-product"  [routerLink]="AppRoutes.shop+i.id" *ngIf="index<4">
+                            <div class="shop-product small-shop-product"  [routerLink]="AppRoutes.shop+i.id">
                                 <app-photo-album [products]="s"[PhotoCongif]="SmallConfig" class="album"></app-photo-album>
                             </div>
                         </ng-container>

@@ -57,13 +57,15 @@
         }
         .scrollable-top{
             .shop-card{
-                flex: 0 0 49%;  
+                flex: 0 0 32%;  
                 position: relative;
+                display: flex;
+                justify-content: center;
                 .shop-products-align{
                     grid-template-columns: repeat(3,1fr);
                     .album{
                         width: 100%;
-                        height: 250px;
+                        height: 200px;
                     }
                 }
                 .shop-card-top{
@@ -83,7 +85,7 @@
         }
         .other-shops{
             display: grid;
-            grid-template-columns: repeat(3,1fr);
+            grid-template-columns: repeat(4,1fr);
             gap: 5px;
             margin-top: 10px;
             .shop-card{
@@ -229,7 +231,8 @@
         align-items: center;
         position: relative;
         width: 100%;
-        justify-content: space-between;
+        justify-content: center;
+        margin-top: 20px;
         .shop-products-align{
             display: grid;
             grid-template-columns: repeat(4,1fr);
@@ -319,7 +322,7 @@
             display: none;
         }
         .small-shop-product-align{
-            grid-template-columns: repeat(2,1fr);
+            grid-template-columns: repeat(3,1fr);
             .album{
                 width: 100%;
                 height: 150px;
@@ -330,7 +333,7 @@
 
 
 
-@media screen and (max-width:1000px) {
+@media screen and (max-width:1200px) {
     .scroll-button{
         display: none;
     }
@@ -390,15 +393,26 @@
     .scroll-button{
         display: none;
     }
-    .center-component{
-        .component-align{
-              .scrollable-top{
-            .shop-card{
-                flex: 0 0 100%;  
+        .center-component{
+            .component-align{
+                .scrollable-top{
+                    .shop-card{
+                        flex: 0 0 100%;  
+                    }
+                    .other-shops{
+                    .shop-card{
+                        .shop-scroll-align{ 
+                            .small-shop-product-align{ 
+                                .album{   
+                                    height: 100px;                 
+                                }
+                            }  
+                        }
+                    } 
+                }      
             }
         }
     }
-}
 }
 
 

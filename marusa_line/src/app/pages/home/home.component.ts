@@ -9,6 +9,7 @@ import { GalleryComponent } from '../gallery/gallery.component';
 import { ActivatedRoute } from '@angular/router';
 import { escapeRegExp } from '@angular/compiler';
 import { Footer, FooterComponent } from '../../layout/footer/footer.component';
+import { Followers, ShopCard } from '../main/main.component';
 
 
 
@@ -46,25 +47,39 @@ export class HomeComponent implements OnInit {
    });
    this.createRandomShop();
   }
-  randomShop!: shopObject;
+  randomShop2!: ShopCard;
   footer!: Footer;
+  
+  generateRandomFollowers(count: number = 10): Followers[] {
+  const names = [
+    'alex', 'maria', 'niko', 'luka', 'sophia',
+    'giorgi', 'ana', 'dato', 'elene', 'irakli',
+    'nina', 'levan', 'tekla', 'sandri', 'keto'
+  ];
+
+  return Array.from({ length: count }, (_, i) => ({
+    userName: `${names[Math.floor(Math.random() * names.length)]}_${Math.floor(Math.random() * 1000)}`,
+    profilePhoto: `https://i.pravatar.cc/150?img=${Math.floor(Math.random() * 70) + 1}`
+  }));
+}
+
   createRandomShop(){
-    this.randomShop ={
-        shopPhoto: 'https://picsum.photos/400/300?random=12',
-        shopTitle: 'LumiCraft Studio',
-        followerCount: 1287,
-        isFollowed: false,
-        description: 'Handmade epoxy crafts and home decor made with love.',
-        instagram: 'https://instagram.com/lumicraftstudio',
-        facebook: 'https://facebook.com/lumicraftstudio',
-        tiktok: 'https://tiktok.com/@lumicraftstudio'
+    this.randomShop2 ={
+        id: 2,
+        name:"marusa_handmade",
+        logo: `https://picsum.photos/100?random=${Math.random()}`,
+        rate: parseFloat((Math.random() * 5).toFixed(1)),
+        followerCount: parseFloat((Math.random() * 999).toFixed(0)),
+        postCount: parseFloat((Math.random() * 150).toFixed(0)),
+        lastFollowers : this.generateRandomFollowers(4),
+        products:this.soldProducts,
     };
     this.footer={
-      facebook:this.randomShop.facebook,
-      instagram:this.randomShop.instagram,
-      tiktok:this.randomShop.tiktok,
-      shopPhoto:this.randomShop.shopPhoto,
-      shopTitle:this.randomShop.shopTitle,
+      facebook:'',
+      instagram:'',
+      tiktok:'this.randomShop.tiktok',
+      shopPhoto:'this.randomShop.shopPhoto',
+      shopTitle:'this.randomShop.shopTitle',
     }
   }
 
@@ -91,4 +106,5 @@ export interface shopObject{
   instagram:string;
   facebook:string;
   tiktok:string;
+  lastFollowers:Followers[];
 }

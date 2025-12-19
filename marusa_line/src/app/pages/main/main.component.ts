@@ -35,7 +35,7 @@ export class MainComponent implements OnInit, AfterViewInit,AfterViewInit{
     this.postService.getMostSoldProducts(this.userId).subscribe(
       (resp)=>{
         this.soldProducts = resp;
-        this.shopList = this.generateRandomShops(10);
+        this.shopList = this.generateRandomShops(1);
       }
     )
   }
@@ -53,13 +53,15 @@ export class MainComponent implements OnInit, AfterViewInit,AfterViewInit{
   subscription!: Subscription;
 
   ngAfterViewInit() {
-    this.subscription = interval(5000).subscribe(() => {
-      this.scrollRight(this.container.nativeElement);
-    });
+    // this.subscription = interval(5000).subscribe(() => {
+    //   this.scrollRight(this.container.nativeElement);
+    // });
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    if(this.subscription){
+      this.subscription.unsubscribe();
+    }
   }
 
 
@@ -114,9 +116,10 @@ export class MainComponent implements OnInit, AfterViewInit,AfterViewInit{
         name: productNames[0],
         logo: `https://picsum.photos/100?random=${Math.random()}`,
         rate: parseFloat((Math.random() * 5).toFixed(1)),
-        subscribersCount: parseFloat((Math.random() * 999).toFixed(1)),
+        followerCount: parseFloat((Math.random() * 999).toFixed(0)),
+        postCount: parseFloat((Math.random() * 150).toFixed(0)),
+        lastFollowers : this.generateRandomFollowers(4),
         products:this.soldProducts,
-        lastFollowers : this.generateRandomFollowers(4)
       });
     }
     return shops;
@@ -163,7 +166,8 @@ export interface ShopCard{
   name:string;
   logo:string;
   rate:number;
-  subscribersCount:number;
+  followerCount:number;
+  postCount:number;
   products:Post[];
   lastFollowers:Followers[];
 }
