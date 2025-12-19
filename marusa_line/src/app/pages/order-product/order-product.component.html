@@ -34,7 +34,7 @@
                                     მობილური ნომერი 
                                     <p *ngIf="mobileNumber.length>8">✅</p>
                                     <i class="fas fa-close" *ngIf=" mobileNumber.length<9"></i>
-                                    <!-- <p style="opacity: 0.7; font-size: 12px;text-wrap: nowrap;">({{mobileNumber.length}})/30</p> -->
+                                    <!-- <p style="opacity: 0.7; font-size: 12px;text-wrap: nowrap;">({{mobileNumber.length}})/11</p> -->
                                 </div>
                                 <p style="opacity: 0.7; font-size: 12px;text-wrap: nowrap;">(დარწმუნდი რომ ნამდვილად სწორია)</p>
                             </label>
@@ -45,13 +45,13 @@
                                 <button class="edit confirm" (click)="acceptField(1)" *ngIf="editFieldNum==1"><i class="fas fa-check" style="color: white;"></i></button>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="" style="display: flex; gap: 4px; align-items: center; flex-wrap: wrap;">
                                 <div style="display: flex; align-items: center;">
                                     დეტალური მისამართი 
                                     <p *ngIf="address.length>9">✅</p>
                                     <i class="fas fa-close" *ngIf="address.length<10"></i>
-                                    <!-- <p style="opacity: 0.7; font-size: 12px;text-wrap: nowrap;">({{address.length}})/100</p> -->
+                                    <p style="opacity: 0.7; font-size: 12px;text-wrap: nowrap;">({{address.length}})/100</p>
                                 </div>
                                 <p style="opacity: 0.7; font-size: 12px;text-wrap: nowrap;">(ქალაქი, ქუჩა, კორპუსი, სადარბაზო... )</p>
                             </label>
@@ -61,7 +61,7 @@
                                 <button class="edit close" (click)="closeField(2)" *ngIf="editFieldNum==2"><i class="fas fa-close"></i></button>
                                 <button class="edit confirm" (click)="acceptField(2)" *ngIf="editFieldNum==2"><i class="fas fa-check" style="color: white;"></i></button>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                   
                     <div class="user-information">
@@ -84,14 +84,13 @@
                                 <p>{{productQuantity}}</p>   
                                 <div class="quantity-button" (click)="plusQuantity()">+</div>
                             </div>
-                            <div class="delivery-align card-background">
+                            <!-- <div class="delivery-align card-background">
                                 <p class=""> მიწოდება </p>
                                 <select name="" class="form-control" id="" [(ngModel)]="delieveryChoise">
                                     <option value="1"  selected>კურიერი🚚</option>
-                                    <!-- <option value="2">ჩემით წავიღებ🚶‍♂️</option> -->
                                 </select>
                                 <p class=""> </p>
-                            </div>
+                            </div> -->
                             <div class="price center-price" >
                                 <p>ჯამში </p>
                                 <b style="display: flex; gap: 5px;"> {{productPrice}} <p>₾</p></b>

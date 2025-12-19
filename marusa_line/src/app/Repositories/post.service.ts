@@ -10,7 +10,7 @@ import { GetPostsDto } from '../pages/gallery/gallery.component';
 })
 export class PostService {
   AppUrl= AppUrl;
-  private apiUrl = AppUrl.development;
+  private apiUrl = AppUrl.network;
   constructor(public http : HttpClient)
   {
     

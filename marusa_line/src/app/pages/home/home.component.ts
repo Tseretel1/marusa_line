@@ -39,6 +39,10 @@ export class HomeComponent implements OnInit {
         this.soldProducts2 = resp.slice(3);
       }
     )
+    const shopId = this.route.snapshot.paramMap.get('id');
+    if(shopId){
+      localStorage.setItem('shopId',shopId);
+    }
   }
   ngOnInit(): void {
     window.scrollTo({
@@ -71,7 +75,7 @@ export class HomeComponent implements OnInit {
         rate: parseFloat((Math.random() * 5).toFixed(1)),
         followerCount: parseFloat((Math.random() * 999).toFixed(0)),
         postCount: parseFloat((Math.random() * 150).toFixed(0)),
-        lastFollowers : this.generateRandomFollowers(4),
+        lastFollowers : this.generateRandomFollowers(3),
         products:this.soldProducts,
     };
     this.footer={
@@ -83,7 +87,19 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  
+
+  following:boolean = false;
+  followString:string= 'follow'
+  toggleFollew(userid:number){
+    if(!this.following){
+      this.following = true;
+      this.followString ='following';
+    }
+    else{
+      this.following = false;
+      this.followString ='follow';
+    }
+  }
 
 
 

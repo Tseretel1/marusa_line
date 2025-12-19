@@ -30,21 +30,21 @@
                         </div>
                     </div>
                 </div>
+                <button class="follow-button" [ngClass]="{'following':following}" (click)="toggleFollew(this.userId)">{{followString}} <i *ngIf="following" class="fas fa-check-double"></i> </button>
             </div>
         </div>
     </div>
     <div class="header-container">
-        <!-- <p style="width: 80%; color: white">ყველაზე მოთხვოვნადი</p> -->
-       <div class="photo-align align-3">
+       <!-- <div class="photo-align align-3">
            <div *ngFor="let p of soldProducts; let index = index;" class="container" [ngClass]="{'hide-album':index==2}">
                <app-photo-album [products]="p" [PhotoCongif]="PhotoConfig" class="album" ></app-photo-album>
            </div>
-       </div>
-       <div class="photo-align align-4">
+       </div> -->
+       <!-- <div class="photo-align align-4">
            <div *ngFor="let p of soldProducts2; let index = index;" class="container" [ngClass]="{'hide-album': index==2}">
                <app-photo-album [products]="p" [PhotoCongif]="PhotoConfig" class="album" ></app-photo-album>
            </div>
-       </div>
+       </div> -->
     </div>
     <div class="gallery">
         <app-gallery ></app-gallery>

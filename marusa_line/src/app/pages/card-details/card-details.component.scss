@@ -66,7 +66,7 @@
                         align-items: center;
                         .camera-button{
                             scale: 2;
-                            background-color: rgba(0, 0, 0, 0.055);
+                            background-color: rgba(0, 0, 0, 0.089);
                             color: rgba(255, 255, 255, 0.048);
                             border: none;
                             cursor: pointer;
@@ -75,7 +75,7 @@
                             transition: 0.2s all ease-in-out;
                             z-index: 5;
                             .fas{
-                                color: rgba(255, 255, 255, 0.322);
+                                color: rgb(255, 255, 255);
                             }
                         }               
                         .camera-button:hover{
@@ -96,7 +96,7 @@
                             .chevron{
                                 padding: 20px;
                                 display: flex;
-                                background-color: rgba(0, 0, 0, 0.027);
+                                background-color: rgba(0, 0, 0, 0.089);
                                 align-items: center;
                                 justify-content: center;
                                 border-radius: 10px;
@@ -192,7 +192,10 @@
                 .header-title{
                     color: white;
                     justify-content: space-between;
+                    flex-direction: column;
                     display: flex;
+                    align-items: center;
+                    gap: 20px;
                     .discount-mark{
                         position: absolute;
                         top: -20px;
@@ -201,6 +204,8 @@
                     .title{
                         display: flex;
                         align-items: center;
+                        text-align: center;
+                        font-size: 22px;
                     }
                 }
                 .backdrop-card{

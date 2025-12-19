@@ -95,10 +95,10 @@ export class OrderProductComponent implements OnInit{
   getUserDetails(){
     this.postService.getuserOptionalFields(this.userId).subscribe(
       (resp)=>{
-        if(resp.location!=null){
-          this.address = resp.location;
-          this.oldAddress = this.address;
-        }
+        // if(resp.location!=null){
+        //   this.address = resp.location;
+        //   this.oldAddress = this.address;
+        // }
         if(resp.phoneNumber!=null){
           this.mobileNumber = resp.phoneNumber;
           this.oldMobileNumber = this.mobileNumber;
@@ -180,18 +180,18 @@ export class OrderProductComponent implements OnInit{
       });
       return false;
     }
-    if(this.address==''){
-      this.addressInvalid = true;
-      this.editFieldNum =2;
-      setTimeout(() => {
-        this.addressInvalid = false;
-      }, 3000);
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth' 
-      });
-      return false;
-    }
+    // if(this.address==''){
+    //   this.addressInvalid = true;
+    //   this.editFieldNum =2;
+    //   setTimeout(() => {
+    //     this.addressInvalid = false;
+    //   }, 3000);
+    //   window.scrollTo({
+    //     top: 0,
+    //     behavior: 'smooth' 
+    //   });
+    //   return false;
+    // }
     if(this.location.lat=='' && this.location.lng==''){
       Swal.fire({
           text: 'გთხოვთ მონიშნოთ მისამართი რუკაზე🙏',

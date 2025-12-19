@@ -8,8 +8,8 @@
       width: 80%;
       background-color: rgba(0, 0, 0, 0.189);
       border-radius: 10px;
-      padding:10px 20px;
-      margin: 0px 0px 30px 0px;
+      padding:10px;
+      border: 1px solid grey;
       .shop-header{
         width: 100%;
         display: flex;
@@ -18,16 +18,48 @@
         border-radius: 5px;
         transition: 0.3s ;
         color: white;
+        position: relative;
+        .follow-button{
+          border: 1px solid white;
+          border-radius: 5px;
+          padding: 3px 10px;
+          background-color: transparent;
+          color: white;
+          cursor: pointer;
+          font-weight: bolder;
+        }
+        .following{
+          background-color: white;
+          color: black;
+          animation:0.5s followAnim;
+        }
+        @keyframes followAnim {
+          0%{
+            background-color: transparent;
+          }
+          50%{
+            letter-spacing: 0px;
+            scale: 0.9;
+            color: white;
+          }
+          100%{
+            backdrop-filter: white;
+            letter-spacing: 0px;
+            color: black;
+          }
+        }
         .shop-title-container{
-            display: flex;
-            flex-direction: column;
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          gap: 10px;
             .logo-title-align{
                 display: flex;
                 align-items: center;
                 gap: 10px;
                 .shop-logo-container{
-                    width: 80px;
-                    height: 80px;
+                    width: 100px;
+                    height: 100px;
                     background-color: black;
                     border-radius: 50%;
                     display: flex;
@@ -41,7 +73,6 @@
                         object-fit: cover;
                     }
                 }
-
             .shop-title{
                 display: flex;
                 flex-direction: column;

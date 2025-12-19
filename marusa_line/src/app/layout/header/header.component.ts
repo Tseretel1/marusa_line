@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppRoutes } from '../../shared/AppRoutes/AppRoutes';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthorizationService } from '../../pages/authorization/authorization.service';
 import { Subscription } from 'rxjs';
@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 })
 export class HeaderComponent implements OnInit{
 
-  constructor(private authService:AuthorizationService){
+  constructor(private authService:AuthorizationService, private route :Router){
 
   }
   AuthSub!:Subscription;
@@ -72,5 +72,13 @@ export class HeaderComponent implements OnInit{
     setTimeout(() => {
       this.sidenavVisible =  false;
     }, 500);
+  }
+
+  goTospecialRoute(){
+    const shopRoute = localStorage.getItem('shopId');
+    if(shopRoute){
+      this.route.navigate([AppRoutes.shop + Number(shopRoute)]);
+    }
+    this.scrollTotop();
   }
 }

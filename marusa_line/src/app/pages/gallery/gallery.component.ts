@@ -118,7 +118,7 @@ export class GalleryComponent implements OnInit {
     localStorage.setItem('PageNum','1');
     this.getAllPosts();
     this.hideFilterModal();
-    this.scrollToStartMethod();
+    // this.scrollToStartMethod();
 
     if(this.sortNum==1){
       this.sortByPriceHighToLow()
