@@ -22,11 +22,12 @@
         .follow-button{
           border: 1px solid white;
           border-radius: 5px;
-          padding: 3px 10px;
+          padding: 5px 20px;
           background-color: transparent;
           color: white;
           cursor: pointer;
           font-weight: bolder;
+          width: 100%;
         }
         .following{
           background-color: white;
@@ -51,12 +52,11 @@
         .shop-title-container{
           display: flex;
           flex-direction: column;
-          width: 100%;
           gap: 10px;
             .logo-title-align{
                 display: flex;
-                align-items: center;
                 gap: 10px;
+                flex-direction: column;
                 .shop-logo-container{
                     width: 100px;
                     height: 100px;
@@ -87,8 +87,8 @@
               display: flex;
               align-items: center;
               .followers-container {
-                  width: 25px;
-                  height: 25px;
+                  width: 20px;
+                  height: 20px;
                   border-radius: 50%;
                   overflow: hidden;
                   border: 1px solid grey; 
@@ -256,4 +256,18 @@
        grid-template-columns: 45% 55%;
     }
   }
+  .gallery-align  {
+    .shop-align  {
+        .shop-header{ 
+          .shop-title-container{ 
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+              .logo-title-align{ 
+                width: 100%;
+                }
+            }
+          }
+      }
+   }
 }

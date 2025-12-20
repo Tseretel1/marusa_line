@@ -68,7 +68,7 @@
                   <i class="fas fa-credit-card"></i>
                 </div>
               </div>
-              <div class="delivery-align info-background detail">
+              <div class="delivery-align info-background detail"   *ngIf="order.isPaid">
                <p style="text-align: center">რაოდენობა <b style="font-size: 18px; background-color: rgba(0, 0, 0, 0.342); border-radius: 5px; padding: 5px 10px;">{{ order.productQuantity }}</b></p>
              </div>
               <div class="delivery-align info-background detail" *ngIf="order.isPaid">
