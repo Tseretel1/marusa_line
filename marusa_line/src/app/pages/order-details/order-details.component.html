@@ -46,10 +46,10 @@
                 </div>
               </div>
             </div>
-            <div class="product-details-align">
+            <div class="product-details-align"   [ngClass]="{ 'pay-one-align': !order.isPaid }">
               <div class="detail-align">
                 <div
-                  class="detail info-background"
+                  class="detail info-background" style="width: 100%;"
                   (click)="scrollToBottomMethod()"
                   *ngIf="!order.isPaid"
                   [ngClass]="{ 'to-payed': !order.isPaid }"

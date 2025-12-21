@@ -232,6 +232,9 @@
             border-radius: 5px;
         }
     }
+    .pay-one-align{
+        grid-template-columns: repeat(1,1fr);
+    }
     .rules-align{
         width: 100%;
         .waiting{

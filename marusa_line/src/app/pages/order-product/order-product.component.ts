@@ -95,10 +95,10 @@ export class OrderProductComponent implements OnInit{
   getUserDetails(){
     this.postService.getuserOptionalFields(this.userId).subscribe(
       (resp)=>{
-        // if(resp.location!=null){
-        //   this.address = resp.location;
-        //   this.oldAddress = this.address;
-        // }
+        if(resp.location!=null){
+          this.address = resp.location;
+          this.oldAddress = this.address;
+        }
         if(resp.phoneNumber!=null){
           this.mobileNumber = resp.phoneNumber;
           this.oldMobileNumber = this.mobileNumber;
@@ -135,6 +135,11 @@ export class OrderProductComponent implements OnInit{
     else{
       this.address = this.oldAddress
     }
+  }
+
+  locationOrMap:boolean = true;
+  toggleLocationOrMap(b:boolean){
+    this.locationOrMap = b;
   }
 
   photoVisibleNum:number = 0;
@@ -180,43 +185,48 @@ export class OrderProductComponent implements OnInit{
       });
       return false;
     }
-    // if(this.address==''){
-    //   this.addressInvalid = true;
-    //   this.editFieldNum =2;
-    //   setTimeout(() => {
-    //     this.addressInvalid = false;
-    //   }, 3000);
-    //   window.scrollTo({
-    //     top: 0,
-    //     behavior: 'smooth' 
-    //   });
-    //   return false;
-    // }
-    if(this.location.lat=='' && this.location.lng==''){
-      Swal.fire({
-          text: 'გთხოვთ მონიშნოთ მისამართი რუკაზე🙏',
-          icon:'error',
-          showCancelButton: false,
-          showConfirmButton:false,
-          confirmButtonText: 'კი',
-          cancelButtonText: 'არა',
-          background:'rgb(25, 26, 25)',
-          color: '#ffffff',       
-          customClass: {
-            popup: 'custom-swal-popup',
-          },
-          timer:3000,
-      });
-       window.scrollTo({
-        top: 0,
-        behavior: 'smooth' 
-      });
-      return false;
+    if(!this.locationOrMap){
+      if(this.address==''){
+        this.addressInvalid = true;
+        this.editFieldNum =2;
+        setTimeout(() => {
+          this.addressInvalid = false;
+        }, 3000);
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth' 
+        });
+        return false;
+      }
+      return true;
     }
-    this.addressInvalid = false;
-    this.mobileInvalid = false;
-    return true;
-
+    if(this.locationOrMap){
+      if(this.location.lat=='' && this.location.lng==''){
+        Swal.fire({
+            text: 'გთხოვთ მონიშნოთ მისამართი რუკაზე🙏',
+            icon:'error',
+            showCancelButton: false,
+            showConfirmButton:false,
+            confirmButtonText: 'კი',
+            cancelButtonText: 'არა',
+            background:'rgb(25, 26, 25)',
+            color: '#ffffff',       
+            customClass: {
+              popup: 'custom-swal-popup',
+            },
+            timer:3000,
+        });
+         window.scrollTo({
+          top: 0,
+          behavior: 'smooth' 
+        });
+        return false;
+      }
+      this.addressInvalid = false;
+      this.mobileInvalid = false;
+      return true;
+    }
+    return false;
   }
   editFieldNum:number = 0;
   editField(num:number){
@@ -303,7 +313,9 @@ export class OrderProductComponent implements OnInit{
         lat:this.location.lat,
         address:this.address,
       }
-      console.log(this.orderObj)
+      if(!this.locationOrMap){
+        this.insertLocation();
+      }
       this.postService.insertOrder(this.orderObj).subscribe(
         (resp)=>{
           if(resp!=null){
