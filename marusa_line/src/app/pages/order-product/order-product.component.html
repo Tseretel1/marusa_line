@@ -43,8 +43,8 @@
                                 <div class="" >
                                 </div>
                                 <div style="display: flex; align-items: center; gap: 10px;">
-                                    <div class="quantity-button" [ngClass]="{'selected-address-type':locationOrMap}" (click)="toggleLocationOrMap(true)">რუკაზე მონიშვნა</div>
-                                    <div class="quantity-button" [ngClass]="{'selected-address-type':!locationOrMap}" (click)="toggleLocationOrMap(false)">ხელით ჩაწერა</div>
+                                    <div class="quantity-button" [ngClass]="{'selected-address-type':locationOrMap,'not-selected-address-type':!locationOrMap}" (click)="toggleLocationOrMap(true)">რუკაზე მონიშვნა</div>
+                                    <div class="quantity-button" [ngClass]="{'selected-address-type':!locationOrMap,'not-selected-address-type':locationOrMap}" (click)="toggleLocationOrMap(false)">ხელით ჩაწერა</div>
                                 </div>
                             </div>
                         </div>

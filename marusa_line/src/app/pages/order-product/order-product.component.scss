@@ -401,9 +401,15 @@
                 cursor: pointer;
                 text-align: center;
             }
-            .selected-address-type{
-                background-color: green;
+            .not-selected-address-type{
+                border: 1px solid white;
+                background-color: transparent;
                 color: white;
+            }
+            .selected-address-type{
+                background-color: white;
+                border: 1px solid white;
+                color: black;
             }
         }
         .card-background{
