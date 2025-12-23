@@ -137,7 +137,7 @@ export class OrderProductComponent implements OnInit{
     }
   }
 
-  locationOrMap:boolean = true;
+  locationOrMap:boolean = false;
   toggleLocationOrMap(b:boolean){
     this.locationOrMap = b;
   }
@@ -302,6 +302,16 @@ export class OrderProductComponent implements OnInit{
     }
     this.getMapLocation();
     if(this.validateFields()){
+      let lng= '';
+      let lat= '';
+      let address= '';
+      if(this.locationOrMap){
+        lng = this.location.lng;
+        lat = this.location.lat;
+      }
+      else{
+        lat = this.address;
+      }
       this.orderObj= {
         userId:this.userId,
         productId : this.productId,
@@ -309,9 +319,9 @@ export class OrderProductComponent implements OnInit{
         deliveryType : this.deliveryString, 
         comment :this.comment,
         finalPrice : this.productPrice,
-        lng:this.location.lng,
-        lat:this.location.lat,
-        address:this.address,
+        lng:lng,
+        lat:lat,
+        address:address,
       }
       if(!this.locationOrMap){
         this.insertLocation();

@@ -34,7 +34,7 @@
                             </div>
                         </div>
                        <div class="product-details-align" style="align-items: center;">
-                            <div class="quantity-align" style="width: 100%; gap: 10px; padding: 10px;">
+                            <div class="quantity-align" style="width: 100%; ">
                                 <div style="display: flex; ">
                                     <p class="">
                                         <b style="font-size: 18px;">მისამართი <i class="fas fa-map-marker-alt" ></i></b> 
@@ -43,8 +43,8 @@
                                 <div class="" >
                                 </div>
                                 <div style="display: flex; align-items: center; gap: 10px;">
-                                    <div class="quantity-button" [ngClass]="{'selected-address-type':locationOrMap,'not-selected-address-type':!locationOrMap}" (click)="toggleLocationOrMap(true)">რუკაზე მონიშვნა</div>
                                     <div class="quantity-button" [ngClass]="{'selected-address-type':!locationOrMap,'not-selected-address-type':locationOrMap}" (click)="toggleLocationOrMap(false)">ხელით ჩაწერა</div>
+                                    <div class="quantity-button" [ngClass]="{'selected-address-type':locationOrMap,'not-selected-address-type':!locationOrMap}" (click)="toggleLocationOrMap(true)">რუკაზე მონიშვნა</div>
                                 </div>
                             </div>
                         </div>

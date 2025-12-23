@@ -9,6 +9,7 @@ import { FormsModule, ɵInternalFormsSharedModule } from "@angular/forms";
 import L from 'leaflet';
 import { Lnglat } from '../order-product/map/map.component';
 import { timeout } from 'rxjs';
+import { Footer } from '../../layout/footer/footer.component';
 
 @Component({
   selector: 'app-order-details',
@@ -157,13 +158,40 @@ export class OrderDetailsComponent implements OnInit{
       this.copiedNumber = 0;
     }, 3000);
   }
+
+  bog :BankCredentials={
+    bankName :'bog',
+    accountNumber:'GE18BG0000000607735653',
+    recieverName:'გიორგი წერეთელი',
+  }
+  tbc :BankCredentials={
+    bankName :'tbc',
+    accountNumber:'GE61TB7903545064300036',
+    recieverName:'გიორგი წერეთელი',
+  }
+  GetbankCredentialss(){
+  }
+
+  footer: Footer={ 
+      facebook:'https://www.facebook.com/profile.php?id=61577870171515',
+      instagram:'https://www.instagram.com/marusa__handmade/',
+      tiktok:'',
+      shopPhoto:'https://scontent.ftbs5-4.fna.fbcdn.net/v/t39.30808-6/595376685_122155437836929005_6177732523336111458_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=ai4AwDj-JTEQ7kNvwFFmqZq&_nc_oc=AdmUqkJvzPwa6osURtkSROb7DwNpUG9bk4Bhi1YQJxcw6WE_10Q29Rj5cUW7aVZ5D9g&_nc_zt=23&_nc_ht=scontent.ftbs5-4.fna&_nc_gid=PMuQ4BxGylzbG1HEknSixg&oh=00_Afm0_wLaBzYVOgticlaeq5ePCeYwxABvyUlB5WupMy1bcw&oe=69505763',
+      shopTitle:'marusa_handmade',
+    }
 }
 
- interface Photo {
+interface Photo {
   Id?: number;
   photoId?: number;
   photoUrl?: string;
   postId?: number;
+}
+
+export interface BankCredentials{
+  bankName:string;
+  accountNumber:string;
+  recieverName:string;
 }
 
 export interface OrderDetailsDto {

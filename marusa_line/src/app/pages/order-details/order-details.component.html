@@ -55,7 +55,7 @@
                   [ngClass]="{ 'to-payed': !order.isPaid }"
                 >
                   <p class="">გადასახდელი</p>
-                  <b> {{ order.finalPrice }}</b>
+                  <b> {{ order.finalPrice }}₾</b>
                   <i class="fas fa-credit-card"></i>
                 </div>
                 <div
@@ -64,7 +64,7 @@
                   [ngClass]="{ 'is-payed': order.isPaid }"
                 >
                   <p class="">გადახდილი</p>
-                  <b> {{ order.finalPrice }}</b>
+                  <b> {{ order.finalPrice }}₾</b>
                   <i class="fas fa-credit-card"></i>
                 </div>
               </div>
@@ -107,18 +107,17 @@
                 <b>გადახდის წესები<i class="fas fa-file-alt"></i></b>
               </div>
               <div class="rulessss">
-                <div style="display: flex; flex-direction: column; gap: 10px">
+                <div style="display: flex; flex-direction: column; gap: 10px; ">
                   <div class="rules">
                     <p class="to-pay-text">
-                      1. გადარიცხეთ თანხა თქვენთვის სასურველ ანგარიშზე
+                       გადარიცხე თანხა შენთვის სასურველ ანგარიშზე
                     </p>
-                    <b style="padding: 5px 10px ; border-radius: 5px; background-color: rgba(0, 0, 0, 0.315); text-align: center;"> ({{ productPrice }} ლარი),</b>
                   </div>
                   <div class="rules-text-align"  (click)="copyToClipboard('GE18BG0000000607735653',1)">
                     <div class="logo-container">
                       <img src="assets/img/bog.png" class="logo" alt="" />
                     </div>
-                    <p>GE18BG0000000607735653</p>
+                    <p>{{bog.accountNumber}}</p>
                     <button class="copy-button">
                       <span class="copied" *ngIf="copiedNumber ==1">Copied ✅</span>
                       კოპირება <i class="fas fa-copy" style="color: white"></i>
@@ -128,33 +127,55 @@
                     <div class="logo-container">
                       <img src="assets/img/tbc.jpg" class="logo" alt="" />
                     </div>
-                    <p>GE61TB7903545064300036</p>
+                    <p>{{tbc.accountNumber}}</p>
                     <button class="copy-button" >
                       <span class="copied" *ngIf="copiedNumber ==2">Copied ✅</span>
                       კოპირება <i class="fas fa-copy" style="color: white"></i>
                     </button>
                   </div>
+                  <p *ngIf="bog.recieverName">
+                    მიმღები :
+                    <b>{{bog.recieverName}}</b>
+                  </p>
+                   
                 </div>
                 <div>
                   <div class="rules">
                     <p class="to-pay-text">
-                      2. დანიშნულებაში მიუთითეთ
                     </p>
                   </div>
-                  <div class="rules-text-align"  (click)="copyToClipboard('შეკვეთის ნომერი: ' + order.orderId, 3)">
-                    <p>შეკვეთის ნომერი: {{ order.orderId }}</p>
-                    <button class="copy-button">
-                      <span class="copied" *ngIf="copiedNumber ==3">Copied ✅</span>
-                      კოპირება <i class="fas fa-copy" style="color: white"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="rules">
-                  3. შეკვეთა დადასტურდება თანხის ასახვის შემდეგ✅
                 </div>
               </div>
             </div>
           </div>
+
+           <div class="user-information" *ngIf="!order.isPaid" style="padding: 20px;">
+            <div class="rules-align">
+                <div class="rules" style="display: flex; flex-direction: column; gap: 30px;">
+                  გადახდის შემდეგ მოგვწერეთ Instagram ან facebook-ზე ✅
+                  <div class="link-align">
+                    <a class="link-button instagram" [href]="footer.instagram" target="_blank" >
+                      <div style="display: flex; align-items: center; gap: 10px;">
+                        <div class="main-logo">
+                          <img [src]="footer.shopPhoto" alt="" class="shop-img">
+                        </div>
+                        {{footer.shopTitle}}
+                      </div>
+                      <img src="assets/icons/instagram.svg" alt="">
+                    </a>
+                    <a class="link-button facebook" [href]="footer.facebook" target="_blank">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                          <div class="main-logo">
+                            <img [src]="footer.shopPhoto" alt="" class="shop-img">
+                          </div>
+                          {{footer.shopTitle}}
+                        </div>
+                        <img src="assets/icons/facebook.svg" alt="">
+                    </a>
+                </div>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
     </div>
