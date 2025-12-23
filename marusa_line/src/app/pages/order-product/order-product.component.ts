@@ -310,7 +310,7 @@ export class OrderProductComponent implements OnInit{
         lat = this.location.lat;
       }
       else{
-        lat = this.address;
+        address = this.address;
       }
       this.orderObj= {
         userId:this.userId,

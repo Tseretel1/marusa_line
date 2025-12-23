@@ -6,33 +6,34 @@
     </header>
     <div class="midlle">
         <div class="link-align">
-            <a class="link-button instagram" [href]="footer.instagram" target="_blank" >
-               <div style="display: flex; align-items: center;">
+      
+                <a class="link-button instagram" [href]="footer.instagram" target="_blank">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div class="main-logo">
+                        <img [src]="footer.shopPhoto" alt="" class="shop-img">
+                        </div>
+                        {{footer.shopTitle}}
+                    </div>
                     <img src="assets/icons/instagram.svg" alt="">
-                    {{footer.shopTitle}}
-               </div>
-               <div class="main-logo">
-                    <img [src]="footer.shopPhoto" alt="">
-               </div>
-            </a>
-            <a class="link-button facebook" [href]="footer.facebook" target="_blank">
-                <div style="display: flex; align-items: center;">
-                      <img src="assets/icons/facebook.svg" alt="">
-                    {{footer.shopTitle}}
-               </div>
-               <div class="main-logo">
-                    <img [src]="footer.shopPhoto" alt="">
-               </div>
-            </a>
-            <a class="link-button tiktok" href="" [href]="footer.tiktok" target="_blank">
-                <div style="display: flex; align-items: center;">
-                    <img src="assets/icons/tiktok.svg" alt="" >
-                    {{footer.shopTitle}}
-               </div>
-               <div class="main-logo">
-                    <img [src]="footer.shopPhoto" alt="">
-               </div>
-            </a>
+                </a>
+                <a class="link-button facebook" [href]="footer.facebook" target="_blank">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div class="main-logo">
+                        <img [src]="footer.shopPhoto" alt="" class="shop-img">
+                        </div>
+                        {{footer.shopTitle}}
+                    </div>
+                    <img src="assets/icons/facebook.svg" alt="">
+                </a>
+               <a class="link-button tiktok" [href]="footer.tiktok" target="_blank">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div class="main-logo">
+                        <img [src]="footer.shopPhoto" alt="" class="shop-img">
+                        </div>
+                        {{footer.shopTitle}}
+                    </div>
+                    <img src="assets/icons/tiktok.svg" alt="">
+                </a>
         </div>
     </div>
 </div>
