@@ -34,8 +34,8 @@ export class MainComponent implements OnInit, AfterViewInit,AfterViewInit{
     }
     this.postService.getMostSoldProducts(this.userId).subscribe(
       (resp)=>{
-        this.soldProducts = resp;
-        this.shopList = this.generateRandomShops(1);
+        this.soldProducts = resp.slice(0,3);
+        this.shopList = this.generateRandomShops(20);
       }
     )
   }

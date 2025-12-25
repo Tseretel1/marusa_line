@@ -255,7 +255,8 @@
         display: grid;
         grid-template-columns: repeat(4,1fr);
         .album{
-           height: 350px;
+          height: 350px;
+          border-radius: 10px;
         }
         .sort-cards{
           animation: openSortCards 0.5s;
@@ -472,7 +473,6 @@
       .photo-align{
         grid-template-columns: repeat(2,1fr);
         .album{
-          height: 200px;
         }
       }
       .orders-align{
@@ -507,7 +507,6 @@
        .photo-align{
         width: 90%;
          .album{
-           height: 200px;
         }
     }
       .filters-align{
@@ -583,7 +582,6 @@
 @media screen and (max-width:350px){
     .gallery-align{
       .photo-align{
-        grid-template-columns: repeat(1,1fr);
         width: 90%;
          .album{
            height: 200px;

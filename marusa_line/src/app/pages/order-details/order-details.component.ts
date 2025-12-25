@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, HostListener, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { orderStatuses, Post, PostService } from '../../Repositories/post.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { CommonModule, DatePipe, NgFor } from '@angular/common';
+import { CommonModule, DatePipe, NgFor, NgIf } from '@angular/common';
 import * as  AOS from 'aos';
 import { AuthorizationService } from '../authorization/authorization.service';
 import Swal from 'sweetalert2';
@@ -57,7 +57,10 @@ export class OrderDetailsComponent implements OnInit{
         this.postsLoaded = true;
         if(this.order.isPaid){
           setTimeout(() => {
-            this.initMap(Number(this.order.lat), Number(this.order.lng));
+            console.log(this.order)
+            if(this.order.address==''){
+              this.initMap(Number(this.order.lat), Number(this.order.lng));
+            }
           }, 500);
         }
       }

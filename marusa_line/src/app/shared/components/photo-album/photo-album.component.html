@@ -38,13 +38,13 @@
     <app-discount-mark *ngIf="products.discountedPrice!=null&&products.discountedPrice>0 &&PhotoCongif.priceVisible" class="discount-procent" [discount]="products"></app-discount-mark>
   
     <div class="mobile-router" (click)="NavigateToDetails()" *ngIf="PhotoCongif.navigationAvailable"></div>
-    <div class="heart-align" (click)="likePost()" *ngIf="PhotoCongif.likeVisible">
+    <!-- <div class="heart-align" (click)="likePost()" *ngIf="PhotoCongif.likeVisible">
         <i class="fas fa-heart heart" *ngIf="!postLiked"></i>
         <i class="fas fa-heart liked-post" *ngIf="postLiked"></i>
         <p *ngIf="PhotoCongif.likeCountvisible">
             {{LikeCount}}
         </p>
-    </div>
+    </div> -->
 
     <div class="discount-price-mobile" *ngIf="PhotoCongif.priceVisible" >
         <b [ngClass]="{'discounted-price': products.discountedPrice>0}" >{{products.price}}₾</b>
@@ -55,7 +55,7 @@
         <b *ngIf="products.discountedPrice<=0">{{products.price}}₾</b>
         <b *ngIf="products.discountedPrice>0">{{products.discountedPrice}}₾</b>
     </div> -->
-
+    <div class="title"><p>{{products.title}}</p></div>
     <img *ngIf="products.photos.length>0" [src]="products.photos[0].photoUrl" alt="" class="photo">
     <img *ngIf="products.photoUrl" [src]="products.photoUrl" alt="" class="photo">
 </div>

@@ -74,7 +74,7 @@
               <div class="delivery-align info-background detail" *ngIf="order.isPaid">
                 <p style="text-align: center">{{ order.deliveryType }}</p>
               </div>
-               <div class="delivery-align info-background detail" style="flex-direction: column;" *ngIf="order.isPaid">
+               <div class="delivery-align info-background detail" style="flex-direction: column;" *ngIf="order.isPaid&& order.address!=''">
                 <p>მისამართი</p>
                 <p style="text-align: center" style="font-size: 18px;  background-color: rgba(0, 0, 0, 0.136); border-radius: 5px; padding: 5px 10px; word-break: break-all;">{{ order.address }}</p>
               </div>
@@ -98,9 +98,11 @@
               </div>
             </div>
           </div>
-          <div class="user-information" *ngIf="order.isPaid">
-            <div id="map"></div>
-          </div>
+          <ng-container  *ngIf="order.isPaid ">
+            <div class="user-information" *ngIf="order.address==''">
+              <div id="map" ></div>
+            </div>
+          </ng-container>
           <div class="user-information" *ngIf="!order.isPaid">
             <div class="rules-align">
               <div class="title">
