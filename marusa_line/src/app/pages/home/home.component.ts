@@ -17,12 +17,29 @@ import { Followers, ShopCard } from '../main/main.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, PhotoAlbumComponent, FooterComponent, GalleryComponent],
+  imports: [CommonModule, FooterComponent, GalleryComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
-  
+export class HomeComponent {
+
+  shop: Shop = {
+    id: 0,
+    name: '',
+    logo: null,
+    location: null,
+    gmail: '',
+    subscription: 0,
+    instagram: null,
+    facebook: null,
+    titkok: null
+  };
+
+  shopStats: ShopStats={
+    productCount :'',
+    followerCount :'',
+  };
+
   soldProducts: Post[] = [];
   soldProducts2: Post[] = [];
   user:any = null;
@@ -43,48 +60,25 @@ export class HomeComponent implements OnInit {
     if(shopId){
       localStorage.setItem('shopId',shopId);
     }
+    this.loadShop(Number(shopId));
+    this.getShopStats(Number(shopId));
   }
-  ngOnInit(): void {
-    window.scrollTo({
-     top: 0,
-     behavior: 'smooth' 
-   });
-   this.createRandomShop();
-  }
-  randomShop2!: ShopCard;
   footer!: Footer;
   
-  generateRandomFollowers(count: number = 10): Followers[] {
-  const names = [
-    'alex', 'maria', 'niko', 'luka', 'sophia',
-    'giorgi', 'ana', 'dato', 'elene', 'irakli',
-    'nina', 'levan', 'tekla', 'sandri', 'keto'
-  ];
+ loadShop(shopId: number): void {
+    this.postService.getShopById(shopId).subscribe({
+      next: (data: Shop) => {
+        this.shop = { ...data };        
+      },
+    });
+  }
 
-  return Array.from({ length: count }, (_, i) => ({
-    userName: `${names[Math.floor(Math.random() * names.length)]}_${Math.floor(Math.random() * 1000)}`,
-    profilePhoto: `https://i.pravatar.cc/150?img=${Math.floor(Math.random() * 70) + 1}`
-  }));
-}
-
-  createRandomShop(){
-    this.randomShop2 ={
-        id: 2,
-        name:"marusa_handmade",
-        logo: `https://picsum.photos/100?random=${Math.random()}`,
-        rate: parseFloat((Math.random() * 5).toFixed(1)),
-        followerCount: parseFloat((Math.random() * 999).toFixed(0)),
-        postCount: parseFloat((Math.random() * 150).toFixed(0)),
-        lastFollowers : this.generateRandomFollowers(3),
-        products:this.soldProducts,
-    };
-    this.footer={
-      facebook:'',
-      instagram:'',
-      tiktok:'',
-      shopPhoto:'https://scontent.ftbs5-4.fna.fbcdn.net/v/t39.30808-6/595376685_122155437836929005_6177732523336111458_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=ai4AwDj-JTEQ7kNvwFFmqZq&_nc_oc=AdmUqkJvzPwa6osURtkSROb7DwNpUG9bk4Bhi1YQJxcw6WE_10Q29Rj5cUW7aVZ5D9g&_nc_zt=23&_nc_ht=scontent.ftbs5-4.fna&_nc_gid=PMuQ4BxGylzbG1HEknSixg&oh=00_Afm0_wLaBzYVOgticlaeq5ePCeYwxABvyUlB5WupMy1bcw&oe=69505763',
-      shopTitle:'marusa_handmade',
-    }
+  getShopStats(shopId: number): void {
+    this.postService.getShopStats(shopId).subscribe(
+     (resp) => {
+        this.shopStats = resp;
+      },
+    );
   }
 
 
@@ -102,6 +96,7 @@ export class HomeComponent implements OnInit {
   }
 
 
+  
 
 
   PhotoConfig:PhotoConfig={
@@ -113,14 +108,22 @@ export class HomeComponent implements OnInit {
   }
 }
 
-export interface shopObject{
-  shopPhoto:string;
-  shopTitle:string;
-  followerCount:number;
-  isFollowed:boolean;
-  description:string;
-  instagram:string;
-  facebook:string;
-  tiktok:string;
-  lastFollowers:Followers[];
+
+
+
+export interface ShopStats{
+  followerCount:string;
+  productCount:string;
+}
+
+export interface Shop {
+  id: number;
+  name: string;
+  logo: string | null;
+  location: string | null;
+  gmail: string;
+  subscription: number;
+  instagram: string | null;
+  facebook: string | null;
+  titkok: string | null;
 }

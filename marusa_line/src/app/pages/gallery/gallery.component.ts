@@ -7,7 +7,7 @@ import { DiscountMarkComponent } from '../../shared/components/discount-mark/dis
 
 @Component({
   selector: 'app-gallery',
-  imports: [CommonModule, PhotoAlbumComponent,DiscountMarkComponent],
+  imports: [CommonModule, PhotoAlbumComponent],
   templateUrl: './gallery.component.html',
   styleUrl: './gallery.component.scss'
 })

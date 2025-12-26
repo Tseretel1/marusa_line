@@ -82,19 +82,33 @@
                 text-wrap: nowrap;
             }
             .filters-align{
-              width: 100%;
+              width: 50%;
               display: flex;
               gap: 10px;
-              overflow: scroll;
-              .filters{
-                padding: 4px 16px;
-                border-radius: 5px;
-                color: white;
-                background-color: rgba(0, 0, 0, 0.192);
-                border: 1px solid rgba(128, 128, 128, 0.514);
-                cursor: pointer;
-                text-wrap: nowrap;
-              }
+              flex-wrap: wrap;
+                    
+        .filters {
+            padding: 8px 20px;
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            cursor: pointer;
+            text-wrap: nowrap;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.5);
+                border-color: rgba(255, 255, 255, 0.3);
+                transform: translateY(-2px);
+            }
+            
+            &:active {
+                transform: translateY(0);
+            }
+        }
               .active-filter{
                 background-color: white;
                 color: black; 

@@ -59,10 +59,17 @@ export class PostService {
   getOrderById(orderId:number): Observable<any> {
     return this.http.get<any>(this.apiUrl+`Product/get-order-details?orderId=${orderId}`);
   }
-
   insertOrder(order:orderPostObj): Observable<any> {
     return this.http.post<any>(this.apiUrl+`Product/insert-order`,order);
   }
+  getShopStats(shopId:number): Observable<any> {
+    return this.http.get<any>(this.apiUrl+`ControlPanel/get-shop-stats?shopId=${shopId}`);
+  }
+  getShopById(shopId:number): Observable<any> {
+    return this.http.get<any>(this.apiUrl+`ControlPanel/get-shop-by-id?shopId=${shopId}`);
+  }
+
+
 }
 export interface Photo {
   id?: number;  

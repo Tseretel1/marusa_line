@@ -6,29 +6,29 @@
                 <div class="logo-title-align">
                     <div style="display: flex; align-items: center; gap: 5px;">
                         <div class="shop-logo-container">
-                            <img [src]="randomShop2.logo" alt="" class="shop-logo">
+                            <img [src]="shop.logo" alt="" class="shop-logo">
                         </div>
                         <div class="shop-title">
-                            <p class="sho-title-title">marusa_handmade</p>
+                            <p class="sho-title-title">{{shop.name}}</p>
                             <div class="followers-align">
                                 <div class="followers">
-                                    <p>{{randomShop2.postCount}}</p>
+                                    <p>{{shopStats.productCount}}</p>
                                     <p style="color:grey">posts</p> 
                                 </div>
                                 <div class="followers">
-                                    <p>{{randomShop2.followerCount}}</p>
+                                    <p>{{shopStats.followerCount}}</p>
                                     <p style="color:grey">followers</p> 
                                 </div>
                             </div>
-                            <div class="followers-container-align">
-                                <div class="followers-container" *ngFor="let f of randomShop2.lastFollowers">
+                            <!-- <div class="followers-container-align">
+                                <div class="followers-container" *ngFor="let f of .lastFollowers">
                                     <img [src]="f.profilePhoto" alt="" class="follower-img">
                                 </div>
                                 <div class="followers" style="display: flex; align-items: center; gap:5px; margin-left: 5px; color: grey; flex-wrap: wrap;">
                                     <p style="max-width: 70px; overflow: hidden;">{{randomShop2.lastFollowers[0].userName}}</p>
                                     <p>and more</p> 
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <button class="follow-button" [ngClass]="{'following':following}" (click)="toggleFollew(this.userId)">{{followString}} <i *ngIf="following" class="fas fa-check-double"></i> </button>
