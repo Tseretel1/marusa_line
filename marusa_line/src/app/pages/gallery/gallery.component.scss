@@ -82,10 +82,11 @@
                 text-wrap: nowrap;
             }
             .filters-align{
-              width: 50%;
+              width: 100%;
               display: flex;
               gap: 10px;
               flex-wrap: wrap;
+              max-width: 750px;
                     
         .filters {
             padding: 8px 20px;
