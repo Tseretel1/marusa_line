@@ -124,7 +124,7 @@ export class CardDetailsComponent implements OnInit{
     if(this.isUserLogged()){
         if(this.posts.orderNotAllowed&& this.posts.quantity<=0){
             Swal.fire({
-              text: 'დროებით ამ პროდუქტის შეკვეთა შეზღუდულია',
+              text: 'დროებით პროდუქტის შეკვეთა შეზღუდულია',
               icon:'error',
               showCancelButton: false,
               showConfirmButton:false,

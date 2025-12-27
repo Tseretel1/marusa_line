@@ -175,6 +175,18 @@ export class GalleryComponent implements OnInit {
     this.scrollToStartMethod();
   }
   totalPages:number =0;
+
+  filtersExpanded:boolean = false;
+  expandFilters(){
+    if(!this.filtersExpanded){
+      this.filtersExpanded = true;
+      return;
+    }
+    else{
+      this.filtersExpanded = false;
+      return;
+    }
+  }
 }
 
 export interface GetPostsDto{

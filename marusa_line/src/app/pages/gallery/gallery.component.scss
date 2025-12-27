@@ -1,152 +1,170 @@
-:host{
+:host {
   width: 100%;
 }
-.gallery-align{
+.gallery-align {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  .no-posts-align {
     width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    .no-posts-align{
-      width: 100%;
+    justify-content: center;
+    height: 100%;
+    padding: 100px;
+    .no-posts {
       display: flex;
-      justify-content: center;
-      height: 100%;
-      padding: 100px;
-      .no-posts{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      color: white;
+      .far {
+        font-size: 40px;
+        scale: 2;
+      }
+      P {
+        font-size: 25px;
+      }
+    }
+  }
+  .photo-align {
+    width: 80%;
+    display: flex;
+    gap: 10px;
+    row-gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    .container {
+      position: relative;
+      height: 400px;
+      .discount-procent {
+        position: absolute;
+        left: -10px;
+        top: -10px;
+        width: 20px;
+        height: 20px;
+        z-index: 1;
+      }
+      .album {
+        max-width: 600px;
+      }
+    }
+    .sort-cards {
+      animation: openSortCards 0.5s;
+    }
+    @keyframes openSortCards {
+      0% {
+        opacity: 0.5;
+        scale: 0.9;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        scale: 1;
+      }
+    }
+  }
+  .filters-align {
+    display: flex;
+    gap: 10px;
+    width: 80%;
+    .section-filters-align {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      gap: 10px;
+      .section-title {
         color: white;
-        .far{
-          font-size: 40px;
-          scale: 2;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        text-wrap: nowrap;
+      }
+      .filters-align {
+        width: 100%;
+        display: flex;
+        gap: 10px;
+        overflow-x: scroll;
+        padding: 10px 0px;
+        .filters {
+          padding: 8px 20px;
+          border-radius: 8px;
+          color: rgba(255, 255, 255, 0.9);
+          background-color: rgba(0, 0, 0, 0.3);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          cursor: pointer;
+          text-wrap: nowrap;
+          font-size: 14px;
+          font-weight: 500;
+          transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          flex: 1;
+          height: 40px;
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+          }
+
+          &:active {
+            transform: translateY(0);
+          }
         }
-        P{
-          font-size: 25px;
+        .active-filter {
+          background-color: white;
+          color: black;
+        }
+        .active-filter {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          border-color: transparent;
+
+          &:hover {
+            transform: translateY(-2px);
+          }
+        }
+      }
+      .filters-align:hover .filters-align::-webkit-scrollbar {
+        display: flex;
+      }
+      .expanded-filters{
+        height: 300px;
+      }
+      @keyframes expandFilter {
+        0%{
+          
         }
       }
     }
-    .photo-align{
-        width: 80%;
-        display: flex;
-        gap: 2px;
-        display: grid;
-        grid-template-columns: repeat(4,1fr);
-        .container{
-          position: relative;
-          height: 400px;
-          .discount-procent{
-            position: absolute;
-            left: -10px;
-            top: -10px;
-            width: 20px;
-            height: 20px;
-            z-index: 1;
-          }
-          .album{
-             max-width: 600px;
-          }
-        }
-        .sort-cards{
-          animation: openSortCards 0.5s;
-        }
-        @keyframes openSortCards {
-          0%{
-            opacity: 0.5;
-            scale: 0.9;
-          }
-          50%{
-            opacity: 1;
-          }
-          100%{
-            scale: 1;
-          }
-        }
+    .open-filter {
+      padding: 4px 16px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.315);
+      border: 1px solid rgba(128, 128, 128, 0.514);
     }
-    .filters-align{
-        display: flex;
-        gap: 10px;
-        width: 80%;
-        .section-filters-align{
-            display: flex;
-            width: 100%;
-            flex-direction: column;
-            gap: 10px;
-            .section-title{
-                color: white;
-                display: flex;
-                gap: 10px;
-                align-items: center;
-                text-wrap: nowrap;
-            }
-            .filters-align{
-              width: 100%;
-              display: flex;
-              gap: 10px;
-              flex-wrap: wrap;
-              max-width: 750px;
-                    
-        .filters {
-            padding: 8px 20px;
-            border-radius: 8px;
-            color: rgba(255, 255, 255, 0.9);
-            background-color: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            cursor: pointer;
-            text-wrap: nowrap;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            
-            &:hover {
-                background-color: rgba(0, 0, 0, 0.5);
-                border-color: rgba(255, 255, 255, 0.3);
-                transform: translateY(-2px);
-            }
-            
-            &:active {
-                transform: translateY(0);
-            }
-        }
-              .active-filter{
-                background-color: white;
-                color: black; 
-              }
-            }
-            .filters-align:hover .filters-align::-webkit-scrollbar{
-              display: flex;
-            }
-         }
-        .open-filter{
-          padding: 4px 16px;
-          border-radius: 5px;
-          border: none;
-          cursor: pointer;
-          color: white;
-          background-color: rgba(0, 0, 0, 0.315);
-          border: 1px solid rgba(128, 128, 128, 0.514);
-        }
-        .modal-align{
-        position: fixed;
-        z-index: 20;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    .modal-background{
+    .modal-align {
+      position: fixed;
+      z-index: 20;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .modal-background {
         position: fixed;
         z-index: 1;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-    }
-    .modal{
+      }
+      .modal {
         width: 90%;
         max-width: 500px;
         border-radius: 10px;
@@ -160,160 +178,164 @@
         animation: modalPopup 0.5s;
         justify-content: center;
         align-items: center;
-        .modal-header{
-            position: absolute;
-            top: 0px;
-            padding: 20px;
-            right: 0px;
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            .fa-times{
-                color: white;
-                scale: 1.5;
-            }
-            .fa-arrow-left{
-                color: white;
-                scale: 1.5;
-            }
+        .modal-header {
+          position: absolute;
+          top: 0px;
+          padding: 20px;
+          right: 0px;
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+          align-items: center;
+          cursor: pointer;
+          .fa-times {
+            color: white;
+            scale: 1.5;
+          }
+          .fa-arrow-left {
+            color: white;
+            scale: 1.5;
+          }
         }
-        .modal-body{
-            display: flex;
-            flex-direction: column;
+        .modal-body {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          gap: 20px;
+          height: 100%;
+          padding-top: 15px;
+          align-items: center;
+          .header {
             width: 100%;
-            gap: 20px;
+            display: flex;
+            justify-content: center;
+            color: white;
+            text-shadow: 0px 0px 2px black;
+            font-weight: bold;
+          }
+          .stage-oAuth {
             height: 100%;
-            padding-top: 15px;
+            width: 100%;
+            display: flex;
             align-items: center;
-            .header{
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                color: white;
-                text-shadow: 0px 0px 2px black;
-                font-weight: bold;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            .filter-button {
+              padding: 5px 10px;
+              border-radius: 5px;
+              background-color: rgba(0, 0, 0, 0.315);
+              color: white;
+              border: none;
+              cursor: pointer;
+              font-size: 16px;
+              text-wrap: nowrap;
+              transition: 0.2s all ease-in-out;
+              text-shadow: 0px 0px 2px black;
+              border: 1px solid rgba(128, 128, 128, 0.671);
+              flex: auto;
             }
-            .stage-oAuth{
-                height: 100%;
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 10px;
-                flex-wrap: wrap;
-                .filter-button{
-                    padding: 5px 10px;
-                    border-radius: 5px;
-                    background-color: rgba(0, 0, 0, 0.315);
-                    color: white;
-                    border: none;
-                    cursor: pointer;
-                    font-size: 16px;
-                    text-wrap: nowrap;
-                    transition: 0.2s all ease-in-out;
-                    text-shadow: 0px 0px 2px black;
-                    border: 1px solid rgba(128, 128, 128, 0.671);
-                    flex:auto;
-                }
-                .filter-button:hover{
-                  background-color: white;
-                  color: black; 
-                }
-                .active-filter{
-                  background-color: white;
-                  color: black; 
-                }
+            .filter-button:hover {
+              background-color: white;
+              color: black;
             }
+            .active-filter {
+              background-color: white;
+              color: black;
+            }
+            .active-filter {
+              background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              color: white;
+              border-color: transparent;
+
+              &:hover {
+                transform: translateY(-2px);
+              }
+            }
+          }
         }
-    }
-    .hide-modal{
-      animation: hideModal 0.55s;
-    }
+      }
+      .hide-modal {
+        animation: hideModal 0.55s;
+      }
       @keyframes hideModal {
-        0%{
+        0% {
           scale: 1;
-          box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.247);
+          box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.247);
         }
-        30%{
-          scale:1.1
+        30% {
+          scale: 1.1;
         }
-        100%{
-          box-shadow:  0px 0px 10px rgba(0, 0, 0, 0);
+        100% {
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0);
           scale: 0;
         }
+      }
+      @keyframes modalPopup {
+        0% {
+          scale: 0.7;
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0);
+        }
+        60% {
+          scale: 1.1;
+        }
+        100% {
+          box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.247);
+          scale: 1;
+        }
+      }
     }
-    @keyframes modalPopup {
-        0%{
-            scale: 0.7;
-            box-shadow:  0px 0px 10px rgba(0, 0, 0, 0);
-        }
-        60%{
-            scale: 1.1;
-        }
-        100%{
-            box-shadow:  0px 10px 20px rgba(0, 0, 0, 0.247);
-            scale: 1;
-        }
+  }
+  .filters-align::-webkit-scrollbar {
+    display: none;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .gallery-align {
+    .photo-align {
+      gap: 10px;
+      grid-template-columns: repeat(3, 1fr);
+      .container {
+        height: 300px;
+      }
     }
+  }
+}
+@media screen and (max-width: 800px) {
+  .gallery-align {
+    .photo-align {
+      grid-template-columns: repeat(2, 1fr);
+      .container {
+        height: 300px;
+      }
+    }
+  }
+  .scrollto {
+    padding: 40px 0px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .gallery-align {
+    .photo-align {
+      width: 90%;
+      .container {
+        height: 280px;
+      }
+    }
+    .filters-align {
+      width: 90%;
+    }
+  }
+  .scrollto {
+    padding: 20px 0px;
+  }
 }
 
+@media screen and (max-width: 350px) {
+  .gallery-align {
+    .photo-align {
+      grid-template-columns: repeat(1, 1fr);
+      width: 90%;
     }
-    .filters-align::-webkit-scrollbar{
-        display: none;
-    }
-}
-.scrollto{
-  padding: 30px 0px;
-}
-@media screen and (max-width:1200px){
-    .gallery-align{
-       .photo-align{
-        gap: 10px;
-        grid-template-columns: repeat(3,1fr);
-        .container{
-          height: 300px;
-        }
-    }
-  }
-}
-@media screen and (max-width:800px){
-    .gallery-align{
-       .photo-align{
-        grid-template-columns: repeat(2,1fr);
-         .container{
-           height: 300px;
-        }
-    }
-  }
-  .scrollto{
-    padding: 40px 0px;      
-  }
-}
-@media screen and (max-width:600px){
-    .gallery-align{
-       .photo-align{
-        gap: 5px;
-        width: 90%;
-         .container{
-           height: 280px;
-        }
-      }
-      .filters-align{
-        width: 90%;
-      }
-    }
-    .scrollto{
-        padding: 20px 0px;
-     }
-}
-
-@media screen and (max-width:350px){
-    .gallery-align{
-      .photo-align{
-        grid-template-columns: repeat(1,1fr);
-        width: 90%;
-      }
   }
 }
