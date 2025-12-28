@@ -44,7 +44,7 @@
     <div class="photo-align"*ngIf="Cards.length>0">
         <ng-container *ngFor="let p of Cards; let index = index;">
             <div class="container">
-                <app-photo-album [products]="p"[PhotoCongif]="PhotoConfig" class="album"  [ngClass]="{'sort-cards':sortNum == 1 || sortNum == 2}"></app-photo-album>
+                <app-photo-album [products]="p"[PhotoCongif]="PhotoConfig" class="album"  [ngClass]="{'sort-cards':sortNum == 1 || sortNum == 2,}"></app-photo-album>
             </div>
         </ng-container>
     </div>

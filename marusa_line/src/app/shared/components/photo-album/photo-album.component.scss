@@ -1,9 +1,19 @@
+@keyframes popUp {
+  0%{
+    opacity: 0.7;
+    scale: 0.95;
+  }
+  100%{
+    scale: 1;
+    opacity: 1;
+  }
+}
 .photo-container {
   width: 100%;
   overflow: hidden;
   height: 100%;
   position: relative;
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   
@@ -32,7 +42,6 @@
     top: 6px;
     left:6px;
     z-index: 6;
-    animation: slideInLeft 0.5s ease-out;
   }
 
   .information-align {
@@ -106,6 +115,10 @@
       font-weight: 600;
       font-size: 16px;
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      overflow-x: scroll;
+    }
+    .title::-webkit-scrollbar{
+      display: none;
     }
   }
 }
@@ -118,7 +131,6 @@
   &:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-
     .photo {
       transform: scale(1.15);
     }
@@ -232,8 +244,13 @@
       backdrop-filter: blur(8px);
       border: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      overflow-x: scroll;
+      text-wrap: nowrap;
     }
-  }
+    p::-webkit-scrollbar{
+      display: none;
+    }
+    }
 
   .heart-align {
     display: none;
@@ -323,11 +340,9 @@
   0% {
     display: flex;
     opacity: 0;
-    transform: scale(0.95);
   }
   100% {
     opacity: 1;
-    transform: scale(1);
   }
 }
 

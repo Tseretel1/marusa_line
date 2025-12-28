@@ -15,11 +15,6 @@
                 </p>
               </div>
             </div>
-            <div class="title-price-align">
-              <p>
-                {{ posts.title }}
-              </p>
-            </div>
             <div class="photo-container">
               <div *ngFor="let p of photosArray; let i = index">
                 <img [src]="p.photoUrl" *ngIf="i == 0" alt="" class="photo" />

@@ -81,11 +81,9 @@
                             </div>
                             <div class="photo-align">
                                 <div class="product-count-x"> X{{productQuantity}}</div>
-                                 <div class="photo-container" >
-                                     <div *ngFor="let p of photosArray; let i = index" >
-                                         <img [src]="p.photoUrl" *ngIf="i==0" alt="" class="photo">
-                                     </div>
-                                 </div>
+                                <div class="photo-container" *ngIf="postsLoaded">
+                                    <app-photo-album [products]="posts" [PhotoCongif]="PhotoConfig" class="album"></app-photo-album>
+                                </div>
                              </div>
                             <!-- <div class="delivery-align card-background">
                                 <p class=""> მიწოდება </p>
@@ -107,9 +105,6 @@
                                 </div>   
                             </div>
                         </div>
-                    </div>
-
-                    <div class="user-information" >
                         <div class="rules-align" >
                             <ul>
                                 <li>
@@ -118,7 +113,10 @@
                             </ul>
                         </div> 
                     </div>
-                    <button class="order-button next-button" (click)="insertOrder()">შეკვეთა</button>
+
+                    <div class="user-information" >
+                        <button class="order-button next-button" (click)="insertOrder()">შეკვეთა</button>
+                    </div>
              </div>
         </div>
     </div>

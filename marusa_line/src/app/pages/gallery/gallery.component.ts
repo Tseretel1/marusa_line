@@ -1,5 +1,5 @@
 import { CommonModule, NgForOf, PathLocationStrategy } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild, } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild, } from '@angular/core';
 import AOS from 'aos';
 import { Photo, Post, PostService, ProductTypes } from '../../Repositories/post.service';
 import { PhotoAlbumComponent, PhotoConfig } from '../../shared/components/photo-album/photo-album.component';
@@ -20,12 +20,14 @@ export class GalleryComponent implements OnInit {
     navigationAvailable:true,
     likeCountvisible :false,
   }
-
+  
+  @Input() ShopId!:number;
   getPosts:GetPostsDto={
     pageNumber : 1,
     pageSize: 10,
     userId: 0,
     productTypeId :null,
+    shopId : 0
   }
   constructor(private postService:PostService){
     this.getProductTypes();
@@ -33,8 +35,7 @@ export class GalleryComponent implements OnInit {
   ngOnInit(): void {
     this.getAllPosts();
   }
- 
-    moveProductTypeTOFirst(){
+  moveProductTypeTOFirst(){
     const TypeId = localStorage.getItem('TypeId');
     if(TypeId){
       if(TypeId!='null'){
@@ -71,9 +72,11 @@ export class GalleryComponent implements OnInit {
       this.userId = this.user.Id
       this.getPosts.userId = this.user.Id;
     }
+    
     this.applyPageAndType();
     this.postService.getPosts(this.getPosts).subscribe(
       (resp)=>{
+        console.log(this.getPosts)
         this.Cards = resp.products;
         this.totalCount = resp.totalCount;
         this.totalPages = Math.ceil(this.totalCount / this.getPosts.pageSize);
@@ -82,6 +85,9 @@ export class GalleryComponent implements OnInit {
     )
   }
   applyPageAndType(){
+    if(this.ShopId){
+      this.getPosts.shopId = this.ShopId;
+    }
     const PageNum = localStorage.getItem('PageNum');
     const TypeId = localStorage.getItem('TypeId');
     if(PageNum){
@@ -194,4 +200,5 @@ export interface GetPostsDto{
   pageSize:number;
   userId:number;
   productTypeId:number|null;
+  shopId:number;
 }

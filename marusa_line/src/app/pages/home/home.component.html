@@ -49,7 +49,7 @@
        </div> -->
     </div>
     <div class="gallery">
-        <app-gallery ></app-gallery>
+        <app-gallery *ngIf="shopId!=0" [ShopId]="shopId"></app-gallery>
     </div>
 </div>
 

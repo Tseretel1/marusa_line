@@ -11,15 +11,23 @@ import { HttpClient } from '@angular/common/http';
 import { Lnglat, MapConfig, MapPickerComponent } from "./map/map.component";
 import { ReloadService } from '../../shared/services/ReloadService';
 import { Subscription } from 'rxjs';
+import { PhotoAlbumComponent, PhotoConfig } from '../../shared/components/photo-album/photo-album.component';
 
 @Component({
   selector: 'app-order-product',
-  imports: [CommonModule, ɵInternalFormsSharedModule, FormsModule, MapPickerComponent],
+  imports: [CommonModule, ɵInternalFormsSharedModule, FormsModule, MapPickerComponent,PhotoAlbumComponent],
   templateUrl: './order-product.component.html',
   styleUrl: './order-product.component.scss'
 })
 export class OrderProductComponent implements OnInit{
 
+    PhotoConfig:PhotoConfig={
+      priceVisible :false,
+      likeVisible : false,
+      hoverVisible : false,
+      navigationAvailable:false,
+      likeCountvisible :false,
+    }
   
 
 

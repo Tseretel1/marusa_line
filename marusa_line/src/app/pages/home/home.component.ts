@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CardsComponent } from '../../shared/components/cards/cards.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NumberFormatStyle } from '@angular/common';
 import AOS from 'aos';
 import { Photo, Post, PostService, ProductTypes } from '../../Repositories/post.service';
 import { PhotoAlbumComponent, PhotoConfig } from '../../shared/components/photo-album/photo-album.component';
@@ -44,28 +44,30 @@ export class HomeComponent {
   soldProducts2: Post[] = [];
   user:any = null;
   userId:number = 0;
+  shopId:number=0;
   constructor(private postService:PostService,private route: ActivatedRoute){
     const user = localStorage.getItem('user');
     if(user){
       this.user =JSON.parse(user);
       this.userId = this.user.Id
     }
-    this.postService.getMostSoldProducts(this.userId).subscribe(
-      (resp)=>{
-        this.soldProducts = resp.slice(0, 3);
-        this.soldProducts2 = resp.slice(3);
-      }
-    )
+    // this.postService.getMostSoldProducts(this.userId).subscribe(
+    //   (resp)=>{
+    //     this.soldProducts = resp.slice(0, 3);
+    //     this.soldProducts2 = resp.slice(3);
+    //   }
+    // )
     const shopId = this.route.snapshot.paramMap.get('id');
     if(shopId){
       localStorage.setItem('shopId',shopId);
+      this.shopId = Number(shopId);
+      this.loadShop(this.shopId);
+      this.getShopStats(this.shopId);
     }
-    this.loadShop(Number(shopId));
-    this.getShopStats(Number(shopId));
   }
   footer!: Footer;
   
- loadShop(shopId: number): void {
+  loadShop(shopId: number): void {
     this.postService.getShopById(shopId).subscribe({
       next: (data: Shop) => {
         this.shop = { ...data };        

@@ -53,16 +53,13 @@
     .sort-cards {
       animation: openSortCards 0.5s;
     }
-    @keyframes openSortCards {
-      0% {
-        opacity: 0.5;
-        scale: 0.9;
+
+    @keyframes contrast {
+      0%{
+         filter:contrast(0);
       }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        scale: 1;
+      100%{
+         filter:contrast(1);
       }
     }
   }
@@ -99,7 +96,6 @@
           font-size: 14px;
           font-weight: 500;
           transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-          flex: 1;
           height: 40px;
           &:hover {
             background-color: rgba(0, 0, 0, 0.5);
