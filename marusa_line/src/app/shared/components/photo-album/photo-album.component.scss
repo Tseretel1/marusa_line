@@ -130,7 +130,6 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
 
   &:hover {
-    transform: translateY(-8px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
     .photo {
       transform: scale(1.15);

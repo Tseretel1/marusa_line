@@ -76,7 +76,6 @@ export class GalleryComponent implements OnInit {
     this.applyPageAndType();
     this.postService.getPosts(this.getPosts).subscribe(
       (resp)=>{
-        console.log(this.getPosts)
         this.Cards = resp.products;
         this.totalCount = resp.totalCount;
         this.totalPages = Math.ceil(this.totalCount / this.getPosts.pageSize);

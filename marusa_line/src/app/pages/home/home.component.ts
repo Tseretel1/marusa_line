@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 import { escapeRegExp } from '@angular/compiler';
 import { Footer, FooterComponent } from '../../layout/footer/footer.component';
 import { Followers, ShopCard } from '../main/main.component';
+import { AuthorizationService } from '../authorization/authorization.service';
 
 
 
@@ -48,7 +49,7 @@ export class HomeComponent {
   user:any = null;
   userId:number = 0;
   shopId:number=0;
-  constructor(private postService:PostService,private route: ActivatedRoute){
+  constructor(private postService:PostService,private route: ActivatedRoute, private authService:AuthorizationService){
     const user = localStorage.getItem('user');
     if(user){
       this.user =JSON.parse(user);
@@ -96,17 +97,25 @@ export class HomeComponent {
 
   following:boolean = false;
   followString:string= 'follow'
-  toggleFollew(userid:number){
+  toggleFollew(){
     if(!this.following){
       this.following = true;
       this.followString ='following';
     }
-    else{
-      this.following = false;
-      this.followString ='follow';
-    }
   }
 
+
+  followShop(){
+    if(this.userId==0){
+      this.authService.show();
+      return;
+    }
+    this.postService.followShop(this.userId, this.shopId).subscribe(
+      (resp)=>{
+        this.toggleFollew();
+      }
+    )
+  }
 
   
 

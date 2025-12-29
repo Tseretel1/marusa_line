@@ -68,8 +68,9 @@ export class PostService {
   getShopById(shopId:number): Observable<any> {
     return this.http.get<any>(this.apiUrl+`ControlPanel/get-shop-by-id?shopId=${shopId}`);
   }
-
-
+  followShop(userid:number,shopId:number): Observable<any> {
+    return this.http.post<any>(this.apiUrl+`Product/follow-shop?userId=${userid}&shopId=${shopId}`,{});
+  }
 }
 export interface Photo {
   id?: number;  
