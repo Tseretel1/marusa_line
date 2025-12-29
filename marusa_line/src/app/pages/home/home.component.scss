@@ -62,6 +62,7 @@
             .sho-title-title{
               overflow-x: scroll;
               max-width: 200px;
+              text-wrap: nowrap;
             }
             .sho-title-title::-webkit-scrollbar{
               display: none;

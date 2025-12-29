@@ -78,6 +78,17 @@ a{
     display: flex;
     align-items: center;
     justify-content: space-between;
+     .main-logo-name{
+        display: flex; 
+        align-items: center; 
+        gap: 10px; 
+        overflow: none;
+        justify-content: flex-start; 
+        p{
+            text-wrap: nowrap;
+            max-width: 200px; 
+        }
+    }
 }
 
 

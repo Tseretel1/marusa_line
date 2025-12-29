@@ -152,20 +152,24 @@
                   გადახდის შემდეგ მოგვწერეთ Instagram ან facebook-ზე ✅
                   <div class="link-align">
                     <a class="link-button instagram" [href]="shop.instagram" target="_blank" >
-                      <div style="display: flex; align-items: center; gap: 10px;">
+                      <div class="main-logo-name">
                         <div class="main-logo">
                           <img [src]="shop.logo" alt="" class="shop-img">
                         </div>
-                        {{shop.name}}
+                        <p>
+                           {{shop.name}}
+                        </p>
                       </div>
                       <img src="assets/icons/instagram.svg" alt="">
                     </a>
                     <a class="link-button facebook" [href]="shop.facebook" target="_blank">
-                        <div style="display: flex; align-items: center; gap: 10px;">
+                        <div class="main-logo-name">
                           <div class="main-logo">
                             <img [src]="shop.logo" alt="" class="shop-img">
                           </div>
-                          {{shop.name}}
+                            <p>
+                           {{shop.name}}
+                           </p>
                         </div>
                         <img src="assets/icons/facebook.svg" alt="">
                     </a>
