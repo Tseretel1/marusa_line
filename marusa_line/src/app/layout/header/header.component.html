@@ -1,14 +1,14 @@
 <div class="component">
     <div class="header">
     <div class="header-align">
-        <div class="float-logo" [routerLink]="AppRoutes.home"(click)="scrollTotop()">
+        <div class="float-logo" (click)="goTospecialRoute()">
             <div class="logo-container">
                 <img class="logo" src="assets/img/profile.jpg" alt="">
             </div>
-            <p class="header-title">Marusa_handmade</p>
+            <p class="header-title">Insta store</p>
         </div> 
         <div class="navigation-align">
-            <span [ngClass]="{'login-popup': Authorised}" class="nav-link" routerLinkActive="active-link" [routerLink]="AppRoutes.home"(click)="scrollTotop()"><i class="fas fa-house"></i><b>მთავარი</b> </span>
+            <span [ngClass]="{'login-popup': Authorised}" class="nav-link" routerLinkActive="active-link" (click)="goTospecialRoute()"><i class="fas fa-house"></i><b>მთავარი</b> </span>
             <span [ngClass]="{'login-popup': Authorised}" class="nav-link" routerLinkActive="active-link" (click)="scrollToBottom()"><b ><i class="fas fa-address-book"></i> კონტაქტი</b> </span>
             <span [ngClass]="{'login-popup': Authorised}" *ngIf="!Authorised" class="nav-link" routerLinkActive="active-link" (click)="openAuthorization()"><b ><i class="fas fa-user-shield"></i> ავტორიზაცია</b> </span>
             <div *ngIf="Authorised" class="nav-link profile-link" [routerLink]="AppRoutes.profile" [ngClass]="{'login-popup': Authorised}" >
@@ -38,7 +38,7 @@
                 </div>
                 <p class="username">{{user?.Name}}</p>
             </div>
-            <span class="nav-link" routerLinkActive="active-link" [routerLink]="AppRoutes.home" (click)="scrollTotop()"><i class="fas fas fa-house"></i><b>მთავარი</b> </span>
+            <span class="nav-link" routerLinkActive="active-link" (click)="goTospecialRoute()"><i class="fas fas fa-house"></i><b>მთავარი</b> </span>
             <span class="nav-link" routerLinkActive="active-link" (click)="scrollToBottom()"><b ><i class="fas fa-address-book"></i> კონტაქტი</b> </span>
             <span *ngIf="!Authorised" class="nav-link" routerLinkActive="active-link" (click)="openAuthorization()"><b ><i class="fas fa-user-shield"></i> ავტორიზაცია</b> </span>
         </div>

@@ -12,6 +12,7 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    padding: 20px 0px;
     .filters-align{
         display: flex;
         gap: 10px;
@@ -257,8 +258,8 @@
         display: grid;
         grid-template-columns: repeat(4,1fr);
         .album{
-           height: 350px;
-           max-width: 600px;
+          height: 350px;
+          border-radius: 10px;
         }
         .sort-cards{
           animation: openSortCards 0.5s;
@@ -325,7 +326,7 @@
                 background-color: green;
               }
               .topay{
-                background-color: rgba(255, 136, 0, 0.774);
+                background-color: rgb(255, 121, 0);
               }
               .payed:hover{
                 background-color: rgb(2, 184, 2);
@@ -473,7 +474,6 @@
       .photo-align{
         grid-template-columns: repeat(2,1fr);
         .album{
-          height: 200px;
         }
       }
       .orders-align{
@@ -508,7 +508,6 @@
        .photo-align{
         width: 90%;
          .album{
-           height: 200px;
         }
     }
       .filters-align{
@@ -584,7 +583,6 @@
 @media screen and (max-width:350px){
     .gallery-align{
       .photo-align{
-        grid-template-columns: repeat(1,1fr);
         width: 90%;
          .album{
            height: 200px;

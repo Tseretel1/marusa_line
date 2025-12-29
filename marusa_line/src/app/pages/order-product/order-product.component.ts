@@ -11,15 +11,23 @@ import { HttpClient } from '@angular/common/http';
 import { Lnglat, MapConfig, MapPickerComponent } from "./map/map.component";
 import { ReloadService } from '../../shared/services/ReloadService';
 import { Subscription } from 'rxjs';
+import { PhotoAlbumComponent, PhotoConfig } from '../../shared/components/photo-album/photo-album.component';
 
 @Component({
   selector: 'app-order-product',
-  imports: [CommonModule, ɵInternalFormsSharedModule, FormsModule, MapPickerComponent],
+  imports: [CommonModule, ɵInternalFormsSharedModule, FormsModule, MapPickerComponent,PhotoAlbumComponent],
   templateUrl: './order-product.component.html',
   styleUrl: './order-product.component.scss'
 })
 export class OrderProductComponent implements OnInit{
 
+    PhotoConfig:PhotoConfig={
+      priceVisible :false,
+      likeVisible : false,
+      hoverVisible : false,
+      navigationAvailable:false,
+      likeCountvisible :false,
+    }
   
 
 
@@ -46,6 +54,7 @@ export class OrderProductComponent implements OnInit{
     this.postService.getPostWithId(this.productId,this.userId).subscribe(
       (resp)=>{
         this.posts = resp;
+        console.log(this.posts)
         this.posts.photos.forEach(item => {
           this.photosArray.push(item);
         });
@@ -136,6 +145,11 @@ export class OrderProductComponent implements OnInit{
     }
   }
 
+  locationOrMap:boolean = false;
+  toggleLocationOrMap(b:boolean){
+    this.locationOrMap = b;
+  }
+
   photoVisibleNum:number = 0;
   photoDissapear:boolean =false;
   nextPhoto(){
@@ -179,43 +193,48 @@ export class OrderProductComponent implements OnInit{
       });
       return false;
     }
-    if(this.address==''){
-      this.addressInvalid = true;
-      this.editFieldNum =2;
-      setTimeout(() => {
-        this.addressInvalid = false;
-      }, 3000);
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth' 
-      });
-      return false;
+    if(!this.locationOrMap){
+      if(this.address==''){
+        this.addressInvalid = true;
+        this.editFieldNum =2;
+        setTimeout(() => {
+          this.addressInvalid = false;
+        }, 3000);
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth' 
+        });
+        return false;
+      }
+      return true;
     }
-    if(this.location.lat=='' && this.location.lng==''){
-      Swal.fire({
-          text: 'გთხოვთ მონიშნოთ მისამართი რუკაზე🙏',
-          icon:'error',
-          showCancelButton: false,
-          showConfirmButton:false,
-          confirmButtonText: 'კი',
-          cancelButtonText: 'არა',
-          background:'rgb(25, 26, 25)',
-          color: '#ffffff',       
-          customClass: {
-            popup: 'custom-swal-popup',
-          },
-          timer:3000,
-      });
-       window.scrollTo({
-        top: 0,
-        behavior: 'smooth' 
-      });
-      return false;
+    if(this.locationOrMap){
+      if(this.location.lat=='' && this.location.lng==''){
+        Swal.fire({
+            text: 'გთხოვთ მონიშნოთ მისამართი რუკაზე🙏',
+            icon:'error',
+            showCancelButton: false,
+            showConfirmButton:false,
+            confirmButtonText: 'კი',
+            cancelButtonText: 'არა',
+            background:'rgb(25, 26, 25)',
+            color: '#ffffff',       
+            customClass: {
+              popup: 'custom-swal-popup',
+            },
+            timer:3000,
+        });
+         window.scrollTo({
+          top: 0,
+          behavior: 'smooth' 
+        });
+        return false;
+      }
+      this.addressInvalid = false;
+      this.mobileInvalid = false;
+      return true;
     }
-    this.addressInvalid = false;
-    this.mobileInvalid = false;
-    return true;
-
+    return false;
   }
   editFieldNum:number = 0;
   editField(num:number){
@@ -274,8 +293,33 @@ export class OrderProductComponent implements OnInit{
 
   orderObj!:orderPostObj;
   insertOrder(){
+    if(this.posts.orderNotAllowed&& this.posts.quantity<=0){
+        Swal.fire({
+          text: 'დროებით ამ პროდუქტის შეკვეთა შეზღუდულია',
+          icon:'error',
+          showCancelButton: false,
+          showConfirmButton:false,
+          background:'rgb(25, 26, 25)',
+          color: '#ffffff',       
+          customClass: {
+            popup: 'custom-swal-popup',
+          },
+          timer:5000,
+      });
+      return;
+    }
     this.getMapLocation();
     if(this.validateFields()){
+      let lng= '';
+      let lat= '';
+      let address= '';
+      if(this.locationOrMap){
+        lng = this.location.lng;
+        lat = this.location.lat;
+      }
+      else{
+        address = this.address;
+      }
       this.orderObj= {
         userId:this.userId,
         productId : this.productId,
@@ -283,11 +327,13 @@ export class OrderProductComponent implements OnInit{
         deliveryType : this.deliveryString, 
         comment :this.comment,
         finalPrice : this.productPrice,
-        lng:this.location.lng,
-        lat:this.location.lat,
-        address:this.address,
+        lng:lng,
+        lat:lat,
+        address:address,
       }
-      console.log(this.orderObj)
+      if(!this.locationOrMap){
+        this.insertLocation();
+      }
       this.postService.insertOrder(this.orderObj).subscribe(
         (resp)=>{
           if(resp!=null){

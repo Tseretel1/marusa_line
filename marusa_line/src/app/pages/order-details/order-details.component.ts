@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, HostListener, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { orderStatuses, Post, PostService } from '../../Repositories/post.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { CommonModule, DatePipe, NgFor } from '@angular/common';
+import { CommonModule, DatePipe, NgFor, NgIf } from '@angular/common';
 import * as  AOS from 'aos';
 import { AuthorizationService } from '../authorization/authorization.service';
 import Swal from 'sweetalert2';
@@ -9,6 +9,8 @@ import { FormsModule, ɵInternalFormsSharedModule } from "@angular/forms";
 import L from 'leaflet';
 import { Lnglat } from '../order-product/map/map.component';
 import { timeout } from 'rxjs';
+import { Footer } from '../../layout/footer/footer.component';
+import { Shop } from '../home/home.component';
 
 @Component({
   selector: 'app-order-details',
@@ -25,6 +27,24 @@ export class OrderDetailsComponent implements OnInit{
     setTimeout(() => {
   }, 500);
   }
+
+  
+    shop: Shop = {
+      id: 0,
+      name: '',
+      logo: null,
+      location: null,
+      gmail: '',
+      subscription: 0,
+      instagram: null,
+      facebook: null,
+      titkok: null,
+      bog: null,
+      tbc: null,
+      receiver: null,
+    };
+    shopId:number=0;
+
 
 
   productId:number = 0;
@@ -56,13 +76,29 @@ export class OrderDetailsComponent implements OnInit{
         this.postsLoaded = true;
         if(this.order.isPaid){
           setTimeout(() => {
-            this.initMap(Number(this.order.lat), Number(this.order.lng));
+            if(this.order.address==''){
+              this.initMap(Number(this.order.lat), Number(this.order.lng));
+            }
           }, 500);
         }
+        else{
+          const shopId  = localStorage.getItem('shopId');
+          if(shopId){
+                this.shopId = Number(shopId);
+                this.loadShop(this.shopId);
+              }
+            }
+          }
+        );
       }
-    );
+      
+  loadShop(shopId: number): void {
+    this.postService.getShopById(shopId).subscribe({
+      next: (data: Shop) => {
+        this.shop = { ...data };        
+      },
+    });
   }
-
   ngOnInit(): void {
     AOS.init({
       easing: 'ease-in-out',
@@ -157,13 +193,22 @@ export class OrderDetailsComponent implements OnInit{
       this.copiedNumber = 0;
     }, 3000);
   }
+  GetbankCredentialss(){
+  }
+
 }
 
- interface Photo {
+interface Photo {
   Id?: number;
   photoId?: number;
   photoUrl?: string;
   postId?: number;
+}
+
+export interface BankCredentials{
+  bankName:string;
+  accountNumber:string;
+  recieverName:string;
 }
 
 export interface OrderDetailsDto {

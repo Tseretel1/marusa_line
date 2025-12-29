@@ -1,9 +1,9 @@
 <div class="photo-container desktop">
-    <app-discount-mark *ngIf="products.discountedPrice!=null&&products.discountedPrice>0 &&PhotoCongif.navigationAvailable" class="discount-procent" [discount]="products"></app-discount-mark>
+    <app-discount-mark *ngIf="products.discountedPrice!=null&&products.discountedPrice>0 &&PhotoCongif.priceVisible" class="discount-procent" [discount]="products"></app-discount-mark>
 
     <div class="information-align" *ngIf="PhotoCongif.hoverVisible" >
         <div class="navigate"  (click)="NavigateToDetails()" *ngIf="PhotoCongif.navigationAvailable"></div>
-        <b class="title" >
+        <b class="title" style="word-break: break-all;">
             {{products.title}}
         </b>
     </div>
@@ -15,9 +15,16 @@
         </p>
     </div>
     <div class="discount-price-mobile" *ngIf="PhotoCongif.priceVisible" >
+        <b [ngClass]="{'discounted-price': products.discountedPrice>0}" >{{products.price}}₾</b>
         <b *ngIf="products.discountedPrice>0">{{products.discountedPrice}}₾</b>
         <b *ngIf="products.discountedPrice<=0 || products.discountedPrice==null">{{products.price}}₾</b>
     </div>
+
+    <!-- <div class="discount-price-mobile" *ngIf="PhotoCongif.priceVisible" >
+        <b *ngIf="products.discountedPrice<=0">{{products.price}}₾</b>
+        <b *ngIf="products.discountedPrice>0">{{products.discountedPrice}}₾</b>
+    </div> -->
+
     <img *ngIf="products.photos.length>0" [src]="products.photos[0].photoUrl" alt="" class="photo">
     <img *ngIf="products.photoUrl" [src]="products.photoUrl" alt="" class="photo">
 </div>
@@ -29,21 +36,28 @@
             {{products.title}}
         </b>
     </div> -->
-    <app-discount-mark *ngIf="products.discountedPrice!=null&&products.discountedPrice>0 &&PhotoCongif.navigationAvailable" class="discount-procent" [discount]="products"></app-discount-mark>
+    <app-discount-mark *ngIf="products.discountedPrice!=null&&products.discountedPrice>0 &&PhotoCongif.priceVisible" class="discount-procent" [discount]="products"></app-discount-mark>
   
     <div class="mobile-router" (click)="NavigateToDetails()" *ngIf="PhotoCongif.navigationAvailable"></div>
-    <div class="heart-align" (click)="likePost()" *ngIf="PhotoCongif.likeVisible">
+    <!-- <div class="heart-align" (click)="likePost()" *ngIf="PhotoCongif.likeVisible">
         <i class="fas fa-heart heart" *ngIf="!postLiked"></i>
         <i class="fas fa-heart liked-post" *ngIf="postLiked"></i>
         <p *ngIf="PhotoCongif.likeCountvisible">
             {{LikeCount}}
         </p>
-    </div>
+    </div> -->
+
     <div class="discount-price-mobile" *ngIf="PhotoCongif.priceVisible" >
-        <!-- <b [ngClass]="{'discounted-price': products.discountedPrice>0}">{{products.price}}₾</b> -->
+        <b [ngClass]="{'discounted-price': products.discountedPrice>0}" >{{products.price}}₾</b>
         <b *ngIf="products.discountedPrice>0">{{products.discountedPrice}}₾</b>
         <b *ngIf="products.discountedPrice<=0 || products.discountedPrice==null">{{products.price}}₾</b>
     </div>
+
+    <!-- <div class="discount-price-mobile" *ngIf="PhotoCongif.priceVisible" >
+        <b *ngIf="products.discountedPrice<=0">{{products.price}}₾</b>
+        <b *ngIf="products.discountedPrice>0">{{products.discountedPrice}}₾</b>
+    </div> -->
+    <div class="title"><p>{{products.title}}</p></div>
     <img *ngIf="products.photos.length>0" [src]="products.photos[0].photoUrl" alt="" class="photo">
     <img *ngIf="products.photoUrl" [src]="products.photoUrl" alt="" class="photo">
 </div>

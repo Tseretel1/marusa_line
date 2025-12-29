@@ -210,6 +210,7 @@ export interface OrderProduct {
   comment:string;
   deliveryType:string;
   productQuantity:string;
+  orderNotAllowed:boolean;   
 
   likeCount: number;
   isLiked: boolean;

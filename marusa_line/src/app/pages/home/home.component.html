@@ -1,26 +1,57 @@
+
 <div class="gallery-align">
-    <div class="header-container">
-        <div class="section-title-align">
-           <b class="section-title" style="display: flex; align-items: center;">
-               ყველაზე მოთხოვნადი 
-           </b>
+    <div class="shop-align">
+        <div class="shop-header">
+            <div class="shop-title-container">
+                <div class="logo-title-align">
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <div class="shop-logo-container">
+                            <img [src]="shop.logo" alt="" class="shop-logo">
+                        </div>
+                        <div class="shop-title">
+                            <p class="sho-title-title" >{{shop.name}}</p>
+                            <div class="followers-align">
+                                <div class="followers">
+                                    <p>{{shopStats.productCount}}</p>
+                                    <p style="color:grey">posts</p> 
+                                </div>
+                                <div class="followers">
+                                    <p>{{shopStats.followerCount}}</p>
+                                    <p style="color:grey">followers</p> 
+                                </div>
+                            </div>
+                            <!-- <div class="followers-container-align">
+                                <div class="followers-container" *ngFor="let f of .lastFollowers">
+                                    <img [src]="f.profilePhoto" alt="" class="follower-img">
+                                </div>
+                                <div class="followers" style="display: flex; align-items: center; gap:5px; margin-left: 5px; color: grey; flex-wrap: wrap;">
+                                    <p style="max-width: 70px; overflow: hidden;">{{randomShop2.lastFollowers[0].userName}}</p>
+                                    <p>and more</p> 
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <button class="follow-button" [ngClass]="{'following':following}" (click)="followShop()">{{followString}} <i *ngIf="following" class="fas fa-check-double"></i> </button>
+                </div>
+            </div>
         </div>
-       <div class="photo-align align-3">
+    </div>
+    <div class="header-container">
+       <!-- <div class="photo-align align-3">
            <div *ngFor="let p of soldProducts; let index = index;" class="container" [ngClass]="{'hide-album':index==2}">
                <app-photo-album [products]="p" [PhotoCongif]="PhotoConfig" class="album" ></app-photo-album>
            </div>
-       </div>
-       <div class="photo-align align-4">
+       </div> -->
+       <!-- <div class="photo-align align-4">
            <div *ngFor="let p of soldProducts2; let index = index;" class="container" [ngClass]="{'hide-album': index==2}">
                <app-photo-album [products]="p" [PhotoCongif]="PhotoConfig" class="album" ></app-photo-album>
            </div>
-       </div>
+       </div> -->
     </div>
-   
-
     <div class="gallery">
-        <app-gallery ></app-gallery>
+        <app-gallery *ngIf="shopId!=0" [ShopId]="shopId"></app-gallery>
     </div>
-
 </div>
+
+<app-footer class="footer" *ngIf="footer" [footer]="footer"></app-footer>
 

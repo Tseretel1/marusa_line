@@ -10,7 +10,7 @@ import { GetPostsDto } from '../pages/gallery/gallery.component';
 })
 export class PostService {
   AppUrl= AppUrl;
-  private apiUrl = AppUrl.network;
+  private apiUrl = AppUrl.development;
   constructor(public http : HttpClient)
   {
     
@@ -59,9 +59,17 @@ export class PostService {
   getOrderById(orderId:number): Observable<any> {
     return this.http.get<any>(this.apiUrl+`Product/get-order-details?orderId=${orderId}`);
   }
-
   insertOrder(order:orderPostObj): Observable<any> {
     return this.http.post<any>(this.apiUrl+`Product/insert-order`,order);
+  }
+  getShopStats(shopId:number): Observable<any> {
+    return this.http.get<any>(this.apiUrl+`ControlPanel/get-shop-stats?shopId=${shopId}`);
+  }
+  getShopById(shopId:number): Observable<any> {
+    return this.http.get<any>(this.apiUrl+`ControlPanel/get-shop-by-id?shopId=${shopId}`);
+  }
+  followShop(userid:number,shopId:number): Observable<any> {
+    return this.http.post<any>(this.apiUrl+`Product/follow-shop?userId=${userid}&shopId=${shopId}`,{});
   }
 }
 export interface Photo {
@@ -87,7 +95,8 @@ export interface Post {
   postId?: number;        
   likeCount: number;  
   isLiked:boolean;  
-  quantity:number;    
+  quantity:number; 
+  orderNotAllowed:boolean;   
   photos: Photo[];
 }
 export interface ProductTypes{

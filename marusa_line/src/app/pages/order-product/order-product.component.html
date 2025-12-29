@@ -5,19 +5,7 @@
         <div class="component">
            <div class="header-grid">
                 <div class="card-information" *ngIf="postsLoaded">
-                    <div class="photo-align">
-                        <div class="photo-container" >
-                            <div *ngFor="let p of photosArray; let i = index" >
-                                <img [src]="p.photoUrl" *ngIf="i==0" alt="" class="photo">
-                            </div>
-                        </div>
-                        <div class="title-price-align">
-                            <p>
-                                {{posts.title}}
-                            </p>
-                        </div>
-                    </div>
-                <div class="user-information">
+                    <div class="user-information">
                         <!-- <div class="flex-columns">
                             <div class="form-group">
                                 <label for="">მომხმარებელი <i class="fas fa-check"></i></label>
@@ -34,9 +22,9 @@
                                     მობილური ნომერი 
                                     <p *ngIf="mobileNumber.length>8">✅</p>
                                     <i class="fas fa-close" *ngIf=" mobileNumber.length<9"></i>
-                                    <!-- <p style="opacity: 0.7; font-size: 12px;text-wrap: nowrap;">({{mobileNumber.length}})/30</p> -->
+                                    <!-- <p style="opacity: 0.7; font-size: 12px;text-wrap: nowrap;">({{mobileNumber.length}})/11</p> -->
                                 </div>
-                                <p style="opacity: 0.7; font-size: 12px;text-wrap: nowrap;">(დარწმუნდი რომ ნამდვილად სწორია)</p>
+                                <!-- <p style="opacity: 0.7; font-size: 12px;text-wrap: nowrap;">(დარწმუნდი რომ ნამდვილად სწორია)</p> -->
                             </label>
                             <div class="editable-fields">
                                 <input class="form-control" type="text" [disabled]="editFieldNum!=1" [(ngModel)]="mobileNumber" [ngClass]="{'invalid-inputs': mobileInvalid}" maxlength="30">
@@ -45,27 +33,33 @@
                                 <button class="edit confirm" (click)="acceptField(1)" *ngIf="editFieldNum==1"><i class="fas fa-check" style="color: white;"></i></button>
                             </div>
                         </div>
-                        <div class="form-group">
+                       <div class="product-details-align" style="align-items: center;">
+                            <div class="quantity-align" style="width: 100%; ">
+                                <div style="display: flex; ">
+                                    <p class="">
+                                        <b style="font-size: 18px;">მისამართი <i class="fas fa-map-marker-alt" ></i></b> 
+                                    </p>
+                                </div>
+                                <div class="" >
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <div class="quantity-button" [ngClass]="{'selected-address-type':!locationOrMap,'not-selected-address-type':locationOrMap}" (click)="toggleLocationOrMap(false)">ხელით ჩაწერა</div>
+                                    <div class="quantity-button" [ngClass]="{'selected-address-type':locationOrMap,'not-selected-address-type':!locationOrMap}" (click)="toggleLocationOrMap(true)">რუკაზე მონიშვნა</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" *ngIf="!locationOrMap">
                             <label for="" style="display: flex; gap: 4px; align-items: center; flex-wrap: wrap;">
                                 <div style="display: flex; align-items: center;">
-                                    დეტალური მისამართი 
-                                    <p *ngIf="address.length>9">✅</p>
-                                    <i class="fas fa-close" *ngIf="address.length<10"></i>
-                                    <!-- <p style="opacity: 0.7; font-size: 12px;text-wrap: nowrap;">({{address.length}})/100</p> -->
+                                    <p style="opacity: 0.7; font-size: 12px;text-wrap: nowrap;">{{address.length}}/100</p>
                                 </div>
                                 <p style="opacity: 0.7; font-size: 12px;text-wrap: nowrap;">(ქალაქი, ქუჩა, კორპუსი, სადარბაზო... )</p>
                             </label>
-                            <div class="editable-fields">
-                                <input class="form-control" type="text" [disabled]="editFieldNum!=2" [(ngModel)]="address" [ngClass]="{'invalid-inputs': addressInvalid}"  maxlength="100">
-                                <button class="edit" (click)="editField(2)" *ngIf="editFieldNum!=2"><i class="fas fa-edit"></i></button>
-                                <button class="edit close" (click)="closeField(2)" *ngIf="editFieldNum==2"><i class="fas fa-close"></i></button>
-                                <button class="edit confirm" (click)="acceptField(2)" *ngIf="editFieldNum==2"><i class="fas fa-check" style="color: white;"></i></button>
-                            </div>
+                              <div class="form-group">
+                                 <textarea [(ngModel)]="address"  [ngClass]="{'invalid-inputs': addressInvalid}" class="form-control"  maxlength="100" style="min-height: 100px;"></textarea>
+                              </div>  
                         </div>
-                    </div>
-                  
-                    <div class="user-information">
-                        <div class="map-align">
+                        <div class="map-align" *ngIf="locationOrMap">
                             <div class="map-modal">
                                 <!-- <div class="close-modal-align">
                                     <button class="close-button" (click)="hideMapModal()">X</button>
@@ -74,70 +68,55 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="photo-align user-information">
+                    <div class="user-information">
                         <div class="product-details-align">
-                            <p *ngIf="posts.quantity>0">✅მარაგშია: {{posts.quantity}}</p>
-                            <div class="quantity-align card-background">
-                                <p class="">რაოდენობა</p>
-                                <div class="quantity-button" (click)="minusQuantity()">-</div>
-                                <p>{{productQuantity}}</p>   
-                                <div class="quantity-button" (click)="plusQuantity()">+</div>
+                            <p class="quantity-align" style="flex-wrap:nowrap; display: flex; flex-direction: row;">მარაგშია: {{posts.quantity}} <b *ngIf="posts.quantity>0">✅</b> </p>
+                            <div class="quantity-align" >
+                                <div style="display: flex; align-items: center; gap: 6px;">
+                                    <p class="">რაოდენობა</p>
+                                    <div class="quantity-button" (click)="minusQuantity()">-</div>
+                                    <p>{{productQuantity}}</p>   
+                                    <div class="quantity-button" (click)="plusQuantity()">+</div>
+                                    <div style="display: flex; justify-content: center; width:100%;">
+                                        <div class="sum-button" style="width: 100%;">
+                                            <p>ჯამში </p>
+                                            <b style="display: flex; gap: 5px; font-size: 22px;"> {{productPrice}} <p>₾</p></b>
+                                        </div> 
+                                    </div>
+                                </div>
                             </div>
-                            <div class="delivery-align card-background">
+                            <div class="photo-align">
+                                <div class="product-count-x"> X{{productQuantity}}</div>
+                                <div class="photo-container" *ngIf="postsLoaded">
+                                    <app-photo-album [products]="posts" [PhotoCongif]="PhotoConfig" class="album"></app-photo-album>
+                                </div>
+                             </div>
+                            <!-- <div class="delivery-align card-background">
                                 <p class=""> მიწოდება </p>
                                 <select name="" class="form-control" id="" [(ngModel)]="delieveryChoise">
                                     <option value="1"  selected>კურიერი🚚</option>
-                                    <!-- <option value="2">ჩემით წავიღებ🚶‍♂️</option> -->
                                 </select>
                                 <p class=""> </p>
+                            </div> -->
+                            <div class="rules-align" >
+                                <div class="form-group">
+                                    <label for="" style="display: flex; gap: 20px;">დატოვე კომენტარი <p style="color: gray;">{{comment.length}}/300</p> </label>
+                                    <textarea [(ngModel)]="comment" class="form-control"  maxlength="300" style="min-height: 100px;"></textarea>
+                                </div>   
                             </div>
-                            <div class="price center-price" >
-                                <p>ჯამში </p>
-                                <b style="display: flex; gap: 5px;"> {{productPrice}} <p>₾</p></b>
-                            </div> 
                         </div>
-                    </div>
-
-                    <div class="user-information" >
-                        <div class="rules-align" >
-                        
-                            <div class="form-group">
-                                <label for="" style="display: flex; gap: 20px;">დატოვე კომენტარი <p style="color: gray;">{{comment.length}}/300</p> </label>
-                                <textarea [(ngModel)]="comment" class="form-control"  maxlength="300" style="min-height: 100px;"></textarea>
-                            </div>   
-                        </div>
-                         
-                    </div>
-
-                    <div class="user-information" *ngIf="posts.quantity<=0">
-                        <div class="rules-align" >
-                            <div class="title"><b>თქვენ უნდა იცოდეთ<i class="fas fa-file-alt"></i></b></div>
-                            <ul class="ul">
-                                <li class="li">
-                                   პროდუქტი მარაგში არაა, ამიტომ მის დამზადებას გარკვეული დრო დასჭირდება, დეტალების დასაზუსტებლად მოგვწერეთ 
-                                   <div class="socials-align">
-                                    <a class="socials instagram" href="https://www.instagram.com/marusa__handmade/" target="_blank"> Instagram </a> 
-                                    ან 
-                                    <a class="socials facebook" href="https://www.facebook.com/profile.php?id=61577870171515" target="_blank">Facebook</a>-ზე. ✅</div>
-                                </li>
-                                <!-- <li>2. თვითოეული ნივთი არის ხელნაკეთი, 
-                                შესაბამისად 100%-ით იდენტობა ფოტოზე ასახულ ნივთთან შეუძლებელია. ✅
-                                 </li> -->
-                            </ul>
-                        </div> 
-                    </div>
-
-                     <div class="user-information" >
                         <div class="rules-align" >
                             <ul>
                                 <li>
-                                    თანხის გადახდა ხდება შეკვეთის შემდგომ.✅
+                                    თანხის გადახდა ხდება შეკვეთის შემდეგ.✅
                                 </li>
                             </ul>
                         </div> 
                     </div>
-                    <button class="order-button next-button" (click)="insertOrder()">შეკვეთა</button>
+
+                    <div class="user-information" >
+                        <button class="order-button next-button" (click)="insertOrder()">შეკვეთა</button>
+                    </div>
              </div>
         </div>
     </div>

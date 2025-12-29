@@ -1,4 +1,4 @@
-  <div class="container">
+  <div class="container" *ngIf="footer">
     <header class="header">
         <div class="logo-align" >
             <p class="sub-title">გამოგვყევი სოც-ქსელებში!</p>
@@ -6,32 +6,32 @@
     </header>
     <div class="midlle">
         <div class="link-align">
-            <a class="link-button instagram" href="https://www.instagram.com/marusa__handmade/" target="_blank" >
-               <div style="display: flex; align-items: center;">
-                 <img src="assets/icons/instagram.svg" alt="">
-                  Instagram
-               </div>
-               <div class="main-logo">
-                <img src="assets/img/profile.jpg" alt="" class="logo">
-               </div>
+            <a class="link-button instagram" *ngIf="footer.instagram" [href]="footer.instagram" target="_blank">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div class="main-logo">
+                    <img [src]="footer.shopPhoto" alt="" class="shop-img">
+                    </div>
+                    {{footer.shopTitle}}
+                </div>
+                <img src="assets/icons/instagram.svg" alt="">
             </a>
-            <a class="link-button facebook" href="https://www.facebook.com/profile.php?id=61577870171515" target="_blank">
-                <div style="display: flex; align-items: center;">
-                      <img src="assets/icons/facebook.svg" alt="">
-                    Facebook
-               </div>
-               <div class="main-logo">
-                <img src="assets/img/profile.jpg" alt="" class="logo">
-               </div>
+            <a class="link-button facebook" *ngIf="footer.facebook"  [href]="footer.facebook" target="_blank">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div class="main-logo">
+                    <img [src]="footer.shopPhoto" alt="" class="shop-img">
+                    </div>
+                    {{footer.shopTitle}}
+                </div>
+                <img src="assets/icons/facebook.svg" alt="">
             </a>
-            <a class="link-button tiktok" href="https://www.tiktok.com/@ts3r00" target="_blank">
-                <div style="display: flex; align-items: center;">
-                    <img src="assets/icons/tiktok.svg" alt="" >
-                    Tiktok
-               </div>
-               <div class="main-logo">
-                <img src="assets/img/profile.jpg" alt="" class="logo">
-               </div>
+            <a class="link-button tiktok" *ngIf="footer.tiktok"  [href]="footer.tiktok" target="_blank">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div class="main-logo">
+                    <img [src]="footer.shopPhoto" alt="" class="shop-img">
+                    </div>
+                    {{footer.shopTitle}}
+                </div>
+                <img src="assets/icons/tiktok.svg" alt="">
             </a>
         </div>
     </div>

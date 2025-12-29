@@ -1,0 +1,103 @@
+<div class="center-component">
+    <div class="component-align">
+        <div class="header">
+            <button class="scroll-button  left-scroll" (click)="scrollLeft(container)"> <i class="fas fa-chevron-left chevron"></i> </button>
+                <div class="top-align scrollable-top" #container>
+                    <ng-container  *ngFor="let i of shopList;">
+                        <div class="shop-card">
+                            <!-- <div class="shop-card-top">Top <i class="fas fa-star"></i> </div> -->
+                            <div class="shop-header" [routerLink]="AppRoutes.shop+i.id">
+                                <div class="shop-title-container">
+                                    <div class="logo-title-align">
+                                        <div class="shop-logo-container">
+                                            <img [src]="i.logo" alt="" class="shop-logo">
+                                        </div>
+                                        <div class="shop-title">
+                                            <p class="sho-title-title">marusa_handmade</p>
+                                            <div class="followers-align">
+                                                <div class="followers">
+                                                    <p>{{i.postCount}}</p>
+                                                    <p style="color:grey">posts</p> 
+                                                </div>
+                                                <div class="followers">
+                                                    <p>{{i.followerCount}}</p>
+                                                    <p style="color:grey">followers</p> 
+                                                </div>
+                                            </div>
+                                            <div class="followers-container-align">
+                                                <div class="followers-container" *ngFor="let f of i.lastFollowers">
+                                                    <img [src]="f.profilePhoto" alt="" class="follower-img">
+                                                </div>
+                                                <div class="followers" style="display: flex; align-items: center; gap:5px; margin-left: 5px; color: grey; flex-wrap: wrap;">
+                                                    <p>Followed by</p> 
+                                                    <p style="max-width: 70px; overflow: hidden;">{{i.lastFollowers[0].userName}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="shop-scroll-align">
+                            <div class="shop-products-align" #container>
+                                <ng-container  *ngFor="let s of i.products;let index = index;" >
+                                    <div class="shop-product"  [routerLink]="AppRoutes.shop + i.id" >
+
+                                       <app-photo-album [products]="s"[PhotoCongif]="PhotoConfig" class="album"></app-photo-album>
+                                    </div>
+                                </ng-container>
+                                <!-- <div class="hover-div-align" [routerLink]="AppRoutes.shop + i.id" >
+                                    <ng-container *ngFor="let d of i.products;let index = index;">
+                                        <div class="hover-div" *ngIf="index%2===0"  (mouseenter)="onphotoHover(index,i.id)">
+                                            <i class="far fa-circle" [ngClass]="{'fas ':index==scrollIndex}"></i>
+                                        </div>
+                                    </ng-container>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <button class="scroll-button right-scroll" (click)="scrollRight(container)"> <i class="fas fa-chevron-right chevron"></i> </button>
+        </div>
+        <div class="categories-align">
+            <div class="categorie" [ngClass]="{'selected-categorie':selectedCategorie ==0}"(click)="selectCategorie(0)">
+                ყველა
+            </div>    
+            <div class="categorie" *ngFor="let c of catergorieList" [ngClass]="{'selected-categorie':selectedCategorie ==c.id}" (click)="selectCategorie(c.id)">
+                {{c.categoryName}}
+                <img class="categorie-img" [src]="c.categoryPhoto" alt="">
+            </div>    
+        </div>
+        <div class="top-align other-shops">
+            <div class="shop-card" *ngFor="let i of shopList">
+                <div class="shop-header"  [routerLink]="AppRoutes.shop+i.id" >
+                    <div class="shop-title-container">
+                        <div class="logo-title-align">
+                            <div class="shop-logo-container">
+                                <img [src]="i.logo" alt="" class="shop-logo">
+                            </div>
+                            <div class="shop-title">
+                                <p>marusa_handmade</p>
+                                <div class="followers-align">
+                                    <div class="followers">
+                                        <p>{{i.followerCount}}</p>
+                                        <p style="color:grey">followers</p> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shop-scroll-align small-shop-scroll-align">
+                    <div class="shop-products-align small-shop-product-align" #container>
+                        <ng-container  *ngFor="let s of i.products;let index = index;">
+                            <div class="shop-product small-shop-product"  [routerLink]="AppRoutes.shop+i.id">
+                                <app-photo-album [products]="s"[PhotoCongif]="SmallConfig" class="album"></app-photo-album>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

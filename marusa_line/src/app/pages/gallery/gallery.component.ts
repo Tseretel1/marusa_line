@@ -1,5 +1,5 @@
 import { CommonModule, NgForOf, PathLocationStrategy } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild, } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild, } from '@angular/core';
 import AOS from 'aos';
 import { Photo, Post, PostService, ProductTypes } from '../../Repositories/post.service';
 import { PhotoAlbumComponent, PhotoConfig } from '../../shared/components/photo-album/photo-album.component';
@@ -7,7 +7,7 @@ import { DiscountMarkComponent } from '../../shared/components/discount-mark/dis
 
 @Component({
   selector: 'app-gallery',
-  imports: [CommonModule, PhotoAlbumComponent,DiscountMarkComponent],
+  imports: [CommonModule, PhotoAlbumComponent],
   templateUrl: './gallery.component.html',
   styleUrl: './gallery.component.scss'
 })
@@ -20,12 +20,14 @@ export class GalleryComponent implements OnInit {
     navigationAvailable:true,
     likeCountvisible :false,
   }
-
+  
+  @Input() ShopId!:number;
   getPosts:GetPostsDto={
     pageNumber : 1,
     pageSize: 10,
     userId: 0,
     productTypeId :null,
+    shopId : 0
   }
   constructor(private postService:PostService){
     this.getProductTypes();
@@ -33,8 +35,7 @@ export class GalleryComponent implements OnInit {
   ngOnInit(): void {
     this.getAllPosts();
   }
- 
-    moveProductTypeTOFirst(){
+  moveProductTypeTOFirst(){
     const TypeId = localStorage.getItem('TypeId');
     if(TypeId){
       if(TypeId!='null'){
@@ -71,6 +72,7 @@ export class GalleryComponent implements OnInit {
       this.userId = this.user.Id
       this.getPosts.userId = this.user.Id;
     }
+    
     this.applyPageAndType();
     this.postService.getPosts(this.getPosts).subscribe(
       (resp)=>{
@@ -82,6 +84,9 @@ export class GalleryComponent implements OnInit {
     )
   }
   applyPageAndType(){
+    if(this.ShopId){
+      this.getPosts.shopId = this.ShopId;
+    }
     const PageNum = localStorage.getItem('PageNum');
     const TypeId = localStorage.getItem('TypeId');
     if(PageNum){
@@ -175,6 +180,18 @@ export class GalleryComponent implements OnInit {
     this.scrollToStartMethod();
   }
   totalPages:number =0;
+
+  filtersExpanded:boolean = false;
+  expandFilters(){
+    if(!this.filtersExpanded){
+      this.filtersExpanded = true;
+      return;
+    }
+    else{
+      this.filtersExpanded = false;
+      return;
+    }
+  }
 }
 
 export interface GetPostsDto{
@@ -182,4 +199,5 @@ export interface GetPostsDto{
   pageSize:number;
   userId:number;
   productTypeId:number|null;
+  shopId:number;
 }
