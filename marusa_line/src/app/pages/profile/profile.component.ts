@@ -6,6 +6,7 @@ import { orderStatuses, Post, PostService } from '../../Repositories/post.servic
 import { PhotoAlbumComponent, PhotoConfig } from '../../shared/components/photo-album/photo-album.component';
 import { CommonModule, DatePipe } from '@angular/common';
 import Swal from 'sweetalert2';
+import { ReloadService } from '../../shared/services/ReloadService';
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +16,7 @@ import Swal from 'sweetalert2';
 })
 export class ProfileComponent implements OnInit{
   AppRoutes=AppRoutes;
-  constructor(private authService:AuthorizationService,private postService:PostService,private router:Router){
+  constructor(private authService:AuthorizationService,private postService:PostService,private router:Router,private reloadService:ReloadService){
     const user = localStorage.getItem('user');
     if(user){
       this.user =JSON.parse(user);

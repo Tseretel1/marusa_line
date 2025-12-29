@@ -81,7 +81,8 @@ export class HomeComponent {
           tiktok: this.shop.titkok,
           shopPhoto:this.shop.logo,
           shopTitle:this.shop.name,
-        }       
+        }   
+        this.getUsers();    
       },
     });
   }
@@ -116,10 +117,25 @@ export class HomeComponent {
       }
     )
   }
+  getuserFitler:GetUserFilteredDto={
+    shopId:0,
+    userId: null,
+    isBlocked :null,
+    pageNumber:1,
+    pageSize:3,
+  }
+
+  users:GetusersDto[]= [];
+  getUsers(){
+    this.getuserFitler.shopId = this.shopId;
+    this.postService.GetFollowersList(this.getuserFitler).subscribe((resp)=>{
+      this.users = resp;
+      console.log(this.getuserFitler)
+    })
+  }
 
   
-
-
+  
   PhotoConfig:PhotoConfig={
     likeVisible : true,
     priceVisible :true,
@@ -131,6 +147,26 @@ export class HomeComponent {
 
 
 
+export interface GetUserFilteredDto {
+  userId: number|null;      
+  isBlocked: boolean|null; 
+  pageNumber: number;   
+  pageSize: number;
+  shopId:number;     
+}
+export interface GetusersDto {
+  id: number;
+  email: string;
+  name: string;
+  profilePhoto: string;
+  location: string;
+  phoneNumber: string;
+  role: string;
+  totalCount:number;
+  paidOrdersCount: number,
+  unPaidOrdersCount: number,
+  isBlocked: boolean,
+}
 
 export interface ShopStats{
   followerCount:string;

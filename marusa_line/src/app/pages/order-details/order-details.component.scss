@@ -21,7 +21,7 @@
         position: relative;
         padding:20px;
         border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.821);
+        background-color: rgba(0, 0, 0, 0.35);
         gap: 10px;
         border:1px solid rgba(128, 128, 128, 0.267);
         .component{
@@ -307,7 +307,6 @@
     gap: 25px;
     border-radius: 10px;
     animation:fadeIn 0.5s;
-    background-color: rgba(0, 0, 0, 0.277);
     border:1px solid rgba(128, 128, 128, 0.267);
     #map{
         width: 100%;

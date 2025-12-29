@@ -4,6 +4,7 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthorizationService } from '../../pages/authorization/authorization.service';
 import { Subscription } from 'rxjs';
+import { ReloadService } from '../../shared/services/ReloadService';
 @Component({
   selector: 'app-header',
   imports: [RouterLink, RouterLinkActive, CommonModule],
@@ -12,10 +13,11 @@ import { Subscription } from 'rxjs';
 })
 export class HeaderComponent implements OnInit{
 
-  constructor(private authService:AuthorizationService, private route :Router){
+  constructor(private authService:AuthorizationService, private route :Router,private reloadService:ReloadService){
 
   }
   AuthSub!:Subscription;
+  ReloadSub!:Subscription;
   Authorised:boolean = false;
   ngOnInit(): void {
     this.authService.isUserAuthorised();
@@ -32,6 +34,11 @@ export class HeaderComponent implements OnInit{
 
       }
     );
+    this.ReloadSub= this.reloadService.alert$.subscribe(
+      (e)=>{
+        this.getUser();
+      }
+    )
   }
 
   user:any=null;
@@ -81,4 +88,6 @@ export class HeaderComponent implements OnInit{
     }
     this.scrollTotop();
   }
+
+  
 }

@@ -17,7 +17,6 @@
     <div class="discount-price-mobile" *ngIf="PhotoCongif.priceVisible" >
         <b [ngClass]="{'discounted-price': products.discountedPrice>0}" >{{products.price}}₾</b>
         <b *ngIf="products.discountedPrice>0">{{products.discountedPrice}}₾</b>
-        <b *ngIf="products.discountedPrice<=0 || products.discountedPrice==null">{{products.price}}₾</b>
     </div>
 
     <!-- <div class="discount-price-mobile" *ngIf="PhotoCongif.priceVisible" >
@@ -50,7 +49,6 @@
     <div class="discount-price-mobile" *ngIf="PhotoCongif.priceVisible" >
         <b [ngClass]="{'discounted-price': products.discountedPrice>0}" >{{products.price}}₾</b>
         <b *ngIf="products.discountedPrice>0">{{products.discountedPrice}}₾</b>
-        <b *ngIf="products.discountedPrice<=0 || products.discountedPrice==null">{{products.price}}₾</b>
     </div>
 
     <!-- <div class="discount-price-mobile" *ngIf="PhotoCongif.priceVisible" >

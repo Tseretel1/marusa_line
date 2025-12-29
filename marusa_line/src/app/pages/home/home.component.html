@@ -4,7 +4,7 @@
         <div class="shop-header">
             <div class="shop-title-container">
                 <div class="logo-title-align">
-                    <div style="display: flex; align-items: center; gap: 5px;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
                         <div class="shop-logo-container">
                             <img [src]="shop.logo" alt="" class="shop-logo">
                         </div>
@@ -20,18 +20,18 @@
                                     <p style="color:grey">followers</p> 
                                 </div>
                             </div>
-                            <!-- <div class="followers-container-align">
-                                <div class="followers-container" *ngFor="let f of .lastFollowers">
-                                    <img [src]="f.profilePhoto" alt="" class="follower-img">
+                            <div class="followers-container-align">
+                                <div class="followers-container" *ngFor="let u of users">
+                                    <img [src]="u.profilePhoto" alt="" class="follower-img">
                                 </div>
-                                <div class="followers" style="display: flex; align-items: center; gap:5px; margin-left: 5px; color: grey; flex-wrap: wrap;">
-                                    <p style="max-width: 70px; overflow: hidden;">{{randomShop2.lastFollowers[0].userName}}</p>
+                                <div class="followers" *ngIf="users.length>0" style="display: flex; align-items: center; gap:5px; margin-left: 5px; color: grey; flex-wrap: wrap;">
+                                    <p style="max-width: 70px; overflow: hidden;">{{users[0].name}}</p>
                                     <p>and more</p> 
                                 </div>
-                            </div> -->
+                            </div>
+                            <button class="follow-button" [ngClass]="{'following':following}" (click)="followShop()">{{followString}} <i *ngIf="following" class="fas fa-check-double"></i> </button>
                         </div>
                     </div>
-                    <button class="follow-button" [ngClass]="{'following':following}" (click)="followShop()">{{followString}} <i *ngIf="following" class="fas fa-check-double"></i> </button>
                 </div>
             </div>
         </div>

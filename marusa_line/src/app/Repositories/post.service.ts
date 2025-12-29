@@ -5,12 +5,13 @@ import { OrderProduct } from '../pages/profile/profile.component';
 import { AppUrl } from '../shared/Url/Appurl';
 import { orderPostObj } from '../pages/order-product/order-product.component';
 import { GetPostsDto } from '../pages/gallery/gallery.component';
+import { GetUserFilteredDto, GetusersDto } from '../pages/home/home.component';
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
   AppUrl= AppUrl;
-  private apiUrl = AppUrl.development;
+  private apiUrl = AppUrl.network;
   constructor(public http : HttpClient)
   {
     
@@ -70,6 +71,9 @@ export class PostService {
   }
   followShop(userid:number,shopId:number): Observable<any> {
     return this.http.post<any>(this.apiUrl+`Product/follow-shop?userId=${userid}&shopId=${shopId}`,{});
+  }
+  GetFollowersList(filter:GetUserFilteredDto): Observable<GetusersDto[]> {
+    return this.http.post<GetusersDto[]>(this.apiUrl+`ControlPanel/get-shop-followers`,filter);
   }
 }
 export interface Photo {
