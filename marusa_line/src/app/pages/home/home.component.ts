@@ -73,7 +73,14 @@ export class HomeComponent {
   loadShop(shopId: number): void {
     this.postService.getShopById(shopId).subscribe({
       next: (data: Shop) => {
-        this.shop = { ...data };        
+        this.shop = { ...data }; 
+        this.footer={
+          instagram: this.shop.instagram,
+          facebook: this.shop.facebook,
+          tiktok: this.shop.titkok,
+          shopPhoto:this.shop.logo,
+          shopTitle:this.shop.name,
+        }       
       },
     });
   }

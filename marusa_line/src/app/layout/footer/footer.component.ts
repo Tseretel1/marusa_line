@@ -19,9 +19,9 @@ export class FooterComponent  implements OnInit{
 // https://www.tiktok.com/@ts3r00
 
 export interface Footer{
-  instagram:string;
-  facebook:string;
-  tiktok:string;
-  shopPhoto:string;
-  shopTitle:string;
+  instagram:string|null;
+  facebook:string|null;
+  tiktok:string|null;
+  shopPhoto:string|null;
+  shopTitle:string|null;
 }

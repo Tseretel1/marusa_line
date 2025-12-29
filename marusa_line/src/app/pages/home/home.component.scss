@@ -55,11 +55,18 @@
           display: flex;
           flex-direction: column;
           gap: 10px;
-            .logo-title-align{
-                display: flex;
-                gap: 10px;
-                flex-direction: column;
-                .shop-logo-container{
+          .logo-title-align{
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            .sho-title-title{
+              overflow-x: scroll;
+              max-width: 200px;
+            }
+            .sho-title-title::-webkit-scrollbar{
+              display: none;
+            }
+            .shop-logo-container{
                     width: 100px;
                     height: 100px;
                     background-color: black;
