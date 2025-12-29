@@ -77,6 +77,12 @@
                                     <div class="quantity-button" (click)="minusQuantity()">-</div>
                                     <p>{{productQuantity}}</p>   
                                     <div class="quantity-button" (click)="plusQuantity()">+</div>
+                                    <div style="display: flex; justify-content: center; width:100%;">
+                                        <div class="sum-button" style="width: 100%;">
+                                            <p>ჯამში </p>
+                                            <b style="display: flex; gap: 5px; font-size: 22px;"> {{productPrice}} <p>₾</p></b>
+                                        </div> 
+                                    </div>
                                 </div>
                             </div>
                             <div class="photo-align">
@@ -92,12 +98,6 @@
                                 </select>
                                 <p class=""> </p>
                             </div> -->
-                            <div style="display: flex; justify-content: center; width:100%;">
-                                <div class="quantity-align" style="width: 100%;">
-                                    <p>ჯამში </p>
-                                    <b style="display: flex; gap: 5px; font-size: 22px;"> {{productPrice}} <p>₾</p></b>
-                                </div> 
-                            </div>
                             <div class="rules-align" >
                                 <div class="form-group">
                                     <label for="" style="display: flex; gap: 20px;">დატოვე კომენტარი <p style="color: gray;">{{comment.length}}/300</p> </label>

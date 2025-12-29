@@ -32,7 +32,10 @@ export class HomeComponent {
     subscription: 0,
     instagram: null,
     facebook: null,
-    titkok: null
+    titkok: null,
+    bog: null,
+    tbc: null,
+    receiver: null,
   };
 
   shopStats: ShopStats={
@@ -128,4 +131,7 @@ export interface Shop {
   instagram: string | null;
   facebook: string | null;
   titkok: string | null;
+  bog: string|null,
+  tbc: string|null,
+  receiver: string|null,
 }

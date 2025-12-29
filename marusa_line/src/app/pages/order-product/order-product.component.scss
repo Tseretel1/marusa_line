@@ -455,7 +455,12 @@
         }
     }
 }
-
+.sum-button{
+    background-color:#667eea;
+    padding: 2px 10px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
 textarea::-webkit-scrollbar{
     display: none;
     resize: vertical;

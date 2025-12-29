@@ -114,7 +114,7 @@
                     <div class="logo-container">
                       <img src="assets/img/bog.png" class="logo" alt="" />
                     </div>
-                    <p>{{bog.accountNumber}}</p>
+                    <p>{{shop.bog}}</p>
                     <button class="copy-button">
                       <span class="copied" *ngIf="copiedNumber ==1">Copied ✅</span>
                       კოპირება <i class="fas fa-copy" style="color: white"></i>
@@ -124,15 +124,15 @@
                     <div class="logo-container">
                       <img src="assets/img/tbc.jpg" class="logo" alt="" />
                     </div>
-                    <p>{{tbc.accountNumber}}</p>
+                    <p>{{shop.tbc}}</p>
                     <button class="copy-button" >
                       <span class="copied" *ngIf="copiedNumber ==2">Copied ✅</span>
                       კოპირება <i class="fas fa-copy" style="color: white"></i>
                     </button>
                   </div>
-                  <p *ngIf="bog.recieverName">
+                  <p *ngIf="shop.receiver">
                     მიმღები :
-                    <b>{{bog.recieverName}}</b>
+                    <b>{{shop.receiver}}</b>
                   </p>
                    
                 </div>
@@ -151,21 +151,21 @@
                 <div class="rules" style="display: flex; flex-direction: column; gap: 30px;">
                   გადახდის შემდეგ მოგვწერეთ Instagram ან facebook-ზე ✅
                   <div class="link-align">
-                    <a class="link-button instagram" [href]="footer.instagram" target="_blank" >
+                    <a class="link-button instagram" [href]="shop.instagram" target="_blank" >
                       <div style="display: flex; align-items: center; gap: 10px;">
                         <div class="main-logo">
-                          <img [src]="footer.shopPhoto" alt="" class="shop-img">
+                          <img [src]="shop.logo" alt="" class="shop-img">
                         </div>
-                        {{footer.shopTitle}}
+                        {{shop.name}}
                       </div>
                       <img src="assets/icons/instagram.svg" alt="">
                     </a>
-                    <a class="link-button facebook" [href]="footer.facebook" target="_blank">
+                    <a class="link-button facebook" [href]="shop.facebook" target="_blank">
                         <div style="display: flex; align-items: center; gap: 10px;">
                           <div class="main-logo">
-                            <img [src]="footer.shopPhoto" alt="" class="shop-img">
+                            <img [src]="shop.logo" alt="" class="shop-img">
                           </div>
-                          {{footer.shopTitle}}
+                          {{shop.name}}
                         </div>
                         <img src="assets/icons/facebook.svg" alt="">
                     </a>
