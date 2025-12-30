@@ -30,7 +30,8 @@ export class GalleryComponent implements OnInit {
     shopId : 0
   }
   constructor(private postService:PostService){
-    this.getProductTypes();
+    const shopId =  localStorage.getItem('shopId');
+    this.getProductTypes(Number(shopId));
   }
   ngOnInit(): void {
     this.getAllPosts();
@@ -49,8 +50,8 @@ export class GalleryComponent implements OnInit {
     }
   }
   productTypesList :ProductTypes[]= [];
-  getProductTypes(){
-    this.postService.getProductTypes().subscribe(
+  getProductTypes(num:number){
+    this.postService.getProductTypes(num).subscribe(
       (resp)=>{
         this.productTypesList = resp;
         this.moveProductTypeTOFirst();

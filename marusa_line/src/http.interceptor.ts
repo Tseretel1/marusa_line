@@ -31,6 +31,4 @@ export const httpInterceptor: HttpInterceptorFn = (request, next) => {
       });
     })
   );
-  function redirectToLogin(): void {
-  }
 };

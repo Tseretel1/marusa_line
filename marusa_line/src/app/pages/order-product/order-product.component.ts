@@ -320,16 +320,18 @@ export class OrderProductComponent implements OnInit{
       else{
         address = this.address;
       }
-      this.orderObj= {
-        userId:this.userId,
-        productId : this.productId,
-        productQuantity : this.productQuantity,
-        deliveryType : this.deliveryString, 
-        comment :this.comment,
-        finalPrice : this.productPrice,
-        lng:lng,
-        lat:lat,
-        address:address,
+      const shopId = localStorage.getItem('shopId') 
+        this.orderObj= {
+          userId:this.userId,
+          productId : this.productId,
+          productQuantity : this.productQuantity,
+          deliveryType : this.deliveryString, 
+          comment :this.comment,
+          finalPrice : this.productPrice,
+          lng:lng,
+          lat:lat,
+          address:address,
+          shopId : Number(shopId),
       }
       if(!this.locationOrMap){
         this.insertLocation();
@@ -381,6 +383,7 @@ export class OrderProductComponent implements OnInit{
 }
 
 export interface orderPostObj{
+  shopId:number;
   userId:number;
   productId:number;
   productQuantity:number;
