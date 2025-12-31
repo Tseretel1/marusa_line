@@ -38,8 +38,8 @@ export class PostService {
   getAllPhotos(): Observable<Photo[]> {
     return this.http.get<Photo[]>(this.apiUrl+'Product/get-all-photos');
   }
-  getProductTypes(): Observable<ProductTypes[]> {
-    return this.http.get<ProductTypes[]>(this.apiUrl+'Product/get-product-types');
+  getProductTypes(shopId:number): Observable<ProductTypes[]> {
+    return this.http.get<ProductTypes[]>(this.apiUrl+`Product/get-product-types?shopid=${shopId}`);
   }
   getOrderStatuses(): Observable<orderStatuses[]> {
     return this.http.get<orderStatuses[]>(this.apiUrl+'Product/get-order-statuses');
@@ -64,10 +64,10 @@ export class PostService {
     return this.http.post<any>(this.apiUrl+`Product/insert-order`,order);
   }
   getShopStats(shopId:number): Observable<any> {
-    return this.http.get<any>(this.apiUrl+`ControlPanel/get-shop-stats?shopId=${shopId}`);
+    return this.http.get<any>(this.apiUrl+`Product/get-shop-stats?shopId=${shopId}`);
   }
   getShopById(shopId:number): Observable<any> {
-    return this.http.get<any>(this.apiUrl+`ControlPanel/get-shop-by-id?shopId=${shopId}`);
+    return this.http.get<any>(this.apiUrl+`Product/get-shop-by-id?shopId=${shopId}`);
   }
   followShop(userid:number,shopId:number): Observable<any> {
     return this.http.post<any>(this.apiUrl+`Product/follow-shop?userId=${userid}&shopId=${shopId}`,{});
