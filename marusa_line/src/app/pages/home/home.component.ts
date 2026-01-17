@@ -11,6 +11,7 @@ import { escapeRegExp } from '@angular/compiler';
 import { Footer, FooterComponent } from '../../layout/footer/footer.component';
 import { Followers, ShopCard } from '../main/main.component';
 import { AuthorizationService } from '../authorization/authorization.service';
+import { ReloadService } from '../../shared/services/ReloadService';
 
 
 
@@ -49,7 +50,7 @@ export class HomeComponent {
   user:any = null;
   userId:number = 0;
   shopId:number=0;
-  constructor(private postService:PostService,private route: ActivatedRoute, private authService:AuthorizationService){
+  constructor(private postService:PostService,private route: ActivatedRoute, private authService:AuthorizationService,private reloadService:ReloadService){
     const user = localStorage.getItem('user');
     if(user){
       this.user =JSON.parse(user);
@@ -67,6 +68,7 @@ export class HomeComponent {
       this.shopId = Number(shopId);
       this.loadShop(this.shopId);
       this.getShopStats(this.shopId);
+      this.reloadService.reload();
     }
   }
   footer!: Footer;

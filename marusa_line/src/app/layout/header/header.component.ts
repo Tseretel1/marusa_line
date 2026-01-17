@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { AuthorizationService } from '../../pages/authorization/authorization.service';
 import { Subscription } from 'rxjs';
 import { ReloadService } from '../../shared/services/ReloadService';
+import { PostService } from '../../Repositories/post.service';
+import { Shop } from '../../pages/home/home.component';
 @Component({
   selector: 'app-header',
   imports: [RouterLink, RouterLinkActive, CommonModule],
@@ -13,7 +15,7 @@ import { ReloadService } from '../../shared/services/ReloadService';
 })
 export class HeaderComponent implements OnInit{
 
-  constructor(private authService:AuthorizationService, private route :Router,private reloadService:ReloadService){
+  constructor(private authService:AuthorizationService, private route :Router,private reloadService:ReloadService,private postService:PostService){
 
   }
   AuthSub!:Subscription;
@@ -34,9 +36,19 @@ export class HeaderComponent implements OnInit{
 
       }
     );
+    const shopId = localStorage.getItem('shopId');
+    if(shopId){
+      localStorage.setItem('shopId',shopId);
+      this.loadShop(Number(shopId));
+    }
     this.ReloadSub= this.reloadService.alert$.subscribe(
       (e)=>{
         this.getUser();
+          const shopId = localStorage.getItem('shopId');
+          if(shopId){
+            localStorage.setItem('shopId',shopId);
+            this.loadShop(Number(shopId));
+          }
       }
     )
   }
@@ -88,6 +100,27 @@ export class HeaderComponent implements OnInit{
     }
     this.scrollTotop();
   }
+  loadShop(shopId: number): void {
+    this.postService.getShopById(shopId).subscribe({
+      next: (data: Shop) => {
+        this.shop = { ...data }; 
+      },
+    });
+  }
 
-  
+
+  shop: Shop = {
+    id: 0,
+    name: '',
+    logo: null,
+    location: null,
+    gmail: '',
+    subscription: 0,
+    instagram: null,
+    facebook: null,
+    titkok: null,
+    bog: null,
+    tbc: null,
+    receiver: null,
+  };
 }

@@ -106,11 +106,11 @@
               <div class="rulessss">
                 <div style="display: flex; flex-direction: column; gap: 10px; ">
                   <div class="rules">
-                    <p class="to-pay-text">
-                       გადარიცხე თანხა შენთვის სასურველ ანგარიშზე
+                    <p style="color: orange;" class="to-pay-text">
+                      <b style="color: orange;">1.</b> გადარიცხე თანხა ანგარიშზე
                     </p>
                   </div>
-                  <div class="rules-text-align"  (click)="copyToClipboard('GE18BG0000000607735653',1)">
+                  <div *ngIf="shop.bog" class="rules-text-align"  (click)="copyToClipboard('GE18BG0000000607735653',1)">
                     <div class="logo-container">
                       <img src="assets/img/bog.png" class="logo" alt="" />
                     </div>
@@ -120,7 +120,7 @@
                       კოპირება <i class="fas fa-copy" style="color: white"></i>
                     </button>
                   </div>
-                  <div class="rules-text-align" (click)="copyToClipboard('GE61TB7903545064300036',2)">
+                  <div *ngIf="shop.tbc" class="rules-text-align" (click)="copyToClipboard('GE61TB7903545064300036',2)">
                     <div class="logo-container">
                       <img src="assets/img/tbc.jpg" class="logo" alt="" />
                     </div>
