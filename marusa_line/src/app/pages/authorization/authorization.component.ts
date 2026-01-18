@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AppRoutes } from '../../shared/AppRoutes/AppRoutes';
 import Swal from 'sweetalert2';
 import { Token } from '@angular/compiler';
+import { ReloadService } from '../../shared/services/ReloadService';
 @Component({
   selector: 'app-authorization',
   imports: [CommonModule,ReactiveFormsModule],
@@ -17,7 +18,7 @@ export class AuthorizationComponent implements OnInit{
   AppUrl = AppUrl ;
   loginForm!:FormGroup
   user:any = null;
-  constructor(private authService:AuthorizationService,private fb: FormBuilder,private Router:Router){
+  constructor(private authService:AuthorizationService,private fb: FormBuilder,private Router:Router,private reloadService:ReloadService){
     this.loginForm = this.fb.group({
       name: ['', Validators.required],
       lastname: ['', Validators.required],
@@ -70,7 +71,7 @@ export class AuthorizationComponent implements OnInit{
     localStorage.setItem('user', JSON.stringify(user));
     localStorage.setItem('token', token);
     this.authService.userAuthorized();
-
+    this.reloadService.reload();
     const getUser  = localStorage.getItem('user');
     if(getUser){
       this.user =JSON.parse(getUser);
@@ -95,6 +96,7 @@ export class AuthorizationComponent implements OnInit{
     localStorage.setItem('user', JSON.stringify(user));
     localStorage.setItem('token', token);
     this.authService.userAuthorized();
+    this.reloadService.reload();
 
     const getUser  = localStorage.getItem('user');
     if(getUser){

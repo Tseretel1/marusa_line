@@ -10,7 +10,7 @@ import L from 'leaflet';
 import { Lnglat } from '../order-product/map/map.component';
 import { timeout } from 'rxjs';
 import { Footer } from '../../layout/footer/footer.component';
-import { Shop } from '../home/home.component';
+import { Shop, ShopDto } from '../home/home.component';
 
 @Component({
   selector: 'app-order-details',
@@ -94,11 +94,12 @@ export class OrderDetailsComponent implements OnInit{
       
   loadShop(shopId: number): void {
     this.postService.getShopById(shopId).subscribe({
-      next: (data: Shop) => {
-        this.shop = { ...data };        
+      next: (data: ShopDto) => {
+        this.shop = { ...data.shop };        
       },
     });
   }
+  
   ngOnInit(): void {
     AOS.init({
       easing: 'ease-in-out',

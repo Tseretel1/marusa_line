@@ -21,8 +21,6 @@
                 display: flex;
                 align-items: center;
                 gap: 15px;
-                position: absolute;
-                top: 5px;
                 cursor: pointer;
                 .logo-container{
                     overflow: hidden;
@@ -314,10 +312,9 @@
     .header{
         padding: 10px 0px;
         .header-align{
-            width: 95%;
+            width: 80%;
             align-items: center;
             .float-logo{
-                top: 0px;
                  .logo-container{
                      width: 50px;
                      height: 50px;
@@ -340,6 +337,7 @@
     .component{
         .header{
             .header-align{
+                width: 90%;
             }
         }
     }

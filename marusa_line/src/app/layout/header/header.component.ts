@@ -6,7 +6,7 @@ import { AuthorizationService } from '../../pages/authorization/authorization.se
 import { Subscription } from 'rxjs';
 import { ReloadService } from '../../shared/services/ReloadService';
 import { PostService } from '../../Repositories/post.service';
-import { Shop } from '../../pages/home/home.component';
+import { Shop, ShopDto } from '../../pages/home/home.component';
 @Component({
   selector: 'app-header',
   imports: [RouterLink, RouterLinkActive, CommonModule],
@@ -102,8 +102,8 @@ export class HeaderComponent implements OnInit{
   }
   loadShop(shopId: number): void {
     this.postService.getShopById(shopId).subscribe({
-      next: (data: Shop) => {
-        this.shop = { ...data }; 
+      next: (data: ShopDto) => {
+        this.shop = { ...data.shop }; 
       },
     });
   }
@@ -123,4 +123,8 @@ export class HeaderComponent implements OnInit{
     tbc: null,
     receiver: null,
   };
+  shopDto:ShopDto={
+    shop : this.shop,
+    isFollowed : false,
+  }
 }

@@ -12,6 +12,7 @@ import { Footer, FooterComponent } from '../../layout/footer/footer.component';
 import { Followers, ShopCard } from '../main/main.component';
 import { AuthorizationService } from '../authorization/authorization.service';
 import { ReloadService } from '../../shared/services/ReloadService';
+import { Subscription } from 'rxjs';
 
 
 
@@ -23,7 +24,7 @@ import { ReloadService } from '../../shared/services/ReloadService';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
 
   shop: Shop = {
     id: 0,
@@ -71,12 +72,27 @@ export class HomeComponent {
       this.reloadService.reload();
     }
   }
+
+  ReloadSub!:Subscription;
+  ngOnInit(): void {
+    this.ReloadSub= this.reloadService.alert$.subscribe(
+      (e)=>{
+        if(e){
+          this.loadShop(this.shopId);
+        }
+      }
+    )
+  }
+
+
   footer!: Footer;
-  
+  isShopFollowed:boolean = false;
   loadShop(shopId: number): void {
     this.postService.getShopById(shopId).subscribe({
-      next: (data: Shop) => {
-        this.shop = { ...data }; 
+      next: (data: ShopDto) => {
+        this.shop = { ...data.shop }; 
+        this.isShopFollowed = data.isFollowed;
+        this.toggleFollew();
         this.footer={
           instagram: this.shop.instagram,
           facebook: this.shop.facebook,
@@ -84,7 +100,7 @@ export class HomeComponent {
           shopPhoto:this.shop.logo,
           shopTitle:this.shop.name,
         }   
-        this.getUsers();    
+        // this.getUsers();    
       },
     });
   }
@@ -98,26 +114,33 @@ export class HomeComponent {
   }
 
 
-  following:boolean = false;
   followString:string= 'follow'
   toggleFollew(){
-    if(!this.following){
-      this.following = true;
+    if(this.isShopFollowed){
       this.followString ='following';
+    }
+    else{
+      this.followString ='follow';
     }
   }
 
 
   followShop(){
-    if(this.userId==0){
-      this.authService.show();
-      return;
-    }
-    this.postService.followShop(this.userId, this.shopId).subscribe(
-      (resp)=>{
-        this.toggleFollew();
+    if(!this.isShopFollowed){
+      const user = localStorage.getItem('user');
+      if(!user){
+        this.authService.show();
+        return;
       }
-    )
+      else{
+        this.postService.followShop(this.userId, this.shopId).subscribe(
+          (resp)=>{
+            this.isShopFollowed =true;
+            this.toggleFollew();
+          }
+        )
+      }
+    }
   }
   getuserFitler:GetUserFilteredDto={
     shopId:0,
@@ -188,4 +211,8 @@ export interface Shop {
   bog: string|null,
   tbc: string|null,
   receiver: string|null,
+}
+export interface ShopDto {
+  shop:Shop;
+  isFollowed:boolean;
 }
