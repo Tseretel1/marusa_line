@@ -106,9 +106,9 @@
               <div class="rulessss">
                 <div style="display: flex; flex-direction: column; gap: 10px; ">
                   <div class="rules">
-                    <p style="color: orange;" class="to-pay-text">
-                      <b style="color: orange;">1.</b> გადარიცხე თანხა ანგარიშზე
-                    </p>
+                    <div style=" display: flex; gap:10px; flex-wrap: nowrap;" class="to-pay-text">
+                       <p >გადარიცხე თანხა</p> <b style="color: orange;"> ({{order.finalPrice}}₾) </b> <p> ანგარიშზე</p>
+                    </div>
                   </div>
                   <div *ngIf="shop.bog" class="rules-text-align"  (click)="copyToClipboard('GE18BG0000000607735653',1)">
                     <div class="logo-container">
@@ -148,7 +148,7 @@
 
            <div class="user-information" *ngIf="!order.isPaid" style="padding: 20px;">
             <div class="rules-align">
-                <div class="rules" style="display: flex; flex-direction: column; gap: 30px;">
+                <div class="rules" style="display: flex; flex-direction: column; gap: 30px; " >
                   გადახდის შემდეგ მოგვწერეთ Instagram ან facebook-ზე ✅
                   <div class="link-align">
                     <a class="link-button instagram" [href]="shop.instagram" target="_blank" >
