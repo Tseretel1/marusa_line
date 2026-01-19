@@ -71,6 +71,15 @@ export class HomeComponent implements OnInit{
       this.getShopStats(this.shopId);
       this.reloadService.reload();
     }
+    else{
+        const shopId = localStorage.getItem('shopId');
+        if(shopId){
+          this.shopId = Number(shopId);
+          this.loadShop(this.shopId);
+          this.getShopStats(this.shopId);
+          this.reloadService.reload();
+        }
+    }
   }
 
   ReloadSub!:Subscription;
@@ -92,6 +101,7 @@ export class HomeComponent implements OnInit{
       next: (data: ShopDto) => {
         this.shop = { ...data.shop }; 
         this.isShopFollowed = data.isFollowed;
+        console.log(data)
         this.toggleFollew();
         this.footer={
           instagram: this.shop.instagram,

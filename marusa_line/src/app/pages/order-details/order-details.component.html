@@ -77,7 +77,7 @@
                 <p style="text-align: center">{{ order.address }}</p>
               </div> -->
             </div>
-            <div class="comment-align user-information" #scrollToBottom *ngIf="order.isPaid">
+            <div class="comment-align user-information"  *ngIf="order.isPaid">
               <div class="form-group">
                 <label for="" style="display: flex; gap: 20px; color: white"
                   >კომენტარი
@@ -98,7 +98,7 @@
               <div id="map" ></div>
             </div>
           </ng-container>
-          <div class="user-information" *ngIf="!order.isPaid">
+          <div class="user-information" *ngIf="!order.isPaid" #scrollToBottom>
             <div class="rules-align">
               <div class="title">
                 <b>გადახდის წესები<i class="fas fa-file-alt"></i></b>

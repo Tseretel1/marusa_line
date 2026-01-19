@@ -9,13 +9,16 @@ import { OrderDetailsComponent } from './pages/order-details/order-details.compo
 import { MainComponent } from './pages/main/main.component';
 
 export const routes: Routes = [
-    { path:'home', component: MainComponent},
+    { path:'home', component: HomeComponent},
     { path:'shop/:id', component: HomeComponent},
     { path:'card-details/:id', component: CardDetailsComponent},
     { path:'order-product/:id', component: OrderProductComponent},
     { path:'order-details/:id', component: OrderDetailsComponent},
     { path:'profile', component: ProfileComponent,canActivate:[authGuard]},
-    { path:'', component: MainComponent},
-    { path: '', component: MainComponent }, 
-    { path: '**', component: MainComponent }  
+    { path:'', component: HomeComponent},
+    { path: '', component: HomeComponent }, 
+    { path: '**', component: HomeComponent }  
+    // { path:'', component: MainComponent},
+    // { path: '', component: MainComponent }, 
+    // { path: '**', component: MainComponent }  
 ];

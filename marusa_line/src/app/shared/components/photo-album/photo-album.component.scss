@@ -64,7 +64,6 @@
       rgba(0, 0, 0, 0.9) 100%
     );
     padding: 20px;
-    border-radius: 12px;
 
     .navigate {
       position: absolute;
@@ -237,14 +236,13 @@
     p {
       padding: 2px 4px;
       text-align: center;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 600;
       overflow-x: scroll;
       text-wrap: nowrap;
-      background-color: rgba(0, 0, 0, 0.418);
+      background-color: rgba(0, 0, 0, 0.671);
       border-radius: 5px;
       padding: 2px 10px;
-      backdrop-filter: blur(10px);
     }
     p::-webkit-scrollbar{
       display: none;

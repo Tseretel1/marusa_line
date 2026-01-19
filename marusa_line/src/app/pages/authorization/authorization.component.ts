@@ -28,7 +28,7 @@ export class AuthorizationComponent implements OnInit{
     });
   }
   ngOnInit(): void {
-  // this.insertautomaticaly();
+  this.insertautomaticaly();
   }
   hideModalExecute:boolean = false;
   closeModal(){
@@ -40,8 +40,8 @@ export class AuthorizationComponent implements OnInit{
   }
 
   insertautomaticaly(){
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIyIiwiZW1haWwiOiJ0aWNrZXRlci5wckBnbWFpbC5jb20iLCJuYW1lIjoiVGlja2V0ZXIiLCJleHAiOjE3NjA5ODEzMDUsImlzcyI6Im1hcnVzYV9saW5lIiwiYXVkIjoibWFydXNhX2xpbmVfdXNlcnMifQ.D02c_2l7iU-Irv5iZAO0y-7vMJ_LyJ2yLSiNZ8Tq6DY';
-    const user = '{"Id":2,"Email":"ticketer.pr@gmail.com","Name":"Ticketer","Picture":"https://lh3.googleusercontent.com/a/ACg8ocIJvwkV1b1FhS3ru4WEIXhDONEJAzuuPF3PXBw6IoHj6R-m5N8=s96-c"}'
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIxIiwiZW1haWwiOiJnaW9yZ2l0c2VyZXRlbGk1NDFAZ21haWwuY29tIiwibmFtZSI6Ikdpb3JnaSBUc2VyZXRlbGkiLCJleHAiOjE3NzE0MDYyNTUsImlzcyI6Im1hcnVzYV9saW5lIiwiYXVkIjoibWFydXNhX2xpbmVfdXNlcnMifQ.00K4E2mBFaIKW6J2xhpp9dnqQAj1JF8SYWfxyUFo6PA';
+    const user = '{"Id":1,"Email":"giorgitsereteli541@gmail.com","Name":"Giorgi Tsereteli","Picture":"https://lh3.googleusercontent.com/a/ACg8ocJmMegnkrntyj898pJL7oF9c3s4rNn5gNJFUvGoiCq7mQOtq3Jj=s96-c"}'
     localStorage.setItem('user', user);
     localStorage.setItem('token', token);
   }
