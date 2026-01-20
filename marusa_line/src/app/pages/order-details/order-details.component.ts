@@ -66,6 +66,7 @@ export class OrderDetailsComponent implements OnInit{
     this.getOrderStatuses();
     this.postService.getOrderById(this.productId).subscribe(
       (resp)=>{
+        console.log(resp)
         this.posts = resp.product;
         this.order = resp.orders;
         this.comment = this.order.comment;

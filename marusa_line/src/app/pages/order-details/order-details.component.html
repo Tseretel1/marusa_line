@@ -110,24 +110,24 @@
                        <p >გადარიცხე თანხა</p> <b style="color: orange;"> ({{order.finalPrice}}₾) </b> <p> ანგარიშზე</p>
                     </div>
                   </div>
-                  <div *ngIf="shop.bog" class="rules-text-align"  (click)="copyToClipboard('GE18BG0000000607735653',1)">
+                  <div *ngIf="shop.bog" class="rules-text-align"  (click)="copyToClipboard(shop.bog,1)">
                     <div class="logo-container">
                       <img src="assets/img/bog.png" class="logo" alt="" />
                     </div>
                     <p>{{shop.bog}}</p>
                     <button class="copy-button">
-                      <span class="copied" *ngIf="copiedNumber ==1">Copied ✅</span>
-                      კოპირება <i class="fas fa-copy" style="color: white"></i>
+                      <span class="copied" *ngIf="copiedNumber ==1"> ✅</span>
+                       <i class="fas fa-copy" style="color: white"></i>
                     </button>
                   </div>
-                  <div *ngIf="shop.tbc" class="rules-text-align" (click)="copyToClipboard('GE61TB7903545064300036',2)">
+                  <div *ngIf="shop.tbc" class="rules-text-align" (click)="copyToClipboard(shop.tbc,2)">
                     <div class="logo-container">
                       <img src="assets/img/tbc.jpg" class="logo" alt="" />
                     </div>
                     <p>{{shop.tbc}}</p>
                     <button class="copy-button" >
-                      <span class="copied" *ngIf="copiedNumber ==2">Copied ✅</span>
-                      კოპირება <i class="fas fa-copy" style="color: white"></i>
+                      <span class="copied" *ngIf="copiedNumber ==2"> ✅</span>
+                       <i class="fas fa-copy" style="color: white"></i>
                     </button>
                   </div>
                   <p *ngIf="shop.receiver">
@@ -148,8 +148,16 @@
 
            <div class="user-information" *ngIf="!order.isPaid" style="padding: 20px;">
             <div class="rules-align">
-                <div class="rules" style="display: flex; flex-direction: column; gap: 30px; " >
-                  გადახდის შემდეგ მოგვწერეთ Instagram ან facebook-ზე ✅
+                <div class="rules" style="display: flex; flex-direction: column; gap: 30px;" (click)="copyToClipboard(`შეკვეთის ნომერი ${order.orderId }`,3)">
+                    <p style="line-height: 40px;">
+                      გადახდის შემდეგ მოგვწერეთ 
+                      <b class="order-num-text" style="text-wrap: nowrap; padding: 5px 10px; background-color: rgb(255, 121, 0); border-radius: 5px;cursor: pointer; position: relative;" >
+                        შეკვეთის ნომერი {{ order.orderId }}  
+                        <span class="ordernumcopied" *ngIf="copiedNumber ==3"> ✅</span>
+                        <i class="fas fa-copy  copy-style" style="color: white"></i>
+                      </b>
+                      Instagram ან facebook-ზე 
+                    </p>
                   <div class="link-align">
                     <a class="link-button instagram" [href]="shop.instagram" target="_blank" >
                       <div class="main-logo-name">
