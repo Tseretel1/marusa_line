@@ -98,27 +98,7 @@ export class ProfileComponent implements OnInit{
     }
   }
   logout(){
-    Swal.fire({
-    title: 'აქაუნთიდან გასვლა',
-    text: 'ნამდვილად გსურთ აქაუნთიდან გასვლა?',
-    showCancelButton: true,
-    confirmButtonText: 'კი',
-    cancelButtonText: 'არა',
-    color: '#ffffff',       
-    background:'rgb(25, 26, 25)',
-    confirmButtonColor: '#d33',
-    cancelButtonColor: '#3085d6',
-    customClass: {
-      popup: 'custom-swal-popup',
-    }
-    }).then((result) => {
-      if (result.isConfirmed) {
-        localStorage.removeItem('user');
-        localStorage.removeItem('token');
-        this.authService.userNotAuthorized();
-        this.router.navigate([AppRoutes.home])
-      }
-    });
+    this.authService.logout();
   }
 
 

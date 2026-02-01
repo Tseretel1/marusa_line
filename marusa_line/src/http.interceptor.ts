@@ -2,10 +2,11 @@ import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { catchError, finalize, throwError } from 'rxjs';
 import { AppRoutes } from './app/shared/AppRoutes/AppRoutes';
+import { AuthorizationService } from './app/pages/authorization/authorization.service';
 
 export const httpInterceptor: HttpInterceptorFn = (request, next) => {
   const token = localStorage.getItem("token");
-
+  const authService = inject(AuthorizationService);
   if (token) {
     request = request.clone({
       setHeaders: {
@@ -21,8 +22,12 @@ export const httpInterceptor: HttpInterceptorFn = (request, next) => {
   }
   return next(request).pipe(
     catchError((error: HttpErrorResponse) => {
-      if (error.status === 401 || error.status === 403) {
-        console.error("Unauthorized or forbidden access.");
+      if (error.status === 401) {
+        authService.logout();
+        authService.show();
+      }
+      else if(error.status === 403){
+
       }
       return throwError(() => error);
     }),
