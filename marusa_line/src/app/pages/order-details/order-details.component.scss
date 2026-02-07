@@ -505,6 +505,9 @@ position: relative;
     align-items: center;
     gap: 20px;
     flex-wrap: wrap;
+    a{
+        overflow: hidden;
+    }
 }
 .header{
     display: flex;

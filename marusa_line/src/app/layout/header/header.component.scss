@@ -52,6 +52,7 @@
                     transition: 0.3s all ease-in-out;
                     max-width: 250px;
                     overflow-x: scroll;
+                    text-wrap: nowrap;
                 }
                 .header-title::-webkit-scrollbar{
                     display: none;

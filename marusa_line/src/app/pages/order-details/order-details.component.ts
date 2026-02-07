@@ -28,25 +28,22 @@ export class OrderDetailsComponent implements OnInit{
   }, 500);
   }
 
-  
-    shop: Shop = {
-      id: 0,
-      name: '',
-      logo: null,
-      location: null,
-      gmail: '',
-      subscription: 0,
-      instagram: null,
-      facebook: null,
-      titkok: null,
-      bog: null,
-      tbc: null,
-      receiver: null,
-    };
-    shopId:number=0;
 
-
-
+  shop: Shop = {
+    id: 0,
+    name: '',
+    logo: null,
+    location: null,
+    gmail: '',
+    subscription: 0,
+    instagram: null,
+    facebook: null,
+    titkok: null,
+    bog: null,
+    tbc: null,
+    receiver: null,
+  };
+  shopId:number=0;
   productId:number = 0;
   posts:Post = {} as Post;
   order:OrderDetailsDto = {} as OrderDetailsDto;
@@ -83,13 +80,9 @@ export class OrderDetailsComponent implements OnInit{
           }, 500);
         }
         else{
-          const shopId  = localStorage.getItem('shopId');
-          if(shopId){
-                this.shopId = Number(shopId);
-                this.loadShop(this.shopId);
+                this.loadShop(this.order.shopId);
               }
             }
-          }
         );
       }
       
@@ -214,6 +207,7 @@ export interface BankCredentials{
 }
 
 export interface OrderDetailsDto {
+  shopId:number;
   orderId: number;
   userId: number;
   productId: number;
